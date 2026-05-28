@@ -1,0 +1,21 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>gnome-shell-extension-lockkeys</PackageName>
+    <PackageVersion>1.0.69</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>Numlock &amp; Capslock status on the panel. — packaged for AnduinOS</PackageDescription>
+    <PackageHomepage>https://extensions.gnome.org/extension/36/</PackageHomepage>
+    <LicenseType>GPL-2.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+  <ItemGroup>
+    <IncludeFolder Include="deploy/lockkeys@vaina.lt"
+                   Target="/usr/share/gnome-shell/extensions/lockkeys@vaina.lt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PrebuildCommand Run="bash download.sh" />
+  </ItemGroup>
+</Project>

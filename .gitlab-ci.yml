@@ -50,3 +50,88 @@ anduinos-archive-keyring:
   extends: .publish
   variables:
     PACKAGE_DIR: anduinos-archive-keyring
+
+gnome-shell-extension-anduinos-loc:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-anduinos-loc
+
+gnome-shell-extension-anduinos-switcher:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-anduinos-switcher
+
+gnome-shell-extension-noti-bottom-right:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-noti-bottom-right
+
+gnome-shell-extension-accent-gtk-theme:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-accent-gtk-theme
+
+gnome-shell-extension-accent-user-theme:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-accent-user-theme
+
+gnome-shell-extension-accent-icons-theme:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-accent-icons-theme
+
+gnome-shell-extension-arcmenu:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-arcmenu
+
+gnome-shell-extension-blur-my-shell:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-blur-my-shell
+
+gnome-shell-extension-clipboard-indicator:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-clipboard-indicator
+
+gnome-shell-extension-customize-ibus:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-customize-ibus
+
+gnome-shell-extension-dash-to-panel:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-dash-to-panel
+
+gnome-shell-extension-lockkeys:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-lockkeys
+
+gnome-shell-extension-mediacontrols:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-mediacontrols
+
+gnome-shell-extension-network-stats:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-network-stats
+
+gnome-shell-extension-proxy-switcher:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-proxy-switcher
+
+gnome-shell-extension-simple-weather:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-simple-weather
+
+gnome-shell-extension-tiling-assistant:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-tiling-assistant

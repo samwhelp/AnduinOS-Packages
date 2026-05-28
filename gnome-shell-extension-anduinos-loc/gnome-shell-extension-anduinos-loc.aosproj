@@ -1,0 +1,20 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>gnome-shell-extension-anduinos-loc</PackageName>
+    <PackageVersion>2.0.2</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>AnduinOS Location Controls GNOME Shell extension (loc@anduinos.com)</PackageDescription>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-2.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Install the extension to the system-wide extensions directory so all users benefit -->
+    <IncludeFolder Include="deploy/loc@anduinos.com"
+                   Target="/usr/share/gnome-shell/extensions/loc@anduinos.com" />
+  </ItemGroup>
+</Project>
