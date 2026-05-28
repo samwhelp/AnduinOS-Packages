@@ -101,10 +101,10 @@ gnome-shell-extension-customize-ibus:
   variables:
     PACKAGE_DIR: gnome-shell-extension-customize-ibus
 
-gnome-shell-extension-dash-to-panel:
+gnome-shell-extension-dash-to-panel-anduinos:
   extends: .publish
   variables:
-    PACKAGE_DIR: gnome-shell-extension-dash-to-panel
+    PACKAGE_DIR: gnome-shell-extension-dash-to-panel-anduinos
 
 gnome-shell-extension-lockkeys:
   extends: .publish
@@ -135,3 +135,8 @@ gnome-shell-extension-tiling-assistant:
   extends: .publish
   variables:
     PACKAGE_DIR: gnome-shell-extension-tiling-assistant
+
+anduinos-gnome-extensions:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-gnome-extensions
