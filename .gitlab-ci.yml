@@ -8,7 +8,6 @@ variables:
 
 .lint:
   stage: lint
-  image: mcr.microsoft.com/dotnet/sdk:10.0
   before_script:
     - dotnet tool install -g aiursoft.apkg.client
     - export PATH="$PATH:$HOME/.dotnet/tools"
@@ -21,7 +20,6 @@ variables:
 
 .publish:
   stage: publish
-  image: mcr.microsoft.com/dotnet/sdk:10.0
   before_script:
     - dotnet tool install -g aiursoft.apkg.client
     - export PATH="$PATH:$HOME/.dotnet/tools"
