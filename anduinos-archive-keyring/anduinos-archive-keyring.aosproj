@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PrebuildCommand Run="mkdir -p deploy && curl -sL https://apkg-dev.aiursoft.com/artifacts/certs/anduinos | gpg --dearmor > deploy/anduinos-archive-keyring.gpg" />
+    <PrebuildCommand Run="mkdir -p deploy &amp;&amp; curl -sL https://apkg-dev.aiursoft.com/artifacts/certs/anduinos | gpg --dearmor > deploy/anduinos-archive-keyring.gpg" />
   </ItemGroup>
 
   <ItemGroup>
