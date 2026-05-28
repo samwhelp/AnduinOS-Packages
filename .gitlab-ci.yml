@@ -33,3 +33,8 @@ anduinos-apt-config:
   extends: .publish
   variables:
     PACKAGE_DIR: anduinos-apt-config
+
+anduinos-archive-keyring:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-archive-keyring
