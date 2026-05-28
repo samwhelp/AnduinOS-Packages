@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PrebuildCommand Run="curl -sL https://apkg-dev.aiursoft.com/artifacts/certs/anduinos | gpg --dearmor > deploy/anduinos-archive-keyring.gpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <IncludeFile Include="deploy/anduinos-archive-keyring.gpg" Target="/usr/share/keyrings/anduinos-archive-keyring.gpg" />
   </ItemGroup>
 </Project>
