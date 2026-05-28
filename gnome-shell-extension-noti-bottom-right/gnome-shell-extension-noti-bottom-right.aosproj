@@ -13,14 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <IncludeFolder Include="deploy/noble/noti-bottom-right@anduinos"
-                   Target="/usr/share/gnome-shell/extensions/noti-bottom-right@anduinos"
-                   Condition="'$(Suite)' == 'noble-addon'" />
-    <IncludeFolder Include="deploy/questing/noti-bottom-right@anduinos"
-                   Target="/usr/share/gnome-shell/extensions/noti-bottom-right@anduinos"
-                   Condition="'$(Suite)' == 'questing-addon'" />
-    <IncludeFolder Include="deploy/resolute/noti-bottom-right@anduinos"
-                   Target="/usr/share/gnome-shell/extensions/noti-bottom-right@anduinos"
-                   Condition="'$(Suite)' == 'resolute-addon'" />
+    <IncludeFolder Include="deploy/noti-bottom-right@anduinos"
+                   Target="/usr/share/gnome-shell/extensions/noti-bottom-right@anduinos" />
   </ItemGroup>
 </Project>
