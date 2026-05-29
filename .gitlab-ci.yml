@@ -11,6 +11,7 @@ variables:
   before_script:
     - dotnet tool update -g aiursoft.apkg.client || dotnet tool install -g aiursoft.apkg.client
     - export PATH="$PATH:$HOME/.dotnet/tools"
+    - apkg --version
   script:
     - cd $PACKAGE_DIR
     - apkg lint
@@ -23,6 +24,7 @@ variables:
   before_script:
     - dotnet tool update -g aiursoft.apkg.client || dotnet tool install -g aiursoft.apkg.client
     - export PATH="$PATH:$HOME/.dotnet/tools"
+    - apkg --version
   script:
     - cd $PACKAGE_DIR
     - apkg publish
