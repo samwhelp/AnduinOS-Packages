@@ -9,6 +9,9 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git /tmp/Fluent-icon-
 git -C /tmp/Fluent-icon-theme checkout "$FLUENT_ICON_COMMIT"
 
 echo "Copying source to deploy/src/..."
+# Remove links/ — symlinks that C# File.Copy can't handle.
+# install.sh regenerates all symlinks via shared base directories.
+rm -rf /tmp/Fluent-icon-theme/links
 mkdir -p "$SCRIPT_DIR/deploy/src"
 cp -r /tmp/Fluent-icon-theme/* "$SCRIPT_DIR/deploy/src/"
 

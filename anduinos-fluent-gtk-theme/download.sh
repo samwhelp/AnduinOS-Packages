@@ -9,6 +9,7 @@ git clone https://github.com/vinceliuice/Fluent-gtk-theme.git /tmp/Fluent-gtk-th
 git -C /tmp/Fluent-gtk-theme checkout "$FLUENT_GTK_COMMIT"
 
 echo "Copying source to deploy/src/..."
+rm -rf /tmp/Fluent-gtk-theme/links
 mkdir -p "$SCRIPT_DIR/deploy/src"
 cp -r /tmp/Fluent-gtk-theme/* "$SCRIPT_DIR/deploy/src/"
 
