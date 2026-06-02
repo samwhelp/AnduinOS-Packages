@@ -36,7 +36,7 @@
     <!-- 10-19 are per-extension dconf fragments shipped by Apkg packages -->
 
     <!-- GDM greeter -->
-    <IncludeFile Include="deploy/greeter.dconf-defaults"
+    <IncludeFile Include="deploy/greeter.dconf-defaults.ini"
                  Target="/etc/gdm3/greeter.dconf-defaults" />
     <IncludeFile Include="deploy/anduinos_text_smaller.png"
                  Target="/usr/share/pixmaps/anduinos_text_smaller.png" />
