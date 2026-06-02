@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-apt-config</PackageName>
-    <PackageVersion>1.0.4</PackageVersion>
+    <PackageVersion>1.0.5</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>APT pinning: ensures AnduinOS packages always take precedence over Ubuntu</PackageDescription>
     <Section>admin</Section>
@@ -14,6 +14,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Dependency Include="anduinos-archive-keyring" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- APT pinning: prefer AnduinOS packages over upstream Ubuntu -->
     <IncludeFile Include="deploy/anduinos" Target="/etc/apt/preferences.d/anduinos" />
+
+    <!-- Per-suite APT sources -->
+    <IncludeFile Include="deploy/noble/anduinos.sources"    Target="/etc/apt/sources.list.d/anduinos.sources" Condition="'$(Suite)' == 'noble-addon'" />
+    <IncludeFile Include="deploy/questing/anduinos.sources" Target="/etc/apt/sources.list.d/anduinos.sources" Condition="'$(Suite)' == 'questing-addon'" />
+    <IncludeFile Include="deploy/resolute/anduinos.sources" Target="/etc/apt/sources.list.d/anduinos.sources" Condition="'$(Suite)' == 'resolute-addon'" />
   </ItemGroup>
 </Project>
