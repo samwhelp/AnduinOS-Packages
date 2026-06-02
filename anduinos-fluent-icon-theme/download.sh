@@ -15,14 +15,27 @@ cd /tmp/Fluent-icon-theme
 ./install.sh --all -d "$STAGING"
 
 echo "Installing cursor theme..."
-# cursor install.sh doesn't support -d; copy manually
 cd /tmp/Fluent-icon-theme/cursors
 cp -r dist "$STAGING/Fluent-cursors"
 cp -r dist-dark "$STAGING/Fluent-dark-cursors"
 
-# Convert any absolute symlinks to relative (or remove broken ones)
-echo "Fixing symlinks..."
-find "$STAGING" -type l -exec test ! -e {} \; -delete 2>/dev/null || true
+# ── Symlink manifest — dpkg resolves symlinks → 3.4 GB. Ship real files only,
+#   record symlinks, restore in postinst. ────────────────────────────────
+MANIFEST="$SCRIPT_DIR/deploy/symlinks.txt"
+rm -f "$MANIFEST"
+
+echo "Recording symlinks..."
+find "$STAGING" -type l -printf "%P\t%l\n" > "$MANIFEST"
+
+count=$(wc -l < "$MANIFEST")
+echo "  $count symlinks recorded"
+
+# Delete symlinks — only real files go into the .deb
+echo "Stripping symlinks..."
+find "$STAGING" -type l -delete
+
+# Remove broken symlinks that were already dead
+find "$STAGING" -xtype l -delete 2>/dev/null || true
 
 rm -rf /tmp/Fluent-icon-theme
 echo "Done."
