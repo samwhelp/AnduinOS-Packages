@@ -3,6 +3,7 @@
     <PackageName>gnome-shell-extension-arcmenu</PackageName>
     <PackageVersion>69.2+$(SuiteShortName)1</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <Section>gnome</Section>
     <PackageDescription>Application Menu Extension for GNOME — packaged for AnduinOS</PackageDescription>
     <PackageHomepage>https://extensions.gnome.org/extension/3628/</PackageHomepage>
     <LicenseType>GPL-2.0</LicenseType>
