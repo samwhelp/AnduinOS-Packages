@@ -1,0 +1,48 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-dconf-defaults</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>AnduinOS system-wide dconf/gschema/GDM defaults</PackageDescription>
+    <Section>admin</Section>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-2.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Dependency Include="dconf-cli" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- gsettings schema override -->
+    <IncludeFile Include="deploy/99-anduinos-defaults.gschema.override"
+                 Target="/usr/share/glib-2.0/schemas/99-anduinos-defaults.gschema.override" />
+
+    <!-- dconf profile -->
+    <IncludeFile Include="deploy/user" Target="/etc/dconf/profile/user" />
+
+    <!-- dconf database fragments (sorted by priority) -->
+    <IncludeFile Include="deploy/01-custom-keybindings.conf"
+                 Target="/etc/dconf/db/anduinos.d/01-custom-keybindings.conf" />
+    <IncludeFile Include="deploy/02-ptyxis-terminal.conf"
+                 Target="/etc/dconf/db/anduinos.d/02-ptyxis-terminal.conf" />
+    <IncludeFile Include="deploy/03-system-extensions.conf"
+                 Target="/etc/dconf/db/anduinos.d/03-system-extensions.conf" />
+    <!-- 04 is reserved for dynamic build-time configs (mod 52) -->
+    <!-- 10-19 are per-extension dconf fragments shipped by Apkg packages -->
+
+    <!-- GDM greeter -->
+    <IncludeFile Include="deploy/greeter.dconf-defaults"
+                 Target="/etc/gdm3/greeter.dconf-defaults" />
+    <IncludeFile Include="deploy/anduinos_text_smaller.png"
+                 Target="/usr/share/pixmaps/anduinos_text_smaller.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PostInstallScript Include="deploy/postinst.sh" />
+  </ItemGroup>
+</Project>

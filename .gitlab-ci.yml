@@ -53,6 +53,11 @@ anduinos-archive-keyring:
   variables:
     PACKAGE_DIR: anduinos-archive-keyring
 
+anduinos-dconf-defaults:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-dconf-defaults
+
 gnome-shell-extension-anduinos-loc:
   extends: .publish
   variables:
