@@ -34,14 +34,51 @@ export const defaults = [\
 ];' \
         "$DEPLOY_DIR/panelPositions.js"
 
-    # Patch Chinese locale: rename "Dash to Panel 设置" → "任务栏设置"
-    zh_mo="$DEPLOY_DIR/locale/zh_CN/LC_MESSAGES/dash-to-panel.mo"
-    if [[ -f "$zh_mo" ]]; then
-        echo "[$SUITE] Patching zh_CN locale..."
-        msgunfmt "$zh_mo" -o /tmp/dash-to-panel.po
-        sed -i "s/Dash to Panel 设置/任务栏设置/g" /tmp/dash-to-panel.po
-        msgfmt /tmp/dash-to-panel.po -o "$zh_mo"
-        rm -f /tmp/dash-to-panel.po
+    # ── Locale patch: rename "Dash to Panel Settings" → "Taskbar Settings" ──
+    # Uses msgid-based substitution (robust across all translations).
+    declare -A TASKBAR_SETTINGS=(
+        ["cs"]="Nastavení panelu úloh"
+        ["de"]="Taskleisteneinstellungen"
+        ["es"]="Configuración de la barra de tareas"
+        ["fa"]="تنظیمات نوار وظیفه"
+        ["fr"]="Paramètres de la barre des tâches"
+        ["gl"]="Configuración da barra de tarefas"
+        ["hu"]="Tálcabeállítások"
+        ["it"]="Impostazioni barra delle applicazioni"
+        ["ja"]="タスクバー設定"
+        ["ka"]="ამოცანების პანელის პარამეტრები"
+        ["kk"]="Тапсырмалар тақтасының параметрлері"
+        ["ko"]="작업 표시줄 설정"
+        ["nl"]="Taakbalkinstellingen"
+        ["pl"]="Ustawienia paska zadań"
+        ["pt_BR"]="Configurações da barra de tarefas"
+        ["ru"]="Настройки панели задач"
+        ["sk"]="Nastavenia panela úloh"
+        ["sv"]="Aktivitetsfältsinställningar"
+        ["tr"]="Görev çubuğu ayarları"
+        ["uk"]="Налаштування панелі завдань"
+        ["zh_CN"]="任务栏设置"
+        ["zh_TW"]="工作列設定"
+    )
+
+    locale_dir="$DEPLOY_DIR/locale"
+    patched=0
+
+    if [[ -d "$locale_dir" ]]; then
+        for lang_dir in "$locale_dir"/*/; do
+            lang=$(basename "$lang_dir")
+            mo_file="$lang_dir/LC_MESSAGES/dash-to-panel.mo"
+
+            if [[ -f "$mo_file" ]] && [[ -n "${TASKBAR_SETTINGS[$lang]+isset}" ]]; then
+                echo "[$SUITE] Patching dash-to-panel locale: $lang"
+                msgunfmt "$mo_file" -o /tmp/dash-to-panel.po
+                sed -i '/msgid "Dash to Panel Settings"/{n;s/.*/msgstr "'"${TASKBAR_SETTINGS[$lang]}"'"/}' /tmp/dash-to-panel.po
+                msgfmt /tmp/dash-to-panel.po -o "$mo_file"
+                rm -f /tmp/dash-to-panel.po
+                patched=$((patched + 1))
+            fi
+        done
+        echo "[$SUITE] Patched dash-to-panel.mo for $patched languages"
     fi
 done
 
