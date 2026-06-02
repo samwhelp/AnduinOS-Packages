@@ -53,6 +53,16 @@ anduinos-archive-keyring:
   variables:
     PACKAGE_DIR: anduinos-archive-keyring
 
+anduinos-fluent-gtk-theme:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-fluent-gtk-theme
+
+anduinos-fluent-icon-theme:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-fluent-icon-theme
+
 anduinos-dconf-defaults:
   extends: .publish
   variables:

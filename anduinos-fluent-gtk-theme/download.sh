@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+rm -rf "$SCRIPT_DIR/deploy" /tmp/Fluent-gtk-theme
+git clone --depth 1 https://github.com/vinceliuice/Fluent-gtk-theme.git /tmp/Fluent-gtk-theme
+
+echo "Installing sassc..."
+sudo apt-get update -qq && sudo apt-get install -y -qq sassc 2>/dev/null || true
+
+echo "Building theme to staging..."
+cd /tmp/Fluent-gtk-theme
+./install.sh --tweaks noborder round --theme all -d "$SCRIPT_DIR/deploy/themes"
+
+rm -rf /tmp/Fluent-gtk-theme
+echo "Done."

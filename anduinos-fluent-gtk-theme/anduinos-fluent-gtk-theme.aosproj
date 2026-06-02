@@ -1,0 +1,23 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-fluent-gtk-theme</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>Fluent GTK theme by vinceliuice (noborder round tweaks) — packaged for AnduinOS</PackageDescription>
+    <Section>admin</Section>
+    <PackageHomepage>https://github.com/vinceliuice/Fluent-gtk-theme</PackageHomepage>
+    <LicenseType>GPL-3.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PrebuildCommand Run="bash download.sh" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <IncludeFolder Include="deploy/themes/" Target="/usr/share/themes" />
+  </ItemGroup>
+</Project>
