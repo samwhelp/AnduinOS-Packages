@@ -35,13 +35,18 @@ export const defaults = [\
         "$DEPLOY_DIR/panelPositions.js"
 
     # Patch Chinese locale: rename "Dash to Panel 设置" → "任务栏设置"
+    # Requires gettext (msgunfmt/msgfmt); gracefully skipped if not installed.
     zh_mo="$DEPLOY_DIR/locale/zh_CN/LC_MESSAGES/dash-to-panel.mo"
     if [[ -f "$zh_mo" ]]; then
-        echo "[$SUITE] Patching zh_CN locale..."
-        msgunfmt "$zh_mo" -o /tmp/dash-to-panel.po
-        sed -i "s/Dash to Panel 设置/任务栏设置/g" /tmp/dash-to-panel.po
-        msgfmt /tmp/dash-to-panel.po -o "$zh_mo"
-        rm -f /tmp/dash-to-panel.po
+        if command -v msgunfmt &>/dev/null && command -v msgfmt &>/dev/null; then
+            echo "[$SUITE] Patching zh_CN locale..."
+            msgunfmt "$zh_mo" -o /tmp/dash-to-panel.po
+            sed -i "s/Dash to Panel 设置/任务栏设置/g" /tmp/dash-to-panel.po
+            msgfmt /tmp/dash-to-panel.po -o "$zh_mo"
+            rm -f /tmp/dash-to-panel.po
+        else
+            echo "[$SUITE] Skipping zh_CN locale patch (msgunfmt/msgfmt not found — install gettext)"
+        fi
     fi
 done
 
