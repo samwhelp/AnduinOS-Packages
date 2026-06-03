@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>gnome-shell-extension-tiling-assistant</PackageName>
-    <PackageVersion>1.0.56+$(SuiteShortName)3</PackageVersion>
+    <PackageVersion>1.0.56+$(SuiteShortName)4</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>Expand GNOME's 2 column tiling and add a Windows-snap-assist-inspired popup... — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
@@ -35,5 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <IncludeFile Include="dconf/19-tiling-assistant.conf" Target="/etc/dconf/db/anduinos.d/19-tiling-assistant.conf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostInstallScript Include="scripts/postinst.sh" />
   </ItemGroup>
 </Project>
