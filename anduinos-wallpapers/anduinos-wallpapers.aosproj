@@ -14,12 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Wallpaper images -->
     <IncludeFile Include="deploy/Fluent-building-light.png" Target="/usr/share/backgrounds/Fluent-building-light.png" />
     <IncludeFile Include="deploy/Fluent-building-night.png" Target="/usr/share/backgrounds/Fluent-building-night.png" />
-
-    <!-- GNOME background XML definitions -->
     <IncludeFile Include="deploy/fluent.light.xml" Target="/usr/share/gnome-background-properties/fluent.light.xml" />
     <IncludeFile Include="deploy/fluent.dark.xml" Target="/usr/share/gnome-background-properties/fluent.dark.xml" />
+    <!-- Wallpaper dconf — ships with wallpapers so they're always in sync -->
+    <IncludeFile Include="dconf/20-wallpapers.conf" Target="/etc/dconf/db/anduinos.d/20-wallpapers.conf" />
   </ItemGroup>
 </Project>
