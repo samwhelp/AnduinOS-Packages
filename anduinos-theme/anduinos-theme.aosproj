@@ -12,7 +12,7 @@
     <TargetArchitectures>all</TargetArchitectures>
     <Component>main</Component>
     <!-- Remove only the Ubuntu extensions we actively replace -->
-    <Conflicts>gnome-shell-extensions, gnome-shell-extension-ubuntu-dock, gnome-shell-extension-tiling-assistant</Conflicts>
+    <Conflicts>gnome-shell-extension-ubuntu-dock, gnome-shell-extension-tiling-assistant</Conflicts>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +21,8 @@
     <Dependency Include="anduinos-fluent-gtk-theme" />
     <Dependency Include="anduinos-gnome-extensions" />
     <Dependency Include="anduinos-dconf-defaults" />
+    <!-- Swap: replace Ubuntu's gnome-shell-extensions meta-package -->
+    <Dependency Include="gnome-shell-extensions" />
     <!-- Ubuntu-provided extensions that AnduinOS uses -->
     <Dependency Include="gnome-shell-extension-desktop-icons-ng" />
     <Dependency Include="gnome-shell-extension-user-theme" />
