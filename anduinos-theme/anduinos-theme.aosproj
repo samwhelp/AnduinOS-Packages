@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-theme</PackageName>
-    <PackageVersion>1.1.2</PackageVersion>
+    <PackageVersion>1.1.3</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete visual theme — icons, GTK theme, wallpapers, and extensions</PackageDescription>
     <Section>metapackages</Section>
@@ -19,9 +19,7 @@
     <Dependency Include="anduinos-fluent-gtk-theme" />
     <Dependency Include="anduinos-gnome-extensions" />
     <Dependency Include="anduinos-dconf-defaults" />
-    <!-- Swap: replace Ubuntu's gnome-shell-extensions meta-package -->
-    <Dependency Include="gnome-shell-extensions" />
-    <!-- Ubuntu-provided extensions that AnduinOS uses -->
+    <!-- Extensions required for AnduinOS theming -->
     <Dependency Include="gnome-shell-extension-desktop-icons-ng" />
     <Dependency Include="gnome-shell-extension-user-theme" />
     <Dependency Include="gnome-shell-extension-appindicator" />
