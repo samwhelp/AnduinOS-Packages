@@ -18,5 +18,7 @@
     <Recommend Include="anduinos-fluent-gtk-theme" />
     <Recommend Include="anduinos-wallpapers" />
     <Recommend Include="anduinos-gnome-extensions" />
+    <Recommend Include="anduinos-dconf-defaults" />
+    <Recommend Include="anduinos-gnome-shell-locale" />
   </ItemGroup>
 </Project>
