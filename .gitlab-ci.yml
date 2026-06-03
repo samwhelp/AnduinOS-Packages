@@ -99,10 +99,10 @@ gnome-shell-extension-accent-icons-theme:
   variables:
     PACKAGE_DIR: gnome-shell-extension-accent-icons-theme
 
-gnome-shell-extension-appindicator:
+gnome-shell-extension-appindicator-anduinos:
   extends: .publish
   variables:
-    PACKAGE_DIR: gnome-shell-extension-appindicator
+    PACKAGE_DIR: gnome-shell-extension-appindicator-anduinos
 
 gnome-shell-extension-arcmenu:
   extends: .publish
@@ -215,7 +215,7 @@ anduinos-gnome-extensions:
     - gnome-shell-extension-accent-gtk-theme
     - gnome-shell-extension-accent-user-theme
     - gnome-shell-extension-accent-icons-theme
-    - gnome-shell-extension-appindicator
+    - gnome-shell-extension-appindicator-anduinos
     - gnome-shell-extension-arcmenu
     - gnome-shell-extension-blur-my-shell
     - gnome-shell-extension-clipboard-indicator

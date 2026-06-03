@@ -23,7 +23,7 @@
     <Recommend Include="gnome-shell-extension-noti-bottom-right" />
 
     <!-- Third-party extensions packaged by AnduinOS (downloaded from GNOME Extensions at build time) -->
-    <Recommend Include="gnome-shell-extension-appindicator" />
+    <Recommend Include="gnome-shell-extension-appindicator-anduinos" />
     <Recommend Include="gnome-shell-extension-arcmenu" />
     <Recommend Include="gnome-shell-extension-accent-gtk-theme" />
     <Recommend Include="gnome-shell-extension-accent-icons-theme" />

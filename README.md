@@ -10,7 +10,7 @@ The following AnduinOS packages explicitly replace or conflict with Ubuntu's off
 |---|---|---|
 | `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `alsa-ucm-conf` |
 | `firmware-sof-anduinos` | `firmware-sof-signed` | `firmware-sof-signed` |
-| `gnome-shell-extension-appindicator` | `gnome-shell-extension-appindicator` | `gnome-shell-extension-appindicator` |
+| `gnome-shell-extension-appindicator-anduinos` | `gnome-shell-extension-appindicator` | `gnome-shell-extension-appindicator` |
 | `gnome-shell-extension-dash-to-panel-anduinos` | `gnome-shell-extension-dash-to-panel` | `gnome-shell-extension-dash-to-panel` |
 | `gnome-shell-extension-gtk4-desktop-icons-ng` | — | `gnome-shell-extension-desktop-icons-ng` |
 | `anduinos-gnome-extensions` | `gnome-shell-ubuntu-extensions` | `gnome-shell-ubuntu-extensions` |
