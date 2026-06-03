@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-theme</PackageName>
-    <PackageVersion>1.1.3</PackageVersion>
+    <PackageVersion>1.1.4</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete visual theme — icons, GTK theme, wallpapers, and extensions</PackageDescription>
     <Section>metapackages</Section>
@@ -14,16 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Core: must be present for AnduinOS look -->
+    <!-- Core AnduinOS packages -->
     <Dependency Include="anduinos-fluent-icon-theme" />
     <Dependency Include="anduinos-fluent-gtk-theme" />
     <Dependency Include="anduinos-gnome-extensions" />
     <Dependency Include="anduinos-dconf-defaults" />
-    <!-- Extensions required for AnduinOS theming -->
-    <Dependency Include="gnome-shell-extension-desktop-icons-ng" />
-    <Dependency Include="gnome-shell-extension-user-theme" />
-    <Dependency Include="gnome-shell-extension-appindicator" />
-    <Recommend Include="gnome-shell-extension-drive-menu" />
+
     <!-- Nice-to-have: can remove individually -->
     <Recommend Include="anduinos-wallpapers" />
     <Recommend Include="anduinos-gnome-shell-locale" />
