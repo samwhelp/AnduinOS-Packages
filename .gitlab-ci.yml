@@ -159,11 +159,6 @@ anduinos-wallpapers:
   variables:
     PACKAGE_DIR: anduinos-wallpapers
 
-gnome-shell-extension-ubuntu-dock:
-  extends: .publish
-  variables:
-    PACKAGE_DIR: gnome-shell-extension-ubuntu-dock
-
 gnome-shell-extensions:
   extends: .publish
   variables:
@@ -188,7 +183,6 @@ anduinos-theme:
     - anduinos-gnome-extensions
     - anduinos-dconf-defaults
     - gnome-shell-extensions
-    - gnome-shell-extension-ubuntu-dock
     - anduinos-wallpapers
     - anduinos-gnome-shell-locale
   variables:
