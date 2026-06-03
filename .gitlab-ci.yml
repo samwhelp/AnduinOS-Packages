@@ -169,6 +169,16 @@ gnome-shell-extensions:
   variables:
     PACKAGE_DIR: gnome-shell-extensions
 
+alsa-ucm-conf-anduinos:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: alsa-ucm-conf-anduinos
+
+anduinos-sof-firmware:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-sof-firmware
+
 anduinos-theme:
   extends: .publish
   stage: meta
