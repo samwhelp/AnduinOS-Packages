@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-theme</PackageName>
-    <PackageVersion>1.1.4</PackageVersion>
+    <PackageVersion>1.1.5</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete visual theme — icons, GTK theme, wallpapers, and extensions</PackageDescription>
     <Section>metapackages</Section>
@@ -19,6 +19,7 @@
     <Dependency Include="anduinos-fluent-gtk-theme" />
     <Dependency Include="anduinos-gnome-extensions" />
     <Dependency Include="anduinos-dconf-defaults" />
+    <Dependency Include="plymouth-theme-spinner" />
 
     <!-- Nice-to-have: can remove individually -->
     <Recommend Include="anduinos-wallpapers" />

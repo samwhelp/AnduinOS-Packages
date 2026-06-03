@@ -187,6 +187,7 @@ anduinos-theme:
     - anduinos-fluent-gtk-theme
     - anduinos-gnome-extensions
     - anduinos-dconf-defaults
+    - plymouth-theme-spinner
     - anduinos-wallpapers
     - anduinos-gnome-shell-locale
   variables:
