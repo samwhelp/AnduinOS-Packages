@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>base-files</PackageName>
-    <PackageVersion>1:$(UpstreamVersion)+$(SuiteShortName)2-anduinos</PackageVersion>
+    <PackageVersion>1:$(UpstreamVersion)+$(SuiteShortName)3-anduinos</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS base files (derived from Ubuntu base-files)</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -36,6 +36,11 @@
     <IncludeFile Include="deploy/resolute/ubuntu-logo-text.svg" Target="/usr/share/pixmaps/ubuntu-logo-text.svg"
                  Condition="'$(Suite)' == 'resolute-addon'" />
     <IncludeFile Include="deploy/resolute/ubuntu-logo-text-dark.svg" Target="/usr/share/pixmaps/ubuntu-logo-text-dark.svg"
+                 Condition="'$(Suite)' == 'resolute-addon'" />
+    <!-- PNG versions needed for Plymouth watermark (watermark.png symlinks to ubuntu-logo-text-dark.png) -->
+    <IncludeFile Include="deploy/resolute/ubuntu-logo-text.png" Target="/usr/share/pixmaps/ubuntu-logo-text.png"
+                 Condition="'$(Suite)' == 'resolute-addon'" />
+    <IncludeFile Include="deploy/resolute/ubuntu-logo-text-dark.png" Target="/usr/share/pixmaps/ubuntu-logo-text-dark.png"
                  Condition="'$(Suite)' == 'resolute-addon'" />
 
     <!-- System identity files (suite-specific) -->
