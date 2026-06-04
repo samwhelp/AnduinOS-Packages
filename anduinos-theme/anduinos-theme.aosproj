@@ -20,9 +20,7 @@
     <Dependency Include="anduinos-gnome-extensions" />
     <Dependency Include="anduinos-dconf-defaults" />
     <Dependency Include="plymouth-anduinos" />
-
-    <!-- Nice-to-have: can remove individually -->
-    <Recommend Include="anduinos-wallpapers" />
-    <Recommend Include="anduinos-gnome-shell-locale" />
+    <Dependency Include="anduinos-wallpapers" />
+    <Dependency Include="anduinos-gnome-shell-locale" />
   </ItemGroup>
 </Project>

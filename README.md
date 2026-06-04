@@ -28,7 +28,7 @@ The following AnduinOS packages explicitly replace or conflict with Ubuntu's off
 | AnduinOS Package | Ubuntu Package | Declared Conflicts | Reason |
 |---|---|---|---|
 | `base-files` | `base-files` | -- (epoch `1:` outranks) | AnduinOS branding -- epoch `1:` ensures our version wins |
-| `plymouth-theme-spinner` | `plymouth-theme-spinner` / `plymouth` | -- (Replaces only) | AnduinOS boot splash -- Replaces plymouth's logo files |
+| `plymouth-anduinos` | `plymouth-theme-spinner` | `plymouth-theme-spinner` | AnduinOS boot splash -- derives upstream spinner assets into clean `themes/anduinos/` namespace, immune to upstream updates |
 
 ## Build
 

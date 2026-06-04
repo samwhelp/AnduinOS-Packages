@@ -230,3 +230,19 @@ anduinos-gnome-extensions:
     - gnome-shell-extension-tiling-assistant
   variables:
     PACKAGE_DIR: anduinos-gnome-extensions
+
+# ── Ultimate meta-package ──────────────────────────────────────────────────
+
+anduinos-desktop:
+  extends: .publish
+  stage: meta
+  needs:
+    - anduinos-apt-config
+    - base-files
+    - anduinos-theme
+    - anduinos-templates
+    - plymouth-anduinos
+    - firmware-sof-anduinos
+    - alsa-ucm-conf-anduinos
+  variables:
+    PACKAGE_DIR: anduinos-desktop
