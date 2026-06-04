@@ -1,0 +1,25 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-no-snapd</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>Block snapd via APT pinning and completely purge snap ecosystem</PackageDescription>
+    <Section>admin</Section>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-3.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+    <Conflicts>snapd</Conflicts>
+    <Replaces>snapd</Replaces>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <IncludeFile Include="assets/no-snap.pref" Target="/etc/apt/preferences.d/no-snap.pref" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PostInstallScript Include="scripts/postinst.sh" />
+  </ItemGroup>
+</Project>

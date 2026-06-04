@@ -32,6 +32,7 @@
     <!-- AnduinOS desktop components -->
     <Dependency Include="anduinos-deskmon" />
     <Dependency Include="anduinos-system-tweaks" />
+    <Dependency Include="anduinos-no-snapd" />
     <Dependency Include="anduinos-theme" />
     <Dependency Include="anduinos-templates" />
     <Dependency Include="plymouth-anduinos" />

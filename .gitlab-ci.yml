@@ -49,6 +49,11 @@ anduinos-apt-config:
   variables:
     PACKAGE_DIR: anduinos-apt-config
 
+anduinos-no-snapd:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-no-snapd
+
 anduinos-archive-keyring:
   extends: .publish
   variables:
@@ -281,5 +286,6 @@ anduinos-desktop:
     - anduinos-software-properties-common
     - anduinos-software-properties-gtk
     - anduinos-system-tweaks
+    - anduinos-no-snapd
   variables:
     PACKAGE_DIR: anduinos-desktop
