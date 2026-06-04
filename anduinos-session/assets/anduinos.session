@@ -1,4 +1,0 @@
-[GNOME Session]
-Name=AnduinOS
-RequiredComponents=org.gnome.Shell;
-DesktopName=AnduinOS:GNOME
