@@ -31,6 +31,7 @@ The following AnduinOS packages explicitly replace or conflict with Ubuntu's off
 | `plymouth-anduinos` | `plymouth-theme-spinner` | `plymouth-theme-spinner` | AnduinOS boot splash -- derives upstream spinner assets into clean `themes/anduinos/` namespace, immune to upstream updates |
 | `anduinos-software-properties-common` | `software-properties-common` | `software-properties-common` | AnduinOS fork -- patches `add-apt-repository` for PPA compatibility, ships `anduinos.info`/`anduinos.csv` distro templates |
 | `anduinos-software-properties-gtk` | `software-properties-gtk` | `software-properties-gtk` | AnduinOS fork -- strips Ubuntu Pro advertisement from Software & Updates GUI (resolute only) |
+| `anduinos-desktop` | `ubuntu-session`, `yaru-theme-gnome-shell` | `ubuntu-session`, `yaru-theme-gnome-shell` | AnduinOS desktop metapackage -- replaces Ubuntu session with native GNOME session, owns critical infrastructure deps (gdm3, xwayland, gnome-session) |
 
 ## Build
 
