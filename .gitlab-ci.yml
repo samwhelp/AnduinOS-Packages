@@ -54,6 +54,11 @@ anduinos-no-snapd:
   variables:
     PACKAGE_DIR: anduinos-no-snapd
 
+anduinos-fonts:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-fonts
+
 anduinos-archive-keyring:
   extends: .publish
   variables:
@@ -205,6 +210,7 @@ anduinos-theme:
     - plymouth-anduinos
     - anduinos-wallpapers
     - anduinos-gnome-shell-locale
+    - anduinos-fonts
   variables:
     PACKAGE_DIR: anduinos-theme
 

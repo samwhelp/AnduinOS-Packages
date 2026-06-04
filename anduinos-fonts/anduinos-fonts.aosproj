@@ -1,0 +1,65 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-fonts</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>AnduinOS default fonts and fontconfig — Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, Twitter Color Emoji</PackageDescription>
+    <Section>fonts</Section>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-3.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- fontconfig -->
+    <IncludeFile Include="assets/local.conf" Target="/etc/fonts/local.conf" />
+
+    <!-- Cascadia Code -->
+    <IncludeFile Include="assets/CascadiaCode/CascadiaCode.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaCode.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaCodeItalic.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaCodeItalic.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaCodePL.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaCodePL.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaCodePLItalic.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaCodePLItalic.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaMono.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaMono.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaMonoItalic.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaMonoItalic.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaMonoPL.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaMonoPL.ttf" />
+    <IncludeFile Include="assets/CascadiaCode/CascadiaMonoPLItalic.ttf" Target="/usr/share/fonts/CascadiaCode/CascadiaMonoPLItalic.ttf" />
+
+    <!-- Nerd Fonts Symbols -->
+    <IncludeFile Include="assets/NerdFontsSymbolsOnly/SymbolsNerdFont-Regular.ttf" Target="/usr/share/fonts/NerdFontsSymbolsOnly/SymbolsNerdFont-Regular.ttf" />
+    <IncludeFile Include="assets/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf" Target="/usr/share/fonts/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf" />
+
+    <!-- Noto Sans -->
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Thin.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Thin.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-ThinItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-ThinItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-ExtraLight.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-ExtraLight.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-ExtraLightItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-ExtraLightItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Light.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Light.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-LightItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-LightItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Regular.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Regular.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Italic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Italic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Medium.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Medium.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-MediumItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-MediumItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-SemiBold.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-SemiBold.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-SemiBoldItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-SemiBoldItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Bold.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Bold.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-BoldItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-BoldItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-ExtraBold.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-ExtraBold.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-ExtraBoldItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-ExtraBoldItalic.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-Black.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-Black.ttf" />
+    <IncludeFile Include="assets/Noto_Sans/NotoSans-BlackItalic.ttf" Target="/usr/share/fonts/Noto_Sans/NotoSans-BlackItalic.ttf" />
+
+    <!-- Noto Serif -->
+    <IncludeFile Include="assets/Noto_Serif/NotoSerif-VariableFont_wdth,wght.ttf" Target="/usr/share/fonts/Noto_Serif/NotoSerif-VariableFont_wdth,wght.ttf" />
+    <IncludeFile Include="assets/Noto_Serif/NotoSerif-Italic-VariableFont_wdth,wght.ttf" Target="/usr/share/fonts/Noto_Serif/NotoSerif-Italic-VariableFont_wdth,wght.ttf" />
+
+    <!-- Twitter Color Emoji -->
+    <IncludeFile Include="assets/TwitterColorEmoji-SVGinOT/TwitterColorEmoji-SVGinOT.ttf" Target="/usr/share/fonts/TwitterColorEmoji-SVGinOT/TwitterColorEmoji-SVGinOT.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PostInstallScript Include="scripts/postinst.sh" />
+  </ItemGroup>
+</Project>

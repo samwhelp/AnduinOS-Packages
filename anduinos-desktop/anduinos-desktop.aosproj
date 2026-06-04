@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop</PackageName>
-    <PackageVersion>1.0.5</PackageVersion>
+    <PackageVersion>1.0.6</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
@@ -33,6 +33,7 @@
     <Dependency Include="anduinos-deskmon" />
     <Dependency Include="anduinos-system-tweaks" />
     <Dependency Include="anduinos-no-snapd" />
+
     <Dependency Include="anduinos-theme" />
     <Dependency Include="anduinos-templates" />
     <Dependency Include="plymouth-anduinos" />
