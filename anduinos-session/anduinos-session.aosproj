@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-session</PackageName>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS session configuration and login entry</PackageDescription>
     <Section>gnome</Section>
@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <IncludeFile Include="assets/anduinos.desktop" Target="/usr/share/wayland-sessions/anduinos.desktop" />
-    <IncludeFile Include="assets/anduinos.desktop" Target="/usr/share/xsessions/anduinos.desktop" />
+    <IncludeFile Include="assets/anduinos.session" Target="/usr/share/gnome-session/sessions/anduinos.session" />
   </ItemGroup>
   
   <ItemGroup>
