@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop</PackageName>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
@@ -41,6 +41,9 @@
     <Dependency Include="anduinos-software-properties-common" />
     <Dependency Include="anduinos-software-properties-gtk" Condition="'$(Suite)' == 'resolute-addon'" />
 
+    <!-- Core system components: never removable -->
+    <Dependency Include="nautilus" />
+    <Dependency Include="gnome-control-center" />
     <!-- Hardware support -->
     <Dependency Include="firmware-sof-anduinos" />
     <Dependency Include="alsa-ucm-conf-anduinos" />
