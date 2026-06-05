@@ -124,6 +124,8 @@
     <Dependency Include="python3" />
     <Dependency Include="python3-pip" />
     <Dependency Include="python-is-python3" />
+    <Dependency Include="python3-minimal" />
+    <Dependency Include="python3-dev" />
 
     <!-- ============================================================
          System Utilities (desktop-adjacent)
