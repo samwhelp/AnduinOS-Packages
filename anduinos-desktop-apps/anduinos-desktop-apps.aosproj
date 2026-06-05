@@ -62,5 +62,6 @@
 
     <Recommend Include="gnome-control-center-faces" />
     <Recommend Include="gnome-chess" />
+    <Recommend Include="ptyxis" />
   </ItemGroup>
 </Project>
