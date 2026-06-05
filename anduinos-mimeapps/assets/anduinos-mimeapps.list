@@ -1,4 +1,7 @@
 [Default Applications]
+# File manager
+inode/directory=org.gnome.Nautilus.desktop;
+
 # Calendar
 text/calendar=org.gnome.Calendar.desktop;
 
