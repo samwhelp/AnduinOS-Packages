@@ -40,10 +40,7 @@
     <Dependency Include="dhcpcd-base" />
     <Dependency Include="dnsmasq-base" />
     <Dependency Include="wpasupplicant" />
-    <Dependency Include="modemmanager" />
-    <Dependency Include="usb-modeswitch" />
     <Dependency Include="iproute2" />
-    <Dependency Include="bind9-dnsutils" />
 
     <!-- ============================================================
          Security
@@ -68,7 +65,6 @@
          ============================================================ -->
     <Dependency Include="libfuse2t64" />
     <Dependency Include="libfuse3-4" />
-    <Recommend Include="libopengl0" />
     <Dependency Include="dosfstools" />
     <Dependency Include="cifs-utils" />
     <Dependency Include="parted" />
@@ -131,6 +127,7 @@
     <Recommend Include="smartmontools" />
     <Recommend Include="mdadm" />
     <Recommend Include="whois" />
+    <Recommend Include="bind9-dnsutils" />
 
     <Recommend Include="busybox-static" />
     <Recommend Include="command-not-found" />
@@ -163,6 +160,9 @@
     <Recommend Include="libpam-sss" />
 
     <!-- Hardware extras -->
+    <Recommend Include="modemmanager" />
+    <Recommend Include="usb-modeswitch" />
+    <Recommend Include="libopengl0" />
     <Recommend Include="bolt" />
     <Recommend Include="cracklib-runtime" />
   </ItemGroup>

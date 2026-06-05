@@ -50,19 +50,16 @@
     <Dependency Include="gnome-keyring" />
     <Dependency Include="gnome-keyring-pkcs11" />
     <Dependency Include="libpam-gnome-keyring" />
-    <Dependency Include="gnome-remote-desktop" />
     <Dependency Include="policykit-desktop-privileges" />
     <Dependency Include="anduinos-session" />
 
     <!-- ============================================================
          Session & Sound
          ============================================================ -->
-    <Dependency Include="spice-vdagent" />
     <Dependency Include="yaru-theme-sound" />
     <Dependency Include="libcanberra-pulse" />
     <Dependency Include="libcanberra-gtk3-module" />
     <Dependency Include="libcanberra0" />
-    <Recommend Include="libcanberra-gtk3-0" />
 
     <!-- ============================================================
          PipeWire Multimedia Stack
@@ -141,9 +138,7 @@
     <Dependency Include="sassc" />
     <Dependency Include="appstream" />
     <Dependency Include="python3-babel" />
-    <Dependency Include="unattended-upgrades" />
     <Dependency Include="systemd-timesyncd" />
-    <Dependency Include="wsdd" />
     <Dependency Include="gnupg" />
     <Dependency Include="gpg" />
     <Dependency Include="apt-transport-https" />
@@ -157,10 +152,19 @@
     <Dependency Include="exfatprogs" />
     <Dependency Include="iw" />
     <Dependency Include="sysstat" />
-    <Dependency Include="squashfs-tools" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- ============================================================
+         Recommends: Desktop Extras (safe to remove)
+         ============================================================ -->
+    <Recommend Include="gnome-remote-desktop" />
+    <Recommend Include="spice-vdagent" />
+    <Recommend Include="unattended-upgrades" />
+    <Recommend Include="wsdd" />
+    <Recommend Include="squashfs-tools" />
+    <Recommend Include="libcanberra-gtk3-0" />
+
     <!-- ============================================================
          Recommends: Printing & Scanning
          Users without printers should be able to remove these
