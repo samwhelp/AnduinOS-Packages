@@ -258,6 +258,31 @@ anduinos-installer-config:
   variables:
     PACKAGE_DIR: anduinos-installer-config
 
+# ── Onion-layer metapackages ─────────────────────────────────────────────
+# anduinos-core-system: no internal deps (pure Ubuntu packages)
+# anduinos-desktop-core: depends on core-system
+# anduinos-appstore:       Flatpak + GNOME Software (optional for servers)
+
+anduinos-core-system:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-core-system
+
+anduinos-desktop-core:
+  extends: .publish
+  stage: meta
+  needs:
+    - anduinos-core-system
+    - firmware-sof-anduinos
+    - alsa-ucm-conf-anduinos
+  variables:
+    PACKAGE_DIR: anduinos-desktop-core
+
+anduinos-appstore:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-appstore
+
 # ── Meta-packages: must wait for their dependencies ──────────────────────
 
 anduinos-gnome-extensions:
@@ -313,14 +338,14 @@ anduinos-desktop:
   extends: .publish
   stage: meta
   needs:
+    - anduinos-desktop-core
+    - anduinos-appstore
     - anduinos-apt-config
     - anduinos-deskmon
     - base-files
     - anduinos-theme
     - anduinos-templates
     - plymouth-anduinos
-    - firmware-sof-anduinos
-    - alsa-ucm-conf-anduinos
     - anduinos-software-properties-common
     - anduinos-software-properties-gtk
     - anduinos-system-tweaks

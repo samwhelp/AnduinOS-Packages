@@ -1,0 +1,208 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-desktop-core</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>AnduinOS desktop core metapackage — pure upstream GNOME desktop environment with multimedia, printing, and input method support. No AnduinOS branding.</PackageDescription>
+    <Section>metapackages</Section>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-3.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ============================================================
+         Layer 0 — must have the system foundation first
+         ============================================================ -->
+    <Dependency Include="anduinos-core-system" />
+
+    <!-- ============================================================
+         Display Manager & GNOME Shell Session
+         Removing any of these = no graphical login / no desktop.
+         ============================================================ -->
+    <Dependency Include="gdm3" />
+    <Dependency Include="gnome-shell" />
+    <Dependency Include="gnome-session" />
+    <Dependency Include="gnome-menus" />
+    <Dependency Include="gir1.2-gmenu-3.0" />
+    <Dependency Include="xwayland" />
+    <Dependency Include="wayland-protocols" />
+
+    <!-- ============================================================
+         XDG Desktop Portals
+         Flatpak sandboxing, Wayland screen sharing, file dialogs.
+         Without these, Flatpak apps can't open files or share the screen.
+         Both backends are shipped: gnome (primary) and gtk (fallback).
+         ============================================================ -->
+    <Dependency Include="xdg-desktop-portal" />
+    <Dependency Include="xdg-desktop-portal-gnome" />
+    <Dependency Include="xdg-desktop-portal-gtk" />
+
+    <!-- ============================================================
+         GNOME Core Components
+         These are the backbone of the GNOME desktop.
+         ============================================================ -->
+    <Dependency Include="gnome-control-center" />
+    <Dependency Include="nautilus" />
+    <Dependency Include="gnome-keyring" />
+    <Dependency Include="gnome-keyring-pkcs11" />
+    <Dependency Include="libpam-gnome-keyring" />
+    <Dependency Include="gnome-remote-desktop" />
+    <Dependency Include="policykit-desktop-privileges" />
+
+    <!-- ============================================================
+         Session & Sound
+         ============================================================ -->
+    <Dependency Include="spice-vdagent" />
+    <Dependency Include="yaru-theme-sound" />
+    <Dependency Include="libcanberra-pulse" />
+    <Dependency Include="libcanberra-gtk3-module" />
+    <Dependency Include="libcanberra0" />
+    <Recommend Include="libcanberra-gtk3-0" />
+
+    <!-- ============================================================
+         PipeWire Multimedia Stack
+         ============================================================ -->
+    <Dependency Include="pipewire" />
+    <Dependency Include="pipewire-pulse" />
+    <Dependency Include="wireplumber" />
+
+    <!-- ============================================================
+         GStreamer Codecs & Plugins
+         Core multimedia playback / encoding.
+         ============================================================ -->
+    <Dependency Include="gstreamer1.0-plugins-base" />
+    <Dependency Include="gstreamer1.0-plugins-good" />
+    <Dependency Include="gstreamer1.0-plugins-bad" />
+    <Dependency Include="gstreamer1.0-plugins-ugly" />
+    <Dependency Include="gstreamer1.0-libav" />
+    <Dependency Include="gstreamer1.0-pipewire" />
+    <Dependency Include="gstreamer1.0-alsa" />
+    <Dependency Include="gstreamer1.0-gl" />
+    <Dependency Include="gstreamer1.0-gtk3" />
+    <Dependency Include="gstreamer1.0-x" />
+    <Dependency Include="libavcodec-extra" />
+
+    <!-- ============================================================
+         Graphics & GPU
+         ============================================================ -->
+    <Dependency Include="mesa-vulkan-drivers" />
+
+    <!-- ============================================================
+         Input Method (IBus)
+         ============================================================ -->
+    <Dependency Include="ibus" />
+    <Dependency Include="ibus-gtk" />
+    <Dependency Include="ibus-gtk3" />
+    <Dependency Include="ibus-gtk4" />
+    <Dependency Include="im-config" />
+
+    <!-- ============================================================
+         Audio Hardware Support
+         ============================================================ -->
+    <Dependency Include="firmware-sof-anduinos" />
+    <Dependency Include="alsa-ucm-conf-anduinos" />
+    <Dependency Include="alsa-utils" />
+    <Dependency Include="alsa-base" />
+    <Dependency Include="alsa-topology-conf" />
+
+    <!-- ============================================================
+         Power Management & Firmware
+         ============================================================ -->
+    <Dependency Include="upower" />
+    <Dependency Include="power-profiles-daemon" />
+    <Dependency Include="fwupd" />
+    <Dependency Include="fwupd-signed" />
+
+    <!-- ============================================================
+         Python (required by GNOME extensions)
+         ============================================================ -->
+    <Dependency Include="python3" />
+    <Dependency Include="python3-pip" />
+    <Dependency Include="python-is-python3" />
+
+    <!-- ============================================================
+         System Utilities (desktop-adjacent)
+         ============================================================ -->
+    <Dependency Include="xdg-utils" />
+    <Dependency Include="xdg-user-dirs" />
+    <Dependency Include="xdg-user-dirs-gtk" />
+    <Dependency Include="zenity" />
+    <Dependency Include="ubuntu-drivers-common" />
+    <Dependency Include="gvfs-fuse" />
+    <Dependency Include="gvfs-backends" />
+    <Dependency Include="libsass1" />
+    <Dependency Include="sassc" />
+    <Dependency Include="appstream" />
+    <Dependency Include="python3-babel" />
+    <Dependency Include="unattended-upgrades" />
+    <Dependency Include="systemd-timesyncd" />
+    <Dependency Include="wsdd" />
+    <Dependency Include="gnupg" />
+    <Dependency Include="gpg" />
+    <Dependency Include="apt-transport-https" />
+    <Dependency Include="lsb-release" />
+    <Dependency Include="whiptail" />
+    <Dependency Include="gdisk" />
+    <Dependency Include="eatmydata" />
+    <Dependency Include="patch" />
+    <Dependency Include="less" />
+    <Dependency Include="xxd" />
+    <Dependency Include="exfatprogs" />
+    <Dependency Include="iw" />
+    <Dependency Include="sysstat" />
+    <Dependency Include="squashfs-tools" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- ============================================================
+         Recommends: Printing & Scanning
+         Users without printers should be able to remove these
+         without breaking the desktop metapackage.
+         ============================================================ -->
+    <Recommend Include="system-config-printer" />
+    <Recommend Include="printer-driver-all" />
+    <Recommend Include="cups" />
+    <Recommend Include="cups-bsd" />
+    <Recommend Include="cups-browsed" />
+    <Recommend Include="cups-pk-helper" />
+    <Recommend Include="ipp-usb" />
+    <Recommend Include="sane-airscan" />
+    <Recommend Include="sane-utils" />
+    <Recommend Include="simple-scan" />
+
+    <!-- ============================================================
+         Accessibility
+         Users who don't need screen readers / TTS can remove.
+         ============================================================ -->
+    <Recommend Include="orca" />
+    <Recommend Include="speech-dispatcher" />
+    <Recommend Include="speech-dispatcher-espeak-ng" />
+    <Recommend Include="speech-dispatcher-audio-plugins" />
+    <Recommend Include="espeak-ng-data" />
+
+    <!-- ============================================================
+         VPN Plugins
+         ============================================================ -->
+    <Recommend Include="openvpn" />
+    <Recommend Include="network-manager-openvpn" />
+    <Recommend Include="network-manager-openvpn-gnome" />
+    <Recommend Include="network-manager-pptp" />
+    <Recommend Include="network-manager-pptp-gnome" />
+
+    <!-- ============================================================
+         Extra GStreamer Tools
+         ============================================================ -->
+    <Recommend Include="gstreamer1.0-tools" />
+    <Recommend Include="gstreamer1.0-packagekit" />
+    <Recommend Include="gstreamer1.0-plugins-base-apps" />
+
+    <!-- ============================================================
+         Biometric Authentication
+         ============================================================ -->
+    <Recommend Include="fprintd" />
+  </ItemGroup>
+</Project>

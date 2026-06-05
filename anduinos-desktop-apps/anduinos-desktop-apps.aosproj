@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-apps</PackageName>
-    <PackageVersion>1.0.6</PackageVersion>
+    <PackageVersion>1.0.7</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS default applications — pulls in recommended apps for AnduinOS</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -24,7 +24,6 @@
     <Recommend Include="remmina" />
     <Recommend Include="remmina-plugin-rdp" />
     <Recommend Include="transmission-gtk" />
-    <Recommend Include="transmission-common" />
 
     <!-- Productivity & Utilities -->
     <Recommend Include="gnome-calendar" />
@@ -48,11 +47,9 @@
     <Recommend Include="libgdk-pixbuf2.0-bin" />
 
     <!-- System & Maintenance -->
-    <Recommend Include="gnome-software" />
     <Recommend Include="baobab" />
     <Recommend Include="file-roller" />
     <Recommend Include="gnome-sushi" />
-    <Recommend Include="gparted" />
     <Recommend Include="gnome-disk-utility" />
     <Recommend Include="gnome-logs" />
     <Recommend Include="resources" />

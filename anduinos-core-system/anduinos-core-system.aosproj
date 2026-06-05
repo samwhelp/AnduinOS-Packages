@@ -1,0 +1,169 @@
+<Project Sdk="Aiursoft.Apkg.Sdk">
+  <PropertyGroup>
+    <PackageName>anduinos-core-system</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
+    <PackageDescription>AnduinOS core system foundation metapackage — essential system services, networking, hardware support, and administration tools. This is the base layer for all AnduinOS variants (Desktop, Server, IoT).</PackageDescription>
+    <Section>metapackages</Section>
+    <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <LicenseType>GPL-3.0</LicenseType>
+    <TargetDistro>anduinos</TargetDistro>
+    <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
+    <TargetArchitectures>all</TargetArchitectures>
+    <Component>main</Component>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ============================================================
+         Layer 1 — Core System (boot, init, kernel, firmware)
+         Removing these = unbootable system.
+         ============================================================ -->
+    <Dependency Include="apparmor" />
+    <Dependency Include="coreutils" />
+    <Dependency Include="grub-common" />
+    <Dependency Include="grub-efi-amd64" />
+    <Dependency Include="grub2-common" />
+    <Dependency Include="init" />
+    <Dependency Include="linux-base" />
+    <Dependency Include="linux-firmware" />
+    <Dependency Include="systemd" />
+    <Dependency Include="systemd-hwe-hwdb" />
+    <Dependency Include="initramfs-tools" />
+    <Dependency Include="busybox-initramfs" />
+    <Dependency Include="efibootmgr" />
+    <Dependency Include="kmod" />
+
+    <!-- ============================================================
+         Networking
+         ============================================================ -->
+    <Dependency Include="network-manager" />
+    <Dependency Include="dhcpcd-base" />
+    <Dependency Include="dnsmasq-base" />
+    <Dependency Include="wpasupplicant" />
+    <Dependency Include="modemmanager" />
+    <Dependency Include="usb-modeswitch" />
+    <Dependency Include="iproute2" />
+    <Dependency Include="bind9-dnsutils" />
+
+    <!-- ============================================================
+         Security
+         ============================================================ -->
+    <Dependency Include="sudo" />
+    <Dependency Include="sudo-rs" />
+    <Dependency Include="nftables" />
+    <Dependency Include="iptables" />
+    <Dependency Include="ufw" />
+    <Dependency Include="openssh-client" />
+
+    <!-- ============================================================
+         PAM / Authentication / Session
+         ============================================================ -->
+    <Dependency Include="libpam-systemd" />
+    <Dependency Include="libpam-modules" />
+    <Dependency Include="libpam-modules-bin" />
+    <Dependency Include="dbus-user-session" />
+
+    <!-- ============================================================
+         Filesystem & Storage
+         ============================================================ -->
+    <Dependency Include="libfuse2t64" />
+    <Dependency Include="libfuse3-4" />
+    <Recommend Include="libopengl0" />
+    <Dependency Include="dosfstools" />
+    <Dependency Include="cifs-utils" />
+    <Dependency Include="parted" />
+    <Dependency Include="fdisk" />
+    <Dependency Include="hdparm" />
+
+    <!-- ============================================================
+         Locale & Timezone
+         ============================================================ -->
+    <Dependency Include="locales" />
+    <Dependency Include="resolvconf" />
+
+    <!-- ============================================================
+         System Services & Maintenance
+         ============================================================ -->
+    <Dependency Include="cron" />
+    <Dependency Include="logrotate" />
+    <Dependency Include="rsync" />
+
+    <!-- ============================================================
+         Essential CLI Tools
+         ============================================================ -->
+    <Dependency Include="bash-completion" />
+    <Dependency Include="curl" />
+    <Dependency Include="wget" />
+    <Dependency Include="git" />
+    <Dependency Include="iputils-ping" />
+    <Dependency Include="file" />
+    <Dependency Include="unzip" />
+    <Dependency Include="zip" />
+    <Dependency Include="xz-utils" />
+    <Dependency Include="zstd" />
+    <Dependency Include="uuid-runtime" />
+    <Dependency Include="man-db" />
+
+    <!-- ============================================================
+         Hardware Introspection
+         ============================================================ -->
+    <Dependency Include="pciutils" />
+    <Dependency Include="usbutils" />
+    <Dependency Include="lshw" />
+    <Dependency Include="lsof" />
+    <Dependency Include="psmisc" />
+    <Dependency Include="ethtool" />
+    <Dependency Include="hwdata" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- ============================================================
+         Recommends: power-user / admin tools (safe to remove)
+         ============================================================ -->
+    <Recommend Include="vim-tiny" />
+    <Recommend Include="nano" />
+    <Recommend Include="htop" />
+    <Recommend Include="fastfetch" />
+    <Recommend Include="net-tools" />
+    <Recommend Include="iputils-tracepath" />
+    <Recommend Include="traceroute" />
+    <Recommend Include="httping" />
+    <Recommend Include="smartmontools" />
+    <Recommend Include="mdadm" />
+    <Recommend Include="whois" />
+
+    <Recommend Include="busybox-static" />
+    <Recommend Include="command-not-found" />
+    <Recommend Include="cpio" />
+    <Recommend Include="crash" />
+    <Recommend Include="debconf-i18n" />
+    <Recommend Include="dmidecode" />
+    <Recommend Include="dns-root-data" />
+    <Recommend Include="eject" />
+    <Recommend Include="gettext" />
+    <Recommend Include="ibverbs-providers" />
+    <Recommend Include="libmbim-utils" />
+    <Recommend Include="manpages" />
+    <Recommend Include="manpages-dev" />
+    <Recommend Include="media-types" />
+    <Recommend Include="mtr-tiny" />
+    <Recommend Include="numactl" />
+    <Recommend Include="powermgmt-base" />
+    <Recommend Include="python3-rich" />
+    <Recommend Include="python3-systemd" />
+    <Recommend Include="strace" />
+    <Recommend Include="tcpdump" />
+    <Recommend Include="time" />
+    <Recommend Include="xauth" />
+
+    <!-- PAM extras (enterprise / biometric) -->
+    <Recommend Include="libpam-cap" />
+    <Recommend Include="libpam-fprintd" />
+    <Recommend Include="libpam-pwquality" />
+    <Recommend Include="libpam-sss" />
+
+    <!-- Hardware extras -->
+    <Recommend Include="bolt" />
+    <Recommend Include="cracklib-runtime" />
+  </ItemGroup>
+</Project>

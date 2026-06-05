@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop</PackageName>
-    <PackageVersion>1.1.1</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
@@ -17,22 +17,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- AnduinOS core packages: these define the OS identity -->
+    <!-- ============================================================
+         Layer 2 — Desktop Core (GNOME foundation, no branding)
+         Pulls in anduinos-core-system via its own dependency chain.
+         ============================================================ -->
+    <Dependency Include="anduinos-desktop-core" />
+
+    <!-- ============================================================
+         AnduinOS Brand Packages
+         These define what makes AnduinOS AnduinOS.
+         ============================================================ -->
     <Dependency Include="anduinos-apt-config" />
     <Dependency Include="base-files" />
-
-    <!-- Essential AnduinOS infrastructure -->
     <Dependency Include="anduinos-session" />
-    <Dependency Include="gdm3" />
-    <Dependency Include="xwayland" />
-    <Dependency Include="yaru-theme-sound" />
-    <Dependency Include="policykit-desktop-privileges" />
-
-    <!-- AnduinOS desktop components -->
     <Dependency Include="anduinos-deskmon" />
     <Dependency Include="anduinos-system-tweaks" />
     <Dependency Include="anduinos-no-snapd" />
-
     <Dependency Include="anduinos-theme" />
     <Dependency Include="anduinos-templates" />
     <Dependency Include="plymouth-anduinos" />
@@ -41,16 +41,10 @@
     <Dependency Include="anduinos-software-properties-common" />
     <Dependency Include="anduinos-software-properties-gtk" Condition="'$(Suite)' == 'resolute-addon'" />
 
-    <!-- Core system components: never removable -->
-    <Dependency Include="nautilus" />
-    <Dependency Include="gnome-control-center" />
-    
-    <!-- Hardware support -->
-    <Dependency Include="firmware-sof-anduinos" />
-    <Dependency Include="alsa-ucm-conf-anduinos" />
+    <!-- App Store -->
+    <Dependency Include="anduinos-appstore" />
 
-    <!-- Default Applications -->
+    <!-- Default Applications (Recommend: removable without cascading) -->
     <Recommend Include="anduinos-desktop-apps" />
-
   </ItemGroup>
 </Project>
