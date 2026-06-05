@@ -52,6 +52,7 @@
     <Dependency Include="libpam-gnome-keyring" />
     <Dependency Include="gnome-remote-desktop" />
     <Dependency Include="policykit-desktop-privileges" />
+    <Dependency Include="anduinos-session" />
 
     <!-- ============================================================
          Session & Sound

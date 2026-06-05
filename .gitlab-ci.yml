@@ -273,6 +273,7 @@ anduinos-desktop-core:
   stage: meta
   needs:
     - anduinos-core-system
+    - anduinos-session
     - firmware-sof-anduinos
     - alsa-ucm-conf-anduinos
   variables:
@@ -351,6 +352,5 @@ anduinos-desktop:
     - anduinos-system-tweaks
     - anduinos-no-snapd
     - anduinos-desktop-apps
-    - anduinos-session
   variables:
     PACKAGE_DIR: anduinos-desktop

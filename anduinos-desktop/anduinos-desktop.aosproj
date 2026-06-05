@@ -29,7 +29,6 @@
          ============================================================ -->
     <Dependency Include="anduinos-apt-config" />
     <Dependency Include="base-files" />
-    <Dependency Include="anduinos-session" />
     <Dependency Include="anduinos-deskmon" />
     <Dependency Include="anduinos-system-tweaks" />
     <Dependency Include="anduinos-no-snapd" />
