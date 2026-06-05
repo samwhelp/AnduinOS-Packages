@@ -1,3 +1,21 @@
 #!/bin/bash
+set -e
+
+# Allow root to connect to the Wayland/X11 display
 xhost +SI:localuser:root > /dev/null 2>&1 || true
-sudo -E ubiquity gtk_ui
+
+# Fix DNS dead-link: /etc/resolv.conf is a symlink to /run/systemd/resolve/...
+# When Ubiquity copies the filesystem into /target and chroots, /run is empty,
+# so DNS resolution fails and apt-get autoremove (language pack cleanup) crashes.
+# Replace the symlink with a real file copy so the chroot has working DNS.
+if [ -L /etc/resolv.conf ]; then
+    REAL_DNS=$(readlink -f /etc/resolv.conf)
+    rm -f /etc/resolv.conf
+    cp "$REAL_DNS" /etc/resolv.conf
+fi
+
+# Launch Ubiquity with only the essential display/D-Bus variables preserved.
+# Deliberately OMIT LANG, LC_ALL, LANGUAGE — otherwise Ubiquity's localechooser
+# reads the forced en_US environment and writes English to the installed system,
+# ignoring the language the user selected in the GUI.
+exec sudo --preserve-env=DBUS_SESSION_BUS_ADDRESS,XDG_DATA_DIRS,XDG_RUNTIME_DIR,GTK_THEME,XAUTHORITY,DISPLAY,PATH,HOME,SHELL ubiquity gtk_ui
