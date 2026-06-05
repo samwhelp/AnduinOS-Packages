@@ -23,9 +23,7 @@ class LocationMenuToggle extends QuickSettings.QuickMenuToggle {
         this.menu.addAction(_("Privacy Settings"), () => {
             this._openPrivacySettings();
         });
-
         this.connect('clicked', () => this._toggleEnabled(extensionObject));
-        this.connect('destroy', () => { });
 
         this._reflectSettings(extensionObject);
     }
@@ -42,33 +40,34 @@ class LocationMenuToggle extends QuickSettings.QuickMenuToggle {
 
     _openPrivacySettings() {
         try {
-            let subprocess = new Gio.Subprocess({
-                argv: ['gnome-control-center', 'privacy'],
-                flags: Gio.SubprocessFlags.NONE,
-            });
-            subprocess.init(null);
+            Gio.Subprocess.new(
+                ['gnome-control-center', 'privacy'],
+                Gio.SubprocessFlags.NONE,
+            );
         } catch (e) {
-            log(_("Failed to open Privacy Settings: %s").format(e));
+            logError(e, _("Failed to open Privacy Settings"));
         }
     }
 });
 
 export default class LocationSwitcherExtension extends Extension {
     enable() {
-        if (!Gio.Settings.list_schemas().includes(LOCATION_SCHEMA)) {
+        const schemaSource = Gio.SettingsSchemaSource.get_default();
+        const schema = schemaSource?.lookup(LOCATION_SCHEMA, true);
+        if (!schema) {
             throw new Error(`Schema "${LOCATION_SCHEMA}" not found.`);
         }
-        this.locationSettings = new Gio.Settings({ schema: LOCATION_SCHEMA });
+        this.locationSettings = new Gio.Settings({ settings_schema: schema });
 
-        let switcherMenu = new LocationMenuToggle(this);
+        this._switcherMenu = new LocationMenuToggle(this);
 
-        this._indicator = new QuickSettings.SystemIndicator(this);
-        this._indicator.quickSettingsItems.push(switcherMenu);
+        this._indicator = new QuickSettings.SystemIndicator();
+        this._indicator.quickSettingsItems.push(this._switcherMenu);
         Main.panel.statusArea.quickSettings.addExternalIndicator(this._indicator);
 
         this.settingsConnectionId = this.locationSettings.connect(
             `changed::${LOCATION_ENABLED_KEY}`,
-            () => switcherMenu._reflectSettings(this),
+            () => this._switcherMenu?._reflectSettings(this),
         );
     }
 
@@ -84,5 +83,7 @@ export default class LocationSwitcherExtension extends Extension {
             this._indicator.destroy();
             this._indicator = null;
         }
+
+        this._switcherMenu = null;
     }
 }
