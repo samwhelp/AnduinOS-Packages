@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-core</PackageName>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS desktop core metapackage — pure upstream GNOME desktop environment with multimedia, printing, and input method support. No AnduinOS branding.</PackageDescription>
     <Section>metapackages</Section>
@@ -46,6 +46,7 @@
          These are the backbone of the GNOME desktop.
          ============================================================ -->
     <Dependency Include="gnome-control-center" />
+    <Dependency Include="ptyxis" />
     <Dependency Include="nautilus" />
     <Dependency Include="gnome-keyring" />
     <Dependency Include="gnome-keyring-pkcs11" />
@@ -122,7 +123,6 @@
     <Dependency Include="python3-pip" />
     <Dependency Include="python-is-python3" />
     <Dependency Include="python3-minimal" />
-    <Dependency Include="python3-dev" />
 
     <!-- ============================================================
          System Utilities (desktop-adjacent)
