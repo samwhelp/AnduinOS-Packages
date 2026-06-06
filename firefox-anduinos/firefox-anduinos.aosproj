@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>firefox-anduinos</PackageName>
-    <PackageVersion>1:$(UpstreamVersion)+anduinos</PackageVersion>
+    <PackageVersion>1:$(UpstreamVersion)+anduinos1</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>Firefox browser from Mozilla (repackaged for AnduinOS, without snapd)</PackageDescription>
     <Section>web</Section>

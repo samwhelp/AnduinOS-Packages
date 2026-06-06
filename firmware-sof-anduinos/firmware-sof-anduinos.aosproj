@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>firmware-sof-anduinos</PackageName>
-    <PackageVersion>2025.12-3</PackageVersion>
+    <PackageVersion>2025.12-4</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>Intel SOF (Sound Open Firmware) — firmware binaries for Intel audio DSPs</PackageDescription>
     <Section>admin</Section>

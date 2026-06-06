@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>gnome-shell-extension-appindicator-anduinos</PackageName>
-    <PackageVersion>64+$(SuiteShortName)2</PackageVersion>
+    <PackageVersion>64+$(SuiteShortName)3</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AppIndicator and KStatusNotifierItem Support extension (3v1n0) — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
