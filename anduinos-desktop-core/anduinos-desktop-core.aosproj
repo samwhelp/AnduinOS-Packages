@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-core</PackageName>
-    <PackageVersion>1.0.5</PackageVersion>
+    <PackageVersion>1.0.6</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS desktop core metapackage — pure upstream GNOME desktop environment with multimedia, printing, and input method support. No AnduinOS branding.</PackageDescription>
     <Section>metapackages</Section>
@@ -52,7 +52,8 @@
     <Dependency Include="gnome-keyring-pkcs11" />
     <Dependency Include="libpam-gnome-keyring" />
     <Dependency Include="policykit-desktop-privileges" />
-    <Dependency Include="anduinos-session" />
+    <Dependency Include="anduinos-session | ubuntu-session | gnome-session" />
+    <Recommend Include="anduinos-session" />
 
     <!-- ============================================================
          Session & Sound
@@ -100,10 +101,16 @@
     <Dependency Include="im-config" />
 
     <!-- ============================================================
-         Audio Hardware Support
+         Firmware sof and alsa-ucm-conf: for audio on Intel devices
          ============================================================ -->
-    <Dependency Include="firmware-sof-anduinos" />
-    <Dependency Include="alsa-ucm-conf-anduinos" />
+    <Dependency Include="firmware-sof-anduinos | firmware-sof-signed" />
+    <Dependency Include="alsa-ucm-conf-anduinos | alsa-ucm-conf" />
+    <Recommend Include="firmware-sof-anduinos" />
+    <Recommend Include="alsa-ucm-conf-anduinos" />
+
+    <!-- ============================================================
+         ALSA Sound System
+         ============================================================ -->
     <Dependency Include="alsa-utils" />
     <Dependency Include="alsa-base" />
     <Dependency Include="alsa-topology-conf" />

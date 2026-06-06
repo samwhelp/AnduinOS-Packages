@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-theme</PackageName>
-    <PackageVersion>1.1.8</PackageVersion>
+    <PackageVersion>1.1.9</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete visual theme — icons, GTK theme, wallpapers, and extensions</PackageDescription>
     <Section>metapackages</Section>
@@ -14,14 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Core AnduinOS packages -->
-    <Dependency Include="anduinos-fluent-icon-theme" />
-    <Dependency Include="anduinos-fluent-gtk-theme" />
-    <Dependency Include="anduinos-gnome-extensions" />
-    <Dependency Include="anduinos-dconf-defaults" />
-    <Dependency Include="plymouth-anduinos" />
-    <Dependency Include="anduinos-wallpapers" />
-    <Dependency Include="anduinos-gnome-shell-locale" />
-    <Dependency Include="anduinos-fonts" />
+    <!-- Theme packages that are essential to the AnduinOS experience -->
+    <Recommend Include="anduinos-fluent-icon-theme" />
+    <Recommend Include="anduinos-fluent-gtk-theme" />
+
+    <!-- The dconf and gnome-shell customization -->
+    <Recommend Include="anduinos-dconf-defaults" />
+    <Recommend Include="anduinos-gnome-shell-locale" />
+
+    <!-- User-swappable brand packages -->
+    <Recommend Include="anduinos-gnome-extensions" />
+    <Recommend Include="plymouth-anduinos" />
+    <Recommend Include="anduinos-wallpapers" />
+    <Recommend Include="anduinos-fonts" />
   </ItemGroup>
 </Project>

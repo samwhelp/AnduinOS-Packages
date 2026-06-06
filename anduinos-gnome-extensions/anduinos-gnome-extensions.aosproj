@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-gnome-extensions</PackageName>
-    <PackageVersion>1.0.13</PackageVersion>
+    <PackageVersion>1.0.14</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>Meta-package that installs all AnduinOS GNOME Shell extensions. Installing this package pulls in the complete set of extensions used by AnduinOS desktop. Individual extensions can be removed separately.</PackageDescription>
     <Section>metapackages</Section>
@@ -18,29 +18,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- AnduinOS original extensions: source code lives in AnduinOS repos -->
-    <Dependency Include="gnome-shell-extension-anduinos-loc" />
-    <Dependency Include="gnome-shell-extension-no-power-icon" />
-    <Dependency Include="gnome-shell-extension-noti-bottom-right" />
+    <!-- AnduinOS original extensions -->
+    <Recommend Include="gnome-shell-extension-anduinos-loc" />
+    <Recommend Include="gnome-shell-extension-no-power-icon" />
+    <Recommend Include="gnome-shell-extension-noti-bottom-right" />
 
-    <!-- Third-party extensions packaged by AnduinOS (downloaded from GNOME Extensions at build time) -->
-    <Dependency Include="gnome-shell-extension-appindicator-anduinos" />
-    <Dependency Include="gnome-shell-extension-arcmenu" />
-    <Dependency Include="gnome-shell-extension-accent-gtk-theme" />
-    <Dependency Include="gnome-shell-extension-accent-icons-theme" />
-    <Dependency Include="gnome-shell-extension-accent-user-theme" />
-    <Dependency Include="gnome-shell-extension-blur-my-shell" />
-    <Dependency Include="gnome-shell-extension-clipboard-indicator" />
-    <Dependency Include="gnome-shell-extension-customize-ibus" />
-    <Dependency Include="gnome-shell-extension-dash-to-panel-anduinos" />
-    <Dependency Include="gnome-shell-extension-desktop-icons-ng-anduinos" />
-    <Dependency Include="gnome-shell-extension-lockkeys" />
-    <Dependency Include="gnome-shell-extension-mediacontrols" />
-    <Dependency Include="gnome-shell-extension-network-stats" />
-    <Dependency Include="gnome-shell-extension-no-overview" />
-    <Dependency Include="gnome-shell-extension-proxy-switcher" />
-    <Dependency Include="gnome-shell-extension-simple-weather" />
-    <Dependency Include="gnome-shell-extension-tiling-assistant" />
+    <!-- Third-party extensions packaged by AnduinOS -->
+    <Recommend Include="gnome-shell-extension-appindicator-anduinos" />
+    <Recommend Include="gnome-shell-extension-arcmenu" />
+    <Recommend Include="gnome-shell-extension-accent-gtk-theme" />
+    <Recommend Include="gnome-shell-extension-accent-icons-theme" />
+    <Recommend Include="gnome-shell-extension-accent-user-theme" />
+    <Recommend Include="gnome-shell-extension-blur-my-shell" />
+    <Recommend Include="gnome-shell-extension-clipboard-indicator" />
+    <Recommend Include="gnome-shell-extension-customize-ibus" />
+    <Recommend Include="gnome-shell-extension-dash-to-panel-anduinos" />
+    <Recommend Include="gnome-shell-extension-desktop-icons-ng-anduinos" />
+    <Recommend Include="gnome-shell-extension-lockkeys" />
+    <Recommend Include="gnome-shell-extension-mediacontrols" />
+    <Recommend Include="gnome-shell-extension-network-stats" />
+    <Recommend Include="gnome-shell-extension-no-overview" />
+    <Recommend Include="gnome-shell-extension-proxy-switcher" />
+    <Recommend Include="gnome-shell-extension-simple-weather" />
+    <Recommend Include="gnome-shell-extension-tiling-assistant" />
 
     <!-- Extensions from Ubuntu upstream repos -->
     <Recommend Include="gnome-shell-extension-drive-menu" />

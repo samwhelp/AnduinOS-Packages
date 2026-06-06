@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop</PackageName>
-    <PackageVersion>1.2.3</PackageVersion>
+    <PackageVersion>1.2.4</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
@@ -29,17 +29,19 @@
          ============================================================ -->
     <Dependency Include="anduinos-apt-config" />
     <Dependency Include="base-files" />
-    <Dependency Include="anduinos-deskmon" />
-    <Dependency Include="anduinos-system-tweaks" />
     <Dependency Include="anduinos-no-snapd" />
-    <Dependency Include="anduinos-templates" />
-    <Dependency Include="plymouth-anduinos" />
 
-    <!-- APT / PPA support -->
-    <Dependency Include="anduinos-software-properties-common" />
-    <Dependency Include="anduinos-software-properties-gtk" Condition="'$(Suite)' == 'resolute-addon'" />
+    <!-- These are the "core" brand packages that are essential to the AnduinOS experience. -->
+    <Recommend Include="anduinos-deskmon" />
+    <Recommend Include="anduinos-system-tweaks" />
+    <Recommend Include="anduinos-templates" />
 
-    <!-- Default Applications (Recommend: removable without cascading) -->
+    <!-- Brand packages the user may want to swap or remove -->
+    <Recommend Include="plymouth-anduinos" />
+    <Recommend Include="anduinos-software-properties-common" />
+    <Recommend Include="anduinos-software-properties-gtk" Condition="'$(Suite)' == 'resolute-addon'" />
+
+    <!-- Default Applications -->
     <Recommend Include="anduinos-desktop-apps" />
 
     <!-- App Store -->
