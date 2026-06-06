@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-core</PackageName>
-    <PackageVersion>1.0.2</PackageVersion>
+    <PackageVersion>1.0.3</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS desktop core metapackage — pure upstream GNOME desktop environment with multimedia, printing, and input method support. No AnduinOS branding.</PackageDescription>
     <Section>metapackages</Section>
@@ -140,7 +140,6 @@
     <Dependency Include="python3-babel" />
     <Dependency Include="systemd-timesyncd" />
     <Dependency Include="gnupg" />
-    <Dependency Include="gpg" />
     <Dependency Include="apt-transport-https" />
     <Dependency Include="lsb-release" />
     <Dependency Include="whiptail" />
