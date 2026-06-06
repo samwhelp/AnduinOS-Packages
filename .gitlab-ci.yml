@@ -154,6 +154,11 @@ gnome-shell-extension-gtk4-desktop-icons-ng:
   variables:
     PACKAGE_DIR: gnome-shell-extension-gtk4-desktop-icons-ng
 
+gnome-shell-extension-desktop-icons-ng-anduinos:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: gnome-shell-extension-desktop-icons-ng-anduinos
+
 gnome-shell-extension-lockkeys:
   extends: .publish
   variables:
@@ -302,7 +307,7 @@ anduinos-gnome-extensions:
     - gnome-shell-extension-clipboard-indicator
     - gnome-shell-extension-customize-ibus
     - gnome-shell-extension-dash-to-panel-anduinos
-    - gnome-shell-extension-gtk4-desktop-icons-ng
+    - gnome-shell-extension-desktop-icons-ng-anduinos
     - gnome-shell-extension-lockkeys
     - gnome-shell-extension-mediacontrols
     - gnome-shell-extension-network-stats

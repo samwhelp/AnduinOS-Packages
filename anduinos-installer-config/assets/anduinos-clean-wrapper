@@ -1,7 +1,3 @@
 #!/bin/bash
 rm -f /usr/bin/anduinos-installer
 
-# The installer wrapper replaced /etc/resolv.conf (a systemd-resolved symlink)
-# with a plain file so the chroot had working DNS for language-pack cleanup.
-# Now restore the symlink so the installed system uses systemd-resolved.
-ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

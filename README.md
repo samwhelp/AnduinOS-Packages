@@ -11,7 +11,7 @@ The following AnduinOS packages explicitly replace or conflict with Ubuntu's off
 | AnduinOS Package | Ubuntu Package | Our UUID | Ubuntu UUID | Declared Conflicts | Reason |
 |---|---|---|---|---|---|
 | `gnome-shell-extension-dash-to-panel-anduinos` | `gnome-shell-extension-dash-to-panel` | `dash-to-panel@jderose9.github.com` | `dash-to-panel@jderose9.github.com` | `gnome-shell-extension-dash-to-panel` | Same UUID -- dpkg file conflict |
-| `gnome-shell-extension-gtk4-desktop-icons-ng` | `gnome-shell-extension-desktop-icons-ng` | `gtk4-ding@smedius.gitlab.com` | `ding@rastersoft.com` | -- (Replaces only) | Functional duplicate -- our GTK4 port replaces Ubuntu's GTK3 version |
+| `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng` | `ding@rastersoft.com` | `ding@rastersoft.com` | `gnome-shell-extension-desktop-icons-ng` | Same UUID -- dpkg file conflict. Swapped upstream GTK4 port for original DING |
 | `gnome-shell-extension-appindicator-anduinos` | `gnome-shell-extension-appindicator` | `appindicatorsupport@rgcjonas.gmail.com` | `ubuntu-appindicators@ubuntu.com` | `gnome-shell-extension-appindicator` | Functional duplicate -- upstream GNOME Extensions version vs Ubuntu's fork |
 | `gnome-shell-extension-tiling-assistant` | *(bundled in gnome-shell-ubuntu-extensions)* | `tiling-assistant@leleat-on-github` | `tiling-assistant@ubuntu.com` | -- (handled by meta-package) | Functional duplicate -- upstream version vs Ubuntu's fork |
 | `anduinos-gnome-extensions` | `gnome-shell-ubuntu-extensions` | *(meta-package)* | *(meta-package)* | `gnome-shell-ubuntu-extensions` | Meta-package conflict -- both manage the extension set |

@@ -23,3 +23,5 @@
     <PostInstallScript Include="scripts/postinst.sh" />
   </ItemGroup>
 </Project>
+
+
