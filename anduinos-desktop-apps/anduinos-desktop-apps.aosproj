@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-apps</PackageName>
-    <PackageVersion>1.0.8</PackageVersion>
+    <PackageVersion>1.0.9</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS default applications — pulls in recommended apps for AnduinOS</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -49,7 +49,7 @@
     <Recommend Include="gnome-sushi" />
     <Recommend Include="gnome-disk-utility" />
     <Recommend Include="gnome-logs" />
-    <Recommend Include="resources" />
+    <Recommend Include="resources" Condition="'$(Suite)' == 'resolute-addon'" />
     <Recommend Include="gnome-power-manager" />
     <Recommend Include="usb-creator-gtk" />
 
