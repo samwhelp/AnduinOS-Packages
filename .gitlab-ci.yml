@@ -330,11 +330,17 @@ anduinos-mimeapps:
   variables:
     PACKAGE_DIR: anduinos-mimeapps
 
+firefox-anduinos:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: firefox-anduinos
+
 anduinos-desktop-apps:
   extends: .publish
   stage: meta
   needs:
     - anduinos-mimeapps
+    - firefox-anduinos
   variables:
     PACKAGE_DIR: anduinos-desktop-apps
 
