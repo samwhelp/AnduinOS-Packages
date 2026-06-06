@@ -41,3 +41,216 @@ Each package is built via the GitLab CI pipeline (`.gitlab-ci.yml`). Packages us
 ```
 apkg publish
 ```
+
+## Monthly Update Manual
+
+All external sources must be checked **at least once per month** to keep packages from falling behind upstream. This section is the step-by-step checklist.
+
+---
+
+### A. Quick Checklist (5 min triage)
+
+Run through this table each month. If anything has changed upstream, follow the detailed steps in the matching section below.
+
+| # | What | Where to check | Update action |
+|---|---|---|---|
+| 1 | **Fluent GTK theme** | `anduinos-fluent-gtk-theme/download.sh:5` (commit) + upstream [releases] | Update commit → section B |
+| 2 | **Fluent icon theme** | `anduinos-fluent-icon-theme/download.sh:5` (commit) + upstream [releases] | Update commit → section B |
+| 3 | **ALSA UCM Conf** | `alsa-ucm-conf-anduinos/download.sh:5` (commit) + upstream [repo] | Update commit → section B |
+| 4 | **SOF firmware** | `firmware-sof-anduinos/download.sh:5` (`SOF_VERSION`) + upstream [releases] | Update version → section C |
+| 5 | **GNOME Shell version map** | `lib/gnome-versions.sh:3-7` — compare with Ubuntu's `gnome-shell` package for each supported suite | Update map → section D |
+| 6 | **Fluent upstream versions** | [Fluent-gtk-theme] and [Fluent-icon-theme] upstream — compare with `*.aosproj` PackageVersion | Update version → section B |
+| 7 | **GNOME Shell extensions** | Run a CI build — the resolver fetches the latest compatible version dynamically | Update version → section D |
+
+[releases]: https://github.com/vinceliuice/Fluent-gtk-theme
+[repo]: https://github.com/alsa-project/alsa-ucm-conf
+
+---
+
+### B. Git-Pinned Packages (Fluent GTK, Fluent Icon, ALSA UCM Conf)
+
+Three packages clone a git repo and pin to a specific commit hash. Both the **commit hash** and the **`.aosproj` PackageVersion** must be updated together.
+
+#### B.1 Check for updates
+
+```bash
+# Fluent GTK theme (upstream: vinceliuice/Fluent-gtk-theme)
+git ls-remote https://github.com/vinceliuice/Fluent-gtk-theme.git HEAD
+
+# Fluent icon theme (upstream: vinceliuice/Fluent-icon-theme)
+git ls-remote https://github.com/vinceliuice/Fluent-icon-theme.git HEAD
+
+# ALSA UCM Conf (upstream: alsa-project/alsa-ucm-conf)
+git ls-remote https://github.com/alsa-project/alsa-ucm-conf.git HEAD
+```
+
+Compare the returned HEAD hash against the pinned commit in each `download.sh`. If different, an update is available.
+
+For **Fluent** packages, also check the upstream tag/release to determine the new version number. For **ALSA UCM Conf**, check the upstream `configure.ac` for the version.
+
+#### B.2 Apply the update
+
+For each outdated package, update **two files**:
+
+1. **`download.sh`** — update the `*_COMMIT` variable to the new HEAD hash
+2. **`*.aosproj`** — bump `<PackageVersion>` to match the new upstream version, reset the Debian revision suffix (e.g. `2.0.2` → `2.0.3-1`)
+
+Example diff for Fluent GTK theme:
+
+```diff
+# download.sh
+-FLUENT_GTK_COMMIT="9fc5291"
++FLUENT_GTK_COMMIT="a1b2c3d"
+
+# anduinos-fluent-gtk-theme.aosproj
+-<PackageVersion>2.0.2</PackageVersion>
++<PackageVersion>2.0.3-1</PackageVersion>
+```
+
+#### B.3 Rebuild and verify
+
+```bash
+cd <package-dir>
+apkg publish
+```
+
+---
+
+### C. Firmware SOF (Version-Pinned Tarball)
+
+`firmware-sof-anduinos` downloads a release tarball from GitHub by version number.
+
+#### C.1 Check for updates
+
+Visit [sof-bin releases](https://github.com/thesofproject/sof-bin/releases) and compare the latest tag against `SOF_VERSION` in `firmware-sof-anduinos/download.sh:5`.
+
+#### C.2 Apply the update
+
+Update **two files**:
+
+```diff
+# download.sh
+-SOF_VERSION="2025.12"
++SOF_VERSION="2025.12"   # update to new release tag
+
+# firmware-sof-anduinos.aosproj
+-<PackageVersion>2025.12-3</PackageVersion>
++<PackageVersion>2025.12-1</PackageVersion>   # match version, reset suffix
+```
+
+The `deploy/sof-firmware.tar.gz` is **not** committed — the CI downloads it at build time via `download.sh`.
+
+#### C.3 Rebuild and verify
+
+```bash
+cd firmware-sof-anduinos
+apkg publish
+```
+
+---
+
+### D. GNOME Shell Extensions (19 packages)
+
+These are resolved **dynamically at build time**: the resolver (`lib/resolve-gnome-ext.py`) queries `extensions.gnome.org` for the best compatible version for each target GNOME Shell version. This means extension code is always up-to-date on every build — no monthly check needed for the extension code itself.
+
+However, two things still need attention:
+
+#### D.1 GNOME Shell version map (`lib/gnome-versions.sh`)
+
+This file maps Ubuntu suite codenames to GNOME Shell major versions. It must be updated whenever:
+
+- A new Ubuntu release ships (new suite codename + new GNOME Shell version)
+- An existing Ubuntu point-release updates its GNOME Shell version (rare)
+
+To check:
+
+```bash
+# For each supported suite, check what GNOME Shell version Ubuntu ships:
+apt-cache policy gnome-shell  # (run on each supported Ubuntu release)
+```
+
+If a mismatch is found, update `lib/gnome-versions.sh`:
+
+```bash
+declare -A GNOME_TARGETS=(
+    [noble]=46      # Ubuntu 24.04 LTS
+    [questing]=49   # Ubuntu 25.10
+    [resolute]=50   # Ubuntu 26.04 LTS
+    # ^ update or add entries as needed
+)
+```
+
+Then **CI rebuilds all 19 extension packages automatically** — the new GNOME version will be picked up by the resolver on the next build.
+
+#### D.2 Extension `.aosproj` version numbers
+
+Each extension's `.aosproj` has a `<PackageVersion>` like `69.2+$(SuiteShortName)8`. The prefix (e.g. `69.2`) represents the upstream extension version at the time of packaging. While the resolver always fetches the latest code, it's good practice to keep the version prefix in sync with the actual upstream version.
+
+To audit:
+
+```bash
+# For one extension, check the version being resolved:
+python3 lib/resolve-gnome-ext.py "arcmenu@arcmenu.com" --target 50 --download --out /tmp/test-ext
+# The downloaded metadata.json will contain the resolved version.
+# Compare against the prefix in the .aosproj PackageVersion.
+```
+
+If the upstream extension version has bumped significantly, update the prefix in the `.aosproj`:
+
+```diff
+-<PackageVersion>69.2+$(SuiteShortName)8</PackageVersion>
++<PackageVersion>72.0+$(SuiteShortName)1</PackageVersion>
+```
+
+Note: the `+$(SuiteShortName)8` suffix is a packaging revision — increment it when the packaging changes but the upstream version stays the same.
+
+#### D.3 Special-cased extension: desktop-icons-ng-anduinos
+
+`gnome-shell-extension-desktop-icons-ng-anduinos` explicitly conflicts with Ubuntu's `gnome-shell-extension-desktop-icons-ng` (same UUID `ding@rastersoft.com`). It also carries a custom `metadata.patch` in its deploy directories. When the upstream DING extension releases a new version, verify the patch still applies cleanly.
+
+---
+
+### E. Ubuntu-Derived Packages
+
+Four packages derive from Ubuntu's packages at build time via `UpstreamUrl`:
+
+| Package | Upstream Ubuntu package |
+|---|---|
+| `base-files` | `base-files` |
+| `plymouth-anduinos` | `plymouth-theme-spinner` |
+| `anduinos-software-properties-common` | `software-properties-common` |
+| `anduinos-software-properties-gtk` | `software-properties-gtk` |
+
+These are rebuilt by CI and pull the latest Ubuntu source at build time, so they are **automatically up-to-date** with the Ubuntu mirror.
+
+**Monthly check**: confirm the Ubuntu mirror (`https://mirror.aiursoft.com/ubuntu`) is syncing correctly. No code changes needed unless Ubuntu changes the package name or the mirror URL changes.
+
+---
+
+### F. Internal Infrastructure (As-Needed)
+
+These URLs are not on a monthly schedule, but should be reviewed whenever infrastructure changes:
+
+| Reference | File | Purpose |
+|---|---|---|
+| `https://apkg-dev.aiursoft.com` | `.gitlab-ci.yml:7` | APKG build server |
+| `https://apkg-dev.aiursoft.com/artifacts/certs/anduinos` | `anduinos-archive-keyring.aosproj:17` | GPG signing key |
+| `https://apkg-dev.aiursoft.com/artifacts/anduinos/` | `anduinos-apt-config/deploy/**/*.sources` | APT repo (shipped to users!) |
+| `https://nuget.aiursoft.com/v3/index.json` | `nuget.config:5` | NuGet source for build tools |
+| `https://dl.flathub.org/repo/flathub.flatpakrepo` | `anduinos-appstore/scripts/postinst.sh:4` | Flathub remote |
+| `https://mirror.aiursoft.com/ubuntu` | Multiple `.aosproj` files | Ubuntu mirror |
+
+---
+
+### G. Monthly Update Order
+
+When doing a full monthly triage, follow this order — earlier packages are dependencies of later ones:
+
+1. **Fluent icon theme** + **Fluent GTK theme** (no deps)
+2. **ALSA UCM Conf** + **SOF firmware** (alsa-ucm-conf depends on nothing; SOF recommends alsa-ucm-conf but doesn't build-depend on it)
+3. **GNOME Shell extension** version audits (no cross-deps)
+4. **GNOME version map** update (triggers extension rebuilds)
+5. **Ubuntu-derived packages** (no cross-deps; build picks up latest)
+6. **Meta-packages** — rebuild last (`anduinos-desktop`, `anduinos-desktop-core`, `anduinos-gnome-extensions`, `anduinos-theme`)
+
+For each updated package, push to `master` — CI runs `apkg publish && apkg push` automatically.
