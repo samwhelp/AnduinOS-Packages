@@ -3,6 +3,10 @@ set -e
 
 if [ "$1" = "configure" ]; then
     dpkg-divert --add --package anduinos-installer-config --rename \
+        --divert /usr/share/localechooser/languagelist.ubuntu \
+        /usr/share/localechooser/languagelist
+
+    dpkg-divert --add --package anduinos-installer-config --rename \
         --divert /usr/share/applications/ubiquity.desktop.ubuntu \
         /usr/share/applications/ubiquity.desktop
 
