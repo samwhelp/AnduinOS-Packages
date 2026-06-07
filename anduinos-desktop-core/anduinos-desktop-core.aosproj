@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-core</PackageName>
-    <PackageVersion>1.0.7</PackageVersion>
+    <PackageVersion>1.0.8</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS desktop core metapackage — pure upstream GNOME desktop environment with multimedia, printing, and input method support. No AnduinOS branding.</PackageDescription>
     <Section>metapackages</Section>
@@ -163,7 +163,6 @@
     <!-- ============================================================
          Recommends: Python extras
          ============================================================ -->
-    <Recommend Include="python3-pip" />
     <Recommend Include="python-is-python3" />
     <Recommend Include="python3-babel" />
 

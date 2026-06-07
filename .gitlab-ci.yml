@@ -46,6 +46,8 @@ plymouth-anduinos:
 
 anduinos-apt-config:
   extends: .publish
+  needs:
+    - anduinos-archive-keyring
   variables:
     PACKAGE_DIR: anduinos-apt-config
 
