@@ -8,33 +8,83 @@ AnduinOS APKG package sources.
 
 The following AnduinOS packages explicitly replace or conflict with Ubuntu's official packages.
 
-### GNOME Shell extensions
+### 🔴 Hard Replace — Conflicts + Replaces + Provides
 
-| AnduinOS Package | Ubuntu Package | Our UUID | Ubuntu UUID | Declared Conflicts | Reason |
-|---|---|---|---|---|---|
-| `gnome-shell-extension-dash-to-panel-anduinos` | `gnome-shell-extension-dash-to-panel` | `dash-to-panel@jderose9.github.com` | `dash-to-panel@jderose9.github.com` | `gnome-shell-extension-dash-to-panel` | Same UUID -- dpkg file conflict |
-| `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng` | `ding@rastersoft.com` | `ding@rastersoft.com` | `gnome-shell-extension-desktop-icons-ng` | Same UUID -- dpkg file conflict. Swapped upstream GTK4 port for original DING |
-| `gnome-shell-extension-appindicator-anduinos` | `gnome-shell-extension-appindicator` | `appindicatorsupport@rgcjonas.gmail.com` | `ubuntu-appindicators@ubuntu.com` | `gnome-shell-extension-appindicator` | Functional duplicate -- upstream GNOME Extensions version vs Ubuntu's fork |
-| `gnome-shell-extension-tiling-assistant` | *(bundled in gnome-shell-ubuntu-extensions)* | `tiling-assistant@leleat-on-github` | `tiling-assistant@ubuntu.com` | -- (handled by meta-package) | Functional duplicate -- upstream version vs Ubuntu's fork |
-| `anduinos-gnome-extensions` | `gnome-shell-ubuntu-extensions` | *(meta-package)* | *(meta-package)* | `gnome-shell-ubuntu-extensions` | Meta-package conflict -- both manage the extension set |
+These packages remove the Ubuntu equivalent at install time. The user **cannot** install both.
 
-### Audio / Firmware
-
-| AnduinOS Package | Ubuntu Package | Declared Conflicts | Reason |
+| AnduinOS Package | Replaces (Ubuntu) | Also Provides | Notes |
 |---|---|---|---|
-| `firmware-sof-anduinos` | `firmware-sof-signed` | `firmware-sof-signed` | Newer Intel SOF snapshot, but still packaged as a clean dpkg-owned derivative of Ubuntu's firmware layout |
-| `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `alsa-ucm-conf` | Newer snapshot (`1.2.16` vs `1.2.15.3`) -- needed to match newer SOF firmware |
+| `anduinos-no-snapd` | `snapd` | — | APT pin (-10) + unmounts & purges /snap, /var/snap |
+| `anduinos-desktop` | `ubuntu-desktop`, `yaru-theme-gnome-shell`, `update-notifier`, `update-notifier-common`, `update-manager`, `update-manager-core`, `ubuntu-release-upgrader-core`, `ubuntu-release-upgrader-gtk` | `yaru-theme-gnome-shell` | Metapackage — 8 packages blocked, depends on `anduinos-no-snapd` |
+| `anduinos-session` | `ubuntu-session` | `ubuntu-session` | + postinst purges `10_ubuntu-session.gschema.override` |
+| `anduinos-gnome-extensions` | `gnome-shell-ubuntu-extensions` | `gnome-shell-ubuntu-extensions` | Metapackage — AnduinOS-curated extension set |
+| `anduinos-installer-config` | `ubiquity-slideshow-ubuntu` | `ubiquity-slideshow-ubuntu` | + postinst `dpkg-divert` of languagelist |
+| `anduinos-fonts` | `fonts-noto-color-emoji` | `fonts-noto-color-emoji` | Ships CascadiaCode, NerdFonts, Noto Sans/Serif, TwitterColorEmoji |
+| `anduinos-software-properties-common` | `software-properties-common` | `software-properties-common` | Patches `add-apt-repository` → forces `--distro=ubuntu` for PPA compat |
+| `anduinos-software-properties-gtk` | `software-properties-gtk` | `software-properties-gtk` | Strips Ubuntu Pro ads from source; suppresses dep on `ubuntu-pro-client` |
+| `firefox-anduinos` | `firefox` | — | Mozilla .deb, not the snap wrapper |
+| `firmware-sof-anduinos` | `firmware-sof-signed` | `firmware-sof-signed` | Newer Intel SOF snapshot from `thesofproject/sof-bin` |
+| `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `alsa-ucm-conf` | Newer snapshot (`1.2.16` vs `1.2.15.3`) |
+| `plymouth-anduinos` | `plymouth-theme-spinner` | `plymouth-theme-spinner` | Boot splash — derives upstream spinner into `themes/anduinos/` namespace |
 
-### System
+#### GNOME Shell Extensions (same UUID = dpkg file conflict)
 
-| AnduinOS Package | Ubuntu Package | Declared Conflicts | Reason |
-|---|---|---|---|
-| `base-files` | `base-files` | -- (epoch `1:` outranks) | AnduinOS branding -- epoch `1:` ensures our version wins |
-| `plymouth-anduinos` | `plymouth-theme-spinner` | `plymouth-theme-spinner` | AnduinOS boot splash -- derives upstream spinner assets into clean `themes/anduinos/` namespace, immune to upstream updates |
-| `anduinos-software-properties-common` | `software-properties-common` | `software-properties-common` | AnduinOS fork -- patches `add-apt-repository` for PPA compatibility, ships `anduinos.info`/`anduinos.csv` distro templates |
-| `anduinos-software-properties-gtk` | `software-properties-gtk` | `software-properties-gtk` | AnduinOS fork -- strips Ubuntu Pro advertisement from Software & Updates GUI (resolute only) |
-| `anduinos-desktop` | `ubuntu-session`, `yaru-theme-gnome-shell` | `ubuntu-session`, `yaru-theme-gnome-shell` | AnduinOS desktop metapackage -- replaces Ubuntu session with native GNOME session, owns critical infrastructure deps (gdm3, xwayland, gnome-session) |
-| `anduinos-wallpapers` | `ubuntu-wallpapers` | -- (Provides only) | AnduinOS wallpapers satisfy `gnome-shell`'s hard dependency on `ubuntu-wallpapers` via Provides -- no Conflicts, so users can still `apt install ubuntu-wallpapers` if desired |
+| AnduinOS Package | Replaces (Ubuntu) | Also Provides |
+|---|---|---|
+| `gnome-shell-extension-dash-to-panel-anduinos` | `gnome-shell-extension-dash-to-panel` | `gnome-shell-extension-dash-to-panel` |
+| `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng`, `gnome-shell-extension-gtk4-desktop-icons-ng` | both |
+| `gnome-shell-extension-appindicator-anduinos` | `gnome-shell-extension-appindicator` | `gnome-shell-extension-appindicator` |
+| `gnome-shell-extension-gtk4-desktop-icons-ng` | `gnome-shell-extension-desktop-icons-ng`, `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng` |
+
+---
+
+### 🟡 Dual Recommend — user can switch back to Ubuntu version
+
+These packages use `anduinos-X | ubuntu-X` in `Depends` or `Recommends`. The AnduinOS version is preferred (listed first), but the user can `apt install ubuntu-X` to swap.
+
+| Preferred (AnduinOS) | Fallback (Ubuntu) | Where defined |
+|---|---|---|
+| `anduinos-session` | `ubuntu-session` \| `gnome-session` | `anduinos-desktop-core` → `Dependency` |
+| `firmware-sof-anduinos` | `firmware-sof-signed` | `anduinos-desktop-core` → `Dependency` |
+| `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `anduinos-desktop-core` → `Dependency` |
+| `anduinos-wallpapers` | `ubuntu-wallpapers` | `Provides` + `Replaces` (no `Conflicts`!) |
+
+> **`anduinos-wallpapers`** is the canonical example: `Provides: ubuntu-wallpapers` + `Replaces: ubuntu-wallpapers` — but deliberately no `Conflicts`. Users can `apt install ubuntu-wallpapers` and both coexist; AnduinOS files take precedence via Replaces.
+
+---
+
+### 🟢 Soft Override — file shadow, no package blocks
+
+These packages replace Ubuntu **files** without removing the Ubuntu **package**.
+
+| AnduinOS Package | What it overrides | Mechanism |
+|---|---|---|
+| `base-files` | `/etc/os-release`, `/etc/lsb-release`, `/etc/issue`, `/etc/issue.net`, `/usr/share/pixmaps/ubuntu-logo-*.png`, `/etc/legal` | File deployment (epoch `1:` outranks) |
+| `anduinos-apt-config` | APT repo configuration | Pin priority 1001 for AnduinOS origin; `.sources` + `.pref` files |
+| `anduinos-mimeapps` | `/usr/share/applications/gnome-mimeapps.list` | `dpkg-divert` in preinst, restored on postrm |
+| `anduinos-bwrap-hack` | `/usr/bin/bwrap` → `/usr/bin/bwrap.real` + wrapper | Shim renames the real binary, wrapper swallows failures |
+
+---
+
+### Chains of removal
+
+Installing `anduinos-desktop` triggers a cascade:
+
+```
+anduinos-desktop
+├── Conflicts → ubuntu-desktop, ubuntu-release-upgrader*, update-notifier*, update-manager*, yaru-theme-gnome-shell
+├── Depends → anduinos-desktop-core
+│   ├── Conflicts → (none directly)
+│   └── Depends → anduinos-session | ubuntu-session | gnome-session
+│               → firmware-sof-anduinos | firmware-sof-signed
+│               → alsa-ucm-conf-anduinos | alsa-ucm-conf
+├── Depends → anduinos-no-snapd
+│   └── Conflicts → snapd
+└── Recommends → anduinos-software-properties-common
+               → anduinos-software-properties-gtk (resolute only)
+```
+
+**14 Ubuntu packages** are removed or pinned out when the full AnduinOS desktop is installed.
 
 ## Build
 
@@ -212,21 +262,22 @@ Note: the `+$(SuiteShortName)8` suffix is a packaging revision — increment it 
 
 ---
 
-### E. Ubuntu-Derived Packages
+### E. Upstream-Derived Packages
 
-Five packages derive from Ubuntu's packages at build time via `UpstreamUrl`:
+Six packages derive from upstream `.deb` packages at build time via `UpstreamUrl`:
 
-| Package | Upstream Ubuntu package |
-|---|---|
-| `base-files` | `base-files` |
-| `firmware-sof-anduinos` | `firmware-sof-signed` |
-| `plymouth-anduinos` | `plymouth-theme-spinner` |
-| `anduinos-software-properties-common` | `software-properties-common` |
-| `anduinos-software-properties-gtk` | `software-properties-gtk` |
+| Package | Upstream source | Repository |
+|---|---|---|
+| `base-files` | `base-files` | Ubuntu mirror |
+| `firmware-sof-anduinos` | `firmware-sof-signed` | Ubuntu mirror |
+| `plymouth-anduinos` | `plymouth-theme-spinner` | Ubuntu mirror |
+| `anduinos-software-properties-common` | `software-properties-common` | Ubuntu mirror |
+| `anduinos-software-properties-gtk` | `software-properties-gtk` | Ubuntu mirror |
+| `firefox-anduinos` | `firefox` | Mozilla APT (`packages.mozilla.org`) |
 
-These are rebuilt by CI and pull the latest Ubuntu source at build time, so their **Ubuntu base** stays up-to-date with the mirror. `firmware-sof-anduinos` still needs the separate Intel release check from section C.
+These are rebuilt by CI and pull the latest upstream source at build time, so the **upstream base** stays up-to-date. `firmware-sof-anduinos` still needs the separate Intel release check from section C.
 
-**Monthly check**: confirm the Ubuntu mirror (`https://mirror.aiursoft.com/ubuntu`) is syncing correctly. No code changes needed unless Ubuntu changes the package name or the mirror URL changes.
+**Monthly check**: confirm the mirrors (`https://mirror.aiursoft.com/ubuntu` and Mozilla APT) are syncing correctly. No code changes needed unless the upstream changes the package name or the mirror URL changes.
 
 ---
 
