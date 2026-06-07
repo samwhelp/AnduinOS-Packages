@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS Notification Bottom Right GNOME Shell extension (noti-bottom-right@anduinos)</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS default fonts and fontconfig — Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, Twitter Color Emoji</PackageDescription>
     <Section>fonts</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <Provides>fonts-noto-color-emoji</Provides>
     <Conflicts>fonts-noto-color-emoji</Conflicts>

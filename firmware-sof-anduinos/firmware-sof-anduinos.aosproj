@@ -6,6 +6,7 @@
     <PackageDescription>Intel SOF firmware binaries derived from Ubuntu and refreshed with a newer Intel snapshot</PackageDescription>
     <Section>kernel</Section>
     <PackageHomepage>https://github.com/thesofproject/sof-bin</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

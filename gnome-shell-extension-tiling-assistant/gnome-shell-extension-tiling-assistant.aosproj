@@ -6,6 +6,7 @@
     <PackageDescription>Expand GNOME's 2 column tiling and add a Windows-snap-assist-inspired popup... — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://extensions.gnome.org/extension/3733/</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

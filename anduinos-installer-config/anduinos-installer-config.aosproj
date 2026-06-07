@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS wrapper, theme, and slides for Ubiquity installer</PackageDescription>
     <Section>admin</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
 
     <Provides>ubiquity-slideshow-ubuntu</Provides>

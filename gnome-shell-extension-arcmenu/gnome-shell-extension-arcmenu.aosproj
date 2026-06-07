@@ -7,6 +7,7 @@
     <PackageDescription>Application Menu Extension for GNOME — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://extensions.gnome.org/extension/3628/</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

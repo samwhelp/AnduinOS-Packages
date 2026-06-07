@@ -6,6 +6,7 @@
     <PackageDescription>GTK4/Libadwaita port of Desktop Icons NG — packaged for AnduinOS (GNOME 50)</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://extensions.gnome.org/extension/5263/</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

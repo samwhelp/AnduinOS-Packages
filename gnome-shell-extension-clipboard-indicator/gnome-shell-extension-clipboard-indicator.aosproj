@@ -6,6 +6,7 @@
     <PackageDescription>The most popular clipboard manager for GNOME, with over 1M downloads — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://extensions.gnome.org/extension/779/</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

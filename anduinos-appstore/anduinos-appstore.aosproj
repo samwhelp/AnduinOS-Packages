@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS app store metapackage — GNOME Software with Flatpak support. Install this if you want a graphical app store and Flatpak sandboxed applications.</PackageDescription>
     <Section>metapackages</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

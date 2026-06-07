@@ -6,6 +6,7 @@
     <PackageDescription>Makes user themes to follow system accent color and color scheme Light or Dark, a fork from https://github.com/taiwbi/gnome-accent-directories This extension is included by default in BRGV-OS and AnduinOS — packaged for AnduinOS</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://extensions.gnome.org/extension/8498/</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>

@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     <Provides>yaru-theme-gnome-shell</Provides>
     <Conflicts>yaru-theme-gnome-shell, update-notifier, update-notifier-common, update-manager, update-manager-core, ubuntu-release-upgrader-core, ubuntu-release-upgrader-gtk, ubuntu-desktop</Conflicts>

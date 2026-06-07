@@ -6,6 +6,7 @@
     <PackageDescription>AnduinOS session configuration and login entry</PackageDescription>
     <Section>gnome</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
+    <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
     <LicenseType>GPL-3.0</LicenseType>
     
     <Provides>ubuntu-session</Provides>
