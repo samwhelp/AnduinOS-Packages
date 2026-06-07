@@ -1,10 +1,8 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-wallpapers</PackageName>
-    <PackageVersion>1.0.4</PackageVersion>
+    <PackageVersion>1.0.5</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
-    <Provides>ubuntu-wallpapers</Provides>
-    <Replaces>ubuntu-wallpapers</Replaces>
     <PackageDescription>AnduinOS default wallpapers (Fluent Building)</PackageDescription>
     <Section>admin</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>

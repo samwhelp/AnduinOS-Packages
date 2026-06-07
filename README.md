@@ -47,9 +47,6 @@ These packages use `anduinos-X | ubuntu-X` in `Depends` or `Recommends`. The And
 | `anduinos-session` | `ubuntu-session` \| `gnome-session` | `anduinos-desktop-core` → `Dependency` |
 | `firmware-sof-anduinos` | `firmware-sof-signed` | `anduinos-desktop-core` → `Dependency` |
 | `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `anduinos-desktop-core` → `Dependency` |
-| `anduinos-wallpapers` | `ubuntu-wallpapers` | `Provides` + `Replaces` (no `Conflicts`!) |
-
-> **`anduinos-wallpapers`** is the canonical example: `Provides: ubuntu-wallpapers` + `Replaces: ubuntu-wallpapers` — but deliberately no `Conflicts`. Users can `apt install ubuntu-wallpapers` and both coexist; AnduinOS files take precedence via Replaces.
 
 ---
 
