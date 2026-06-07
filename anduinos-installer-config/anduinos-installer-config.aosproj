@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-installer-config</PackageName>
-    <PackageVersion>1.0.8</PackageVersion>
+    <PackageVersion>1.0.9</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS wrapper, theme, and slides for Ubiquity installer</PackageDescription>
     <Section>admin</Section>
@@ -42,9 +42,11 @@
   <ItemGroup>
     <!-- Includes -->
 
-    <!-- Restricted language list for localechooser/ubiquity -->
-    <IncludeFile Include="assets/languagelist"
-                 Target="/usr/share/localechooser/languagelist" Mode="644" />
+    <!-- Restricted language list for ubiquity (staged, deployed by postinst) -->
+    <IncludeFile Include="assets/ubiquity-languagelist"
+                 Target="/usr/share/anduinos-installer-config/languagelist" Mode="644" />
+    <IncludeFile Include="assets/ubiquity-languagelist.data"
+                 Target="/usr/share/anduinos-installer-config/languagelist.data" Mode="644" />
 
     <!-- Wrapper: xhost + sudo -E ubiquity -->
     <IncludeFile Include="assets/anduinos-installer"

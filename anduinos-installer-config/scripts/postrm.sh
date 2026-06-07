@@ -5,11 +5,16 @@ if [ "$1" = "remove" ] || [ "$1" = "purge" ] || [ "$1" = "abort-install" ] || [ 
     # Delete the files we generated in postinst before undoing the
     # diversion — otherwise dpkg-divert will refuse to overwrite it.
     rm -f /usr/share/applications/ubiquity.desktop
-    rm -f /usr/share/localechooser/languagelist
+    rm -f /usr/lib/ubiquity/localechooser/languagelist
+    rm -f /usr/lib/ubiquity/localechooser/languagelist.data.gz
 
     dpkg-divert --remove --package anduinos-installer-config --rename \
-        --divert /usr/share/localechooser/languagelist.ubuntu \
-        /usr/share/localechooser/languagelist
+        --divert /usr/lib/ubiquity/localechooser/languagelist.data.gz.ubuntu \
+        /usr/lib/ubiquity/localechooser/languagelist.data.gz
+
+    dpkg-divert --remove --package anduinos-installer-config --rename \
+        --divert /usr/lib/ubiquity/localechooser/languagelist.ubuntu \
+        /usr/lib/ubiquity/localechooser/languagelist
 
     dpkg-divert --remove --package anduinos-installer-config --rename \
         --divert /usr/share/applications/ubiquity.desktop.ubuntu \
