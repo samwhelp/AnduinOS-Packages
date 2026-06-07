@@ -62,20 +62,15 @@ install_latest_sof() {
 }
 
 main() {
-    local stage_dir found_stage=0
-
     download_release
 
-    shopt -s nullglob
-    for stage_dir in "$SCRIPT_DIR"/obj/*; do
-        [[ -d "$stage_dir" ]] || continue
-        found_stage=1
+    local stage_dir="${APKG_STAGE_DIR:-}"
+    if [[ -z "$stage_dir" ]]; then
+        die "APKG_STAGE_DIR is not set. This script must be invoked as an aosproj PrebuildCommand."
+    fi
+    [[ -d "$stage_dir" ]] || die "Staging directory does not exist: $stage_dir"
 
-        install_latest_sof "$(detect_firmware_root "$stage_dir")"
-    done
-    shopt -u nullglob
-
-    [[ "$found_stage" -eq 1 ]] || die "Missing upstream staging directory under: $SCRIPT_DIR/obj"
+    install_latest_sof "$(detect_firmware_root "$stage_dir")"
 }
 
 main
