@@ -22,7 +22,7 @@ The following AnduinOS packages explicitly replace or conflict with Ubuntu's off
 
 | AnduinOS Package | Ubuntu Package | Declared Conflicts | Reason |
 |---|---|---|---|
-| `firmware-sof-anduinos` | `firmware-sof-signed` | `firmware-sof-signed` | Newer snapshot of Intel SOF firmware -- Ubuntu's package (Debian-signed) is stale |
+| `firmware-sof-anduinos` | `firmware-sof-signed` | `firmware-sof-signed` | Newer Intel SOF snapshot, but still packaged as a clean dpkg-owned derivative of Ubuntu's firmware layout |
 | `alsa-ucm-conf-anduinos` | `alsa-ucm-conf` | `alsa-ucm-conf` | Newer snapshot (`1.2.16` vs `1.2.15.3`) -- needed to match newer SOF firmware |
 
 ### System
@@ -120,11 +120,11 @@ apkg publish
 
 ### C. Firmware SOF (Version-Pinned Tarball)
 
-`firmware-sof-anduinos` downloads a release tarball from GitHub by version number.
+`firmware-sof-anduinos` now derives from Ubuntu's `firmware-sof-signed` package at build time, then replaces the unpacked SOF payload with a newer Intel `sof-bin` release tarball. This keeps file ownership, upgrades, and removals under dpkg instead of a post-install `rsync`.
 
 #### C.1 Check for updates
 
-Visit [sof-bin releases](https://github.com/thesofproject/sof-bin/releases) and compare the latest tag against `SOF_VERSION` in `firmware-sof-anduinos/download.sh:5`.
+Visit [sof-bin releases](https://github.com/thesofproject/sof-bin/releases) and compare the latest tag against `SOF_VERSION` in `firmware-sof-anduinos/download.sh`.
 
 #### C.2 Apply the update
 
@@ -133,14 +133,14 @@ Update **two files**:
 ```diff
 # download.sh
 -SOF_VERSION="2025.12"
-+SOF_VERSION="2025.12"   # update to new release tag
++SOF_VERSION="2026.03"   # update to new release tag
 
 # firmware-sof-anduinos.aosproj
--<PackageVersion>2025.12-3</PackageVersion>
-+<PackageVersion>2025.12-1</PackageVersion>   # match version, reset suffix
+-<PackageVersion>2025.12+ubuntu$(UpstreamVersion)-1</PackageVersion>
++<PackageVersion>2026.03+ubuntu$(UpstreamVersion)-1</PackageVersion>   # update the leading SOF version, reset suffix if packaging changed
 ```
 
-The `deploy/sof-firmware.tar.gz` is **not** committed — the CI downloads it at build time via `download.sh`.
+The downloaded Intel tarball and extracted cache under `deploy/` are **not** committed — the CI regenerates them at build time via `download.sh`.
 
 #### C.3 Rebuild and verify
 
@@ -214,16 +214,17 @@ Note: the `+$(SuiteShortName)8` suffix is a packaging revision — increment it 
 
 ### E. Ubuntu-Derived Packages
 
-Four packages derive from Ubuntu's packages at build time via `UpstreamUrl`:
+Five packages derive from Ubuntu's packages at build time via `UpstreamUrl`:
 
 | Package | Upstream Ubuntu package |
 |---|---|
 | `base-files` | `base-files` |
+| `firmware-sof-anduinos` | `firmware-sof-signed` |
 | `plymouth-anduinos` | `plymouth-theme-spinner` |
 | `anduinos-software-properties-common` | `software-properties-common` |
 | `anduinos-software-properties-gtk` | `software-properties-gtk` |
 
-These are rebuilt by CI and pull the latest Ubuntu source at build time, so they are **automatically up-to-date** with the Ubuntu mirror.
+These are rebuilt by CI and pull the latest Ubuntu source at build time, so their **Ubuntu base** stays up-to-date with the mirror. `firmware-sof-anduinos` still needs the separate Intel release check from section C.
 
 **Monthly check**: confirm the Ubuntu mirror (`https://mirror.aiursoft.com/ubuntu`) is syncing correctly. No code changes needed unless Ubuntu changes the package name or the mirror URL changes.
 
