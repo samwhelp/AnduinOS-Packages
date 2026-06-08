@@ -313,7 +313,6 @@ anduinos-gnome-extensions:
     - gnome-shell-extension-lockkeys
     - gnome-shell-extension-mediacontrols
     - gnome-shell-extension-network-stats
-    - gnome-shell-extension-no-overview
     - gnome-shell-extension-proxy-switcher
     - gnome-shell-extension-simple-weather
     - gnome-shell-extension-tiling-assistant

@@ -38,7 +38,6 @@
     <Recommend Include="gnome-shell-extension-lockkeys" />
     <Recommend Include="gnome-shell-extension-mediacontrols" />
     <Recommend Include="gnome-shell-extension-network-stats" />
-    <Recommend Include="gnome-shell-extension-no-overview" />
     <Recommend Include="gnome-shell-extension-proxy-switcher" />
     <Recommend Include="gnome-shell-extension-simple-weather" />
     <Recommend Include="gnome-shell-extension-tiling-assistant" />
