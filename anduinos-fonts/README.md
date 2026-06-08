@@ -33,6 +33,8 @@ Plus `fonts-noto-color-emoji` (bitmap emoji) from Ubuntu repos, installed as a h
 
 Default rules put Latin/Cyrillic fonts before CJK SC, so punctuation stays Latin-style unless the document is tagged as CJK.
 
+Note: Simplified Chinese (`zh-CN`) and Latin scripts don't have explicit `<test name="lang">` blocks. They implicitly route to `Noto Sans CJK SC` and `Noto Sans` via the primary fallback queue in the global defaults, so no explicit lang match is needed.
+
 ## Emoji: dual-font strategy
 
 Chrome dropped SVG-in-OpenType support. Twitter Color Emoji is SVG-in-OT — Chrome can't render it.
