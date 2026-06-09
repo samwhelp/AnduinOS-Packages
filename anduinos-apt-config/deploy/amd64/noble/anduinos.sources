@@ -1,6 +1,6 @@
 Types: deb
 URIs: https://apkg.aiursoft.com/artifacts/anduinos/
-Suites: noble-addon
+Suites: noble-addon noble-webapps
 Components: main
 Architectures: amd64
 Signed-By: /usr/share/keyrings/anduinos-archive-keyring.gpg
