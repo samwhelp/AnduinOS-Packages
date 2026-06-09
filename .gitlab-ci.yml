@@ -5,7 +5,7 @@ stages:
 
 variables:
   APKG_SERVER: "https://apkg-dev.aiursoft.com"
-  APKG_API_KEY: "2M43WwUQ7vWmxbELA53ZUCVxNJ0YXiwMZfgfS7KNSP0"
+  APKG_API_KEY: $APKG_DEV_API_KEY
 
 .lint:
   stage: lint
