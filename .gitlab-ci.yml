@@ -29,7 +29,7 @@ stages:
     - |-
       if [ "$CI_COMMIT_BRANCH" = "prod" ]; then
         apkg push -f "$APKG_FILE" -s "https://apkg.aiursoft.com" -k "$APKG_PROD_API_KEY" --skip-duplicate
-      else
+      elif [ "$CI_COMMIT_BRANCH" = "master" ]; then
         apkg push -f "$APKG_FILE" -s "https://apkg-dev.aiursoft.com" -k "$APKG_DEV_API_KEY" --skip-duplicate
       fi
   rules:
