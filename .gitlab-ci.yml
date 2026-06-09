@@ -53,6 +53,13 @@ anduinos-apt-config:
   variables:
     PACKAGE_DIR: anduinos-apt-config
 
+anduinos-apt-config-dev:
+  extends: .publish
+  needs:
+    - anduinos-archive-keyring
+  variables:
+    PACKAGE_DIR: anduinos-apt-config-dev
+
 anduinos-no-snapd:
   extends: .publish
   variables:
@@ -356,6 +363,7 @@ anduinos-desktop:
     - anduinos-desktop-core
     - anduinos-appstore
     - anduinos-apt-config
+    - anduinos-apt-config-dev
     - anduinos-deskmon
     - base-files
     - anduinos-theme
