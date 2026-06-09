@@ -3,15 +3,23 @@ stages:
   - publish
   - meta
 
-.lint:
+lint-all:
   stage: lint
   before_script:
     - dotnet tool update -g aiursoft.apkg.client --configfile ./nuget.config || dotnet tool install -g aiursoft.apkg.client --configfile ./nuget.config
     - export PATH="$PATH:$HOME/.dotnet/tools"
     - apkg --version
   script:
-    - cd $PACKAGE_DIR
-    - apkg lint
+    - |
+      failed=0
+      for dir in */; do
+        if ls "$dir"*.aosproj >/dev/null 2>&1; then
+          echo "::group::Linting $dir"
+          (cd "$dir" && apkg lint) || failed=1
+          echo "::endgroup::"
+        fi
+      done
+      exit $failed
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH != "master"
