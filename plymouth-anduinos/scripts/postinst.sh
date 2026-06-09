@@ -7,5 +7,9 @@ if [ "$1" = "configure" ]; then
     update-alternatives --set \
         default.plymouth \
         /usr/share/plymouth/themes/anduinos/anduinos.plymouth || true
-    update-initramfs -u || true
+    if command -v dracut >/dev/null 2>&1; then
+        dracut --force 2>/dev/null || true
+    elif command -v update-initramfs >/dev/null 2>&1; then
+        update-initramfs -u 2>/dev/null || true
+    fi
 fi
