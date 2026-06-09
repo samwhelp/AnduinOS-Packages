@@ -3,15 +3,23 @@ stages:
   - publish
   - meta
 
-.lint:
+lint-all:
   stage: lint
   before_script:
     - dotnet tool update -g aiursoft.apkg.client --configfile ./nuget.config || dotnet tool install -g aiursoft.apkg.client --configfile ./nuget.config
     - export PATH="$PATH:$HOME/.dotnet/tools"
     - apkg --version
   script:
-    - cd $PACKAGE_DIR
-    - apkg lint
+    - |
+      failed=0
+      for dir in */; do
+        if ls "$dir"*.aosproj >/dev/null 2>&1; then
+          echo "::group::Linting $dir"
+          (cd "$dir" && apkg lint) || failed=1
+          echo "::endgroup::"
+        fi
+      done
+      exit $failed
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH != "master"
@@ -33,6 +41,8 @@ stages:
         apkg push -f "$APKG_FILE" -s "https://apkg-dev.aiursoft.com" -k "$APKG_DEV_API_KEY" --skip-duplicate
       fi
   rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
     - if: $CI_COMMIT_BRANCH == "master"
     - if: $CI_COMMIT_BRANCH == "prod"
 
@@ -52,6 +62,13 @@ anduinos-apt-config:
     - anduinos-archive-keyring
   variables:
     PACKAGE_DIR: anduinos-apt-config
+
+anduinos-apt-config-dev:
+  extends: .publish
+  needs:
+    - anduinos-archive-keyring
+  variables:
+    PACKAGE_DIR: anduinos-apt-config-dev
 
 anduinos-no-snapd:
   extends: .publish
@@ -356,6 +373,7 @@ anduinos-desktop:
     - anduinos-desktop-core
     - anduinos-appstore
     - anduinos-apt-config
+    - anduinos-apt-config-dev
     - anduinos-deskmon
     - base-files
     - anduinos-theme
