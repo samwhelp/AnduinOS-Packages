@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-installer-config</PackageName>
-    <PackageVersion>2.0.0~beta1-2+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta1-3+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS wrapper, theme, and slides for Ubiquity installer</PackageDescription>
     <Section>admin</Section>
@@ -26,6 +26,9 @@
     <Dependency Include="ubiquity-frontend-gtk" />
     <Dependency Include="ubiquity-casper" />
     <Dependency Include="ubiquity-ubuntu-artwork" />
+
+    <!-- Live-environment timezone hook (sets TZ from kernel cmdline) -->
+    <Dependency Include="anduinos-live-settings" />
 
     <!-- Live-environment bwrap compat (glycin SVG loader needs it) -->
     <Dependency Include="anduinos-bwrap-hack" />

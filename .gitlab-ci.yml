@@ -277,9 +277,15 @@ anduinos-gnome-shell-locale:
   variables:
     PACKAGE_DIR: anduinos-gnome-shell-locale
 
+anduinos-live-settings:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-live-settings
+
 anduinos-installer-config:
   extends: .publish
   needs:
+    - anduinos-live-settings
     - anduinos-bwrap-hack
   variables:
     PACKAGE_DIR: anduinos-installer-config
