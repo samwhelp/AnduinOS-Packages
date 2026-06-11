@@ -14,9 +14,9 @@ cursor-size=32
 enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
-font-name='Sans 11'
-document-font-name='Ubuntu Mono 13'
-monospace-font-name='Monospace 11'
+font-name='Noto Sans 11'
+document-font-name='Noto Sans 11'
+monospace-font-name='Cascadia Code 11'
 clock-show-weekday=false
 clock-show-seconds=false
 clock-show-date=false
@@ -97,6 +97,7 @@ toggle-maximized=['<Super>Up']
 # ============================================================================
 [org.gnome.desktop.wm.preferences]
 button-layout=':minimize,maximize,close'
+titlebar-font='Noto Sans Bold 11'
 
 # ============================================================================
 # Peripherals - Keyboard
@@ -199,7 +200,7 @@ startup-sound=''
 # Text Editor
 # ============================================================================
 [org.gnome.TextEditor]
-custom-font='Ubuntu Mono 13'
+custom-font='Cascadia Code 13'
 spellcheck=false
 use-system-font=false
 
