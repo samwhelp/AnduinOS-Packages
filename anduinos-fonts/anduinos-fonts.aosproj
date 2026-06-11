@@ -1,9 +1,9 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-fonts</PackageName>
-    <PackageVersion>2.0.0~beta1-1+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta1-2+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
-    <PackageDescription>AnduinOS default fonts and fontconfig — Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, Twitter &amp; Noto Color Emoji</PackageDescription>
+    <PackageDescription>AnduinOS default fonts and fontconfig — Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, Twemoji COLRv1 &amp; Noto Color Emoji</PackageDescription>
     <Section>fonts</Section>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
     <RepositoryUrl>https://github.com/AiursoftWeb/AnduinOS-Packages</RepositoryUrl>
@@ -63,8 +63,8 @@
     <IncludeFile Include="assets/Noto_Serif/NotoSerif-VariableFont_wdth,wght.ttf" Target="/usr/share/fonts/Noto_Serif/NotoSerif-VariableFont_wdth,wght.ttf" />
     <IncludeFile Include="assets/Noto_Serif/NotoSerif-Italic-VariableFont_wdth,wght.ttf" Target="/usr/share/fonts/Noto_Serif/NotoSerif-Italic-VariableFont_wdth,wght.ttf" />
 
-    <!-- Twitter Color Emoji -->
-    <IncludeFile Include="assets/TwitterColorEmoji-SVGinOT/TwitterColorEmoji-SVGinOT.ttf" Target="/usr/share/fonts/TwitterColorEmoji-SVGinOT/TwitterColorEmoji-SVGinOT.ttf" />
+    <!-- Twemoji (COLRv1) -->
+    <IncludeFile Include="assets/Twemoji/twemoji-colr.ttf" Target="/usr/share/fonts/Twemoji/twemoji-colr.ttf" />
   </ItemGroup>
 
   <ItemGroup>

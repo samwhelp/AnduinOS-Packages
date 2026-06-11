@@ -1,6 +1,6 @@
 # anduinos-fonts
 
-AnduinOS default fonts and fontconfig. Ships Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, and Twitter Color Emoji. Uses fontconfig to handle language-specific CJK/Thai/Arabic selection and per-app emoji fallback.
+AnduinOS default fonts and fontconfig. Ships Cascadia Code, Noto Sans/Serif, Nerd Fonts Symbols, and Twemoji (COLRv1). Uses fontconfig to handle language-specific CJK/Thai/Arabic selection and emoji fallback.
 
 ## Architecture
 
@@ -11,10 +11,10 @@ AnduinOS default fonts and fontconfig. Ships Cascadia Code, Noto Sans/Serif, Ner
   Noto_Sans/            ← sans-serif default (Latin-first)
   Noto_Serif/           ← serif default (Latin-first)
   NerdFontsSymbolsOnly/ ← terminal icons
-  TwitterColorEmoji-SVGinOT/ ← default emoji (SVG-in-OT, pretty)
+  Twemoji/              ← default emoji (COLRv1, vector)
 ```
 
-Plus `fonts-noto-color-emoji` (bitmap emoji) from Ubuntu repos, installed as a hard dependency.
+Plus `fonts-noto-color-emoji` (CBDT/CBLC bitmap) from Ubuntu repos as fallback.
 
 ## Language-specific font routing
 
@@ -35,22 +35,18 @@ Default rules put Latin/Cyrillic fonts before CJK SC, so punctuation stays Latin
 
 Note: Simplified Chinese (`zh-CN`) and Latin scripts don't have explicit `<test name="lang">` blocks. They implicitly route to `Noto Sans CJK SC` and `Noto Sans` via the primary fallback queue in the global defaults, so no explicit lang match is needed.
 
-## Emoji: dual-font strategy
+## Emoji: COLRv1 with Noto fallback
 
-Chrome dropped SVG-in-OpenType support. Twitter Color Emoji is SVG-in-OT — Chrome can't render it.
-
-**Our solution**: ship both Twitter Color Emoji (pretty, SVG-in-OT) and Noto Color Emoji (compatible, CBDT/CBLC bitmap). Default to Twitter for most apps. For Chromium-based browsers, use `mode="assign"` to **replace Twitter in-place** in the font list — never `mode="prepend"` which would push an emoji font to position 1 and blow up line-height metrics across all web pages.
+FreeType 2.13 on Ubuntu lacks SVG-in-OT support (`FT_CONFIG_OPTION_SVG` not compiled), so SVG-format emoji fonts are unrenderable. We use **COLRv1** format (Twemoji) which FreeType, Harfbuzz, Chrome, and GTK all support natively.
 
 ```
-Default (Firefox, GNOME, terminal):
-  Noto Sans → ... → Twitter Color Emoji → Noto Color Emoji → ...
-
-Chromium-based (chrome, chromium, edge, etc.):
-  Noto Sans → ... → Noto Color Emoji → Noto Color Emoji → ...
-  (Twitter replaced in-place, metrics baseline preserved)
+All apps:
+  Noto Sans → ... → Twemoji (COLRv1) → Noto Color Emoji (CBDT/CBLC bitmap) → ...
 ```
 
-The `prgname` filter uses `contains` on `chrom` to catch all Blink-based browsers in one rule. Edge gets its own `contains "edge"` rule.
+No per-app workarounds needed — COLRv1 works everywhere.
+
+Font source: [TCOTC/twemoji-colr](https://github.com/TCOTC/twemoji-colr) (follows [jdecked/twemoji](https://github.com/jdecked/twemoji) releases).
 
 ## Adding a new language
 
@@ -75,6 +71,9 @@ fc-match -v sans-serif | grep -E "family:|prgname|lang:"
 
 # Check if a font exists:
 fc-list | grep -i "font-name"
+
+# Which emoji font for a character?
+fc-match -s ":charset=1F52B"
 
 # After editing local.conf:
 fc-cache -f
