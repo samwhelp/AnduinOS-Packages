@@ -25,11 +25,6 @@
     <IncludeFile Include="assets/pkg_depends" Target="/usr/share/language-selector/data/pkg_depends" Mode="644" />
   </ItemGroup>
 
-  <!-- Regenerate assets/pkg_depends from latest upstream at every build -->
-  <ItemGroup>
-    <PrebuildCommand Run="bash scripts/fetch-pkg-depends.sh" />
-  </ItemGroup>
-
   <ItemGroup>
     <PreInstallScript Include="scripts/preinst.sh" />
     <PostRemoveScript Include="scripts/postrm.sh" />

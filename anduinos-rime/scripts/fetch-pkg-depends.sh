@@ -12,7 +12,7 @@ echo "[anduinos-rime] Looking up language-selector-common in Ubuntu $RELEASE arc
 
 # Parse the Packages index to find the file path — no apt or root needed
 PKG_PATH=$(wget -q -O - "$MIRROR/dists/$RELEASE/main/binary-amd64/Packages.gz" \
-    | gunzip \
+    | gunzip 2>/dev/null \
     | awk '/^Package: language-selector-common$/ { found=1; next }
            found && /^Filename:/ { print $2; exit }')
 
