@@ -282,11 +282,6 @@ anduinos-rime:
   variables:
     PACKAGE_DIR: anduinos-rime
 
-anduinos-language-selector-common:
-  extends: .publish
-  variables:
-    PACKAGE_DIR: anduinos-language-selector-common
-
 anduinos-live-settings:
   extends: .publish
   variables:
@@ -319,7 +314,7 @@ anduinos-desktop-core:
     - anduinos-session
     - firmware-sof-anduinos
     - alsa-ucm-conf-anduinos
-    - anduinos-language-selector-common
+    - anduinos-rime
   variables:
     PACKAGE_DIR: anduinos-desktop-core
 
