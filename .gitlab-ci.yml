@@ -277,10 +277,22 @@ anduinos-gnome-shell-locale:
   variables:
     PACKAGE_DIR: anduinos-gnome-shell-locale
 
+anduinos-rime:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-rime
+
+anduinos-live-settings:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-live-settings
+
 anduinos-installer-config:
   extends: .publish
   needs:
+    - anduinos-live-settings
     - anduinos-bwrap-hack
+    - anduinos-rime
   variables:
     PACKAGE_DIR: anduinos-installer-config
 
@@ -302,6 +314,7 @@ anduinos-desktop-core:
     - anduinos-session
     - firmware-sof-anduinos
     - alsa-ucm-conf-anduinos
+    - anduinos-rime
   variables:
     PACKAGE_DIR: anduinos-desktop-core
 

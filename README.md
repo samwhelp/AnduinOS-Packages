@@ -73,6 +73,7 @@ These replace Ubuntu **files** without removing the Ubuntu **package**.
 | `anduinos-apt-config` | APT sources (`packages.anduinos.com`) + preferences | Dual pin: `origin` (domain) + `release o=` (Origin field), both at priority 1001; also shipped as `anduinos-apt-config-dev` (→ `apkg-dev.aiursoft.com`) |
 | `anduinos-mimeapps` | `gnome-mimeapps.list` | `dpkg-divert` (original → `.ubuntu-original`) |
 | `anduinos-bwrap-hack` | `bwrap` → `bwrap.real` + shim | Swallows `bwrap` failures on Live squashfs |
+| `anduinos-rime` | `rime-prelude`'s `default.yaml` → `default.yaml.prelude` | `dpkg-divert`; ships rime-ice config to `/usr/share/rime-data/` |
 
 ---
 
@@ -91,6 +92,7 @@ anduinos-desktop  ──Conflicts──→  ubuntu-desktop
       │            └─Depends──→ anduinos-session | ubuntu-session | gnome-session
       │                       → firmware-sof-anduinos | firmware-sof-signed
       │                       → alsa-ucm-conf-anduinos | alsa-ucm-conf
+      │                       → anduinos-rime
       │
       ├─Depends──→ anduinos-no-snapd  ──Conflicts──→ snapd
       │
@@ -118,6 +120,7 @@ These ship files or declare dependencies without replacing any Ubuntu package.
 | `anduinos-templates` | Data | Default file templates (`~/Templates`) |
 | `anduinos-dconf-defaults` | Config | dconf / gsettings defaults for GNOME |
 | `anduinos-gnome-shell-locale` | Locale | GNOME Shell locale / text overrides |
+| `anduinos-live-settings` | Config | Live CD timezone hook (casper-bottom); removed after install |
 
 ## Build
 
@@ -285,7 +288,7 @@ Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~beta1-1+
 
 ### E. Upstream-Derived Packages
 
-Six packages derive from upstream `.deb` packages at build time via `UpstreamUrl`:
+Seven packages derive from upstream `.deb` packages at build time via `UpstreamUrl`:
 
 | Package | Upstream source | Repository |
 |---|---|---|
