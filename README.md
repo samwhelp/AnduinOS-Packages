@@ -43,6 +43,7 @@ User **cannot** install both.  Dpkg removes the Ubuntu package at install time.
 | 22 | `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng` | yes | Same UUID: `ding@rastersoft.com` (original DING) |
 | 23 | `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-gtk4-desktop-icons-ng` | yes | 〃 also replaces the GTK4 port |
 | 24 | `gnome-shell-extension-gtk4-desktop-icons-ng` | `gnome-shell-extension-desktop-icons-ng` | yes | GTK4 port → same UUID. Also Conflicts `desktop-icons-ng-anduinos` |
+| 25 | `anduinos-language-selector-common` | `language-selector-common` | yes | Patches `pkg_depends`: `zh-hans` → `ibus-rime` instead of fcitx5 |
 
 > **Desktop icons**: two mutually-exclusive AnduinOS packages (#22-24) both replace the same Ubuntu package.  Users pick one — `desktop-icons-ng-anduinos` (original DING) or `gtk4-desktop-icons-ng` (GTK4 port).
 
@@ -287,7 +288,7 @@ Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~beta1-1+
 
 ### E. Upstream-Derived Packages
 
-Six packages derive from upstream `.deb` packages at build time via `UpstreamUrl`:
+Seven packages derive from upstream `.deb` packages at build time via `UpstreamUrl`:
 
 | Package | Upstream source | Repository |
 |---|---|---|
@@ -296,6 +297,7 @@ Six packages derive from upstream `.deb` packages at build time via `UpstreamUrl
 | `plymouth-anduinos` | `plymouth-theme-spinner` | Ubuntu mirror |
 | `anduinos-software-properties-common` | `software-properties-common` | Ubuntu mirror |
 | `anduinos-software-properties-gtk` | `software-properties-gtk` | Ubuntu mirror |
+| `anduinos-language-selector-common` | `language-selector-common` | Ubuntu mirror |
 | `firefox-anduinos` | `firefox` | Mozilla APT (`packages.mozilla.org`) |
 
 These are rebuilt by CI and pull the latest upstream source at build time, so the **upstream base** stays up-to-date. `firmware-sof-anduinos` still needs the separate Intel release check from section C.
