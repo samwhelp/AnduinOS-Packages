@@ -33,7 +33,7 @@ screen-magnifier-enabled=false
 # ============================================================================
 # Applications
 # ============================================================================
-[org.gnome.desktop.applications.terminal]
+[org.gnome.desktop.default-applications.terminal]
 exec='ptyxis'
 
 # ============================================================================
@@ -192,8 +192,6 @@ toggle-message-tray=['<Super>n']
 toggle-overview=['<Super>Tab']
 toggle-quick-settings=['<Super>a']
 
-[org.gnome.shell.overrides]
-edge-tiling=false
 
 [org.gnome.shell.ubuntu]
 startup-sound=''

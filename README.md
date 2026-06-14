@@ -41,10 +41,6 @@ User **cannot** install both.  Dpkg removes the Ubuntu package at install time.
 | 20 | `gnome-shell-extension-appindicator-anduinos` | `gnome-shell-extension-appindicator` | yes | Same UUID: `appindicatorsupport@rgcjonas.gmail.com` |
 | 21 | `gnome-shell-extension-dash-to-panel-anduinos` | `gnome-shell-extension-dash-to-panel` | yes | Same UUID: `dash-to-panel@jderose9.github.com` |
 | 22 | `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-desktop-icons-ng` | yes | Same UUID: `ding@rastersoft.com` (original DING) |
-| 23 | `gnome-shell-extension-desktop-icons-ng-anduinos` | `gnome-shell-extension-gtk4-desktop-icons-ng` | yes | 〃 also replaces the GTK4 port |
-| 24 | `gnome-shell-extension-gtk4-desktop-icons-ng` | `gnome-shell-extension-desktop-icons-ng` | yes | GTK4 port → same UUID. Also Conflicts `desktop-icons-ng-anduinos` |
-
-> **Desktop icons**: two mutually-exclusive AnduinOS packages (#22-24) both replace the same Ubuntu package.  Users pick one — `desktop-icons-ng-anduinos` (original DING) or `gtk4-desktop-icons-ng` (GTK4 port).
 
 ---
 

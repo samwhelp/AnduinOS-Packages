@@ -170,11 +170,6 @@ gnome-shell-extension-dash-to-panel-anduinos:
   variables:
     PACKAGE_DIR: gnome-shell-extension-dash-to-panel-anduinos
 
-gnome-shell-extension-gtk4-desktop-icons-ng:
-  extends: .publish
-  variables:
-    PACKAGE_DIR: gnome-shell-extension-gtk4-desktop-icons-ng
-
 gnome-shell-extension-desktop-icons-ng-anduinos:
   extends: .publish
   variables:
