@@ -174,7 +174,7 @@ do_generate() {
     # Create parent directories and extract
     mkdir -p "$(dirname "$tmpdir/$rel")"
     gresource extract "$source_file" "$resource" > "$tmpdir/$rel" 2>/dev/null || true
-    ((count++))
+    count=$((count + 1))
   done < <(gresource list "$source_file")
   prompt "Extracted $count resources"
 
