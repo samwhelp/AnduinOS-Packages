@@ -110,6 +110,7 @@ These ship files or declare dependencies without replacing any Ubuntu package.
 | `anduinos-core-system` | Metapackage | Core system foundation (kernel, networking, boot, firmware, APT, security) |
 | `anduinos-desktop-apps` | Metapackage | Default application selection (browser, office, media, utilities) |
 | `anduinos-theme` | Metapackage | AnduinOS theme stack (Fluent GTK + Fluent icons + fonts + wallpapers) |
+| `anduinos-gdm3-wallpaper` | Theme | GDM3 dynamic wallpaper engine |
 | `anduinos-appstore` | App | Flatpak-based app store with Flathub remote |
 | `anduinos-deskmon` | Service | Desktop monitoring / hardware info agent |
 | `anduinos-system-tweaks` | Config | System tuning (swappiness, I/O scheduler, sysctl) |

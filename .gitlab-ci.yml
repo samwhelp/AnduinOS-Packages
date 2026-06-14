@@ -63,6 +63,11 @@ anduinos-apt-config:
   variables:
     PACKAGE_DIR: anduinos-apt-config
 
+anduinos-gdm3-wallpaper:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-gdm3-wallpaper
+
 anduinos-apt-config-dev:
   extends: .publish
   needs:

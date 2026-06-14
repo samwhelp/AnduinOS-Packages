@@ -39,7 +39,6 @@
     <Recommend Include="anduinos-system-tweaks" />
     <Recommend Include="anduinos-templates" />
     <!-- Brand packages the user may want to swap or remove -->
-    <Recommend Include="plymouth-anduinos" />
     <Recommend Include="anduinos-software-properties-common" />
     <Recommend Include="anduinos-software-properties-gtk" Condition="'$(Suite)' == 'resolute-addon'" />
 
