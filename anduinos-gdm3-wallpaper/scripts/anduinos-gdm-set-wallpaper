@@ -204,9 +204,9 @@ do_generate() {
 
 /* Make user list and login prompt sleek dark semi-transparent */
 .login-dialog-user-list-item,
-.login-dialog-prompt-layout,
 .login-dialog-auth-list-item,
-.unlock-dialog-prompt-layout,
+.login-dialog-prompt-entry,
+.unlock-dialog-prompt-entry,
 .login-dialog-not-listed-button,
 .login-dialog-button {
   background-color: rgba(0, 0, 0, 0.35) !important;
@@ -215,6 +215,8 @@ do_generate() {
 }
 .login-dialog-user-list-item:hover,
 .login-dialog-user-list-item:focus,
+.login-dialog-prompt-entry:focus,
+.unlock-dialog-prompt-entry:focus,
 .login-dialog-not-listed-button:hover,
 .login-dialog-not-listed-button:focus,
 .login-dialog-button:hover,
