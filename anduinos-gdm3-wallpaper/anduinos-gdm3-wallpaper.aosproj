@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-gdm3-wallpaper</PackageName>
-    <PackageVersion>2.0.0~beta2-9+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta2-10+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS GDM3 dynamic wallpaper engine</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -18,7 +18,6 @@
     <!-- Dependencies -->
     <Dependency Include="libglib2.0-bin" />
     <Dependency Include="libglib2.0-dev-bin" />
-    <Dependency Include="anduinos-wallpapers" />
     <Dependency Include="gnome-shell-common" />
     
     <!-- imagemagick intentionally NOT listed as a dependency.
@@ -27,6 +26,9 @@
 
     <!-- Engine script for setting wallpaper -->
     <IncludeFile Include="scripts/anduinos-gdm-set-wallpaper" Target="/usr/bin/anduinos-gdm-set-wallpaper" Mode="755" />
+
+    <!-- Default GDM wallpaper -->
+    <IncludeFile Include="assets/gdm3.jpg" Target="/usr/share/anduinos-gdm3-wallpaper/gdm3.jpg" Mode="644" />
     
     <!-- Debian maintainer scripts -->
     <PostInstallScript Include="scripts/postinst.sh" />
