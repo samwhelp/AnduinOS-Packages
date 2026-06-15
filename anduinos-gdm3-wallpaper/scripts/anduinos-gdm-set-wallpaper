@@ -206,13 +206,19 @@ do_generate() {
 .login-dialog-user-list-item,
 .login-dialog-prompt-layout,
 .login-dialog-auth-list-item,
-.unlock-dialog-prompt-layout {
+.unlock-dialog-prompt-layout,
+.login-dialog-not-listed-button,
+.login-dialog-button {
   background-color: rgba(0, 0, 0, 0.35) !important;
-  border-radius: 16px !important;
+  border-radius: 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 .login-dialog-user-list-item:hover,
-.login-dialog-user-list-item:focus {
+.login-dialog-user-list-item:focus,
+.login-dialog-not-listed-button:hover,
+.login-dialog-not-listed-button:focus,
+.login-dialog-button:hover,
+.login-dialog-button:focus {
   background-color: rgba(0, 0, 0, 0.6) !important;
 }
 "
