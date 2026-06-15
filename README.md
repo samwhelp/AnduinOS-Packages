@@ -275,11 +275,11 @@ Then **CI rebuilds all 19 extension packages automatically** — the new GNOME v
 
 #### D.2 Extension `.aosproj` version numbers
 
-Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~beta2-1+$(SuiteShortName)`. Bump the Debian revision suffix (e.g. `-1` → `-2`) when packaging changes. The resolver fetches the latest extension code at build time, so the extension code itself is always up-to-date regardless of the package version.
+Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~beta3-1+$(SuiteShortName)`. Bump the Debian revision suffix (e.g. `-1` → `-2`) when packaging changes. The resolver fetches the latest extension code at build time, so the extension code itself is always up-to-date regardless of the package version.
 
 ```diff
--<PackageVersion>2.0.0~beta2-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~beta2-2+$(SuiteShortName)</PackageVersion>
+-<PackageVersion>2.0.0~beta3-1+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~beta3-2+$(SuiteShortName)</PackageVersion>
 ```
 
 #### D.3 Special-cased extension: desktop-icons-ng-anduinos
