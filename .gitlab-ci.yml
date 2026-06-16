@@ -65,8 +65,6 @@ anduinos-apt-config:
 
 anduinos-gdm3-wallpaper:
   extends: .publish
-  needs:
-    - anduinos-wallpapers
   variables:
     PACKAGE_DIR: anduinos-gdm3-wallpaper
 
@@ -179,11 +177,15 @@ gnome-shell-extension-customize-ibus:
 
 gnome-shell-extension-dash-to-panel-anduinos:
   extends: .publish
+  needs:
+    - anduinos-appearance
   variables:
     PACKAGE_DIR: gnome-shell-extension-dash-to-panel-anduinos
 
 gnome-shell-extension-desktop-icons-ng-anduinos:
   extends: .publish
+  needs:
+    - anduinos-appearance
   variables:
     PACKAGE_DIR: gnome-shell-extension-desktop-icons-ng-anduinos
 
@@ -229,6 +231,8 @@ alsa-ucm-conf-anduinos:
 
 firmware-sof-anduinos:
   extends: .publish
+  needs:
+    - alsa-ucm-conf-anduinos
   variables:
     PACKAGE_DIR: firmware-sof-anduinos
 
