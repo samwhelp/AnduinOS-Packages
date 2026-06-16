@@ -4,7 +4,8 @@
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Gdk, GLib, Adw
+gi.require_version('Gio', '2.0')
+from gi.repository import Gtk, Gdk, GLib, Adw, Gio
 import subprocess
 import math
 import shutil
@@ -552,6 +553,19 @@ class AdvancedPage(Adw.PreferencesPage):
         dlg.present()
 
 
+def _find_headerbar(widget):
+    """Recursively walk the widget tree to find an Adw.HeaderBar."""
+    if isinstance(widget, Adw.HeaderBar):
+        return widget
+    child = widget.get_first_child() if hasattr(widget, 'get_first_child') else None
+    while child:
+        result = _find_headerbar(child)
+        if result:
+            return result
+        child = child.get_next_sibling() if hasattr(child, 'get_next_sibling') else None
+    return None
+
+
 # ── main window ──────────────────────────────────────────────────
 
 class AppearanceWindow(Adw.PreferencesWindow):
@@ -559,6 +573,7 @@ class AppearanceWindow(Adw.PreferencesWindow):
         super().__init__(application=app)
         self.set_title('AnduinOS Appearance')
         self.set_default_size(780, 460)
+        self.set_icon_name('anduinos-appearance')
 
         self.current_style, self.current_position = detect_current()
 
@@ -572,6 +587,22 @@ class AppearanceWindow(Adw.PreferencesWindow):
         self.add(self.position_page)
         self.add(self.widgets_page)
         self.add(self.advanced_page)
+
+        # Inject hamburger menu into internal headerbar on realize
+        self.connect('realize', self._inject_menu)
+
+    def _inject_menu(self, window):
+        """Find the internal Adw.HeaderBar and add an About menu button."""
+        menu = Gio.Menu()
+        menu.append('About AnduinOS Appearance', 'app.about')
+
+        menu_btn = Gtk.MenuButton()
+        menu_btn.set_icon_name('open-menu-symbolic')
+        menu_btn.set_menu_model(menu)
+
+        header = _find_headerbar(window)
+        if header:
+            header.pack_end(menu_btn)
 
     def _toast(self, message: str):
         self.add_toast(Adw.Toast.new(message))
@@ -590,6 +621,23 @@ class AppearanceWindow(Adw.PreferencesWindow):
 class AppearanceApp(Adw.Application):
     def __init__(self):
         super().__init__(application_id='com.anduinos.Appearance')
+
+    def do_startup(self):
+        Adw.Application.do_startup(self)
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', self._on_about)
+        self.add_action(about_action)
+
+    def _on_about(self, action, param):
+        dialog = Adw.AboutDialog()
+        dialog.set_application_name('AnduinOS Appearance')
+        dialog.set_application_icon('anduinos-appearance')
+        dialog.set_developer_name('AnduinOS Team')
+        dialog.set_website('https://www.anduinos.com')
+        dialog.set_issue_url('https://github.com/AiursoftWeb/AnduinOS-Packages/issues')
+        dialog.set_license_type(Gtk.License.GPL_3_0)
+        dialog.set_version('2.0.0 Beta 3')
+        dialog.present(self.get_active_window())
 
     def do_activate(self):
         win = AppearanceWindow(self)

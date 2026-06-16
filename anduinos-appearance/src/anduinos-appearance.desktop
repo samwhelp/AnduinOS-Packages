@@ -9,3 +9,4 @@ Terminal=false
 Categories=Settings;GNOME;GTK;
 Keywords=taskbar;panel;layout;style;windows;appearance;
 StartupNotify=true
+StartupWMClass=com.anduinos.Appearance
