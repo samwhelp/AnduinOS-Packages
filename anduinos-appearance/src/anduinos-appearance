@@ -9,6 +9,7 @@ import math
 
 ARC  = '/org/gnome/shell/extensions/arcmenu'
 DTP  = '/org/gnome/shell/extensions/dash-to-panel'
+SHELL_BASE = '/org/gnome/shell'
 ARC_UUID = 'arcmenu@arcmenu.com'
 DTP_UUID = 'dash-to-panel@jderose9.github.com'
 
@@ -59,8 +60,8 @@ def _make_pep(panel_pos: str, centered: bool) -> str:
             '{"element":"centerBox","visible":true,"position":"stackedTL"},'
             '{"element":"taskbar","visible":true,"position":"stackedTL"},'
             '{"element":"showAppsButton","visible":false,"position":"stackedTL"},'
-            '{"element":"leftBox","visible":false,"position":"stackedTL"},'
             '{"element":"activitiesButton","visible":false,"position":"stackedBR"},'
+            '{"element":"leftBox","visible":true,"position":"stackedBR"},'
             '{"element":"rightBox","visible":true,"position":"stackedBR"},'
             '{"element":"systemMenu","visible":true,"position":"stackedBR"},'
             '{"element":"dateMenu","visible":true,"position":"stackedBR"},'
@@ -75,6 +76,11 @@ def _dconf_read(key: str) -> str | None:
         return r.stdout.strip() if r.returncode == 0 else None
     except Exception:
         return None
+
+
+def _ext_is_enabled(uuid: str) -> bool:
+    val = _dconf_read(f'{SHELL_BASE}/enabled-extensions')
+    return uuid in val if val else False
 
 
 def detect_current():
@@ -411,6 +417,184 @@ class PositionPage(Gtk.Box):
                 btn.handler_unblock_by_func(self._on_pos_toggled)
 
 
+# ── panel widgets page ───────────────────────────────────────────
+
+WIDGETS = {
+    'weather': ('Show Weather', 'simple-weather@romanlefler.com'),
+    'network': ('Show Network', 'network-stats@gnome.noroadsleft.xyz'),
+}
+
+
+class PanelWidgetsPage(Gtk.Box):
+    def __init__(self, win):
+        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+        self.set_margin_top(20)
+        self.set_margin_bottom(20)
+        self.set_margin_start(24)
+        self.set_margin_end(24)
+
+        t = Gtk.Label()
+        t.set_markup('<b>Panel Widgets</b>')
+        t.set_halign(Gtk.Align.START)
+        self.append(t)
+
+        sub = Gtk.Label(label='Toggle panel indicator widgets on or off.')
+        sub.set_halign(Gtk.Align.START)
+        sub.add_css_class('dim-label')
+        self.append(sub)
+
+        for key, (label, uuid) in WIDGETS.items():
+            row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+            row.set_margin_top(8)
+
+            lbl = Gtk.Label(label=label)
+            lbl.set_halign(Gtk.Align.START)
+            lbl.set_hexpand(True)
+            row.append(lbl)
+
+            switch = Gtk.Switch()
+            switch.set_active(_ext_is_enabled(uuid))
+            switch.connect('state-set', self._on_toggle, uuid, label)
+            switch.set_valign(Gtk.Align.CENTER)
+            row.append(switch)
+
+            self.append(row)
+
+    def _on_toggle(self, switch, state, uuid, label):
+        action = 'enable' if state else 'disable'
+        try:
+            subprocess.run(['gnome-extensions', action, uuid], check=True)
+            self.win.status.set_label(f'✓ {label} — {action}d')
+        except subprocess.CalledProcessError:
+            self.win.status.set_label(f'✗ Failed to {action} {label}')
+            # revert switch
+            switch.handler_block_by_func(self._on_toggle)
+            switch.set_active(not state)
+            switch.handler_unblock_by_func(self._on_toggle)
+
+
+# ── advanced page ────────────────────────────────────────────────
+
+class AdvancedPage(Gtk.Box):
+    def __init__(self, win):
+        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+        self.set_margin_top(20)
+        self.set_margin_bottom(20)
+        self.set_margin_start(24)
+        self.set_margin_end(24)
+
+        t = Gtk.Label()
+        t.set_markup('<b>Advanced</b>')
+        t.set_halign(Gtk.Align.START)
+        self.append(t)
+
+        # ── Appearance section ──
+        sec1 = Gtk.Label()
+        sec1.set_markup('<b>Appearance</b>')
+        sec1.set_halign(Gtk.Align.START)
+        sec1.set_margin_top(8)
+        self.append(sec1)
+
+        btn_wallpaper = Gtk.Button(label='  Wallpaper Settings  ')
+        btn_wallpaper.set_halign(Gtk.Align.START)
+        btn_wallpaper.connect('clicked', lambda b: subprocess.Popen(
+            ['gnome-control-center', 'background']))
+        self.append(btn_wallpaper)
+
+        import shutil
+        if shutil.which('gnome-tweaks'):
+            btn_tweaks = Gtk.Button(label='  Advanced Tweaks  ')
+            btn_tweaks.set_halign(Gtk.Align.START)
+            btn_tweaks.connect('clicked', lambda b: subprocess.Popen(['gnome-tweaks']))
+            self.append(btn_tweaks)
+
+        # ── Extension Settings section ──
+        sec2 = Gtk.Label()
+        sec2.set_markup('<b>Extension Settings</b>')
+        sec2.set_halign(Gtk.Align.START)
+        sec2.set_margin_top(16)
+        self.append(sec2)
+
+        sub = Gtk.Label(label='Open the preference windows of the panel extensions.')
+        sub.set_halign(Gtk.Align.START)
+        sub.add_css_class('dim-label')
+        self.append(sub)
+
+        btn_arc = Gtk.Button(label='  ArcMenu Settings  ')
+        btn_arc.set_halign(Gtk.Align.START)
+        btn_arc.connect('clicked', lambda b: subprocess.Popen(
+            ['gnome-extensions', 'prefs', 'arcmenu@arcmenu.com']))
+        self.append(btn_arc)
+
+        btn_dtp = Gtk.Button(label='  Dash-to-Panel Settings  ')
+        btn_dtp.set_halign(Gtk.Align.START)
+        btn_dtp.connect('clicked', lambda b: subprocess.Popen(
+            ['gnome-extensions', 'prefs', 'dash-to-panel@jderose9.github.com']))
+        self.append(btn_dtp)
+
+        # ── Danger Zone ──
+        sec3 = Gtk.Label()
+        sec3.set_markup('<b>Danger Zone</b>')
+        sec3.set_halign(Gtk.Align.START)
+        sec3.set_margin_top(24)
+        self.append(sec3)
+
+        btn_reset = Gtk.Button(label='  Reset desktop settings  ')
+        btn_reset.set_halign(Gtk.Align.START)
+        btn_reset.add_css_class('destructive-action')
+        btn_reset.connect('clicked', self._on_reset)
+        self.append(btn_reset)
+
+    def _on_reset(self, btn):
+        # first confirmation
+        dlg1 = Gtk.MessageDialog(
+            transient_for=self.win,
+            modal=True,
+            message_type=Gtk.MessageType.WARNING,
+            buttons=Gtk.ButtonsType.NONE,
+        )
+        dlg1.set_markup('<b>Reset desktop settings?</b>')
+        dlg1.set_secondary_text('This will reset all GNOME Shell settings to factory defaults.\nYour extensions, panel layout, and preferences will be lost.')
+        dlg1.add_button('Cancel', Gtk.ResponseType.CANCEL)
+        btn_reset1 = dlg1.add_button('Reset', Gtk.ResponseType.OK)
+        btn_reset1.add_css_class('destructive-action')
+        dlg1.set_default_response(Gtk.ResponseType.CANCEL)
+        dlg1.present()
+
+        def on_response1(dlg, resp):
+            dlg.destroy()
+            if resp != Gtk.ResponseType.OK:
+                return
+            # second confirmation
+            dlg2 = Gtk.MessageDialog(
+                transient_for=self.win,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.NONE,
+            )
+            dlg2.set_markup('<b>Are you absolutely sure?</b>')
+            dlg2.set_secondary_text('This action cannot be undone.\nA Shell restart may be required afterwards.')
+            dlg2.add_button('Cancel', Gtk.ResponseType.CANCEL)
+            btn_reset2 = dlg2.add_button('Reset Everything', Gtk.ResponseType.OK)
+            btn_reset2.add_css_class('destructive-action')
+            dlg2.set_default_response(Gtk.ResponseType.CANCEL)
+            dlg2.present()
+
+            def on_response2(dlg, resp):
+                dlg.destroy()
+                if resp != Gtk.ResponseType.OK:
+                    return
+                try:
+                    subprocess.run(['dconf', 'reset', '-f', '/org/gnome/shell/'], check=True)
+                    self.win.status.set_label('✓ Desktop settings reset. Restart Shell to apply.')
+                except subprocess.CalledProcessError:
+                    self.win.status.set_label('✗ Failed to reset')
+
+            dlg2.connect('response', on_response2)
+
+        dlg1.connect('response', on_response1)
+
+
 # ── main window ──────────────────────────────────────────────────
 
 class AppearanceWindow(Gtk.ApplicationWindow):
@@ -433,7 +617,7 @@ class AppearanceWindow(Gtk.ApplicationWindow):
         sidebar.set_size_request(160, -1)
         sidebar.add_css_class('navigation-sidebar')
 
-        items = ['Taskbar Style', 'Taskbar Position']
+        items = ['Taskbar Style', 'Taskbar Position', 'Panel Widgets', 'Advanced']
         for i, name in enumerate(items):
             row = Gtk.ListBoxRow()
             label = Gtk.Label(label=name)
@@ -457,9 +641,13 @@ class AppearanceWindow(Gtk.ApplicationWindow):
 
         self.style_page = StylePage(self)
         self.position_page = PositionPage(self)
+        self.widgets_page = PanelWidgetsPage(self)
+        self.advanced_page = AdvancedPage(self)
 
         self.stack.add_titled(self.style_page, 'style', 'Taskbar Style')
         self.stack.add_titled(self.position_page, 'position', 'Taskbar Position')
+        self.stack.add_titled(self.widgets_page, 'widgets', 'Panel Widgets')
+        self.stack.add_titled(self.advanced_page, 'advanced', 'Advanced')
 
         # -- right side: stack + status --
         vbox_right = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -482,8 +670,8 @@ class AppearanceWindow(Gtk.ApplicationWindow):
         if row is None or not hasattr(self, 'stack'):
             return
         idx = row.get_index()
-        page_name = 'style' if idx == 0 else 'position'
-        self.stack.set_visible_child_name(page_name)
+        page_names = {0: 'style', 1: 'position', 2: 'widgets', 3: 'advanced'}
+        self.stack.set_visible_child_name(page_names.get(idx, 'style'))
 
     def _sync_all_highlights(self):
         self.style_page._highlight_btn()
