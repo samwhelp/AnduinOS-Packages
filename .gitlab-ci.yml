@@ -77,6 +77,11 @@ anduinos-apt-config-dev:
   variables:
     PACKAGE_DIR: anduinos-apt-config-dev
 
+anduinos-appearance:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-appearance
+
 anduinos-no-snapd:
   extends: .publish
   variables:
@@ -240,6 +245,7 @@ anduinos-theme:
     - anduinos-gdm3-wallpaper
     - anduinos-gnome-shell-locale
     - anduinos-fonts
+    - anduinos-appearance
   variables:
     PACKAGE_DIR: anduinos-theme
 

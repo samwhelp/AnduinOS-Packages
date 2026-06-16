@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=AnduinOS Appearance
+GenericName=Taskbar Style
+Comment=Switch between Windows 11 and Classic taskbar layouts
+Icon=anduinos-appearance
+Exec=anduinos-appearance
+Terminal=false
+Categories=Settings;GNOME;GTK;
+Keywords=taskbar;panel;layout;style;windows;appearance;
+StartupNotify=true
