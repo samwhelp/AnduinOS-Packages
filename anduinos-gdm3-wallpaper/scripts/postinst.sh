@@ -4,17 +4,14 @@ if [ "$1" = "configure" ]; then
     OUT_FILE="${OUT_DIR}/anduinos-theme.gresource"
     DEFAULT_WALLPAPER="/usr/share/anduinos-gdm3-wallpaper/Floating-objects-dark.png"
 
-    # 1. Generate the initial custom GDM theme if it doesn't exist
-    if [ ! -f "$OUT_FILE" ]; then
-        mkdir -p "$OUT_DIR"
-        
-        # We only generate if the default wallpaper exists (from anduinos-wallpapers)
-        if [ -f "$DEFAULT_WALLPAPER" ]; then
-            echo "Generating default AnduinOS GDM theme..."
-            /usr/bin/anduinos-gdm-set-wallpaper --wallpaper "$DEFAULT_WALLPAPER" --output "$OUT_FILE"
-        else
-            echo "Warning: Default wallpaper $DEFAULT_WALLPAPER not found. Skipping theme generation."
-        fi
+    # 1. (Re)generate the custom GDM theme on every install/upgrade
+    mkdir -p "$OUT_DIR"
+
+    if [ -f "$DEFAULT_WALLPAPER" ]; then
+        echo "Generating default AnduinOS GDM theme..."
+        /usr/bin/anduinos-gdm-set-wallpaper --wallpaper "$DEFAULT_WALLPAPER" --output "$OUT_FILE"
+    else
+        echo "Warning: Default wallpaper $DEFAULT_WALLPAPER not found. Skipping theme generation."
     fi
 
     # 2. Register with alternatives system (Priority 150)

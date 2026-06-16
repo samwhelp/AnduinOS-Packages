@@ -65,6 +65,8 @@ anduinos-apt-config:
 
 anduinos-gdm3-wallpaper:
   extends: .publish
+  needs:
+    - anduinos-fluent-gtk-theme
   variables:
     PACKAGE_DIR: anduinos-gdm3-wallpaper
 
