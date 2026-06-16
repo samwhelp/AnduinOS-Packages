@@ -64,6 +64,9 @@ for SUITE in "${!GNOME_TARGETS[@]}"; do
 
     echo "[$SUITE] JS patch applied successfully."
 
+    # ── DING v84 spawns ding.js as a child process, needs +x ──────────
+    chmod +x "$DEPLOY_DIR/app/ding.js"
+
     # ── Inject "AnduinOS Appearance Settings" into ding.mo ────────────────
     locale_dir="$DEPLOY_DIR/locale"
     found=0
