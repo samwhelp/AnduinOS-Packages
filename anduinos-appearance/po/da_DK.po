@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Danish translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: da_DK\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Om AnduinOS Udseende"
+
+msgid "Advanced"
+msgstr "Avanceret"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS Udseende"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS-teamet"
+
+msgid "Appearance"
+msgstr "Udseende"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Annuller"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Vælg det visuelle stil af din opgavelinje."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Vælg hvor din opgavelinje sidder på skærmen."
+
+msgid "Classic"
+msgstr "Klassisk"
+
+msgid "Danger Zone"
+msgstr "Farezone"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Udvidelsesindstillinger"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Open"
+msgstr "Åbn"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Åbn præferencevinduerne for paneludvidelser."
+
+msgid "Panel Indicators"
+msgstr "Panelindikatorer"
+
+msgid "Panel Position"
+msgstr "Panelposition"
+
+msgid "Panel Widgets"
+msgstr "Panelwidgetter"
+
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+msgid "Reset"
+msgstr "Nulstil"
+
+msgid "Reset desktop settings"
+msgstr "Nulstil skrivebordsindstillinger"
+
+msgid "Reset desktop settings?"
+msgstr "Nulstil skrivebordsindstillinger?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Gendan alle GNOME Shell-indstillinger til fabriksstandard"
+
+msgid "Taskbar Position"
+msgstr "Opgavelinjeposition"
+
+msgid "Taskbar Style"
+msgstr "Opgavelinjestil"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Slå panelindikatorwidgetter til eller fra."
+
+msgid "Tweaks"
+msgstr "Justeringer"
+
+msgid "Wallpaper"
+msgstr "Baggrundsbillede"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Anvendt — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Skrivebordsindstillinger nulstillet. Genstart Shell for at anvende."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}et"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Kunne ikke anvende position"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Kunne ikke anvende stil"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Kunne ikke nulstille"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Kunne ikke {action} {label}"
+
+msgid "Bottom"
+msgstr "Nederst"
+
+msgid "Top"
+msgstr "Øverst"
+
+msgid "Left"
+msgstr "Venstre"
+
+msgid "Right"
+msgstr "Højre"
+
+msgid "Show Weather"
+msgstr "Vis vejr"
+
+msgid "Show Network"
+msgstr "Vis netværk"
+

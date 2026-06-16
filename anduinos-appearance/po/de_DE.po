@@ -1,0 +1,141 @@
+# AnduinOS Appearance — German translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: de_DE\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Über AnduinOS-Aussehen"
+
+msgid "Advanced"
+msgstr "Erweitert"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS-Aussehen"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS-Team"
+
+msgid "Appearance"
+msgstr "Aussehen"
+
+msgid "ArcMenu"
+msgstr "ArcMenü"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Wählen Sie den visuellen Stil Ihrer Taskleiste."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Wählen Sie, wo Ihre Taskleiste auf dem Bildschirm platziert ist."
+
+msgid "Classic"
+msgstr "Klassisch"
+
+msgid "Danger Zone"
+msgstr "Gefahrenzone"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Erweiterungseinstellungen"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Open"
+msgstr "Öffnen"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Öffnen Sie die Einstellungsfenster der Panelerweiterungen."
+
+msgid "Panel Indicators"
+msgstr "Panel-Indikatoren"
+
+msgid "Panel Position"
+msgstr "Panelposition"
+
+msgid "Panel Widgets"
+msgstr "Panel-Widgets"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Reset desktop settings"
+msgstr "Desktop-Einstellungen zurücksetzen"
+
+msgid "Reset desktop settings?"
+msgstr "Desktop-Einstellungen zurücksetzen?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Alle GNOME Shell-Einstellungen auf die Werkseinstellungen zurücksetzen"
+
+msgid "Taskbar Position"
+msgstr "Taskleistenposition"
+
+msgid "Taskbar Style"
+msgstr "Taskleistenstil"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Panel-Indikator-Widgets ein- oder ausschalten."
+
+msgid "Tweaks"
+msgstr "Anpassungen"
+
+msgid "Wallpaper"
+msgstr "Hintergrundbild"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Angewendet — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Desktop-Einstellungen zurückgesetzt. Shell neu starten, um anzuwenden."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Position konnte nicht angewendet werden"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Stil konnte nicht angewendet werden"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Zurücksetzen fehlgeschlagen"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {label} konnte nicht {action} werden"
+
+msgid "Bottom"
+msgstr "Unten"
+
+msgid "Top"
+msgstr "Oben"
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Show Weather"
+msgstr "Wetter anzeigen"
+
+msgid "Show Network"
+msgstr "Netzwerk anzeigen"
+

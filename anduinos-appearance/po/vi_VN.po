@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Vietnamese translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: vi_VN\n"
+"Language-Team: Vietnamese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Giới thiệu về Giao diện AnduinOS"
+
+msgid "Advanced"
+msgstr "Nâng cao"
+
+msgid "AnduinOS Appearance"
+msgstr "Giao diện AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Đội ngũ AnduinOS"
+
+msgid "Appearance"
+msgstr "Giao diện"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Chọn kiểu hiển thị cho thanh tác vụ của bạn."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Chọn vị trí đặt thanh tác vụ trên màn hình."
+
+msgid "Classic"
+msgstr "Cổ điển"
+
+msgid "Danger Zone"
+msgstr "Vùng nguy hiểm"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Cài tiện ích mở rộng"
+
+msgid "Layout"
+msgstr "Bố cục"
+
+msgid "Open"
+msgstr "Mở"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Mở cửa sổ tùy chọn của các tiện ích thanh công cụ."
+
+msgid "Panel Indicators"
+msgstr "Biểu tượng trên thanh"
+
+msgid "Panel Position"
+msgstr "Vị trí thanh"
+
+msgid "Panel Widgets"
+msgstr "Tiện ích trên thanh"
+
+msgid "Preview"
+msgstr "Xem trước"
+
+msgid "Reset"
+msgstr "Đặt lại"
+
+msgid "Reset desktop settings"
+msgstr "Đặt lại cài đặt màn hình desktop"
+
+msgid "Reset desktop settings?"
+msgstr "Đặt lại cài đặt màn hình desktop?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Khôi phục tất cả cài đặt GNOME Shell về mặc định gốc"
+
+msgid "Taskbar Position"
+msgstr "Vị trí thanh tác vụ"
+
+msgid "Taskbar Style"
+msgstr "Kiểu thanh tác vụ"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Bật hoặc tắt các tiện ích biểu tượng trên thanh."
+
+msgid "Tweaks"
+msgstr "Tinh chỉnh"
+
+msgid "Wallpaper"
+msgstr "Hình nền"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Đã áp dụng — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Đã đặt lại cài đặt desktop. Khởi động lại Shell để áp dụng."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — Đã {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Không thể áp dụng vị trí"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Không thể áp dụng kiểu"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Không thể đặt lại"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Không thể {action} {label}"
+
+msgid "Bottom"
+msgstr "Dưới cùng"
+
+msgid "Top"
+msgstr "Trên cùng"
+
+msgid "Left"
+msgstr "Bên trái"
+
+msgid "Right"
+msgstr "Bên phải"
+
+msgid "Show Weather"
+msgstr "Hiển thị thời tiết"
+
+msgid "Show Network"
+msgstr "Hiển thị mạng"
+

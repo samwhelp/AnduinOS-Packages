@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Portuguese (Brazil) translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Sobre a Aparência do AnduinOS"
+
+msgid "Advanced"
+msgstr "Avançado"
+
+msgid "AnduinOS Appearance"
+msgstr "Aparência do AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Equipe AnduinOS"
+
+msgid "Appearance"
+msgstr "Aparência"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Escolha o estilo visual da sua barra de tarefas."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Escolha onde a sua barra de tarefas fica na tela."
+
+msgid "Classic"
+msgstr "Clássico"
+
+msgid "Danger Zone"
+msgstr "Zona de Perigo"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Configurações da Extensão"
+
+msgid "Layout"
+msgstr "Disposição"
+
+msgid "Open"
+msgstr "Abrir"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Abre as janelas de preferências das extensões do painel."
+
+msgid "Panel Indicators"
+msgstr "Indicadores do Painel"
+
+msgid "Panel Position"
+msgstr "Posição do Painel"
+
+msgid "Panel Widgets"
+msgstr "Widgets do Painel"
+
+msgid "Preview"
+msgstr "Prévia"
+
+msgid "Reset"
+msgstr "Redefinir"
+
+msgid "Reset desktop settings"
+msgstr "Redefinir configurações da área de trabalho"
+
+msgid "Reset desktop settings?"
+msgstr "Redefinir configurações da área de trabalho?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Restaura todas as configurações do GNOME Shell para os padrões de fábrica"
+
+msgid "Taskbar Position"
+msgstr "Posição da Barra de Tarefas"
+
+msgid "Taskbar Style"
+msgstr "Estilo da Barra de Tarefas"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Ativa ou desativa os widgets dos indicadores do painel."
+
+msgid "Tweaks"
+msgstr "Ajustes"
+
+msgid "Wallpaper"
+msgstr "Papel de Parede"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Aplicado — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Configurações da área de trabalho redefinidas. Reinicie o Shell para aplicar."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}o"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Falha ao aplicar posição"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Falha ao aplicar estilo"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Falha ao redefinir"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Falha ao {action} {label}"
+
+msgid "Bottom"
+msgstr "Inferior"
+
+msgid "Top"
+msgstr "Superior"
+
+msgid "Left"
+msgstr "Esquerda"
+
+msgid "Right"
+msgstr "Direita"
+
+msgid "Show Weather"
+msgstr "Mostrar Clima"
+
+msgid "Show Network"
+msgstr "Mostrar Rede"
+

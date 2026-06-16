@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Turkish translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: tr_TR\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "AnduinOS Görünümü Hakkında"
+
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS Görünümü"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS Ekibi"
+
+msgid "Appearance"
+msgstr "Görünüm"
+
+msgid "ArcMenu"
+msgstr "ArcMenü"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Görev çubuğunun görsel stilini seçin."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Görev çubuğunun ekranda nerede bulunacağını seçin."
+
+msgid "Classic"
+msgstr "Klasik"
+
+msgid "Danger Zone"
+msgstr "Tehlike Bölgesi"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Eklenti Ayarları"
+
+msgid "Layout"
+msgstr "Düzen"
+
+msgid "Open"
+msgstr "Aç"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Panel eklentilerinin tercih pencerelerini açın."
+
+msgid "Panel Indicators"
+msgstr "Panel Göstergeleri"
+
+msgid "Panel Position"
+msgstr "Panel Konumu"
+
+msgid "Panel Widgets"
+msgstr "Panel Widget'ları"
+
+msgid "Preview"
+msgstr "Önizleme"
+
+msgid "Reset"
+msgstr "Sıfırla"
+
+msgid "Reset desktop settings"
+msgstr "Masaüstü ayarlarını sıfırla"
+
+msgid "Reset desktop settings?"
+msgstr "Masaüstü ayarları sıfırlansın mı?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Tüm GNOME Shell ayarlarını fabrika varsayılanlarına geri yükle"
+
+msgid "Taskbar Position"
+msgstr "Görev Çubuğu Konumu"
+
+msgid "Taskbar Style"
+msgstr "Görev Çubuğu Stili"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Panel göstergesi widget'larını açın veya kapatın."
+
+msgid "Tweaks"
+msgstr "Tweakler"
+
+msgid "Wallpaper"
+msgstr "Duvar Kağıdı"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Uygulandı — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Masaüstü ayarları sıfırlandı. Uygulamak için Shell'i yeniden başlatın."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ildi"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Konum uygulanamadı"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Stil uygulanamadı"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Sıfırlama başarısız"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {label} {action} işlemi başarısız"
+
+msgid "Bottom"
+msgstr "Alt"
+
+msgid "Top"
+msgstr "Üst"
+
+msgid "Left"
+msgstr "Sol"
+
+msgid "Right"
+msgstr "Sağ"
+
+msgid "Show Weather"
+msgstr "Hava Durumunu Göster"
+
+msgid "Show Network"
+msgstr "Ağ Durumunu Göster"
+

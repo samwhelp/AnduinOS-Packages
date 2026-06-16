@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Finnish translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: fi_FI\n"
+"Language-Team: Finnish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Tietoja AnduinOS-ulkonäöstä"
+
+msgid "Advanced"
+msgstr "Edistynyt"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS-ulkonäkö"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS-tiimi"
+
+msgid "Appearance"
+msgstr "Ulkonäkö"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Valitse tehtäväpalkin visuaalinen tyyli."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Valitse, missä tehtäväpalkki sijaitsee näytöllä."
+
+msgid "Classic"
+msgstr "Klassinen"
+
+msgid "Danger Zone"
+msgstr "Vaaravyöhyke"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Laajennusten asetukset"
+
+msgid "Layout"
+msgstr "Ulkoasu"
+
+msgid "Open"
+msgstr "Avaa"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Avaa tehtäväpalkin laajennusten asetukset."
+
+msgid "Panel Indicators"
+msgstr "Palkin ilmoitukset"
+
+msgid "Panel Position"
+msgstr "Palkin sijainti"
+
+msgid "Panel Widgets"
+msgstr "Palkin widgetit"
+
+msgid "Preview"
+msgstr "Esikatselu"
+
+msgid "Reset"
+msgstr "Nollaa"
+
+msgid "Reset desktop settings"
+msgstr "Nollaa työpöydän asetukset"
+
+msgid "Reset desktop settings?"
+msgstr "Nollataanko työpöydän asetukset?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Palauta kaikki GNOME Shell -asetukset tehdasasetuksiin"
+
+msgid "Taskbar Position"
+msgstr "Tehtäväpalkin sijainti"
+
+msgid "Taskbar Style"
+msgstr "Tehtäväpalkin tyyli"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Ota palkin ilmoituswidgetit käyttöön tai poista ne käytöstä."
+
+msgid "Tweaks"
+msgstr "Hienosäädöt"
+
+msgid "Wallpaper"
+msgstr "Taustakuva"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Sovellettu — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Työpöydän asetukset nollattu. Käynnistä Shell uudelleen ottaaksesi muutokset käyttöön."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ettu"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Sijainnin soveltaminen epäonnistui"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Tyylin soveltaminen epäonnistui"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Nollaus epäonnistui"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {action} {label} epäonnistui"
+
+msgid "Bottom"
+msgstr "Alaosa"
+
+msgid "Top"
+msgstr "Yläosa"
+
+msgid "Left"
+msgstr "Vasen"
+
+msgid "Right"
+msgstr "Oikea"
+
+msgid "Show Weather"
+msgstr "Näytä sää"
+
+msgid "Show Network"
+msgstr "Näytä verkko"
+

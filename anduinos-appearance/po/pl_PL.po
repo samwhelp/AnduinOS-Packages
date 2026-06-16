@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Polish translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: pl_PL\n"
+"Language-Team: Polish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "O wyglądzie AnduinOS"
+
+msgid "Advanced"
+msgstr "Zaawansowane"
+
+msgid "AnduinOS Appearance"
+msgstr "Wygląd AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Zespół AnduinOS"
+
+msgid "Appearance"
+msgstr "Wygląd"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Wybierz wizualny styl paska zadań."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Wybierz, gdzie pasek zadań znajduje się na ekranie."
+
+msgid "Classic"
+msgstr "Klasyczny"
+
+msgid "Danger Zone"
+msgstr "Strefa zagrożenia"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Ustawienia rozszerzeń"
+
+msgid "Layout"
+msgstr "Układ"
+
+msgid "Open"
+msgstr "Otwórz"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Otwórz okna preferencji rozszerzeń panelu."
+
+msgid "Panel Indicators"
+msgstr "Wskaźniki panelu"
+
+msgid "Panel Position"
+msgstr "Pozycja panelu"
+
+msgid "Panel Widgets"
+msgstr "Widżety panelu"
+
+msgid "Preview"
+msgstr "Podgląd"
+
+msgid "Reset"
+msgstr "Resetuj"
+
+msgid "Reset desktop settings"
+msgstr "Zresetuj ustawienia pulpitu"
+
+msgid "Reset desktop settings?"
+msgstr "Zresetować ustawienia pulpitu?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Przywróć wszystkie ustawienia GNOME Shell do domyślnych"
+
+msgid "Taskbar Position"
+msgstr "Pozycja paska zadań"
+
+msgid "Taskbar Style"
+msgstr "Styl paska zadań"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Włącz lub wyłącz widżety wskaźników panelu."
+
+msgid "Tweaks"
+msgstr "Dostosowania"
+
+msgid "Wallpaper"
+msgstr "Tapeta"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Zastosowano — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Ustawienia pulpitu zresetowane. Uruchom ponownie Shell, aby zastosować zmiany."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}owane"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Nie udało się zastosować pozycji"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Nie udało się zastosować stylu"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Nie udało się zresetować"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Nie udało się {action} {label}"
+
+msgid "Bottom"
+msgstr "Dół"
+
+msgid "Top"
+msgstr "Góra"
+
+msgid "Left"
+msgstr "Lewo"
+
+msgid "Right"
+msgstr "Prawo"
+
+msgid "Show Weather"
+msgstr "Pokaż pogodę"
+
+msgid "Show Network"
+msgstr "Pokaż sieć"
+

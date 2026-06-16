@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Indonesian translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: id_ID\n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Tentang Tampilan AnduinOS"
+
+msgid "Advanced"
+msgstr "Lanjutan"
+
+msgid "AnduinOS Appearance"
+msgstr "Tampilan AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Tim AnduinOS"
+
+msgid "Appearance"
+msgstr "Tampilan"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Pilih gaya visual untuk taskbar Anda."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Pilih posisi taskbar pada layar."
+
+msgid "Classic"
+msgstr "Klasik"
+
+msgid "Danger Zone"
+msgstr "Zona Bahaya"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Pengaturan Ekstensi"
+
+msgid "Layout"
+msgstr "Tata Letak"
+
+msgid "Open"
+msgstr "Buka"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Buka jendela preferensi ekstensi panel."
+
+msgid "Panel Indicators"
+msgstr "Indikator Panel"
+
+msgid "Panel Position"
+msgstr "Posisi Panel"
+
+msgid "Panel Widgets"
+msgstr "Widget Panel"
+
+msgid "Preview"
+msgstr "Pratinjau"
+
+msgid "Reset"
+msgstr "Atur Ulang"
+
+msgid "Reset desktop settings"
+msgstr "Atur ulang pengaturan desktop"
+
+msgid "Reset desktop settings?"
+msgstr "Atur ulang pengaturan desktop?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Kembalikan semua pengaturan GNOME Shell ke default pabrik"
+
+msgid "Taskbar Position"
+msgstr "Posisi Taskbar"
+
+msgid "Taskbar Style"
+msgstr "Gaya Taskbar"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Aktifkan atau nonaktifkan widget indikator panel."
+
+msgid "Tweaks"
+msgstr "Penyesuaian"
+
+msgid "Wallpaper"
+msgstr "Latar Belakang"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Diterapkan — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Pengaturan desktop telah direset. Mulai ulang Shell untuk menerapkan."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Gagal menerapkan posisi"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Gagal menerapkan gaya"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Gagal mereset"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Gagal melakukan {action} pada {label}"
+
+msgid "Bottom"
+msgstr "Bawah"
+
+msgid "Top"
+msgstr "Atas"
+
+msgid "Left"
+msgstr "Kiri"
+
+msgid "Right"
+msgstr "Kanan"
+
+msgid "Show Weather"
+msgstr "Tampilkan Cuaca"
+
+msgid "Show Network"
+msgstr "Tampilkan Jaringan"
+

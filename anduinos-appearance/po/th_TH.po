@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Thai translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: th_TH\n"
+"Language-Team: Thai\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "เกี่ยวกับรูปลักษณ์ของ AnduinOS"
+
+msgid "Advanced"
+msgstr "ขั้นสูง"
+
+msgid "AnduinOS Appearance"
+msgstr "รูปลักษณ์ของ AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "ทีม AnduinOS"
+
+msgid "Appearance"
+msgstr "รูปลักษณ์"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "เลือกสไตล์ภาพของแถบงานของคุณ"
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "เลือกตำแหน่งที่แถบงานจะปรากฏบนหน้าจอ"
+
+msgid "Classic"
+msgstr "คลาสสิก"
+
+msgid "Danger Zone"
+msgstr "โซนอันตราย"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "การตั้งค่าส่วนขยาย"
+
+msgid "Layout"
+msgstr "เลย์เอาต์"
+
+msgid "Open"
+msgstr "เปิด"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "เปิดหน้าต่างการตั้งค่าของส่วนขยายแผง"
+
+msgid "Panel Indicators"
+msgstr "ตัวบ่งชี้แผง"
+
+msgid "Panel Position"
+msgstr "ตำแหน่งแผง"
+
+msgid "Panel Widgets"
+msgstr "วิดเจ็ตแผง"
+
+msgid "Preview"
+msgstr "ตัวอย่าง"
+
+msgid "Reset"
+msgstr "รีเซ็ต"
+
+msgid "Reset desktop settings"
+msgstr "รีเซ็ตการตั้งค่าเดสก์ท็อป"
+
+msgid "Reset desktop settings?"
+msgstr "รีเซ็ตการตั้งค่าเดสก์ท็อปหรือไม่?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "คืนค่าการตั้งค่า GNOME Shell ทั้งหมดเป็นค่าเริ่มต้นจากโรงงาน"
+
+msgid "Taskbar Position"
+msgstr "ตำแหน่งแถบงาน"
+
+msgid "Taskbar Style"
+msgstr "สไตล์แถบงาน"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "เปิดหรือปิดวิดเจ็ตตัวบ่งชี้แผง"
+
+msgid "Tweaks"
+msgstr "การปรับแต่ง"
+
+msgid "Wallpaper"
+msgstr "วอลเปเปอร์"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ นำไปใช้แล้ว — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ รีเซ็ตการตั้งค่าเดสก์ท็อปแล้ว รีสตาร์ท Shell เพื่อใช้งาน"
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}แล้ว"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ ล้มเหลวในการนำตำแหน่งไปใช้"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ ล้มเหลวในการนำสไตล์ไปใช้"
+
+msgid "✗ Failed to reset"
+msgstr "✗ ล้มเหลวในการรีเซ็ต"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ ล้มเหลวในการ {action} {label}"
+
+msgid "Bottom"
+msgstr "ด้านล่าง"
+
+msgid "Top"
+msgstr "ด้านบน"
+
+msgid "Left"
+msgstr "ด้านซ้าย"
+
+msgid "Right"
+msgstr "ด้านขวา"
+
+msgid "Show Weather"
+msgstr "แสดงสภาพอากาศ"
+
+msgid "Show Network"
+msgstr "แสดงเครือข่าย"
+

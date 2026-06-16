@@ -1,0 +1,141 @@
+# AnduinOS Appearance — English (United States) translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: en_US\n"
+"Language-Team: English (United States)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "AnduinOS Appearance"
+msgstr ""
+
+msgid "AnduinOS Team"
+msgstr ""
+
+msgid "Appearance"
+msgstr ""
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Choose the visual style of your taskbar."
+msgstr ""
+
+msgid "Choose where your taskbar sits on screen."
+msgstr ""
+
+msgid "Classic"
+msgstr ""
+
+msgid "Danger Zone"
+msgstr ""
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr ""
+
+msgid "Layout"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Open the preference windows of the panel extensions."
+msgstr ""
+
+msgid "Panel Indicators"
+msgstr ""
+
+msgid "Panel Position"
+msgstr ""
+
+msgid "Panel Widgets"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Reset desktop settings"
+msgstr ""
+
+msgid "Reset desktop settings?"
+msgstr ""
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr ""
+
+msgid "Taskbar Position"
+msgstr ""
+
+msgid "Taskbar Style"
+msgstr ""
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr ""
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Wallpaper"
+msgstr ""
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr ""
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr ""
+
+msgid "✓ {label} — {action}d"
+msgstr ""
+
+msgid "✗ Failed to apply position"
+msgstr ""
+
+msgid "✗ Failed to apply style"
+msgstr ""
+
+msgid "✗ Failed to reset"
+msgstr ""
+
+msgid "✗ Failed to {action} {label}"
+msgstr ""
+
+msgid "Bottom"
+msgstr ""
+
+msgid "Top"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Show Weather"
+msgstr ""
+
+msgid "Show Network"
+msgstr ""
+

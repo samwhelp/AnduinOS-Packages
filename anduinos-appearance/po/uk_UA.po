@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Ukrainian translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: uk_UA\n"
+"Language-Team: Ukrainian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Про оформлення AnduinOS"
+
+msgid "Advanced"
+msgstr "Додатково"
+
+msgid "AnduinOS Appearance"
+msgstr "Оформлення AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Команда AnduinOS"
+
+msgid "Appearance"
+msgstr "Оформлення"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Виберіть візуальний стиль вашої панелі завдань."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Виберіть розташування вашої панелі завдань на екрані."
+
+msgid "Classic"
+msgstr "Класичний"
+
+msgid "Danger Zone"
+msgstr "Зона небезпеки"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Налаштування розширень"
+
+msgid "Layout"
+msgstr "Макет"
+
+msgid "Open"
+msgstr "Відкрити"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Відкрийте вікна налаштувань для розширень панелі."
+
+msgid "Panel Indicators"
+msgstr "Індикатори панелі"
+
+msgid "Panel Position"
+msgstr "Позиція панелі"
+
+msgid "Panel Widgets"
+msgstr "Віджети панелі"
+
+msgid "Preview"
+msgstr "Перегляд"
+
+msgid "Reset"
+msgstr "Скинути"
+
+msgid "Reset desktop settings"
+msgstr "Скинути налаштування робочого столу"
+
+msgid "Reset desktop settings?"
+msgstr "Скинути налаштування робочого столу?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Відновити всі налаштування GNOME Shell до заводських значень"
+
+msgid "Taskbar Position"
+msgstr "Позиція панелі завдань"
+
+msgid "Taskbar Style"
+msgstr "Стиль панелі завдань"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Увімкнути або вимкнути віджети індикаторів панелі."
+
+msgid "Tweaks"
+msgstr "Твіки"
+
+msgid "Wallpaper"
+msgstr "Шпалери"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Застосовано — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Налаштування робочого столу скинуто. Перезавантажте Shell для застосування."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}но"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Не вдалося застосувати позицію"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Не вдалося застосувати стиль"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Не вдалося скинути"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Не вдалося {action} {label}"
+
+msgid "Bottom"
+msgstr "Знизу"
+
+msgid "Top"
+msgstr "Зверху"
+
+msgid "Left"
+msgstr "Зліва"
+
+msgid "Right"
+msgstr "Справа"
+
+msgid "Show Weather"
+msgstr "Показати погоду"
+
+msgid "Show Network"
+msgstr "Показати мережу"
+

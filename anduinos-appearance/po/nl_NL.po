@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Dutch translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: nl_NL\n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Over AnduinOS Uiterlijk"
+
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS Uiterlijk"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS-team"
+
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Kies de visuele stijl van je taakbalk."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Kies waar je taakbalk op het scherm komt te zitten."
+
+msgid "Classic"
+msgstr "Klassiek"
+
+msgid "Danger Zone"
+msgstr "Gevarenzone"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Extensie-instellingen"
+
+msgid "Layout"
+msgstr "Indeling"
+
+msgid "Open"
+msgstr "Openen"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Open de voorkeursvensters van de panelextensies."
+
+msgid "Panel Indicators"
+msgstr "Paneelindicatoren"
+
+msgid "Panel Position"
+msgstr "Panneelpositie"
+
+msgid "Panel Widgets"
+msgstr "Paneelwidgets"
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Reset"
+msgstr "Resetten"
+
+msgid "Reset desktop settings"
+msgstr "Bureaubladinstellingen resetten"
+
+msgid "Reset desktop settings?"
+msgstr "Bureaubladinstellingen resetten?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Herstel alle GNOME Shell-instellingen naar fabrieksinstellingen"
+
+msgid "Taskbar Position"
+msgstr "Taakbalkpositie"
+
+msgid "Taskbar Style"
+msgstr "Taakbalkstijl"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Schakel paneelindicatoren widgets in of uit."
+
+msgid "Tweaks"
+msgstr "Aanpassingen"
+
+msgid "Wallpaper"
+msgstr "Achtergrondafbeelding"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Toegepast — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Bureaubladinstellingen gereset. Herstart Shell om toe te passen."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Positie kan niet worden toegepast"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Stijl kan niet worden toegepast"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Kan niet resetten"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Kan {label} niet {action}"
+
+msgid "Bottom"
+msgstr "Onder"
+
+msgid "Top"
+msgstr "Boven"
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Show Weather"
+msgstr "Weer tonen"
+
+msgid "Show Network"
+msgstr "Netwerk tonen"
+

@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-appearance</PackageName>
-    <PackageVersion>2.0.0~beta3-4+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta3-5+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS Appearance — toggle between Windows 11 and Classic taskbar layouts</PackageDescription>
     <Section>utils</Section>
@@ -31,9 +31,10 @@
     <IncludeScript Include="src/anduinos-appearance" Target="/usr/bin/anduinos-appearance" />
     <IncludeFile Include="src/anduinos-appearance.desktop" Target="/usr/share/applications/anduinos-appearance.desktop" />
     <IncludeFile Include="resources/ccsm.svg" Target="/usr/share/icons/hicolor/scalable/apps/anduinos-appearance.svg" />
+    <IncludeFolder Include="locale" Target="/usr/share/locale" />
   </ItemGroup>
 
   <ItemGroup>
-    <PostInstallScript Include="scripts/postinst.sh" />
+    <PrebuildCommand Run="bash compile-locales.sh" />
   </ItemGroup>
 </Project>

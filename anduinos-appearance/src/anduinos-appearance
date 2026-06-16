@@ -10,7 +10,17 @@ import subprocess
 import math
 import shutil
 import warnings
+import gettext
+import os
 warnings.filterwarnings('ignore', category=DeprecationWarning, module='gi')
+
+# ── i18n ─────────────────────────────────────────────────────────
+_LOCALE_DIR = os.environ.get('ANDUINOS_APPEARANCE_LOCALE',
+                              '/usr/share/locale')
+try:
+    _ = gettext.translation('anduinos-appearance', _LOCALE_DIR, fallback=True).gettext
+except Exception:
+    _ = lambda s: s
 
 ARC  = '/org/gnome/shell/extensions/arcmenu'
 DTP  = '/org/gnome/shell/extensions/dash-to-panel'
@@ -275,13 +285,13 @@ class StylePage(Adw.PreferencesPage):
     def __init__(self, win):
         super().__init__()
         self.win = win
-        self.set_title('Taskbar Style')
+        self.set_title(_('Taskbar Style'))
         self.set_icon_name('preferences-desktop-theme-symbolic')
 
         # ── Preview group ──
         preview_group = Adw.PreferencesGroup()
-        preview_group.set_title('Preview')
-        preview_group.set_description('Choose the visual style of your taskbar.')
+        preview_group.set_title(_('Preview'))
+        preview_group.set_description(_('Choose the visual style of your taskbar.'))
 
         card = Gtk.Frame()
         card.add_css_class('card')
@@ -294,7 +304,7 @@ class StylePage(Adw.PreferencesPage):
 
         # ── Layout group ──
         layout_group = Adw.PreferencesGroup()
-        layout_group.set_title('Layout')
+        layout_group.set_title(_('Layout'))
 
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         self.btn11 = Gtk.Button(label='  11  ')
@@ -316,9 +326,9 @@ class StylePage(Adw.PreferencesPage):
             self.win.current_style = style
             self.win._sync_all_highlights()
             self.win._refresh_previews()
-            self.win._toast(f'✓ Applied — {self._label(style)} | {self.win.current_position.title()}')
+            self.win._toast(_('✓ Applied — {style} | {pos}').format(style=self._label(style), pos=_(POS_LABELS[self.win.current_position])))
         else:
-            self.win._toast('✗ Failed to apply style')
+            self.win._toast(_('✗ Failed to apply style'))
 
     def _highlight_btn(self):
         if self.win.current_style == 'eleven':
@@ -330,7 +340,7 @@ class StylePage(Adw.PreferencesPage):
 
     @staticmethod
     def _label(s):
-        return 'Windows 11' if s == 'eleven' else 'Classic'
+        return _('Windows 11') if s == 'eleven' else _('Classic')
 
 
 # ── position page ────────────────────────────────────────────────
@@ -342,12 +352,12 @@ class PositionPage(Adw.PreferencesPage):
     def __init__(self, win):
         super().__init__()
         self.win = win
-        self.set_title('Taskbar Position')
+        self.set_title(_('Taskbar Position'))
         self.set_icon_name('object-flip-vertical-symbolic')
 
         group = Adw.PreferencesGroup()
-        group.set_title('Panel Position')
-        group.set_description('Choose where your taskbar sits on screen.')
+        group.set_title(_('Panel Position'))
+        group.set_description(_('Choose where your taskbar sits on screen.'))
 
         # preview
         card = Gtk.Frame()
@@ -369,7 +379,7 @@ class PositionPage(Adw.PreferencesPage):
         positions = [('top',    0, 1), ('bottom', 1, 1),
                      ('left',   0, 2), ('right',  1, 2)]
         for pos, col, row in positions:
-            btn = Gtk.ToggleButton(label=POS_LABELS[pos])
+            btn = Gtk.ToggleButton(label=_(POS_LABELS[pos]))
             btn.connect('toggled', self._on_pos_toggled, pos)
             grid.attach(btn, col, row, 1, 1)
             self.pos_btns[pos] = btn
@@ -399,9 +409,9 @@ class PositionPage(Adw.PreferencesPage):
         if apply_style_and_position(self.win.current_style, pos):
             self.win.current_position = pos
             self.win._refresh_previews()
-            self.win._toast(f'✓ Applied — {StylePage._label(self.win.current_style)} | {POS_LABELS[pos]}')
+            self.win._toast(_('✓ Applied — {style} | {pos}').format(style=StylePage._label(self.win.current_style), pos=_(POS_LABELS[pos])))
         else:
-            self.win._toast('✗ Failed to apply position')
+            self.win._toast(_('✗ Failed to apply position'))
 
     def _highlight_pos(self):
         for p, btn in self.pos_btns.items():
@@ -424,16 +434,16 @@ class PanelWidgetsPage(Adw.PreferencesPage):
         super().__init__()
         self.win = win
         self._busy = False
-        self.set_title('Panel Widgets')
+        self.set_title(_('Panel Widgets'))
         self.set_icon_name('application-x-addon-symbolic')
 
         group = Adw.PreferencesGroup()
-        group.set_title('Panel Indicators')
-        group.set_description('Toggle panel indicator widgets on or off.')
+        group.set_title(_('Panel Indicators'))
+        group.set_description(_('Toggle panel indicator widgets on or off.'))
 
         for key, (label, uuid) in WIDGETS.items():
             row = Adw.SwitchRow()
-            row.set_title(label)
+            row.set_title(_(label))
             row.set_subtitle(uuid)
             row.set_active(_ext_is_enabled(uuid))
             row.connect('notify::active', self._on_toggle, uuid, label)
@@ -448,9 +458,9 @@ class PanelWidgetsPage(Adw.PreferencesPage):
         action = 'enable' if state else 'disable'
         try:
             subprocess.run(['gnome-extensions', action, uuid], check=True)
-            self.win._toast(f'✓ {label} — {action}d')
+            self.win._toast(_('✓ {label} — {action}d').format(label=label, action=action))
         except subprocess.CalledProcessError:
-            self.win._toast(f'✗ Failed to {action} {label}')
+            self.win._toast(_('✗ Failed to {action} {label}').format(action=action, label=label))
             # revert switch
             self._busy = True
             switch_row.set_active(not state)
@@ -463,16 +473,16 @@ class AdvancedPage(Adw.PreferencesPage):
     def __init__(self, win):
         super().__init__()
         self.win = win
-        self.set_title('Advanced')
+        self.set_title(_('Advanced'))
         self.set_icon_name('preferences-other-symbolic')
 
         # ── Appearance group ──
         appear = Adw.PreferencesGroup()
-        appear.set_title('Appearance')
+        appear.set_title(_('Appearance'))
 
         row_wallpaper = Adw.ActionRow()
-        row_wallpaper.set_title('Wallpaper')
-        btn_wallpaper = Gtk.Button(label='Open')
+        row_wallpaper.set_title(_('Wallpaper'))
+        btn_wallpaper = Gtk.Button(label=_('Open'))
         btn_wallpaper.set_valign(Gtk.Align.CENTER)
         btn_wallpaper.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-control-center', 'background']))
@@ -481,8 +491,8 @@ class AdvancedPage(Adw.PreferencesPage):
 
         if shutil.which('gnome-tweaks'):
             row_tweaks = Adw.ActionRow()
-            row_tweaks.set_title('Tweaks')
-            btn_tweaks = Gtk.Button(label='Open')
+            row_tweaks.set_title(_('Tweaks'))
+            btn_tweaks = Gtk.Button(label=_('Open'))
             btn_tweaks.set_valign(Gtk.Align.CENTER)
             btn_tweaks.connect('clicked', lambda b: subprocess.Popen(['gnome-tweaks']))
             row_tweaks.add_suffix(btn_tweaks)
@@ -492,12 +502,12 @@ class AdvancedPage(Adw.PreferencesPage):
 
         # ── Extension Settings group ──
         ext = Adw.PreferencesGroup()
-        ext.set_title('Extension Settings')
-        ext.set_description('Open the preference windows of the panel extensions.')
+        ext.set_title(_('Extension Settings'))
+        ext.set_description(_('Open the preference windows of the panel extensions.'))
 
         row_arc = Adw.ActionRow()
-        row_arc.set_title('ArcMenu')
-        btn_arc = Gtk.Button(label='Open')
+        row_arc.set_title(_('ArcMenu'))
+        btn_arc = Gtk.Button(label=_('Open'))
         btn_arc.set_valign(Gtk.Align.CENTER)
         btn_arc.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-extensions', 'prefs', 'arcmenu@arcmenu.com']))
@@ -505,8 +515,8 @@ class AdvancedPage(Adw.PreferencesPage):
         ext.add(row_arc)
 
         row_dtp = Adw.ActionRow()
-        row_dtp.set_title('Dash-to-Panel')
-        btn_dtp = Gtk.Button(label='Open')
+        row_dtp.set_title(_('Dash-to-Panel'))
+        btn_dtp = Gtk.Button(label=_('Open'))
         btn_dtp.set_valign(Gtk.Align.CENTER)
         btn_dtp.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-extensions', 'prefs', 'dash-to-panel@jderose9.github.com']))
@@ -517,12 +527,12 @@ class AdvancedPage(Adw.PreferencesPage):
 
         # ── Danger Zone group ──
         danger = Adw.PreferencesGroup()
-        danger.set_title('Danger Zone')
+        danger.set_title(_('Danger Zone'))
 
         row_reset = Adw.ActionRow()
-        row_reset.set_title('Reset desktop settings')
-        row_reset.set_subtitle('Restore all GNOME Shell settings to factory defaults')
-        btn_reset = Gtk.Button(label='Reset')
+        row_reset.set_title(_('Reset desktop settings'))
+        row_reset.set_subtitle(_('Restore all GNOME Shell settings to factory defaults'))
+        btn_reset = Gtk.Button(label=_('Reset'))
         btn_reset.set_valign(Gtk.Align.CENTER)
         btn_reset.add_css_class('destructive-action')
         btn_reset.connect('clicked', self._on_reset)
@@ -535,18 +545,18 @@ class AdvancedPage(Adw.PreferencesPage):
         def do_reset():
             try:
                 subprocess.run(['dconf', 'reset', '-f', '/org/gnome/shell/'], check=True)
-                self.win._toast('✓ Desktop settings reset. Restart Shell to apply.')
+                self.win._toast(_('✓ Desktop settings reset. Restart Shell to apply.'))
             except subprocess.CalledProcessError:
-                self.win._toast('✗ Failed to reset')
+                self.win._toast(_('✗ Failed to reset'))
 
         dlg = Adw.MessageDialog.new(
             self.win,
-            'Reset desktop settings?',
-            'This will reset all GNOME Shell settings to factory defaults.\n'
-            'Your extensions, panel layout, and preferences will be lost.'
+            _('Reset desktop settings?'),
+            _('This will reset all GNOME Shell settings to factory defaults.\n'
+              'Your extensions, panel layout, and preferences will be lost.')
         )
-        dlg.add_response('cancel', 'Cancel')
-        dlg.add_response('reset', 'Reset')
+        dlg.add_response('cancel', _('Cancel'))
+        dlg.add_response('reset', _('Reset'))
         dlg.set_response_appearance('reset', Adw.ResponseAppearance.DESTRUCTIVE)
         dlg.set_default_response('cancel')
         dlg.connect('response', lambda d, resp: (d.destroy(), do_reset() if resp == 'reset' else None))
@@ -571,7 +581,7 @@ def _find_headerbar(widget):
 class AppearanceWindow(Adw.PreferencesWindow):
     def __init__(self, app):
         super().__init__(application=app)
-        self.set_title('AnduinOS Appearance')
+        self.set_title(_('AnduinOS Appearance'))
         self.set_default_size(780, 460)
         self.set_icon_name('anduinos-appearance')
 
@@ -594,7 +604,7 @@ class AppearanceWindow(Adw.PreferencesWindow):
     def _inject_menu(self, window):
         """Find the internal Adw.HeaderBar and add an About menu button."""
         menu = Gio.Menu()
-        menu.append('About AnduinOS Appearance', 'app.about')
+        menu.append(_('About AnduinOS Appearance'), 'app.about')
 
         menu_btn = Gtk.MenuButton()
         menu_btn.set_icon_name('open-menu-symbolic')
@@ -630,9 +640,9 @@ class AppearanceApp(Adw.Application):
 
     def _on_about(self, action, param):
         dialog = Adw.AboutDialog()
-        dialog.set_application_name('AnduinOS Appearance')
+        dialog.set_application_name(_('AnduinOS Appearance'))
         dialog.set_application_icon('anduinos-appearance')
-        dialog.set_developer_name('AnduinOS Team')
+        dialog.set_developer_name(_('AnduinOS Team'))
         dialog.set_website('https://www.anduinos.com')
         dialog.set_issue_url('https://github.com/AiursoftWeb/AnduinOS-Packages/issues')
         dialog.set_license_type(Gtk.License.GPL_3_0)

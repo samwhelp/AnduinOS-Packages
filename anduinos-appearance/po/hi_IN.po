@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Hindi translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: hi_IN\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "AnduinOS की उपस्थिति के बारे में"
+
+msgid "Advanced"
+msgstr "उन्नत"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS की उपस्थिति"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS टीम"
+
+msgid "Appearance"
+msgstr "उपस्थिति"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "अपने टास्कबार का दृश्य शैली चुनें।"
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "अपने टास्कबार को स्क्रीन पर कहाँ रखें, यह चुनें।"
+
+msgid "Classic"
+msgstr "क्लासिक"
+
+msgid "Danger Zone"
+msgstr "खतरनाक क्षेत्र"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "एक्सटेंशन सेटिंग्स"
+
+msgid "Layout"
+msgstr "लेआउट"
+
+msgid "Open"
+msgstr "खोलें"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "पैनल एक्सटेंशनों की प्राथमिकता विंडो खोलें।"
+
+msgid "Panel Indicators"
+msgstr "पैनल इंडिकेटर्स"
+
+msgid "Panel Position"
+msgstr "पैनल स्थिति"
+
+msgid "Panel Widgets"
+msgstr "पैनल विजेट्स"
+
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+msgid "Reset"
+msgstr "रीसेट करें"
+
+msgid "Reset desktop settings"
+msgstr "डेस्कटॉप सेटिंग्स रीसेट करें"
+
+msgid "Reset desktop settings?"
+msgstr "डेस्कटॉप सेटिंग्स रीसेट करें?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "सभी GNOME Shell सेटिंग्स को फैक्टरी डिफ़ॉल्ट पर पुनर्स्थापित करें"
+
+msgid "Taskbar Position"
+msgstr "टास्कबार स्थिति"
+
+msgid "Taskbar Style"
+msgstr "टास्कबार शैली"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "पैनल इंडिकेटर विजेट्स को चालू या बंद करें।"
+
+msgid "Tweaks"
+msgstr "ट्वीक्स"
+
+msgid "Wallpaper"
+msgstr "वॉलपेपर"
+
+msgid "Windows 11"
+msgstr "विंडोज 11"
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ लागू किया गया — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ डेस्कटॉप सेटिंग्स रीसेट हो गईं। लागू करने के लिए Shell पुनः आरंभ करें।"
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action} किया गया"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ स्थिति लागू करने में विफल"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ शैली लागू करने में विफल"
+
+msgid "✗ Failed to reset"
+msgstr "✗ रीसेट करने में विफल"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {action} {label} करने में विफल"
+
+msgid "Bottom"
+msgstr "नीचे"
+
+msgid "Top"
+msgstr "ऊपर"
+
+msgid "Left"
+msgstr "बायाँ"
+
+msgid "Right"
+msgstr "दायाँ"
+
+msgid "Show Weather"
+msgstr "मौसम दिखाएं"
+
+msgid "Show Network"
+msgstr "नेटवर्क दिखाएं"
+

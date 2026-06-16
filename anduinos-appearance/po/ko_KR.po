@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Korean translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: ko_KR\n"
+"Language-Team: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "AnduinOS 외관 정보"
+
+msgid "Advanced"
+msgstr "고급"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS 외관"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS 팀"
+
+msgid "Appearance"
+msgstr "외관"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "작업 표시줄의 시각적 스타일을 선택하세요."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "작업 표시줄이 화면에서 위치할 곳을 선택하세요."
+
+msgid "Classic"
+msgstr "클래식"
+
+msgid "Danger Zone"
+msgstr "위험 구역"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "확장 설정"
+
+msgid "Layout"
+msgstr "레이아웃"
+
+msgid "Open"
+msgstr "열기"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "패널 확장 프로그램의 환경 설정 창을 엽니다."
+
+msgid "Panel Indicators"
+msgstr "패널 표시기"
+
+msgid "Panel Position"
+msgstr "패널 위치"
+
+msgid "Panel Widgets"
+msgstr "패널 위젯"
+
+msgid "Preview"
+msgstr "미리보기"
+
+msgid "Reset"
+msgstr "초기화"
+
+msgid "Reset desktop settings"
+msgstr "바탕 화면 설정 초기화"
+
+msgid "Reset desktop settings?"
+msgstr "바탕 화면 설정을 초기화하시겠습니까?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "모든 GNOME Shell 설정을 공장 기본값으로 복원합니다"
+
+msgid "Taskbar Position"
+msgstr "작업 표시줄 위치"
+
+msgid "Taskbar Style"
+msgstr "작업 표시줄 스타일"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "패널 표시기 위젯의 켜기/끄기를 전환합니다."
+
+msgid "Tweaks"
+msgstr "설정 튜닝"
+
+msgid "Wallpaper"
+msgstr "배경화면"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ 적용됨 — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ 바탕 화면 설정이 초기화되었습니다. 적용하려면 Shell을 다시 시작하세요."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}됨"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ 위치 적용 실패"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ 스타일 적용 실패"
+
+msgid "✗ Failed to reset"
+msgstr "✗ 초기화 실패"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {label} {action} 실패"
+
+msgid "Bottom"
+msgstr "아래쪽"
+
+msgid "Top"
+msgstr "위쪽"
+
+msgid "Left"
+msgstr "왼쪽"
+
+msgid "Right"
+msgstr "오른쪽"
+
+msgid "Show Weather"
+msgstr "날씨 표시"
+
+msgid "Show Network"
+msgstr "네트워크 표시"
+

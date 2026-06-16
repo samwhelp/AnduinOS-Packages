@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Chinese (China Mainland) translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (China Mainland)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "关于 AnduinOS 外观"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS 外观"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS 团队"
+
+msgid "Appearance"
+msgstr "外观"
+
+msgid "ArcMenu"
+msgstr "ArcMenu"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "选择任务栏的视觉风格。"
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "选择任务栏在屏幕上的位置。"
+
+msgid "Classic"
+msgstr "经典"
+
+msgid "Danger Zone"
+msgstr "危险区域"
+
+msgid "Dash-to-Panel"
+msgstr "Dash-to-Panel"
+
+msgid "Extension Settings"
+msgstr "扩展设置"
+
+msgid "Layout"
+msgstr "布局"
+
+msgid "Open"
+msgstr "打开"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "打开面板扩展的偏好设置窗口。"
+
+msgid "Panel Indicators"
+msgstr "面板指示器"
+
+msgid "Panel Position"
+msgstr "面板位置"
+
+msgid "Panel Widgets"
+msgstr "面板小部件"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "Reset desktop settings"
+msgstr "重置桌面设置"
+
+msgid "Reset desktop settings?"
+msgstr "重置桌面设置？"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "将所有 GNOME Shell 设置恢复为出厂默认值"
+
+msgid "Taskbar Position"
+msgstr "任务栏位置"
+
+msgid "Taskbar Style"
+msgstr "任务栏风格"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "开启或关闭面板指示器小部件。"
+
+msgid "Tweaks"
+msgstr "高级调整"
+
+msgid "Wallpaper"
+msgstr "壁纸"
+
+msgid "Windows 11"
+msgstr "Windows 11"
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ 已应用 — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ 桌面设置已重置。重启 Shell 后生效。"
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — 已{action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ 应用位置失败"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ 应用风格失败"
+
+msgid "✗ Failed to reset"
+msgstr "✗ 重置失败"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {action} {label} 失败"
+
+msgid "Bottom"
+msgstr "底部"
+
+msgid "Top"
+msgstr "顶部"
+
+msgid "Left"
+msgstr "左侧"
+
+msgid "Right"
+msgstr "右侧"
+
+msgid "Show Weather"
+msgstr "显示天气"
+
+msgid "Show Network"
+msgstr "显示网络"
+

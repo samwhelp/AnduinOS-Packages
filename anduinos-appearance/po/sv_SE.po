@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Swedish translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: sv_SE\n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Om AnduinOS-utseende"
+
+msgid "Advanced"
+msgstr "Avancerat"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS-utseende"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS-teamet"
+
+msgid "Appearance"
+msgstr "Utseende"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Välj det visuella stilen för din aktivitetsfält."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Välj var ditt aktivitetsfält placeras på skärmen."
+
+msgid "Classic"
+msgstr "Klassisk"
+
+msgid "Danger Zone"
+msgstr "Farozon"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Tilläggsinställningar"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Open"
+msgstr "Öppna"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Öppna inställningsfönstren för paneltillägg."
+
+msgid "Panel Indicators"
+msgstr "Panelindikatorer"
+
+msgid "Panel Position"
+msgstr "Panelsposition"
+
+msgid "Panel Widgets"
+msgstr "Panelwidgetar"
+
+msgid "Preview"
+msgstr "Förhandsgranskning"
+
+msgid "Reset"
+msgstr "Återställ"
+
+msgid "Reset desktop settings"
+msgstr "Återställ skrivbordsinställningar"
+
+msgid "Reset desktop settings?"
+msgstr "Återställ skrivbordsinställningar?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Återställ alla GNOME Shell-inställningar till fabriksstandard"
+
+msgid "Taskbar Position"
+msgstr "Aktivitetsfältets position"
+
+msgid "Taskbar Style"
+msgstr "Aktivitetsfältets stil"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Växla panelindikatorwidgetar på eller av."
+
+msgid "Tweaks"
+msgstr "Justeringar"
+
+msgid "Wallpaper"
+msgstr "Bakgrundsbild"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Verkligen — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Skrivbordsinställningar återställda. Starta om Shell för att tillämpa."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ad"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Misslyckades med att tillämpa position"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Misslyckades med att tillämpa stil"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Misslyckades med att återställa"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Misslyckades med att {action} {label}"
+
+msgid "Bottom"
+msgstr "Botten"
+
+msgid "Top"
+msgstr "Topp"
+
+msgid "Left"
+msgstr "Vänster"
+
+msgid "Right"
+msgstr "Höger"
+
+msgid "Show Weather"
+msgstr "Visa väder"
+
+msgid "Show Network"
+msgstr "Visa nätverk"
+

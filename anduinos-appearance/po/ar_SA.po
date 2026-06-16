@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Arabic translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: ar_SA\n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "حول مظهر AnduinOS"
+
+msgid "Advanced"
+msgstr "متقدم"
+
+msgid "AnduinOS Appearance"
+msgstr "مظهر AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "فريق AnduinOS"
+
+msgid "Appearance"
+msgstr "المظهر"
+
+msgid "ArcMenu"
+msgstr "قائمة ArcMenu"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "اختر النمط البصري لشريط المهام الخاص بك."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "اختر مكان تواجد شريط المهام على الشاشة."
+
+msgid "Classic"
+msgstr "كلاسيكي"
+
+msgid "Danger Zone"
+msgstr "منطقة الخطر"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "إعدادات الإضافات"
+
+msgid "Layout"
+msgstr "التخطيط"
+
+msgid "Open"
+msgstr "فتح"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "افتح نوافذ تفضيلات إضافات اللوحة."
+
+msgid "Panel Indicators"
+msgstr "مؤشرات اللوحة"
+
+msgid "Panel Position"
+msgstr "موضع اللوحة"
+
+msgid "Panel Widgets"
+msgstr "أدوات واجهة اللوحة"
+
+msgid "Preview"
+msgstr "معاينة"
+
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+msgid "Reset desktop settings"
+msgstr "إعادة تعيين إعدادات سطح المكتب"
+
+msgid "Reset desktop settings?"
+msgstr "هل تريد إعادة تعيين إعدادات سطح المكتب؟"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "استعد جميع إعدادات GNOME Shell إلى الإعدادات الافتراضية للمصنع"
+
+msgid "Taskbar Position"
+msgstr "موضع شريط المهام"
+
+msgid "Taskbar Style"
+msgstr "نمط شريط المهام"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "قم بتمكين أو تعطيل أدوات واجهة مؤشرات اللوحة."
+
+msgid "Tweaks"
+msgstr "التعديلات"
+
+msgid "Wallpaper"
+msgstr "خلفية الشاشة"
+
+msgid "Windows 11"
+msgstr "ويندوز 11"
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ تم التطبيق — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ تم إعادة تعيين إعدادات سطح المكتب. أعد تشغيل Shell لتطبيق التغييرات."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ فشل في تطبيق الموقع"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ فشل في تطبيق النمط"
+
+msgid "✗ Failed to reset"
+msgstr "✗ فشل في إعادة التعيين"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ فشل في {action} {label}"
+
+msgid "Bottom"
+msgstr "أسفل"
+
+msgid "Top"
+msgstr "أعلى"
+
+msgid "Left"
+msgstr "يسار"
+
+msgid "Right"
+msgstr "يمين"
+
+msgid "Show Weather"
+msgstr "إظهار الطقس"
+
+msgid "Show Network"
+msgstr "إظهار الشبكة"
+

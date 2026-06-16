@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Italian translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: it_IT\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Informazioni su AnduinOS Aspetto"
+
+msgid "Advanced"
+msgstr "Avanzate"
+
+msgid "AnduinOS Appearance"
+msgstr "Aspetto di AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Team di AnduinOS"
+
+msgid "Appearance"
+msgstr "Aspetto"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Scegli lo stile visivo della tua barra delle applicazioni."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Scegli dove posizionare la barra delle applicazioni sullo schermo."
+
+msgid "Classic"
+msgstr "Classico"
+
+msgid "Danger Zone"
+msgstr "Zona di Pericolo"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Impostazioni estensioni"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Open"
+msgstr "Apri"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Apri le finestre di preferenza delle estensioni della barra."
+
+msgid "Panel Indicators"
+msgstr "Indicatori della barra"
+
+msgid "Panel Position"
+msgstr "Posizione della barra"
+
+msgid "Panel Widgets"
+msgstr "Widget della barra"
+
+msgid "Preview"
+msgstr "Anteprima"
+
+msgid "Reset"
+msgstr "Reimposta"
+
+msgid "Reset desktop settings"
+msgstr "Reimposta le impostazioni del desktop"
+
+msgid "Reset desktop settings?"
+msgstr "Reimpostare le impostazioni del desktop?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Ripristina tutte le impostazioni di GNOME Shell ai valori predefiniti di fabbrica"
+
+msgid "Taskbar Position"
+msgstr "Posizione della barra delle applicazioni"
+
+msgid "Taskbar Style"
+msgstr "Stile della barra delle applicazioni"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Attiva o disattiva i widget degli indicatori della barra."
+
+msgid "Tweaks"
+msgstr "Ottimizzazioni"
+
+msgid "Wallpaper"
+msgstr "Sfondo"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Applicato — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Impostazioni del desktop reimpostate. Riavvia Shell per applicare."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ato"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Impossibile applicare la posizione"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Impossibile applicare lo stile"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Impossibile reimpostare"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Impossibile {action} {label}"
+
+msgid "Bottom"
+msgstr "In basso"
+
+msgid "Top"
+msgstr "In alto"
+
+msgid "Left"
+msgstr "A sinistra"
+
+msgid "Right"
+msgstr "A destra"
+
+msgid "Show Weather"
+msgstr "Mostra meteo"
+
+msgid "Show Network"
+msgstr "Mostra rete"
+

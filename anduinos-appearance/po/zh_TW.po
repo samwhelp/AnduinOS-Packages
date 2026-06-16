@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Chinese (Taiwan) translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: zh_TW\n"
+"Language-Team: Chinese (Taiwan)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "關於 AnduinOS 外觀"
+
+msgid "Advanced"
+msgstr "進階"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS 外觀"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS 團隊"
+
+msgid "Appearance"
+msgstr "外觀"
+
+msgid "ArcMenu"
+msgstr "ArcMenu"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "選擇工作列的視覺風格。"
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "選擇工作列在螢幕上的位置。"
+
+msgid "Classic"
+msgstr "经典"
+
+msgid "Danger Zone"
+msgstr "危險區域"
+
+msgid "Dash-to-Panel"
+msgstr "Dash-to-Panel"
+
+msgid "Extension Settings"
+msgstr "擴充套件設定"
+
+msgid "Layout"
+msgstr "布局"
+
+msgid "Open"
+msgstr "開啟"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "開啟面板擴充套件的偏好設定視窗。"
+
+msgid "Panel Indicators"
+msgstr "面板指示器"
+
+msgid "Panel Position"
+msgstr "面板位置"
+
+msgid "Panel Widgets"
+msgstr "面板小工具"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Reset"
+msgstr "重設"
+
+msgid "Reset desktop settings"
+msgstr "重設桌面設定"
+
+msgid "Reset desktop settings?"
+msgstr "重設桌面設定？"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "將所有 GNOME Shell 設定恢復為出廠預設值"
+
+msgid "Taskbar Position"
+msgstr "工作列位置"
+
+msgid "Taskbar Style"
+msgstr "工作列風格"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "開啟或關閉面板指示器小工具。"
+
+msgid "Tweaks"
+msgstr "進階調整"
+
+msgid "Wallpaper"
+msgstr "桌布"
+
+msgid "Windows 11"
+msgstr "Windows 11"
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ 已套用 — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ 桌面設定已重設。重新啟動 Shell 後生效。"
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — 已{action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ 套用位置失敗"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ 套用風格失敗"
+
+msgid "✗ Failed to reset"
+msgstr "✗ 重設失敗"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {action} {label} 失敗"
+
+msgid "Bottom"
+msgstr "底部"
+
+msgid "Top"
+msgstr "頂部"
+
+msgid "Left"
+msgstr "左側"
+
+msgid "Right"
+msgstr "右側"
+
+msgid "Show Weather"
+msgstr "顯示天氣"
+
+msgid "Show Network"
+msgstr "顯示網路"
+

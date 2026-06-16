@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Romanian translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: ro_RO\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Despre aspectul AnduinOS"
+
+msgid "Advanced"
+msgstr "Avansat"
+
+msgid "AnduinOS Appearance"
+msgstr "Aspectul AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Echipa AnduinOS"
+
+msgid "Appearance"
+msgstr "Aspect"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Alege stilul vizual al barei de activități."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Alege unde se află bara de activități pe ecran."
+
+msgid "Classic"
+msgstr "Clasic"
+
+msgid "Danger Zone"
+msgstr "Zona de pericol"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Setări extensii"
+
+msgid "Layout"
+msgstr "Aranjament"
+
+msgid "Open"
+msgstr "Deschide"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Deschide ferestrele de preferințe ale extensiilor panoului."
+
+msgid "Panel Indicators"
+msgstr "Indicatori panou"
+
+msgid "Panel Position"
+msgstr "Poziție panou"
+
+msgid "Panel Widgets"
+msgstr "Widget-uri panou"
+
+msgid "Preview"
+msgstr "Previzualizare"
+
+msgid "Reset"
+msgstr "Resetează"
+
+msgid "Reset desktop settings"
+msgstr "Resetează setările desktopului"
+
+msgid "Reset desktop settings?"
+msgstr "Resetezi setările desktopului?"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Restabilește toate setările GNOME Shell la valorile implicite de fabrică"
+
+msgid "Taskbar Position"
+msgstr "Poziția barei de activități"
+
+msgid "Taskbar Style"
+msgstr "Stilul barei de activități"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Activează sau dezactivează widget-urile indicatorului panoului."
+
+msgid "Tweaks"
+msgstr "Optimizări"
+
+msgid "Wallpaper"
+msgstr "Imagine fundal"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Aplicat — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Setările desktopului au fost resetate. Repornește Shell pentru a aplica."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Nu s-a putut aplica poziția"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Nu s-a putut aplica stilul"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Resetare eșuată"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Nu s-a putut {action} {label}"
+
+msgid "Bottom"
+msgstr "Jos"
+
+msgid "Top"
+msgstr "Sus"
+
+msgid "Left"
+msgstr "Stânga"
+
+msgid "Right"
+msgstr "Dreapta"
+
+msgid "Show Weather"
+msgstr "Arată vremea"
+
+msgid "Show Network"
+msgstr "Arată rețeaua"
+

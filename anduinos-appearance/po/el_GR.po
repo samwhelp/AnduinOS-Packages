@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Greek translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: el_GR\n"
+"Language-Team: Greek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "Σχετικά με την Εμφάνιση του AnduinOS"
+
+msgid "Advanced"
+msgstr "Προχωρημένα"
+
+msgid "AnduinOS Appearance"
+msgstr "Εμφάνιση AnduinOS"
+
+msgid "AnduinOS Team"
+msgstr "Ομάδα AnduinOS"
+
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "Διάλεξε το οπτικό στυλ της γραμμής εργασιών σου."
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "Διάλεξε πού θα βρίσκεται η γραμμή εργασιών στην οθόνη."
+
+msgid "Classic"
+msgstr "Κλασικό"
+
+msgid "Danger Zone"
+msgstr "Ζώνη Κινδύνου"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "Ρυθμίσεις Προσαρμογής"
+
+msgid "Layout"
+msgstr "Διάταξη"
+
+msgid "Open"
+msgstr "Άνοιγμα"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "Άνοιξε τα παράθυρα προτιμήσεων των προσθηκών της γραμμής εργασιών."
+
+msgid "Panel Indicators"
+msgstr "Ενδείξεις Γραμμής Εργασιών"
+
+msgid "Panel Position"
+msgstr "Θέση Γραμμής Εργασιών"
+
+msgid "Panel Widgets"
+msgstr "Widgets Γραμμής Εργασιών"
+
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+msgid "Reset"
+msgstr "Επαναφορά"
+
+msgid "Reset desktop settings"
+msgstr "Επαναφορά ρυθμίσεων επιφάνειας εργασίας"
+
+msgid "Reset desktop settings?"
+msgstr "Επαναφορά ρυθμίσεων επιφάνειας εργασίας;"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Επαναφορά όλων των ρυθμίσεων του GNOME Shell στις εργοστασιακές προεπιλογές"
+
+msgid "Taskbar Position"
+msgstr "Θέση Γραμμής Εργασιών"
+
+msgid "Taskbar Style"
+msgstr "Στυλ Γραμμής Εργασιών"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Ενεργοποίησε ή απενεργοποίησε τα widgets των δεικτών της γραμμής εργασιών."
+
+msgid "Tweaks"
+msgstr "Ρυθμίσεις"
+
+msgid "Wallpaper"
+msgstr "Τοίχος Παραθύρου"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ Εφαρμόστηκε — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Οι ρυθμίσεις της επιφάνειας εργασίας επαναφέρθηκαν. Επανεκκίνησε το Shell για να εφαρμοστούν."
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ε"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ Απέτυχε η εφαρμογή θέσης"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ Απέτυχε η εφαρμογή στυλ"
+
+msgid "✗ Failed to reset"
+msgstr "✗ Απέτυχε η επαναφορά"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ Απέτυχε να {action} το {label}"
+
+msgid "Bottom"
+msgstr "Κάτω"
+
+msgid "Top"
+msgstr "Πάνω"
+
+msgid "Left"
+msgstr "Αριστερά"
+
+msgid "Right"
+msgstr "Δεξιά"
+
+msgid "Show Weather"
+msgstr "Εμφάνιση Καιρού"
+
+msgid "Show Network"
+msgstr "Εμφάνιση Δικτύου"
+

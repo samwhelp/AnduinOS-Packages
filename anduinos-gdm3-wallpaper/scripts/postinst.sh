@@ -2,7 +2,7 @@ if [ "$1" = "configure" ]; then
     # Output directory for the dynamically generated gresource
     OUT_DIR="/var/lib/anduinos-gdm3-wallpaper"
     OUT_FILE="${OUT_DIR}/anduinos-theme.gresource"
-    DEFAULT_WALLPAPER="/usr/share/anduinos-gdm3-wallpaper/gdm3.jpg"
+    DEFAULT_WALLPAPER="/usr/share/anduinos-gdm3-wallpaper/Floating-objects-dark.png"
 
     # 1. Generate the initial custom GDM theme if it doesn't exist
     if [ ! -f "$OUT_FILE" ]; then

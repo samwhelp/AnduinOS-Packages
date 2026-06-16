@@ -1,0 +1,141 @@
+# AnduinOS Appearance — Japanese translation.
+# Copyright (C) 2026 AnduinOS Team
+msgid ""
+msgstr ""
+"Project-Id-Version: anduinos-appearance 2.0\n"
+"Language: ja_JP\n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "About AnduinOS Appearance"
+msgstr "AnduinOS の外観について"
+
+msgid "Advanced"
+msgstr "詳細設定"
+
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS の外観"
+
+msgid "AnduinOS Team"
+msgstr "AnduinOS チーム"
+
+msgid "Appearance"
+msgstr "外観"
+
+msgid "ArcMenu"
+msgstr ""
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Choose the visual style of your taskbar."
+msgstr "タスクバーのビジュアルスタイルを選択します。"
+
+msgid "Choose where your taskbar sits on screen."
+msgstr "画面内でタスクバーの位置を選択します。"
+
+msgid "Classic"
+msgstr "クラシック"
+
+msgid "Danger Zone"
+msgstr "危険ゾーン"
+
+msgid "Dash-to-Panel"
+msgstr ""
+
+msgid "Extension Settings"
+msgstr "拡張機能の設定"
+
+msgid "Layout"
+msgstr "レイアウト"
+
+msgid "Open"
+msgstr "開く"
+
+msgid "Open the preference windows of the panel extensions."
+msgstr "パネルの拡張機能の設定ウィンドウを開きます。"
+
+msgid "Panel Indicators"
+msgstr "パネルインジケーター"
+
+msgid "Panel Position"
+msgstr "パネルの位置"
+
+msgid "Panel Widgets"
+msgstr "パネルウィジェット"
+
+msgid "Preview"
+msgstr "プレビュー"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Reset desktop settings"
+msgstr "デスクトップ設定をリセット"
+
+msgid "Reset desktop settings?"
+msgstr "デスクトップ設定をリセットしますか？"
+
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "すべての GNOME Shell の設定を初期値に戻す"
+
+msgid "Taskbar Position"
+msgstr "タスクバーの位置"
+
+msgid "Taskbar Style"
+msgstr "タスクバーのスタイル"
+
+msgid "Toggle panel indicator widgets on or off."
+msgstr "パネルインジケーターウィジェットの表示・非表示を切り替えます。"
+
+msgid "Tweaks"
+msgstr "微調整ツール"
+
+msgid "Wallpaper"
+msgstr "壁紙"
+
+msgid "Windows 11"
+msgstr ""
+
+msgid "✓ Applied — {style} | {pos}"
+msgstr "✓ 適用済み — {style} | {pos}"
+
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ デスクトップ設定をリセットしました。反映するには Shell を再起動してください。"
+
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}済み"
+
+msgid "✗ Failed to apply position"
+msgstr "✗ 位置の適用に失敗しました"
+
+msgid "✗ Failed to apply style"
+msgstr "✗ スタイルの適用に失敗しました"
+
+msgid "✗ Failed to reset"
+msgstr "✗ リセットに失敗しました"
+
+msgid "✗ Failed to {action} {label}"
+msgstr "✗ {label} の {action} に失敗しました"
+
+msgid "Bottom"
+msgstr "下"
+
+msgid "Top"
+msgstr "上"
+
+msgid "Left"
+msgstr "左"
+
+msgid "Right"
+msgstr "右"
+
+msgid "Show Weather"
+msgstr "天気を表示"
+
+msgid "Show Network"
+msgstr "ネットワークを表示"
+
