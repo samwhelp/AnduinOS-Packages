@@ -3,9 +3,13 @@
 
 import gi
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Gdk, GLib
+gi.require_version('Adw', '1')
+from gi.repository import Gtk, Gdk, GLib, Adw
 import subprocess
 import math
+import shutil
+import warnings
+warnings.filterwarnings('ignore', category=DeprecationWarning, module='gi')
 
 ARC  = '/org/gnome/shell/extensions/arcmenu'
 DTP  = '/org/gnome/shell/extensions/dash-to-panel'
@@ -239,7 +243,6 @@ def draw_preview(area, cr, w, h, style: str, position: str):
         cr.show_text('12:34')
     else:
         # ── vertical bar: left/right ──
-        # For vertical bars, icons stack vertically
         start_x = bx + 2
         start_y = by + 6
         start_w_v, start_h_v = bar_thick - 4, bar_thick - 4
@@ -267,44 +270,40 @@ def draw_preview(area, cr, w, h, style: str, position: str):
 
 # ── style page ───────────────────────────────────────────────────
 
-class StylePage(Gtk.Box):
+class StylePage(Adw.PreferencesPage):
     def __init__(self, win):
-        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+        super().__init__()
         self.win = win
-        self.set_margin_top(20)
-        self.set_margin_bottom(20)
-        self.set_margin_start(24)
-        self.set_margin_end(24)
+        self.set_title('Taskbar Style')
+        self.set_icon_name('preferences-desktop-theme-symbolic')
 
-        t = Gtk.Label()
-        t.set_markup('<b>Taskbar Style</b>')
-        t.set_halign(Gtk.Align.START)
-        self.append(t)
+        # ── Preview group ──
+        preview_group = Adw.PreferencesGroup()
+        preview_group.set_title('Preview')
+        preview_group.set_description('Choose the visual style of your taskbar.')
 
-        sub = Gtk.Label(label='Choose the visual style of your taskbar.')
-        sub.set_halign(Gtk.Align.START)
-        sub.add_css_class('dim-label')
-        self.append(sub)
-
-        # preview
         card = Gtk.Frame()
         card.add_css_class('card')
-        card.set_size_request(340, 110)
         self.preview = Gtk.DrawingArea()
         self.preview.set_size_request(340, 110)
         self.preview.set_draw_func(self._draw, win.current_style, win.current_position)
         card.set_child(self.preview)
-        self.append(card)
+        preview_group.add(card)
+        self.add(preview_group)
 
-        # buttons
+        # ── Layout group ──
+        layout_group = Adw.PreferencesGroup()
+        layout_group.set_title('Layout')
+
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         self.btn11 = Gtk.Button(label='  11  ')
         self.btn11.connect('clicked', self._on_click, 'eleven')
         self.btn10 = Gtk.Button(label='  Classic  ')
         self.btn10.connect('clicked', self._on_click, 'classic')
-        box.append(self.btn11)
         box.append(self.btn10)
-        self.append(box)
+        box.append(self.btn11)
+        layout_group.add(box)
+        self.add(layout_group)
 
         self._highlight_btn()
 
@@ -316,9 +315,9 @@ class StylePage(Gtk.Box):
             self.win.current_style = style
             self.win._sync_all_highlights()
             self.win._refresh_previews()
-            self.win.status.set_label(f'✓ Applied — {self._label(style)} | {self.win.current_position.title()}')
+            self.win._toast(f'✓ Applied — {self._label(style)} | {self.win.current_position.title()}')
         else:
-            self.win.status.set_label('✗ Failed to apply style')
+            self.win._toast('✗ Failed to apply style')
 
     def _highlight_btn(self):
         if self.win.current_style == 'eleven':
@@ -338,50 +337,44 @@ class StylePage(Gtk.Box):
 POS_LABELS = {'bottom': 'Bottom', 'top': 'Top', 'left': 'Left', 'right': 'Right'}
 
 
-class PositionPage(Gtk.Box):
+class PositionPage(Adw.PreferencesPage):
     def __init__(self, win):
-        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+        super().__init__()
         self.win = win
-        self.set_margin_top(20)
-        self.set_margin_bottom(20)
-        self.set_margin_start(24)
-        self.set_margin_end(24)
+        self.set_title('Taskbar Position')
+        self.set_icon_name('object-flip-vertical-symbolic')
 
-        t = Gtk.Label()
-        t.set_markup('<b>Taskbar Position</b>')
-        t.set_halign(Gtk.Align.START)
-        self.append(t)
-
-        sub = Gtk.Label(label='Choose where your taskbar sits on screen.')
-        sub.set_halign(Gtk.Align.START)
-        sub.add_css_class('dim-label')
-        self.append(sub)
+        group = Adw.PreferencesGroup()
+        group.set_title('Panel Position')
+        group.set_description('Choose where your taskbar sits on screen.')
 
         # preview
         card = Gtk.Frame()
         card.add_css_class('card')
-        card.set_size_request(340, 130)
         self.preview = Gtk.DrawingArea()
         self.preview.set_size_request(340, 130)
         self.preview.set_draw_func(self._draw, win.current_style, win.current_position)
         card.set_child(self.preview)
-        self.append(card)
+        group.add(card)
 
-        # position grid: 2×2  (top, bottom) / (left, right)
-        grid = Gtk.Grid()
-        grid.set_row_spacing(8)
-        grid.set_column_spacing(8)
-        grid.set_halign(Gtk.Align.CENTER)
-
-        positions = [('bottom', 0, 1), ('top', 0, 0), ('left', 1, 0), ('right', 1, 1)]
+        # position buttons — 2×2 grid matching spatial layout
         self.pos_btns = {}
-        for pos, row, col in positions:
-            btn = Gtk.ToggleButton(label=f'  {POS_LABELS[pos]}  ')
+        grid = Gtk.Grid()
+        grid.set_row_spacing(6)
+        grid.set_column_spacing(6)
+        grid.set_halign(Gtk.Align.CENTER)
+        grid.set_margin_top(6)
+
+        positions = [('top',    0, 1), ('bottom', 1, 1),
+                     ('left',   0, 2), ('right',  1, 2)]
+        for pos, col, row in positions:
+            btn = Gtk.ToggleButton(label=POS_LABELS[pos])
             btn.connect('toggled', self._on_pos_toggled, pos)
             grid.attach(btn, col, row, 1, 1)
             self.pos_btns[pos] = btn
 
-        self.append(grid)
+        group.add(grid)
+        self.add(group)
 
         self._highlight_pos()
 
@@ -405,9 +398,9 @@ class PositionPage(Gtk.Box):
         if apply_style_and_position(self.win.current_style, pos):
             self.win.current_position = pos
             self.win._refresh_previews()
-            self.win.status.set_label(f'✓ Applied — {StylePage._label(self.win.current_style)} | {POS_LABELS[pos]}')
+            self.win._toast(f'✓ Applied — {StylePage._label(self.win.current_style)} | {POS_LABELS[pos]}')
         else:
-            self.win.status.set_label('✗ Failed to apply position')
+            self.win._toast('✗ Failed to apply position')
 
     def _highlight_pos(self):
         for p, btn in self.pos_btns.items():
@@ -425,253 +418,163 @@ WIDGETS = {
 }
 
 
-class PanelWidgetsPage(Gtk.Box):
+class PanelWidgetsPage(Adw.PreferencesPage):
     def __init__(self, win):
-        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
-        self.set_margin_top(20)
-        self.set_margin_bottom(20)
-        self.set_margin_start(24)
-        self.set_margin_end(24)
+        super().__init__()
+        self.win = win
+        self._busy = False
+        self.set_title('Panel Widgets')
+        self.set_icon_name('application-x-addon-symbolic')
 
-        t = Gtk.Label()
-        t.set_markup('<b>Panel Widgets</b>')
-        t.set_halign(Gtk.Align.START)
-        self.append(t)
-
-        sub = Gtk.Label(label='Toggle panel indicator widgets on or off.')
-        sub.set_halign(Gtk.Align.START)
-        sub.add_css_class('dim-label')
-        self.append(sub)
+        group = Adw.PreferencesGroup()
+        group.set_title('Panel Indicators')
+        group.set_description('Toggle panel indicator widgets on or off.')
 
         for key, (label, uuid) in WIDGETS.items():
-            row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-            row.set_margin_top(8)
+            row = Adw.SwitchRow()
+            row.set_title(label)
+            row.set_subtitle(uuid)
+            row.set_active(_ext_is_enabled(uuid))
+            row.connect('notify::active', self._on_toggle, uuid, label)
+            group.add(row)
 
-            lbl = Gtk.Label(label=label)
-            lbl.set_halign(Gtk.Align.START)
-            lbl.set_hexpand(True)
-            row.append(lbl)
+        self.add(group)
 
-            switch = Gtk.Switch()
-            switch.set_active(_ext_is_enabled(uuid))
-            switch.connect('state-set', self._on_toggle, uuid, label)
-            switch.set_valign(Gtk.Align.CENTER)
-            row.append(switch)
-
-            self.append(row)
-
-    def _on_toggle(self, switch, state, uuid, label):
+    def _on_toggle(self, switch_row, pspec, uuid, label):
+        if self._busy:
+            return
+        state = switch_row.get_active()
         action = 'enable' if state else 'disable'
         try:
             subprocess.run(['gnome-extensions', action, uuid], check=True)
-            self.win.status.set_label(f'✓ {label} — {action}d')
+            self.win._toast(f'✓ {label} — {action}d')
         except subprocess.CalledProcessError:
-            self.win.status.set_label(f'✗ Failed to {action} {label}')
+            self.win._toast(f'✗ Failed to {action} {label}')
             # revert switch
-            switch.handler_block_by_func(self._on_toggle)
-            switch.set_active(not state)
-            switch.handler_unblock_by_func(self._on_toggle)
+            self._busy = True
+            switch_row.set_active(not state)
+            self._busy = False
 
 
 # ── advanced page ────────────────────────────────────────────────
 
-class AdvancedPage(Gtk.Box):
+class AdvancedPage(Adw.PreferencesPage):
     def __init__(self, win):
-        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=16)
-        self.set_margin_top(20)
-        self.set_margin_bottom(20)
-        self.set_margin_start(24)
-        self.set_margin_end(24)
+        super().__init__()
+        self.win = win
+        self.set_title('Advanced')
+        self.set_icon_name('preferences-other-symbolic')
 
-        t = Gtk.Label()
-        t.set_markup('<b>Advanced</b>')
-        t.set_halign(Gtk.Align.START)
-        self.append(t)
+        # ── Appearance group ──
+        appear = Adw.PreferencesGroup()
+        appear.set_title('Appearance')
 
-        # ── Appearance section ──
-        sec1 = Gtk.Label()
-        sec1.set_markup('<b>Appearance</b>')
-        sec1.set_halign(Gtk.Align.START)
-        sec1.set_margin_top(8)
-        self.append(sec1)
-
-        btn_wallpaper = Gtk.Button(label='  Wallpaper Settings  ')
-        btn_wallpaper.set_halign(Gtk.Align.START)
+        row_wallpaper = Adw.ActionRow()
+        row_wallpaper.set_title('Wallpaper')
+        btn_wallpaper = Gtk.Button(label='Open')
+        btn_wallpaper.set_valign(Gtk.Align.CENTER)
         btn_wallpaper.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-control-center', 'background']))
-        self.append(btn_wallpaper)
+        row_wallpaper.add_suffix(btn_wallpaper)
+        appear.add(row_wallpaper)
 
-        import shutil
         if shutil.which('gnome-tweaks'):
-            btn_tweaks = Gtk.Button(label='  Advanced Tweaks  ')
-            btn_tweaks.set_halign(Gtk.Align.START)
+            row_tweaks = Adw.ActionRow()
+            row_tweaks.set_title('Tweaks')
+            btn_tweaks = Gtk.Button(label='Open')
+            btn_tweaks.set_valign(Gtk.Align.CENTER)
             btn_tweaks.connect('clicked', lambda b: subprocess.Popen(['gnome-tweaks']))
-            self.append(btn_tweaks)
+            row_tweaks.add_suffix(btn_tweaks)
+            appear.add(row_tweaks)
 
-        # ── Extension Settings section ──
-        sec2 = Gtk.Label()
-        sec2.set_markup('<b>Extension Settings</b>')
-        sec2.set_halign(Gtk.Align.START)
-        sec2.set_margin_top(16)
-        self.append(sec2)
+        self.add(appear)
 
-        sub = Gtk.Label(label='Open the preference windows of the panel extensions.')
-        sub.set_halign(Gtk.Align.START)
-        sub.add_css_class('dim-label')
-        self.append(sub)
+        # ── Extension Settings group ──
+        ext = Adw.PreferencesGroup()
+        ext.set_title('Extension Settings')
+        ext.set_description('Open the preference windows of the panel extensions.')
 
-        btn_arc = Gtk.Button(label='  ArcMenu Settings  ')
-        btn_arc.set_halign(Gtk.Align.START)
+        row_arc = Adw.ActionRow()
+        row_arc.set_title('ArcMenu')
+        btn_arc = Gtk.Button(label='Open')
+        btn_arc.set_valign(Gtk.Align.CENTER)
         btn_arc.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-extensions', 'prefs', 'arcmenu@arcmenu.com']))
-        self.append(btn_arc)
+        row_arc.add_suffix(btn_arc)
+        ext.add(row_arc)
 
-        btn_dtp = Gtk.Button(label='  Dash-to-Panel Settings  ')
-        btn_dtp.set_halign(Gtk.Align.START)
+        row_dtp = Adw.ActionRow()
+        row_dtp.set_title('Dash-to-Panel')
+        btn_dtp = Gtk.Button(label='Open')
+        btn_dtp.set_valign(Gtk.Align.CENTER)
         btn_dtp.connect('clicked', lambda b: subprocess.Popen(
             ['gnome-extensions', 'prefs', 'dash-to-panel@jderose9.github.com']))
-        self.append(btn_dtp)
+        row_dtp.add_suffix(btn_dtp)
+        ext.add(row_dtp)
 
-        # ── Danger Zone ──
-        sec3 = Gtk.Label()
-        sec3.set_markup('<b>Danger Zone</b>')
-        sec3.set_halign(Gtk.Align.START)
-        sec3.set_margin_top(24)
-        self.append(sec3)
+        self.add(ext)
 
-        btn_reset = Gtk.Button(label='  Reset desktop settings  ')
-        btn_reset.set_halign(Gtk.Align.START)
+        # ── Danger Zone group ──
+        danger = Adw.PreferencesGroup()
+        danger.set_title('Danger Zone')
+
+        row_reset = Adw.ActionRow()
+        row_reset.set_title('Reset desktop settings')
+        row_reset.set_subtitle('Restore all GNOME Shell settings to factory defaults')
+        btn_reset = Gtk.Button(label='Reset')
+        btn_reset.set_valign(Gtk.Align.CENTER)
         btn_reset.add_css_class('destructive-action')
         btn_reset.connect('clicked', self._on_reset)
-        self.append(btn_reset)
+        row_reset.add_suffix(btn_reset)
+        danger.add(row_reset)
+
+        self.add(danger)
 
     def _on_reset(self, btn):
-        # first confirmation
-        dlg1 = Gtk.MessageDialog(
-            transient_for=self.win,
-            modal=True,
-            message_type=Gtk.MessageType.WARNING,
-            buttons=Gtk.ButtonsType.NONE,
+        def do_reset():
+            try:
+                subprocess.run(['dconf', 'reset', '-f', '/org/gnome/shell/'], check=True)
+                self.win._toast('✓ Desktop settings reset. Restart Shell to apply.')
+            except subprocess.CalledProcessError:
+                self.win._toast('✗ Failed to reset')
+
+        dlg = Adw.MessageDialog.new(
+            self.win,
+            'Reset desktop settings?',
+            'This will reset all GNOME Shell settings to factory defaults.\n'
+            'Your extensions, panel layout, and preferences will be lost.'
         )
-        dlg1.set_markup('<b>Reset desktop settings?</b>')
-        dlg1.set_secondary_text('This will reset all GNOME Shell settings to factory defaults.\nYour extensions, panel layout, and preferences will be lost.')
-        dlg1.add_button('Cancel', Gtk.ResponseType.CANCEL)
-        btn_reset1 = dlg1.add_button('Reset', Gtk.ResponseType.OK)
-        btn_reset1.add_css_class('destructive-action')
-        dlg1.set_default_response(Gtk.ResponseType.CANCEL)
-        dlg1.present()
-
-        def on_response1(dlg, resp):
-            dlg.destroy()
-            if resp != Gtk.ResponseType.OK:
-                return
-            # second confirmation
-            dlg2 = Gtk.MessageDialog(
-                transient_for=self.win,
-                modal=True,
-                message_type=Gtk.MessageType.WARNING,
-                buttons=Gtk.ButtonsType.NONE,
-            )
-            dlg2.set_markup('<b>Are you absolutely sure?</b>')
-            dlg2.set_secondary_text('This action cannot be undone.\nA Shell restart may be required afterwards.')
-            dlg2.add_button('Cancel', Gtk.ResponseType.CANCEL)
-            btn_reset2 = dlg2.add_button('Reset Everything', Gtk.ResponseType.OK)
-            btn_reset2.add_css_class('destructive-action')
-            dlg2.set_default_response(Gtk.ResponseType.CANCEL)
-            dlg2.present()
-
-            def on_response2(dlg, resp):
-                dlg.destroy()
-                if resp != Gtk.ResponseType.OK:
-                    return
-                try:
-                    subprocess.run(['dconf', 'reset', '-f', '/org/gnome/shell/'], check=True)
-                    self.win.status.set_label('✓ Desktop settings reset. Restart Shell to apply.')
-                except subprocess.CalledProcessError:
-                    self.win.status.set_label('✗ Failed to reset')
-
-            dlg2.connect('response', on_response2)
-
-        dlg1.connect('response', on_response1)
+        dlg.add_response('cancel', 'Cancel')
+        dlg.add_response('reset', 'Reset')
+        dlg.set_response_appearance('reset', Adw.ResponseAppearance.DESTRUCTIVE)
+        dlg.set_default_response('cancel')
+        dlg.connect('response', lambda d, resp: (d.destroy(), do_reset() if resp == 'reset' else None))
+        dlg.present()
 
 
 # ── main window ──────────────────────────────────────────────────
 
-class AppearanceWindow(Gtk.ApplicationWindow):
+class AppearanceWindow(Adw.PreferencesWindow):
     def __init__(self, app):
-        super().__init__(application=app, title='AnduinOS Appearance')
-        self.set_default_size(600, 420)
+        super().__init__(application=app)
+        self.set_title('AnduinOS Appearance')
+        self.set_default_size(780, 460)
 
         self.current_style, self.current_position = detect_current()
 
-        # header
-        header = Gtk.HeaderBar()
-        self.set_titlebar(header)
-
-        # ── horizontal split: sidebar | content ──
-        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.set_child(hbox)
-
-        # -- sidebar --
-        sidebar = Gtk.ListBox()
-        sidebar.set_size_request(160, -1)
-        sidebar.add_css_class('navigation-sidebar')
-
-        items = ['Taskbar Style', 'Taskbar Position', 'Panel Widgets', 'Advanced']
-        for i, name in enumerate(items):
-            row = Gtk.ListBoxRow()
-            label = Gtk.Label(label=name)
-            label.set_xalign(0)
-            label.set_margin_start(12)
-            label.set_margin_top(10)
-            label.set_margin_bottom(10)
-            row.set_child(label)
-            sidebar.append(row)
-
-        sidebar.connect('row_selected', self._on_sidebar_select)
-        hbox.append(sidebar)
-
-        # -- separator --
-        sep = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-        hbox.append(sep)
-
-        # -- stack --
-        self.stack = Gtk.Stack()
-        self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-
+        # Pages — added in sidebar order
         self.style_page = StylePage(self)
         self.position_page = PositionPage(self)
         self.widgets_page = PanelWidgetsPage(self)
         self.advanced_page = AdvancedPage(self)
 
-        self.stack.add_titled(self.style_page, 'style', 'Taskbar Style')
-        self.stack.add_titled(self.position_page, 'position', 'Taskbar Position')
-        self.stack.add_titled(self.widgets_page, 'widgets', 'Panel Widgets')
-        self.stack.add_titled(self.advanced_page, 'advanced', 'Advanced')
+        self.add(self.style_page)
+        self.add(self.position_page)
+        self.add(self.widgets_page)
+        self.add(self.advanced_page)
 
-        # -- right side: stack + status --
-        vbox_right = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        vbox_right.append(self.stack)
-
-        self.status = Gtk.Label()
-        self.status.set_halign(Gtk.Align.START)
-        self.status.add_css_class('dim-label')
-        self.status.set_margin_start(12)
-        self.status.set_margin_bottom(8)
-        self.status.set_margin_top(4)
-        vbox_right.append(self.status)
-
-        hbox.append(vbox_right)
-
-        # select first sidebar item AFTER everything is built
-        sidebar.select_row(sidebar.get_row_at_index(0))
-
-    def _on_sidebar_select(self, listbox, row):
-        if row is None or not hasattr(self, 'stack'):
-            return
-        idx = row.get_index()
-        page_names = {0: 'style', 1: 'position', 2: 'widgets', 3: 'advanced'}
-        self.stack.set_visible_child_name(page_names.get(idx, 'style'))
+    def _toast(self, message: str):
+        self.add_toast(Adw.Toast.new(message))
 
     def _sync_all_highlights(self):
         self.style_page._highlight_btn()
@@ -682,7 +585,9 @@ class AppearanceWindow(Gtk.ApplicationWindow):
             page.preview.queue_draw()
 
 
-class AppearanceApp(Gtk.Application):
+# ── application ──────────────────────────────────────────────────
+
+class AppearanceApp(Adw.Application):
     def __init__(self):
         super().__init__(application_id='com.anduinos.Appearance')
 
