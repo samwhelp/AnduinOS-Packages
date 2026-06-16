@@ -387,7 +387,7 @@ class StylePage(Adw.PreferencesPage):
 
 # ── position page ────────────────────────────────────────────────
 
-POS_LABELS = {'bottom': 'Bottom', 'top': 'Top', 'left': 'Left', 'right': 'Right'}
+POS_LABELS = {'bottom': _('Bottom'), 'top': _('Top'), 'left': _('Left'), 'right': _('Right')}
 
 
 class PositionPage(Adw.PreferencesPage):
@@ -466,8 +466,8 @@ class PositionPage(Adw.PreferencesPage):
 # ── panel widgets page ───────────────────────────────────────────
 
 WIDGETS = {
-    'weather': ('Show Weather', 'simple-weather@romanlefler.com'),
-    'network': ('Show Network', 'network-stats@gnome.noroadsleft.xyz'),
+    'weather': (_('Show Weather'), 'simple-weather@romanlefler.com'),
+    'network': (_('Show Network'), 'network-stats@gnome.noroadsleft.xyz'),
 }
 
 

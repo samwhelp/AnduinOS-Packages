@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 12:23+0000\n"
+"POT-Creation-Date: 2026-06-16 16:37+0000\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
 "MIME-Version: 1.0\n"
@@ -12,191 +12,197 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/anduinos-appearance:298
+#: src/anduinos-appearance:300
 msgid "Taskbar Style"
 msgstr "Gaya Taskbar"
 
-#: src/anduinos-appearance:303
+#: src/anduinos-appearance:305
 msgid "Preview"
 msgstr "Pratinjau"
 
-#: src/anduinos-appearance:304
+#: src/anduinos-appearance:306
 msgid "Choose the visual style of your taskbar."
 msgstr "Pilih gaya visual untuk taskbar Anda."
 
-#: src/anduinos-appearance:317
+#: src/anduinos-appearance:319
 msgid "Layout"
 msgstr "Tata Letak"
 
-#: src/anduinos-appearance:330
+#: src/anduinos-appearance:333
 msgid "Group apps"
 msgstr "Kelompokkan aplikasi"
 
-#: src/anduinos-appearance:331
+#: src/anduinos-appearance:334
 msgid "Combine multiple windows of one app into a single icon"
 msgstr "Gabungkan beberapa jendela dari satu aplikasi menjadi satu ikon"
 
-#: src/anduinos-appearance:333
+#: src/anduinos-appearance:336
 msgid "Enable grouping"
 msgstr "Aktifkan pengelompokan"
 
-#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#: src/anduinos-appearance:359 src/anduinos-appearance:454
 #, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Diterapkan — {style} | {pos}"
 
-#: src/anduinos-appearance:356
+#: src/anduinos-appearance:361
 msgid "✗ Failed to apply style"
 msgstr "✗ Gagal menerapkan gaya"
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Windows 11"
 msgstr ""
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Classic"
 msgstr "Klasik"
 
-#: src/anduinos-appearance:392
+#: src/anduinos-appearance:390
+msgid "Bottom"
+msgstr "Bawah"
+
+#: src/anduinos-appearance:390
+msgid "Top"
+msgstr "Atas"
+
+#: src/anduinos-appearance:390
+msgid "Left"
+msgstr "Kiri"
+
+#: src/anduinos-appearance:390
+msgid "Right"
+msgstr "Kanan"
+
+#: src/anduinos-appearance:397
 msgid "Taskbar Position"
 msgstr "Posisi Taskbar"
 
-#: src/anduinos-appearance:396
+#: src/anduinos-appearance:401
 msgid "Panel Position"
 msgstr "Posisi Panel"
 
-#: src/anduinos-appearance:397
+#: src/anduinos-appearance:402
 msgid "Choose where your taskbar sits on screen."
 msgstr "Pilih posisi taskbar pada layar."
 
-#: src/anduinos-appearance:451
+#: src/anduinos-appearance:456
 msgid "✗ Failed to apply position"
 msgstr "✗ Gagal menerapkan posisi"
 
-#: src/anduinos-appearance:474
+#: src/anduinos-appearance:469
+msgid "Show Weather"
+msgstr "Tampilkan Cuaca"
+
+#: src/anduinos-appearance:470
+msgid "Show Network"
+msgstr "Tampilkan Jaringan"
+
+#: src/anduinos-appearance:479
 msgid "Panel Widgets"
 msgstr "Widget Panel"
 
-#: src/anduinos-appearance:478
+#: src/anduinos-appearance:483
 msgid "Panel Indicators"
 msgstr "Indikator Panel"
 
-#: src/anduinos-appearance:479
+#: src/anduinos-appearance:484
 msgid "Toggle panel indicator widgets on or off."
 msgstr "Aktifkan atau nonaktifkan widget indikator panel."
 
-#: src/anduinos-appearance:498
+#: src/anduinos-appearance:503
 #, python-brace-format
 msgid "✓ {label} — {action}d"
 msgstr "✓ {label} — {action}"
 
-#: src/anduinos-appearance:500
+#: src/anduinos-appearance:505
 #, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ Gagal melakukan {action} pada {label}"
 
-#: src/anduinos-appearance:513
+#: src/anduinos-appearance:518
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: src/anduinos-appearance:518
+#: src/anduinos-appearance:523
 msgid "Appearance"
 msgstr "Tampilan"
 
-#: src/anduinos-appearance:521
+#: src/anduinos-appearance:526
 msgid "Wallpaper"
 msgstr "Latar Belakang"
 
-#: src/anduinos-appearance:522 src/anduinos-appearance:532
-#: src/anduinos-appearance:547 src/anduinos-appearance:556
+#: src/anduinos-appearance:527 src/anduinos-appearance:537
+#: src/anduinos-appearance:552 src/anduinos-appearance:561
 msgid "Open"
 msgstr "Buka"
 
-#: src/anduinos-appearance:531
+#: src/anduinos-appearance:536
 msgid "Tweaks"
 msgstr "Penyesuaian"
 
-#: src/anduinos-appearance:542
+#: src/anduinos-appearance:547
 msgid "Extension Settings"
 msgstr "Pengaturan Ekstensi"
 
-#: src/anduinos-appearance:543
+#: src/anduinos-appearance:548
 msgid "Open the preference windows of the panel extensions."
 msgstr "Buka jendela preferensi ekstensi panel."
 
-#: src/anduinos-appearance:546
+#: src/anduinos-appearance:551
 msgid "ArcMenu"
 msgstr ""
 
-#: src/anduinos-appearance:555
+#: src/anduinos-appearance:560
 msgid "Dash-to-Panel"
 msgstr ""
 
-#: src/anduinos-appearance:567
+#: src/anduinos-appearance:572
 msgid "Danger Zone"
 msgstr "Zona Bahaya"
 
-#: src/anduinos-appearance:570
+#: src/anduinos-appearance:575
 msgid "Reset desktop settings"
 msgstr "Atur ulang pengaturan desktop"
 
-#: src/anduinos-appearance:571
+#: src/anduinos-appearance:576
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr "Kembalikan semua pengaturan GNOME Shell ke default pabrik"
 
-#: src/anduinos-appearance:572 src/anduinos-appearance:596
+#: src/anduinos-appearance:577 src/anduinos-appearance:601
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: src/anduinos-appearance:585
+#: src/anduinos-appearance:590
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr ""
 "✓ Pengaturan desktop telah direset. Mulai ulang Shell untuk menerapkan."
 
-#: src/anduinos-appearance:587
+#: src/anduinos-appearance:592
 msgid "✗ Failed to reset"
 msgstr "✗ Gagal mereset"
 
-#: src/anduinos-appearance:591
+#: src/anduinos-appearance:596
 msgid "Reset desktop settings?"
 msgstr "Atur ulang pengaturan desktop?"
 
-#: src/anduinos-appearance:592
+#: src/anduinos-appearance:597
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:595
+#: src/anduinos-appearance:600
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/anduinos-appearance:621 src/anduinos-appearance:680
+#: src/anduinos-appearance:626 src/anduinos-appearance:685
 msgid "AnduinOS Appearance"
 msgstr "Tampilan AnduinOS"
 
-#: src/anduinos-appearance:644
+#: src/anduinos-appearance:649
 msgid "About AnduinOS Appearance"
 msgstr "Tentang Tampilan AnduinOS"
 
-#: src/anduinos-appearance:682
+#: src/anduinos-appearance:687
 msgid "AnduinOS Team"
 msgstr "Tim AnduinOS"
-
-#~ msgid "Bottom"
-#~ msgstr "Bawah"
-
-#~ msgid "Top"
-#~ msgstr "Atas"
-
-#~ msgid "Left"
-#~ msgstr "Kiri"
-
-#~ msgid "Right"
-#~ msgstr "Kanan"
-
-#~ msgid "Show Weather"
-#~ msgstr "Tampilkan Cuaca"
-
-#~ msgid "Show Network"
-#~ msgstr "Tampilkan Jaringan"

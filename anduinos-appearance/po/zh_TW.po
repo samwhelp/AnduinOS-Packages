@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 12:23+0000\n"
+"POT-Creation-Date: 2026-06-16 16:37+0000\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -12,190 +12,196 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/anduinos-appearance:298
+#: src/anduinos-appearance:300
 msgid "Taskbar Style"
 msgstr "工作列風格"
 
-#: src/anduinos-appearance:303
+#: src/anduinos-appearance:305
 msgid "Preview"
 msgstr "预览"
 
-#: src/anduinos-appearance:304
+#: src/anduinos-appearance:306
 msgid "Choose the visual style of your taskbar."
 msgstr "選擇工作列的視覺風格。"
 
-#: src/anduinos-appearance:317
+#: src/anduinos-appearance:319
 msgid "Layout"
 msgstr "布局"
 
-#: src/anduinos-appearance:330
+#: src/anduinos-appearance:333
 msgid "Group apps"
 msgstr "應用分組"
 
-#: src/anduinos-appearance:331
+#: src/anduinos-appearance:334
 msgid "Combine multiple windows of one app into a single icon"
 msgstr "將同一應用的多個視窗合併為一個圖示"
 
-#: src/anduinos-appearance:333
+#: src/anduinos-appearance:336
 msgid "Enable grouping"
 msgstr "啟用分組"
 
-#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#: src/anduinos-appearance:359 src/anduinos-appearance:454
 #, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ 已套用 — {style} | {pos}"
 
-#: src/anduinos-appearance:356
+#: src/anduinos-appearance:361
 msgid "✗ Failed to apply style"
 msgstr "✗ 套用風格失敗"
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Windows 11"
 msgstr "Windows 11"
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Classic"
-msgstr "经典"
+msgstr "經典"
 
-#: src/anduinos-appearance:392
+#: src/anduinos-appearance:390
+msgid "Bottom"
+msgstr "靠下"
+
+#: src/anduinos-appearance:390
+msgid "Top"
+msgstr "靠上"
+
+#: src/anduinos-appearance:390
+msgid "Left"
+msgstr "靠左"
+
+#: src/anduinos-appearance:390
+msgid "Right"
+msgstr "靠右"
+
+#: src/anduinos-appearance:397
 msgid "Taskbar Position"
 msgstr "工作列位置"
 
-#: src/anduinos-appearance:396
+#: src/anduinos-appearance:401
 msgid "Panel Position"
 msgstr "面板位置"
 
-#: src/anduinos-appearance:397
+#: src/anduinos-appearance:402
 msgid "Choose where your taskbar sits on screen."
 msgstr "選擇工作列在螢幕上的位置。"
 
-#: src/anduinos-appearance:451
+#: src/anduinos-appearance:456
 msgid "✗ Failed to apply position"
 msgstr "✗ 套用位置失敗"
 
-#: src/anduinos-appearance:474
+#: src/anduinos-appearance:469
+msgid "Show Weather"
+msgstr "顯示天氣"
+
+#: src/anduinos-appearance:470
+msgid "Show Network"
+msgstr "顯示網路"
+
+#: src/anduinos-appearance:479
 msgid "Panel Widgets"
 msgstr "面板小工具"
 
-#: src/anduinos-appearance:478
+#: src/anduinos-appearance:483
 msgid "Panel Indicators"
 msgstr "面板指示器"
 
-#: src/anduinos-appearance:479
+#: src/anduinos-appearance:484
 msgid "Toggle panel indicator widgets on or off."
 msgstr "開啟或關閉面板指示器小工具。"
 
-#: src/anduinos-appearance:498
+#: src/anduinos-appearance:503
 #, python-brace-format
 msgid "✓ {label} — {action}d"
 msgstr "✓ {label} — 已{action}"
 
-#: src/anduinos-appearance:500
+#: src/anduinos-appearance:505
 #, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ {action} {label} 失敗"
 
-#: src/anduinos-appearance:513
+#: src/anduinos-appearance:518
 msgid "Advanced"
 msgstr "進階"
 
-#: src/anduinos-appearance:518
+#: src/anduinos-appearance:523
 msgid "Appearance"
 msgstr "外觀"
 
-#: src/anduinos-appearance:521
+#: src/anduinos-appearance:526
 msgid "Wallpaper"
 msgstr "桌布"
 
-#: src/anduinos-appearance:522 src/anduinos-appearance:532
-#: src/anduinos-appearance:547 src/anduinos-appearance:556
+#: src/anduinos-appearance:527 src/anduinos-appearance:537
+#: src/anduinos-appearance:552 src/anduinos-appearance:561
 msgid "Open"
 msgstr "開啟"
 
-#: src/anduinos-appearance:531
+#: src/anduinos-appearance:536
 msgid "Tweaks"
 msgstr "進階調整"
 
-#: src/anduinos-appearance:542
+#: src/anduinos-appearance:547
 msgid "Extension Settings"
 msgstr "擴充套件設定"
 
-#: src/anduinos-appearance:543
+#: src/anduinos-appearance:548
 msgid "Open the preference windows of the panel extensions."
 msgstr "開啟面板擴充套件的偏好設定視窗。"
 
-#: src/anduinos-appearance:546
+#: src/anduinos-appearance:551
 msgid "ArcMenu"
 msgstr "ArcMenu"
 
-#: src/anduinos-appearance:555
+#: src/anduinos-appearance:560
 msgid "Dash-to-Panel"
 msgstr "Dash-to-Panel"
 
-#: src/anduinos-appearance:567
+#: src/anduinos-appearance:572
 msgid "Danger Zone"
 msgstr "危險區域"
 
-#: src/anduinos-appearance:570
+#: src/anduinos-appearance:575
 msgid "Reset desktop settings"
 msgstr "重設桌面設定"
 
-#: src/anduinos-appearance:571
+#: src/anduinos-appearance:576
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr "將所有 GNOME Shell 設定恢復為出廠預設值"
 
-#: src/anduinos-appearance:572 src/anduinos-appearance:596
+#: src/anduinos-appearance:577 src/anduinos-appearance:601
 msgid "Reset"
 msgstr "重設"
 
-#: src/anduinos-appearance:585
+#: src/anduinos-appearance:590
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr "✓ 桌面設定已重設。重新啟動 Shell 後生效。"
 
-#: src/anduinos-appearance:587
+#: src/anduinos-appearance:592
 msgid "✗ Failed to reset"
 msgstr "✗ 重設失敗"
 
-#: src/anduinos-appearance:591
+#: src/anduinos-appearance:596
 msgid "Reset desktop settings?"
 msgstr "重設桌面設定？"
 
-#: src/anduinos-appearance:592
+#: src/anduinos-appearance:597
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:595
+#: src/anduinos-appearance:600
 msgid "Cancel"
 msgstr "取消"
 
-#: src/anduinos-appearance:621 src/anduinos-appearance:680
+#: src/anduinos-appearance:626 src/anduinos-appearance:685
 msgid "AnduinOS Appearance"
 msgstr "AnduinOS 外觀"
 
-#: src/anduinos-appearance:644
+#: src/anduinos-appearance:649
 msgid "About AnduinOS Appearance"
 msgstr "關於 AnduinOS 外觀"
 
-#: src/anduinos-appearance:682
+#: src/anduinos-appearance:687
 msgid "AnduinOS Team"
 msgstr "AnduinOS 團隊"
-
-#~ msgid "Bottom"
-#~ msgstr "底部"
-
-#~ msgid "Top"
-#~ msgstr "頂部"
-
-#~ msgid "Left"
-#~ msgstr "左側"
-
-#~ msgid "Right"
-#~ msgstr "右側"
-
-#~ msgid "Show Weather"
-#~ msgstr "顯示天氣"
-
-#~ msgid "Show Network"
-#~ msgstr "顯示網路"

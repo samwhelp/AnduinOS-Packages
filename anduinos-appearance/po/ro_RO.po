@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 12:23+0000\n"
+"POT-Creation-Date: 2026-06-16 16:37+0000\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
 "MIME-Version: 1.0\n"
@@ -12,192 +12,199 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/anduinos-appearance:298
+#: src/anduinos-appearance:300
 msgid "Taskbar Style"
 msgstr "Stilul barei de activități"
 
-#: src/anduinos-appearance:303
+#: src/anduinos-appearance:305
 msgid "Preview"
 msgstr "Previzualizare"
 
-#: src/anduinos-appearance:304
+#: src/anduinos-appearance:306
 msgid "Choose the visual style of your taskbar."
 msgstr "Alege stilul vizual al barei de activități."
 
-#: src/anduinos-appearance:317
+#: src/anduinos-appearance:319
 msgid "Layout"
 msgstr "Aranjament"
 
-#: src/anduinos-appearance:330
+#: src/anduinos-appearance:333
 msgid "Group apps"
 msgstr "Grupează aplicațiile"
 
-#: src/anduinos-appearance:331
+#: src/anduinos-appearance:334
 msgid "Combine multiple windows of one app into a single icon"
-msgstr "Combină mai multe ferestre ale unei aplicații într-o singură pictogramă"
+msgstr ""
+"Combină mai multe ferestre ale unei aplicații într-o singură pictogramă"
 
-#: src/anduinos-appearance:333
+#: src/anduinos-appearance:336
 msgid "Enable grouping"
 msgstr "Activează gruparea"
 
-#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#: src/anduinos-appearance:359 src/anduinos-appearance:454
 #, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Aplicat — {style} | {pos}"
 
-#: src/anduinos-appearance:356
+#: src/anduinos-appearance:361
 msgid "✗ Failed to apply style"
 msgstr "✗ Nu s-a putut aplica stilul"
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Windows 11"
 msgstr ""
 
-#: src/anduinos-appearance:380
+#: src/anduinos-appearance:385
 msgid "Classic"
 msgstr "Clasic"
 
-#: src/anduinos-appearance:392
+#: src/anduinos-appearance:390
+msgid "Bottom"
+msgstr "Jos"
+
+#: src/anduinos-appearance:390
+msgid "Top"
+msgstr "Sus"
+
+#: src/anduinos-appearance:390
+msgid "Left"
+msgstr "Stânga"
+
+#: src/anduinos-appearance:390
+msgid "Right"
+msgstr "Dreapta"
+
+#: src/anduinos-appearance:397
 msgid "Taskbar Position"
 msgstr "Poziția barei de activități"
 
-#: src/anduinos-appearance:396
+#: src/anduinos-appearance:401
 msgid "Panel Position"
 msgstr "Poziție panou"
 
-#: src/anduinos-appearance:397
+#: src/anduinos-appearance:402
 msgid "Choose where your taskbar sits on screen."
 msgstr "Alege unde se află bara de activități pe ecran."
 
-#: src/anduinos-appearance:451
+#: src/anduinos-appearance:456
 msgid "✗ Failed to apply position"
 msgstr "✗ Nu s-a putut aplica poziția"
 
-#: src/anduinos-appearance:474
+#: src/anduinos-appearance:469
+msgid "Show Weather"
+msgstr "Arată vremea"
+
+#: src/anduinos-appearance:470
+msgid "Show Network"
+msgstr "Arată rețeaua"
+
+#: src/anduinos-appearance:479
 msgid "Panel Widgets"
 msgstr "Widget-uri panou"
 
-#: src/anduinos-appearance:478
+#: src/anduinos-appearance:483
 msgid "Panel Indicators"
 msgstr "Indicatori panou"
 
-#: src/anduinos-appearance:479
+#: src/anduinos-appearance:484
 msgid "Toggle panel indicator widgets on or off."
 msgstr "Activează sau dezactivează widget-urile indicatorului panoului."
 
-#: src/anduinos-appearance:498
+#: src/anduinos-appearance:503
 #, python-brace-format
 msgid "✓ {label} — {action}d"
 msgstr "✓ {label} — {action}"
 
-#: src/anduinos-appearance:500
+#: src/anduinos-appearance:505
 #, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ Nu s-a putut {action} {label}"
 
-#: src/anduinos-appearance:513
+#: src/anduinos-appearance:518
 msgid "Advanced"
 msgstr "Avansat"
 
-#: src/anduinos-appearance:518
+#: src/anduinos-appearance:523
 msgid "Appearance"
 msgstr "Aspect"
 
-#: src/anduinos-appearance:521
+#: src/anduinos-appearance:526
 msgid "Wallpaper"
 msgstr "Imagine fundal"
 
-#: src/anduinos-appearance:522 src/anduinos-appearance:532
-#: src/anduinos-appearance:547 src/anduinos-appearance:556
+#: src/anduinos-appearance:527 src/anduinos-appearance:537
+#: src/anduinos-appearance:552 src/anduinos-appearance:561
 msgid "Open"
 msgstr "Deschide"
 
-#: src/anduinos-appearance:531
+#: src/anduinos-appearance:536
 msgid "Tweaks"
 msgstr "Optimizări"
 
-#: src/anduinos-appearance:542
+#: src/anduinos-appearance:547
 msgid "Extension Settings"
 msgstr "Setări extensii"
 
-#: src/anduinos-appearance:543
+#: src/anduinos-appearance:548
 msgid "Open the preference windows of the panel extensions."
 msgstr "Deschide ferestrele de preferințe ale extensiilor panoului."
 
-#: src/anduinos-appearance:546
+#: src/anduinos-appearance:551
 msgid "ArcMenu"
 msgstr ""
 
-#: src/anduinos-appearance:555
+#: src/anduinos-appearance:560
 msgid "Dash-to-Panel"
 msgstr ""
 
-#: src/anduinos-appearance:567
+#: src/anduinos-appearance:572
 msgid "Danger Zone"
 msgstr "Zona de pericol"
 
-#: src/anduinos-appearance:570
+#: src/anduinos-appearance:575
 msgid "Reset desktop settings"
 msgstr "Resetează setările desktopului"
 
-#: src/anduinos-appearance:571
+#: src/anduinos-appearance:576
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr ""
 "Restabilește toate setările GNOME Shell la valorile implicite de fabrică"
 
-#: src/anduinos-appearance:572 src/anduinos-appearance:596
+#: src/anduinos-appearance:577 src/anduinos-appearance:601
 msgid "Reset"
 msgstr "Resetează"
 
-#: src/anduinos-appearance:585
+#: src/anduinos-appearance:590
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr ""
 "✓ Setările desktopului au fost resetate. Repornește Shell pentru a aplica."
 
-#: src/anduinos-appearance:587
+#: src/anduinos-appearance:592
 msgid "✗ Failed to reset"
 msgstr "✗ Resetare eșuată"
 
-#: src/anduinos-appearance:591
+#: src/anduinos-appearance:596
 msgid "Reset desktop settings?"
 msgstr "Resetezi setările desktopului?"
 
-#: src/anduinos-appearance:592
+#: src/anduinos-appearance:597
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:595
+#: src/anduinos-appearance:600
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/anduinos-appearance:621 src/anduinos-appearance:680
+#: src/anduinos-appearance:626 src/anduinos-appearance:685
 msgid "AnduinOS Appearance"
 msgstr "Aspectul AnduinOS"
 
-#: src/anduinos-appearance:644
+#: src/anduinos-appearance:649
 msgid "About AnduinOS Appearance"
 msgstr "Despre aspectul AnduinOS"
 
-#: src/anduinos-appearance:682
+#: src/anduinos-appearance:687
 msgid "AnduinOS Team"
 msgstr "Echipa AnduinOS"
-
-#~ msgid "Bottom"
-#~ msgstr "Jos"
-
-#~ msgid "Top"
-#~ msgstr "Sus"
-
-#~ msgid "Left"
-#~ msgstr "Stânga"
-
-#~ msgid "Right"
-#~ msgstr "Dreapta"
-
-#~ msgid "Show Weather"
-#~ msgstr "Arată vremea"
-
-#~ msgid "Show Network"
-#~ msgstr "Arată rețeaua"
