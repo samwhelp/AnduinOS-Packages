@@ -13,6 +13,8 @@ import warnings
 import gettext
 import os
 warnings.filterwarnings('ignore', category=DeprecationWarning, module='gi')
+warnings.filterwarnings('ignore', message=r'.*Adw\.PreferencesWindow\.add.*', category=DeprecationWarning)
+warnings.filterwarnings('ignore', message=r'.*Adw\.PreferencesWindow\.add_toast.*', category=DeprecationWarning)
 
 # ── i18n ─────────────────────────────────────────────────────────
 _LOCALE_DIR = os.environ.get('ANDUINOS_APPEARANCE_LOCALE',
@@ -324,6 +326,7 @@ class StylePage(Adw.PreferencesPage):
         box.append(self.btn10)
         box.append(self.btn11)
         layout_group.add(box)
+        self.add(layout_group)
 
         # ── Group apps (Classic only) ──
         self.group_expander = Adw.ExpanderRow()
@@ -334,8 +337,10 @@ class StylePage(Adw.PreferencesPage):
         self.group_row.set_active(_read_group_apps())
         self.group_row.connect('notify::active', self._on_group_toggled)
         self.group_expander.add_row(self.group_row)
-        layout_group.add(self.group_expander)
-        self.add(layout_group)
+
+        self.group_group = Adw.PreferencesGroup()
+        self.group_group.add(self.group_expander)
+        self.add(self.group_group)
 
         self._highlight_btn()
         self._sync_group_visibility()
@@ -369,11 +374,11 @@ class StylePage(Adw.PreferencesPage):
 
     def _sync_group_visibility(self):
         if self.win.current_style == 'classic':
-            self.group_expander.set_visible(True)
+            self.group_group.set_visible(True)
             self.group_expander.set_enable_expansion(True)
             self.group_row.set_active(_read_group_apps())
         else:
-            self.group_expander.set_visible(False)
+            self.group_group.set_visible(False)
 
     @staticmethod
     def _label(s):
