@@ -3,139 +3,200 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
-"Language: id_ID\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:23+0000\n"
 "Language-Team: Indonesian\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "About AnduinOS Appearance"
-msgstr "Tentang Tampilan AnduinOS"
-
-msgid "Advanced"
-msgstr "Lanjutan"
-
-msgid "AnduinOS Appearance"
-msgstr "Tampilan AnduinOS"
-
-msgid "AnduinOS Team"
-msgstr "Tim AnduinOS"
-
-msgid "Appearance"
-msgstr "Tampilan"
-
-msgid "ArcMenu"
-msgstr ""
-
-msgid "Cancel"
-msgstr "Batal"
-
-msgid "Choose the visual style of your taskbar."
-msgstr "Pilih gaya visual untuk taskbar Anda."
-
-msgid "Choose where your taskbar sits on screen."
-msgstr "Pilih posisi taskbar pada layar."
-
-msgid "Classic"
-msgstr "Klasik"
-
-msgid "Danger Zone"
-msgstr "Zona Bahaya"
-
-msgid "Dash-to-Panel"
-msgstr ""
-
-msgid "Extension Settings"
-msgstr "Pengaturan Ekstensi"
-
-msgid "Layout"
-msgstr "Tata Letak"
-
-msgid "Open"
-msgstr "Buka"
-
-msgid "Open the preference windows of the panel extensions."
-msgstr "Buka jendela preferensi ekstensi panel."
-
-msgid "Panel Indicators"
-msgstr "Indikator Panel"
-
-msgid "Panel Position"
-msgstr "Posisi Panel"
-
-msgid "Panel Widgets"
-msgstr "Widget Panel"
-
-msgid "Preview"
-msgstr "Pratinjau"
-
-msgid "Reset"
-msgstr "Atur Ulang"
-
-msgid "Reset desktop settings"
-msgstr "Atur ulang pengaturan desktop"
-
-msgid "Reset desktop settings?"
-msgstr "Atur ulang pengaturan desktop?"
-
-msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr "Kembalikan semua pengaturan GNOME Shell ke default pabrik"
-
-msgid "Taskbar Position"
-msgstr "Posisi Taskbar"
-
+#: src/anduinos-appearance:298
 msgid "Taskbar Style"
 msgstr "Gaya Taskbar"
 
-msgid "Toggle panel indicator widgets on or off."
-msgstr "Aktifkan atau nonaktifkan widget indikator panel."
+#: src/anduinos-appearance:303
+msgid "Preview"
+msgstr "Pratinjau"
 
-msgid "Tweaks"
-msgstr "Penyesuaian"
+#: src/anduinos-appearance:304
+msgid "Choose the visual style of your taskbar."
+msgstr "Pilih gaya visual untuk taskbar Anda."
 
-msgid "Wallpaper"
-msgstr "Latar Belakang"
+#: src/anduinos-appearance:317
+msgid "Layout"
+msgstr "Tata Letak"
 
-msgid "Windows 11"
-msgstr ""
+#: src/anduinos-appearance:330
+msgid "Group apps"
+msgstr "Kelompokkan aplikasi"
 
+#: src/anduinos-appearance:331
+msgid "Combine multiple windows of one app into a single icon"
+msgstr "Gabungkan beberapa jendela dari satu aplikasi menjadi satu ikon"
+
+#: src/anduinos-appearance:333
+msgid "Enable grouping"
+msgstr "Aktifkan pengelompokan"
+
+#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Diterapkan — {style} | {pos}"
 
-msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr "✓ Pengaturan desktop telah direset. Mulai ulang Shell untuk menerapkan."
-
-msgid "✓ {label} — {action}d"
-msgstr "✓ {label} — {action}"
-
-msgid "✗ Failed to apply position"
-msgstr "✗ Gagal menerapkan posisi"
-
+#: src/anduinos-appearance:356
 msgid "✗ Failed to apply style"
 msgstr "✗ Gagal menerapkan gaya"
 
-msgid "✗ Failed to reset"
-msgstr "✗ Gagal mereset"
+#: src/anduinos-appearance:380
+msgid "Windows 11"
+msgstr ""
 
+#: src/anduinos-appearance:380
+msgid "Classic"
+msgstr "Klasik"
+
+#: src/anduinos-appearance:392
+msgid "Taskbar Position"
+msgstr "Posisi Taskbar"
+
+#: src/anduinos-appearance:396
+msgid "Panel Position"
+msgstr "Posisi Panel"
+
+#: src/anduinos-appearance:397
+msgid "Choose where your taskbar sits on screen."
+msgstr "Pilih posisi taskbar pada layar."
+
+#: src/anduinos-appearance:451
+msgid "✗ Failed to apply position"
+msgstr "✗ Gagal menerapkan posisi"
+
+#: src/anduinos-appearance:474
+msgid "Panel Widgets"
+msgstr "Widget Panel"
+
+#: src/anduinos-appearance:478
+msgid "Panel Indicators"
+msgstr "Indikator Panel"
+
+#: src/anduinos-appearance:479
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Aktifkan atau nonaktifkan widget indikator panel."
+
+#: src/anduinos-appearance:498
+#, python-brace-format
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+#: src/anduinos-appearance:500
+#, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ Gagal melakukan {action} pada {label}"
 
-msgid "Bottom"
-msgstr "Bawah"
+#: src/anduinos-appearance:513
+msgid "Advanced"
+msgstr "Lanjutan"
 
-msgid "Top"
-msgstr "Atas"
+#: src/anduinos-appearance:518
+msgid "Appearance"
+msgstr "Tampilan"
 
-msgid "Left"
-msgstr "Kiri"
+#: src/anduinos-appearance:521
+msgid "Wallpaper"
+msgstr "Latar Belakang"
 
-msgid "Right"
-msgstr "Kanan"
+#: src/anduinos-appearance:522 src/anduinos-appearance:532
+#: src/anduinos-appearance:547 src/anduinos-appearance:556
+msgid "Open"
+msgstr "Buka"
 
-msgid "Show Weather"
-msgstr "Tampilkan Cuaca"
+#: src/anduinos-appearance:531
+msgid "Tweaks"
+msgstr "Penyesuaian"
 
-msgid "Show Network"
-msgstr "Tampilkan Jaringan"
+#: src/anduinos-appearance:542
+msgid "Extension Settings"
+msgstr "Pengaturan Ekstensi"
 
+#: src/anduinos-appearance:543
+msgid "Open the preference windows of the panel extensions."
+msgstr "Buka jendela preferensi ekstensi panel."
+
+#: src/anduinos-appearance:546
+msgid "ArcMenu"
+msgstr ""
+
+#: src/anduinos-appearance:555
+msgid "Dash-to-Panel"
+msgstr ""
+
+#: src/anduinos-appearance:567
+msgid "Danger Zone"
+msgstr "Zona Bahaya"
+
+#: src/anduinos-appearance:570
+msgid "Reset desktop settings"
+msgstr "Atur ulang pengaturan desktop"
+
+#: src/anduinos-appearance:571
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Kembalikan semua pengaturan GNOME Shell ke default pabrik"
+
+#: src/anduinos-appearance:572 src/anduinos-appearance:596
+msgid "Reset"
+msgstr "Atur Ulang"
+
+#: src/anduinos-appearance:585
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr ""
+"✓ Pengaturan desktop telah direset. Mulai ulang Shell untuk menerapkan."
+
+#: src/anduinos-appearance:587
+msgid "✗ Failed to reset"
+msgstr "✗ Gagal mereset"
+
+#: src/anduinos-appearance:591
+msgid "Reset desktop settings?"
+msgstr "Atur ulang pengaturan desktop?"
+
+#: src/anduinos-appearance:592
+msgid ""
+"This will reset all GNOME Shell settings to factory defaults.\n"
+"Your extensions, panel layout, and preferences will be lost."
+msgstr ""
+
+#: src/anduinos-appearance:595
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/anduinos-appearance:621 src/anduinos-appearance:680
+msgid "AnduinOS Appearance"
+msgstr "Tampilan AnduinOS"
+
+#: src/anduinos-appearance:644
+msgid "About AnduinOS Appearance"
+msgstr "Tentang Tampilan AnduinOS"
+
+#: src/anduinos-appearance:682
+msgid "AnduinOS Team"
+msgstr "Tim AnduinOS"
+
+#~ msgid "Bottom"
+#~ msgstr "Bawah"
+
+#~ msgid "Top"
+#~ msgstr "Atas"
+
+#~ msgid "Left"
+#~ msgstr "Kiri"
+
+#~ msgid "Right"
+#~ msgstr "Kanan"
+
+#~ msgid "Show Weather"
+#~ msgstr "Tampilkan Cuaca"
+
+#~ msgid "Show Network"
+#~ msgstr "Tampilkan Jaringan"

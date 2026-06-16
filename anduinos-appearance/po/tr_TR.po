@@ -3,139 +3,200 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
-"Language: tr_TR\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:23+0000\n"
 "Language-Team: Turkish\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "About AnduinOS Appearance"
-msgstr "AnduinOS Görünümü Hakkında"
-
-msgid "Advanced"
-msgstr "Gelişmiş"
-
-msgid "AnduinOS Appearance"
-msgstr "AnduinOS Görünümü"
-
-msgid "AnduinOS Team"
-msgstr "AnduinOS Ekibi"
-
-msgid "Appearance"
-msgstr "Görünüm"
-
-msgid "ArcMenu"
-msgstr "ArcMenü"
-
-msgid "Cancel"
-msgstr "İptal"
-
-msgid "Choose the visual style of your taskbar."
-msgstr "Görev çubuğunun görsel stilini seçin."
-
-msgid "Choose where your taskbar sits on screen."
-msgstr "Görev çubuğunun ekranda nerede bulunacağını seçin."
-
-msgid "Classic"
-msgstr "Klasik"
-
-msgid "Danger Zone"
-msgstr "Tehlike Bölgesi"
-
-msgid "Dash-to-Panel"
-msgstr ""
-
-msgid "Extension Settings"
-msgstr "Eklenti Ayarları"
-
-msgid "Layout"
-msgstr "Düzen"
-
-msgid "Open"
-msgstr "Aç"
-
-msgid "Open the preference windows of the panel extensions."
-msgstr "Panel eklentilerinin tercih pencerelerini açın."
-
-msgid "Panel Indicators"
-msgstr "Panel Göstergeleri"
-
-msgid "Panel Position"
-msgstr "Panel Konumu"
-
-msgid "Panel Widgets"
-msgstr "Panel Widget'ları"
-
-msgid "Preview"
-msgstr "Önizleme"
-
-msgid "Reset"
-msgstr "Sıfırla"
-
-msgid "Reset desktop settings"
-msgstr "Masaüstü ayarlarını sıfırla"
-
-msgid "Reset desktop settings?"
-msgstr "Masaüstü ayarları sıfırlansın mı?"
-
-msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr "Tüm GNOME Shell ayarlarını fabrika varsayılanlarına geri yükle"
-
-msgid "Taskbar Position"
-msgstr "Görev Çubuğu Konumu"
-
+#: src/anduinos-appearance:298
 msgid "Taskbar Style"
 msgstr "Görev Çubuğu Stili"
 
-msgid "Toggle panel indicator widgets on or off."
-msgstr "Panel göstergesi widget'larını açın veya kapatın."
+#: src/anduinos-appearance:303
+msgid "Preview"
+msgstr "Önizleme"
 
-msgid "Tweaks"
-msgstr "Tweakler"
+#: src/anduinos-appearance:304
+msgid "Choose the visual style of your taskbar."
+msgstr "Görev çubuğunun görsel stilini seçin."
 
-msgid "Wallpaper"
-msgstr "Duvar Kağıdı"
+#: src/anduinos-appearance:317
+msgid "Layout"
+msgstr "Düzen"
 
-msgid "Windows 11"
-msgstr ""
+#: src/anduinos-appearance:330
+msgid "Group apps"
+msgstr "Uygulamaları grupla"
 
+#: src/anduinos-appearance:331
+msgid "Combine multiple windows of one app into a single icon"
+msgstr "Bir uygulamanın birden çok penceresini tek bir simgede birleştir"
+
+#: src/anduinos-appearance:333
+msgid "Enable grouping"
+msgstr "Gruplandırmayı etkinleştir"
+
+#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Uygulandı — {style} | {pos}"
 
-msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr "✓ Masaüstü ayarları sıfırlandı. Uygulamak için Shell'i yeniden başlatın."
-
-msgid "✓ {label} — {action}d"
-msgstr "✓ {label} — {action}ildi"
-
-msgid "✗ Failed to apply position"
-msgstr "✗ Konum uygulanamadı"
-
+#: src/anduinos-appearance:356
 msgid "✗ Failed to apply style"
 msgstr "✗ Stil uygulanamadı"
 
-msgid "✗ Failed to reset"
-msgstr "✗ Sıfırlama başarısız"
+#: src/anduinos-appearance:380
+msgid "Windows 11"
+msgstr ""
 
+#: src/anduinos-appearance:380
+msgid "Classic"
+msgstr "Klasik"
+
+#: src/anduinos-appearance:392
+msgid "Taskbar Position"
+msgstr "Görev Çubuğu Konumu"
+
+#: src/anduinos-appearance:396
+msgid "Panel Position"
+msgstr "Panel Konumu"
+
+#: src/anduinos-appearance:397
+msgid "Choose where your taskbar sits on screen."
+msgstr "Görev çubuğunun ekranda nerede bulunacağını seçin."
+
+#: src/anduinos-appearance:451
+msgid "✗ Failed to apply position"
+msgstr "✗ Konum uygulanamadı"
+
+#: src/anduinos-appearance:474
+msgid "Panel Widgets"
+msgstr "Panel Widget'ları"
+
+#: src/anduinos-appearance:478
+msgid "Panel Indicators"
+msgstr "Panel Göstergeleri"
+
+#: src/anduinos-appearance:479
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Panel göstergesi widget'larını açın veya kapatın."
+
+#: src/anduinos-appearance:498
+#, python-brace-format
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ildi"
+
+#: src/anduinos-appearance:500
+#, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ {label} {action} işlemi başarısız"
 
-msgid "Bottom"
-msgstr "Alt"
+#: src/anduinos-appearance:513
+msgid "Advanced"
+msgstr "Gelişmiş"
 
-msgid "Top"
-msgstr "Üst"
+#: src/anduinos-appearance:518
+msgid "Appearance"
+msgstr "Görünüm"
 
-msgid "Left"
-msgstr "Sol"
+#: src/anduinos-appearance:521
+msgid "Wallpaper"
+msgstr "Duvar Kağıdı"
 
-msgid "Right"
-msgstr "Sağ"
+#: src/anduinos-appearance:522 src/anduinos-appearance:532
+#: src/anduinos-appearance:547 src/anduinos-appearance:556
+msgid "Open"
+msgstr "Aç"
 
-msgid "Show Weather"
-msgstr "Hava Durumunu Göster"
+#: src/anduinos-appearance:531
+msgid "Tweaks"
+msgstr "Tweakler"
 
-msgid "Show Network"
-msgstr "Ağ Durumunu Göster"
+#: src/anduinos-appearance:542
+msgid "Extension Settings"
+msgstr "Eklenti Ayarları"
 
+#: src/anduinos-appearance:543
+msgid "Open the preference windows of the panel extensions."
+msgstr "Panel eklentilerinin tercih pencerelerini açın."
+
+#: src/anduinos-appearance:546
+msgid "ArcMenu"
+msgstr "ArcMenü"
+
+#: src/anduinos-appearance:555
+msgid "Dash-to-Panel"
+msgstr ""
+
+#: src/anduinos-appearance:567
+msgid "Danger Zone"
+msgstr "Tehlike Bölgesi"
+
+#: src/anduinos-appearance:570
+msgid "Reset desktop settings"
+msgstr "Masaüstü ayarlarını sıfırla"
+
+#: src/anduinos-appearance:571
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Tüm GNOME Shell ayarlarını fabrika varsayılanlarına geri yükle"
+
+#: src/anduinos-appearance:572 src/anduinos-appearance:596
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: src/anduinos-appearance:585
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr ""
+"✓ Masaüstü ayarları sıfırlandı. Uygulamak için Shell'i yeniden başlatın."
+
+#: src/anduinos-appearance:587
+msgid "✗ Failed to reset"
+msgstr "✗ Sıfırlama başarısız"
+
+#: src/anduinos-appearance:591
+msgid "Reset desktop settings?"
+msgstr "Masaüstü ayarları sıfırlansın mı?"
+
+#: src/anduinos-appearance:592
+msgid ""
+"This will reset all GNOME Shell settings to factory defaults.\n"
+"Your extensions, panel layout, and preferences will be lost."
+msgstr ""
+
+#: src/anduinos-appearance:595
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/anduinos-appearance:621 src/anduinos-appearance:680
+msgid "AnduinOS Appearance"
+msgstr "AnduinOS Görünümü"
+
+#: src/anduinos-appearance:644
+msgid "About AnduinOS Appearance"
+msgstr "AnduinOS Görünümü Hakkında"
+
+#: src/anduinos-appearance:682
+msgid "AnduinOS Team"
+msgstr "AnduinOS Ekibi"
+
+#~ msgid "Bottom"
+#~ msgstr "Alt"
+
+#~ msgid "Top"
+#~ msgstr "Üst"
+
+#~ msgid "Left"
+#~ msgstr "Sol"
+
+#~ msgid "Right"
+#~ msgstr "Sağ"
+
+#~ msgid "Show Weather"
+#~ msgstr "Hava Durumunu Göster"
+
+#~ msgid "Show Network"
+#~ msgstr "Ağ Durumunu Göster"

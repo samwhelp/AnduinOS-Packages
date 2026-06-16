@@ -3,139 +3,200 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
-"Language: uk_UA\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:23+0000\n"
 "Language-Team: Ukrainian\n"
+"Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "About AnduinOS Appearance"
-msgstr "Про оформлення AnduinOS"
-
-msgid "Advanced"
-msgstr "Додатково"
-
-msgid "AnduinOS Appearance"
-msgstr "Оформлення AnduinOS"
-
-msgid "AnduinOS Team"
-msgstr "Команда AnduinOS"
-
-msgid "Appearance"
-msgstr "Оформлення"
-
-msgid "ArcMenu"
-msgstr ""
-
-msgid "Cancel"
-msgstr "Скасувати"
-
-msgid "Choose the visual style of your taskbar."
-msgstr "Виберіть візуальний стиль вашої панелі завдань."
-
-msgid "Choose where your taskbar sits on screen."
-msgstr "Виберіть розташування вашої панелі завдань на екрані."
-
-msgid "Classic"
-msgstr "Класичний"
-
-msgid "Danger Zone"
-msgstr "Зона небезпеки"
-
-msgid "Dash-to-Panel"
-msgstr ""
-
-msgid "Extension Settings"
-msgstr "Налаштування розширень"
-
-msgid "Layout"
-msgstr "Макет"
-
-msgid "Open"
-msgstr "Відкрити"
-
-msgid "Open the preference windows of the panel extensions."
-msgstr "Відкрийте вікна налаштувань для розширень панелі."
-
-msgid "Panel Indicators"
-msgstr "Індикатори панелі"
-
-msgid "Panel Position"
-msgstr "Позиція панелі"
-
-msgid "Panel Widgets"
-msgstr "Віджети панелі"
-
-msgid "Preview"
-msgstr "Перегляд"
-
-msgid "Reset"
-msgstr "Скинути"
-
-msgid "Reset desktop settings"
-msgstr "Скинути налаштування робочого столу"
-
-msgid "Reset desktop settings?"
-msgstr "Скинути налаштування робочого столу?"
-
-msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr "Відновити всі налаштування GNOME Shell до заводських значень"
-
-msgid "Taskbar Position"
-msgstr "Позиція панелі завдань"
-
+#: src/anduinos-appearance:298
 msgid "Taskbar Style"
 msgstr "Стиль панелі завдань"
 
-msgid "Toggle panel indicator widgets on or off."
-msgstr "Увімкнути або вимкнути віджети індикаторів панелі."
+#: src/anduinos-appearance:303
+msgid "Preview"
+msgstr "Перегляд"
 
-msgid "Tweaks"
-msgstr "Твіки"
+#: src/anduinos-appearance:304
+msgid "Choose the visual style of your taskbar."
+msgstr "Виберіть візуальний стиль вашої панелі завдань."
 
-msgid "Wallpaper"
-msgstr "Шпалери"
+#: src/anduinos-appearance:317
+msgid "Layout"
+msgstr "Макет"
 
-msgid "Windows 11"
-msgstr ""
+#: src/anduinos-appearance:330
+msgid "Group apps"
+msgstr "Групування програм"
 
+#: src/anduinos-appearance:331
+msgid "Combine multiple windows of one app into a single icon"
+msgstr "Обʼєднання кількох вікон однієї програми в одну піктограму"
+
+#: src/anduinos-appearance:333
+msgid "Enable grouping"
+msgstr "Увімкнути групування"
+
+#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Застосовано — {style} | {pos}"
 
-msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr "✓ Налаштування робочого столу скинуто. Перезавантажте Shell для застосування."
-
-msgid "✓ {label} — {action}d"
-msgstr "✓ {label} — {action}но"
-
-msgid "✗ Failed to apply position"
-msgstr "✗ Не вдалося застосувати позицію"
-
+#: src/anduinos-appearance:356
 msgid "✗ Failed to apply style"
 msgstr "✗ Не вдалося застосувати стиль"
 
-msgid "✗ Failed to reset"
-msgstr "✗ Не вдалося скинути"
+#: src/anduinos-appearance:380
+msgid "Windows 11"
+msgstr ""
 
+#: src/anduinos-appearance:380
+msgid "Classic"
+msgstr "Класичний"
+
+#: src/anduinos-appearance:392
+msgid "Taskbar Position"
+msgstr "Позиція панелі завдань"
+
+#: src/anduinos-appearance:396
+msgid "Panel Position"
+msgstr "Позиція панелі"
+
+#: src/anduinos-appearance:397
+msgid "Choose where your taskbar sits on screen."
+msgstr "Виберіть розташування вашої панелі завдань на екрані."
+
+#: src/anduinos-appearance:451
+msgid "✗ Failed to apply position"
+msgstr "✗ Не вдалося застосувати позицію"
+
+#: src/anduinos-appearance:474
+msgid "Panel Widgets"
+msgstr "Віджети панелі"
+
+#: src/anduinos-appearance:478
+msgid "Panel Indicators"
+msgstr "Індикатори панелі"
+
+#: src/anduinos-appearance:479
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Увімкнути або вимкнути віджети індикаторів панелі."
+
+#: src/anduinos-appearance:498
+#, python-brace-format
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}но"
+
+#: src/anduinos-appearance:500
+#, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ Не вдалося {action} {label}"
 
-msgid "Bottom"
-msgstr "Знизу"
+#: src/anduinos-appearance:513
+msgid "Advanced"
+msgstr "Додатково"
 
-msgid "Top"
-msgstr "Зверху"
+#: src/anduinos-appearance:518
+msgid "Appearance"
+msgstr "Оформлення"
 
-msgid "Left"
-msgstr "Зліва"
+#: src/anduinos-appearance:521
+msgid "Wallpaper"
+msgstr "Шпалери"
 
-msgid "Right"
-msgstr "Справа"
+#: src/anduinos-appearance:522 src/anduinos-appearance:532
+#: src/anduinos-appearance:547 src/anduinos-appearance:556
+msgid "Open"
+msgstr "Відкрити"
 
-msgid "Show Weather"
-msgstr "Показати погоду"
+#: src/anduinos-appearance:531
+msgid "Tweaks"
+msgstr "Твіки"
 
-msgid "Show Network"
-msgstr "Показати мережу"
+#: src/anduinos-appearance:542
+msgid "Extension Settings"
+msgstr "Налаштування розширень"
 
+#: src/anduinos-appearance:543
+msgid "Open the preference windows of the panel extensions."
+msgstr "Відкрийте вікна налаштувань для розширень панелі."
+
+#: src/anduinos-appearance:546
+msgid "ArcMenu"
+msgstr ""
+
+#: src/anduinos-appearance:555
+msgid "Dash-to-Panel"
+msgstr ""
+
+#: src/anduinos-appearance:567
+msgid "Danger Zone"
+msgstr "Зона небезпеки"
+
+#: src/anduinos-appearance:570
+msgid "Reset desktop settings"
+msgstr "Скинути налаштування робочого столу"
+
+#: src/anduinos-appearance:571
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "Відновити всі налаштування GNOME Shell до заводських значень"
+
+#: src/anduinos-appearance:572 src/anduinos-appearance:596
+msgid "Reset"
+msgstr "Скинути"
+
+#: src/anduinos-appearance:585
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr ""
+"✓ Налаштування робочого столу скинуто. Перезавантажте Shell для застосування."
+
+#: src/anduinos-appearance:587
+msgid "✗ Failed to reset"
+msgstr "✗ Не вдалося скинути"
+
+#: src/anduinos-appearance:591
+msgid "Reset desktop settings?"
+msgstr "Скинути налаштування робочого столу?"
+
+#: src/anduinos-appearance:592
+msgid ""
+"This will reset all GNOME Shell settings to factory defaults.\n"
+"Your extensions, panel layout, and preferences will be lost."
+msgstr ""
+
+#: src/anduinos-appearance:595
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: src/anduinos-appearance:621 src/anduinos-appearance:680
+msgid "AnduinOS Appearance"
+msgstr "Оформлення AnduinOS"
+
+#: src/anduinos-appearance:644
+msgid "About AnduinOS Appearance"
+msgstr "Про оформлення AnduinOS"
+
+#: src/anduinos-appearance:682
+msgid "AnduinOS Team"
+msgstr "Команда AnduinOS"
+
+#~ msgid "Bottom"
+#~ msgstr "Знизу"
+
+#~ msgid "Top"
+#~ msgstr "Зверху"
+
+#~ msgid "Left"
+#~ msgstr "Зліва"
+
+#~ msgid "Right"
+#~ msgstr "Справа"
+
+#~ msgid "Show Weather"
+#~ msgstr "Показати погоду"
+
+#~ msgid "Show Network"
+#~ msgstr "Показати мережу"

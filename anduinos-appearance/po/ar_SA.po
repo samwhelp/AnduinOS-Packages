@@ -3,139 +3,199 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
-"Language: ar_SA\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:23+0000\n"
 "Language-Team: Arabic\n"
+"Language: ar_SA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "About AnduinOS Appearance"
-msgstr "حول مظهر AnduinOS"
-
-msgid "Advanced"
-msgstr "متقدم"
-
-msgid "AnduinOS Appearance"
-msgstr "مظهر AnduinOS"
-
-msgid "AnduinOS Team"
-msgstr "فريق AnduinOS"
-
-msgid "Appearance"
-msgstr "المظهر"
-
-msgid "ArcMenu"
-msgstr "قائمة ArcMenu"
-
-msgid "Cancel"
-msgstr "إلغاء"
-
-msgid "Choose the visual style of your taskbar."
-msgstr "اختر النمط البصري لشريط المهام الخاص بك."
-
-msgid "Choose where your taskbar sits on screen."
-msgstr "اختر مكان تواجد شريط المهام على الشاشة."
-
-msgid "Classic"
-msgstr "كلاسيكي"
-
-msgid "Danger Zone"
-msgstr "منطقة الخطر"
-
-msgid "Dash-to-Panel"
-msgstr ""
-
-msgid "Extension Settings"
-msgstr "إعدادات الإضافات"
-
-msgid "Layout"
-msgstr "التخطيط"
-
-msgid "Open"
-msgstr "فتح"
-
-msgid "Open the preference windows of the panel extensions."
-msgstr "افتح نوافذ تفضيلات إضافات اللوحة."
-
-msgid "Panel Indicators"
-msgstr "مؤشرات اللوحة"
-
-msgid "Panel Position"
-msgstr "موضع اللوحة"
-
-msgid "Panel Widgets"
-msgstr "أدوات واجهة اللوحة"
-
-msgid "Preview"
-msgstr "معاينة"
-
-msgid "Reset"
-msgstr "إعادة تعيين"
-
-msgid "Reset desktop settings"
-msgstr "إعادة تعيين إعدادات سطح المكتب"
-
-msgid "Reset desktop settings?"
-msgstr "هل تريد إعادة تعيين إعدادات سطح المكتب؟"
-
-msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr "استعد جميع إعدادات GNOME Shell إلى الإعدادات الافتراضية للمصنع"
-
-msgid "Taskbar Position"
-msgstr "موضع شريط المهام"
-
+#: src/anduinos-appearance:298
 msgid "Taskbar Style"
 msgstr "نمط شريط المهام"
 
-msgid "Toggle panel indicator widgets on or off."
-msgstr "قم بتمكين أو تعطيل أدوات واجهة مؤشرات اللوحة."
+#: src/anduinos-appearance:303
+msgid "Preview"
+msgstr "معاينة"
 
-msgid "Tweaks"
-msgstr "التعديلات"
+#: src/anduinos-appearance:304
+msgid "Choose the visual style of your taskbar."
+msgstr "اختر النمط البصري لشريط المهام الخاص بك."
 
-msgid "Wallpaper"
-msgstr "خلفية الشاشة"
+#: src/anduinos-appearance:317
+msgid "Layout"
+msgstr "التخطيط"
 
-msgid "Windows 11"
-msgstr "ويندوز 11"
+#: src/anduinos-appearance:330
+msgid "Group apps"
+msgstr "تجميع التطبيقات"
 
+#: src/anduinos-appearance:331
+msgid "Combine multiple windows of one app into a single icon"
+msgstr "دمج النوافذ المتعددة لنفس التطبيق في أيقونة واحدة"
+
+#: src/anduinos-appearance:333
+msgid "Enable grouping"
+msgstr "تفعيل التجميع"
+
+#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ تم التطبيق — {style} | {pos}"
 
-msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr "✓ تم إعادة تعيين إعدادات سطح المكتب. أعد تشغيل Shell لتطبيق التغييرات."
-
-msgid "✓ {label} — {action}d"
-msgstr "✓ {label} — {action}"
-
-msgid "✗ Failed to apply position"
-msgstr "✗ فشل في تطبيق الموقع"
-
+#: src/anduinos-appearance:356
 msgid "✗ Failed to apply style"
 msgstr "✗ فشل في تطبيق النمط"
 
-msgid "✗ Failed to reset"
-msgstr "✗ فشل في إعادة التعيين"
+#: src/anduinos-appearance:380
+msgid "Windows 11"
+msgstr "ويندوز 11"
 
+#: src/anduinos-appearance:380
+msgid "Classic"
+msgstr "كلاسيكي"
+
+#: src/anduinos-appearance:392
+msgid "Taskbar Position"
+msgstr "موضع شريط المهام"
+
+#: src/anduinos-appearance:396
+msgid "Panel Position"
+msgstr "موضع اللوحة"
+
+#: src/anduinos-appearance:397
+msgid "Choose where your taskbar sits on screen."
+msgstr "اختر مكان تواجد شريط المهام على الشاشة."
+
+#: src/anduinos-appearance:451
+msgid "✗ Failed to apply position"
+msgstr "✗ فشل في تطبيق الموقع"
+
+#: src/anduinos-appearance:474
+msgid "Panel Widgets"
+msgstr "أدوات واجهة اللوحة"
+
+#: src/anduinos-appearance:478
+msgid "Panel Indicators"
+msgstr "مؤشرات اللوحة"
+
+#: src/anduinos-appearance:479
+msgid "Toggle panel indicator widgets on or off."
+msgstr "قم بتمكين أو تعطيل أدوات واجهة مؤشرات اللوحة."
+
+#: src/anduinos-appearance:498
+#, python-brace-format
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}"
+
+#: src/anduinos-appearance:500
+#, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ فشل في {action} {label}"
 
-msgid "Bottom"
-msgstr "أسفل"
+#: src/anduinos-appearance:513
+msgid "Advanced"
+msgstr "متقدم"
 
-msgid "Top"
-msgstr "أعلى"
+#: src/anduinos-appearance:518
+msgid "Appearance"
+msgstr "المظهر"
 
-msgid "Left"
-msgstr "يسار"
+#: src/anduinos-appearance:521
+msgid "Wallpaper"
+msgstr "خلفية الشاشة"
 
-msgid "Right"
-msgstr "يمين"
+#: src/anduinos-appearance:522 src/anduinos-appearance:532
+#: src/anduinos-appearance:547 src/anduinos-appearance:556
+msgid "Open"
+msgstr "فتح"
 
-msgid "Show Weather"
-msgstr "إظهار الطقس"
+#: src/anduinos-appearance:531
+msgid "Tweaks"
+msgstr "التعديلات"
 
-msgid "Show Network"
-msgstr "إظهار الشبكة"
+#: src/anduinos-appearance:542
+msgid "Extension Settings"
+msgstr "إعدادات الإضافات"
 
+#: src/anduinos-appearance:543
+msgid "Open the preference windows of the panel extensions."
+msgstr "افتح نوافذ تفضيلات إضافات اللوحة."
+
+#: src/anduinos-appearance:546
+msgid "ArcMenu"
+msgstr "قائمة ArcMenu"
+
+#: src/anduinos-appearance:555
+msgid "Dash-to-Panel"
+msgstr ""
+
+#: src/anduinos-appearance:567
+msgid "Danger Zone"
+msgstr "منطقة الخطر"
+
+#: src/anduinos-appearance:570
+msgid "Reset desktop settings"
+msgstr "إعادة تعيين إعدادات سطح المكتب"
+
+#: src/anduinos-appearance:571
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr "استعد جميع إعدادات GNOME Shell إلى الإعدادات الافتراضية للمصنع"
+
+#: src/anduinos-appearance:572 src/anduinos-appearance:596
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+#: src/anduinos-appearance:585
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ تم إعادة تعيين إعدادات سطح المكتب. أعد تشغيل Shell لتطبيق التغييرات."
+
+#: src/anduinos-appearance:587
+msgid "✗ Failed to reset"
+msgstr "✗ فشل في إعادة التعيين"
+
+#: src/anduinos-appearance:591
+msgid "Reset desktop settings?"
+msgstr "هل تريد إعادة تعيين إعدادات سطح المكتب؟"
+
+#: src/anduinos-appearance:592
+msgid ""
+"This will reset all GNOME Shell settings to factory defaults.\n"
+"Your extensions, panel layout, and preferences will be lost."
+msgstr ""
+
+#: src/anduinos-appearance:595
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: src/anduinos-appearance:621 src/anduinos-appearance:680
+msgid "AnduinOS Appearance"
+msgstr "مظهر AnduinOS"
+
+#: src/anduinos-appearance:644
+msgid "About AnduinOS Appearance"
+msgstr "حول مظهر AnduinOS"
+
+#: src/anduinos-appearance:682
+msgid "AnduinOS Team"
+msgstr "فريق AnduinOS"
+
+#~ msgid "Bottom"
+#~ msgstr "أسفل"
+
+#~ msgid "Top"
+#~ msgstr "أعلى"
+
+#~ msgid "Left"
+#~ msgstr "يسار"
+
+#~ msgid "Right"
+#~ msgstr "يمين"
+
+#~ msgid "Show Weather"
+#~ msgstr "إظهار الطقس"
+
+#~ msgid "Show Network"
+#~ msgstr "إظهار الشبكة"

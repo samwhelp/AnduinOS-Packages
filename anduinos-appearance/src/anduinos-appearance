@@ -113,6 +113,16 @@ def detect_current():
     return style, pos
 
 
+def _read_group_apps() -> bool:
+    val = _dconf_read(f'{DTP}/group-apps')
+    return val != 'false'  # default to True if unset or true
+
+
+def _write_group_apps(enabled: bool):
+    v = 'true' if enabled else 'false'
+    subprocess.run(['dconf', 'write', f'{DTP}/group-apps', v], check=True)
+
+
 def apply_style_and_position(style: str, position: str) -> bool:
     """Apply the combination of *style* and *position* via dconf."""
     centered = (style == 'eleven')
@@ -314,21 +324,40 @@ class StylePage(Adw.PreferencesPage):
         box.append(self.btn10)
         box.append(self.btn11)
         layout_group.add(box)
+
+        # ── Group apps (Classic only) ──
+        self.group_expander = Adw.ExpanderRow()
+        self.group_expander.set_title(_('Group apps'))
+        self.group_expander.set_subtitle(_('Combine multiple windows of one app into a single icon'))
+        self.group_row = Adw.SwitchRow()
+        self.group_row.set_title(_('Enable grouping'))
+        self.group_row.set_active(_read_group_apps())
+        self.group_row.connect('notify::active', self._on_group_toggled)
+        self.group_expander.add_row(self.group_row)
+        layout_group.add(self.group_expander)
         self.add(layout_group)
 
         self._highlight_btn()
+        self._sync_group_visibility()
 
     def _draw(self, area, cr, w, h, style, position):
         draw_preview(area, cr, w, h, style, position)
 
     def _on_click(self, btn, style):
         if apply_style_and_position(style, self.win.current_position):
+            if style == 'eleven':
+                _write_group_apps(True)
             self.win.current_style = style
             self.win._sync_all_highlights()
+            self._sync_group_visibility()
             self.win._refresh_previews()
             self.win._toast(_('✓ Applied — {style} | {pos}').format(style=self._label(style), pos=_(POS_LABELS[self.win.current_position])))
         else:
             self.win._toast(_('✗ Failed to apply style'))
+
+    def _on_group_toggled(self, switch_row, pspec):
+        if self.win.current_style == 'classic':
+            _write_group_apps(switch_row.get_active())
 
     def _highlight_btn(self):
         if self.win.current_style == 'eleven':
@@ -337,6 +366,14 @@ class StylePage(Adw.PreferencesPage):
         else:
             self.btn10.add_css_class('suggested-action')
             self.btn11.remove_css_class('suggested-action')
+
+    def _sync_group_visibility(self):
+        if self.win.current_style == 'classic':
+            self.group_expander.set_visible(True)
+            self.group_expander.set_enable_expansion(True)
+            self.group_row.set_active(_read_group_apps())
+        else:
+            self.group_expander.set_visible(False)
 
     @staticmethod
     def _label(s):
@@ -582,7 +619,7 @@ class AppearanceWindow(Adw.PreferencesWindow):
     def __init__(self, app):
         super().__init__(application=app)
         self.set_title(_('AnduinOS Appearance'))
-        self.set_default_size(780, 460)
+        self.set_default_size(780, 560)
         self.set_icon_name('anduinos-appearance')
 
         self.current_style, self.current_position = detect_current()

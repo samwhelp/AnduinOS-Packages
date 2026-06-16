@@ -3,139 +3,201 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
-"Language: it_IT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:23+0000\n"
 "Language-Team: Italian\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "About AnduinOS Appearance"
-msgstr "Informazioni su AnduinOS Aspetto"
-
-msgid "Advanced"
-msgstr "Avanzate"
-
-msgid "AnduinOS Appearance"
-msgstr "Aspetto di AnduinOS"
-
-msgid "AnduinOS Team"
-msgstr "Team di AnduinOS"
-
-msgid "Appearance"
-msgstr "Aspetto"
-
-msgid "ArcMenu"
-msgstr ""
-
-msgid "Cancel"
-msgstr "Annulla"
-
-msgid "Choose the visual style of your taskbar."
-msgstr "Scegli lo stile visivo della tua barra delle applicazioni."
-
-msgid "Choose where your taskbar sits on screen."
-msgstr "Scegli dove posizionare la barra delle applicazioni sullo schermo."
-
-msgid "Classic"
-msgstr "Classico"
-
-msgid "Danger Zone"
-msgstr "Zona di Pericolo"
-
-msgid "Dash-to-Panel"
-msgstr ""
-
-msgid "Extension Settings"
-msgstr "Impostazioni estensioni"
-
-msgid "Layout"
-msgstr "Layout"
-
-msgid "Open"
-msgstr "Apri"
-
-msgid "Open the preference windows of the panel extensions."
-msgstr "Apri le finestre di preferenza delle estensioni della barra."
-
-msgid "Panel Indicators"
-msgstr "Indicatori della barra"
-
-msgid "Panel Position"
-msgstr "Posizione della barra"
-
-msgid "Panel Widgets"
-msgstr "Widget della barra"
-
-msgid "Preview"
-msgstr "Anteprima"
-
-msgid "Reset"
-msgstr "Reimposta"
-
-msgid "Reset desktop settings"
-msgstr "Reimposta le impostazioni del desktop"
-
-msgid "Reset desktop settings?"
-msgstr "Reimpostare le impostazioni del desktop?"
-
-msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr "Ripristina tutte le impostazioni di GNOME Shell ai valori predefiniti di fabbrica"
-
-msgid "Taskbar Position"
-msgstr "Posizione della barra delle applicazioni"
-
+#: src/anduinos-appearance:298
 msgid "Taskbar Style"
 msgstr "Stile della barra delle applicazioni"
 
-msgid "Toggle panel indicator widgets on or off."
-msgstr "Attiva o disattiva i widget degli indicatori della barra."
+#: src/anduinos-appearance:303
+msgid "Preview"
+msgstr "Anteprima"
 
-msgid "Tweaks"
-msgstr "Ottimizzazioni"
+#: src/anduinos-appearance:304
+msgid "Choose the visual style of your taskbar."
+msgstr "Scegli lo stile visivo della tua barra delle applicazioni."
 
-msgid "Wallpaper"
-msgstr "Sfondo"
+#: src/anduinos-appearance:317
+msgid "Layout"
+msgstr "Layout"
 
-msgid "Windows 11"
-msgstr ""
+#: src/anduinos-appearance:330
+msgid "Group apps"
+msgstr "Raggruppa app"
 
+#: src/anduinos-appearance:331
+msgid "Combine multiple windows of one app into a single icon"
+msgstr "Unisci più finestre di un'app in una singola icona"
+
+#: src/anduinos-appearance:333
+msgid "Enable grouping"
+msgstr "Attiva raggruppamento"
+
+#: src/anduinos-appearance:354 src/anduinos-appearance:449
+#, python-brace-format
 msgid "✓ Applied — {style} | {pos}"
 msgstr "✓ Applicato — {style} | {pos}"
 
-msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr "✓ Impostazioni del desktop reimpostate. Riavvia Shell per applicare."
-
-msgid "✓ {label} — {action}d"
-msgstr "✓ {label} — {action}ato"
-
-msgid "✗ Failed to apply position"
-msgstr "✗ Impossibile applicare la posizione"
-
+#: src/anduinos-appearance:356
 msgid "✗ Failed to apply style"
 msgstr "✗ Impossibile applicare lo stile"
 
-msgid "✗ Failed to reset"
-msgstr "✗ Impossibile reimpostare"
+#: src/anduinos-appearance:380
+msgid "Windows 11"
+msgstr ""
 
+#: src/anduinos-appearance:380
+msgid "Classic"
+msgstr "Classico"
+
+#: src/anduinos-appearance:392
+msgid "Taskbar Position"
+msgstr "Posizione della barra delle applicazioni"
+
+#: src/anduinos-appearance:396
+msgid "Panel Position"
+msgstr "Posizione della barra"
+
+#: src/anduinos-appearance:397
+msgid "Choose where your taskbar sits on screen."
+msgstr "Scegli dove posizionare la barra delle applicazioni sullo schermo."
+
+#: src/anduinos-appearance:451
+msgid "✗ Failed to apply position"
+msgstr "✗ Impossibile applicare la posizione"
+
+#: src/anduinos-appearance:474
+msgid "Panel Widgets"
+msgstr "Widget della barra"
+
+#: src/anduinos-appearance:478
+msgid "Panel Indicators"
+msgstr "Indicatori della barra"
+
+#: src/anduinos-appearance:479
+msgid "Toggle panel indicator widgets on or off."
+msgstr "Attiva o disattiva i widget degli indicatori della barra."
+
+#: src/anduinos-appearance:498
+#, python-brace-format
+msgid "✓ {label} — {action}d"
+msgstr "✓ {label} — {action}ato"
+
+#: src/anduinos-appearance:500
+#, python-brace-format
 msgid "✗ Failed to {action} {label}"
 msgstr "✗ Impossibile {action} {label}"
 
-msgid "Bottom"
-msgstr "In basso"
+#: src/anduinos-appearance:513
+msgid "Advanced"
+msgstr "Avanzate"
 
-msgid "Top"
-msgstr "In alto"
+#: src/anduinos-appearance:518
+msgid "Appearance"
+msgstr "Aspetto"
 
-msgid "Left"
-msgstr "A sinistra"
+#: src/anduinos-appearance:521
+msgid "Wallpaper"
+msgstr "Sfondo"
 
-msgid "Right"
-msgstr "A destra"
+#: src/anduinos-appearance:522 src/anduinos-appearance:532
+#: src/anduinos-appearance:547 src/anduinos-appearance:556
+msgid "Open"
+msgstr "Apri"
 
-msgid "Show Weather"
-msgstr "Mostra meteo"
+#: src/anduinos-appearance:531
+msgid "Tweaks"
+msgstr "Ottimizzazioni"
 
-msgid "Show Network"
-msgstr "Mostra rete"
+#: src/anduinos-appearance:542
+msgid "Extension Settings"
+msgstr "Impostazioni estensioni"
 
+#: src/anduinos-appearance:543
+msgid "Open the preference windows of the panel extensions."
+msgstr "Apri le finestre di preferenza delle estensioni della barra."
+
+#: src/anduinos-appearance:546
+msgid "ArcMenu"
+msgstr ""
+
+#: src/anduinos-appearance:555
+msgid "Dash-to-Panel"
+msgstr ""
+
+#: src/anduinos-appearance:567
+msgid "Danger Zone"
+msgstr "Zona di Pericolo"
+
+#: src/anduinos-appearance:570
+msgid "Reset desktop settings"
+msgstr "Reimposta le impostazioni del desktop"
+
+#: src/anduinos-appearance:571
+msgid "Restore all GNOME Shell settings to factory defaults"
+msgstr ""
+"Ripristina tutte le impostazioni di GNOME Shell ai valori predefiniti di "
+"fabbrica"
+
+#: src/anduinos-appearance:572 src/anduinos-appearance:596
+msgid "Reset"
+msgstr "Reimposta"
+
+#: src/anduinos-appearance:585
+msgid "✓ Desktop settings reset. Restart Shell to apply."
+msgstr "✓ Impostazioni del desktop reimpostate. Riavvia Shell per applicare."
+
+#: src/anduinos-appearance:587
+msgid "✗ Failed to reset"
+msgstr "✗ Impossibile reimpostare"
+
+#: src/anduinos-appearance:591
+msgid "Reset desktop settings?"
+msgstr "Reimpostare le impostazioni del desktop?"
+
+#: src/anduinos-appearance:592
+msgid ""
+"This will reset all GNOME Shell settings to factory defaults.\n"
+"Your extensions, panel layout, and preferences will be lost."
+msgstr ""
+
+#: src/anduinos-appearance:595
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/anduinos-appearance:621 src/anduinos-appearance:680
+msgid "AnduinOS Appearance"
+msgstr "Aspetto di AnduinOS"
+
+#: src/anduinos-appearance:644
+msgid "About AnduinOS Appearance"
+msgstr "Informazioni su AnduinOS Aspetto"
+
+#: src/anduinos-appearance:682
+msgid "AnduinOS Team"
+msgstr "Team di AnduinOS"
+
+#~ msgid "Bottom"
+#~ msgstr "In basso"
+
+#~ msgid "Top"
+#~ msgstr "In alto"
+
+#~ msgid "Left"
+#~ msgstr "A sinistra"
+
+#~ msgid "Right"
+#~ msgstr "A destra"
+
+#~ msgid "Show Weather"
+#~ msgstr "Mostra meteo"
+
+#~ msgid "Show Network"
+#~ msgstr "Mostra rete"
