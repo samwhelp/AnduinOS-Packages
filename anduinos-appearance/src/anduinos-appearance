@@ -18,7 +18,8 @@ warnings.filterwarnings('ignore', message=r'.*Adw\.PreferencesWindow\.add_toast.
 
 # ── i18n ─────────────────────────────────────────────────────────
 _LOCALE_DIR = os.environ.get('ANDUINOS_APPEARANCE_LOCALE',
-                              '/usr/share/locale')
+                              os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                           '..', 'locale'))
 try:
     _ = gettext.translation('anduinos-appearance', _LOCALE_DIR, fallback=True).gettext
 except Exception:

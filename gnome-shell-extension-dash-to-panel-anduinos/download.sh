@@ -163,6 +163,30 @@ export const defaults = [\
         ["zh_CN"]="任务管理器"
         ["zh_TW"]="工作管理員"
     )
+    declare -A CM_GNOME_SETTINGS=(
+        ["cs"]="Nastavení GNOME"
+        ["de"]="GNOME-Einstellungen"
+        ["es"]="Configuración de GNOME"
+        ["fa"]="تنظیمات گنوم"
+        ["fr"]="Paramètres GNOME"
+        ["gl"]="Configuración de GNOME"
+        ["hu"]="GNOME beállítások"
+        ["it"]="Impostazioni GNOME"
+        ["ja"]="GNOME 設定"
+        ["ka"]="GNOME-ის პარამეტრები"
+        ["kk"]="GNOME параметрлері"
+        ["ko"]="GNOME 설정"
+        ["nl"]="GNOME-instellingen"
+        ["pl"]="Ustawienia GNOME"
+        ["pt_BR"]="Configurações do GNOME"
+        ["ru"]="Настройки GNOME"
+        ["sk"]="Nastavenia GNOME"
+        ["sv"]="GNOME-inställningar"
+        ["tr"]="GNOME Ayarları"
+        ["uk"]="Налаштування GNOME"
+        ["zh_CN"]="GNOME 设置"
+        ["zh_TW"]="GNOME 設定"
+    )
 
     if [[ -d "$locale_dir" ]]; then
         cm_patched=0
@@ -174,7 +198,7 @@ export const defaults = [\
                 echo "[$SUITE] Injecting context-menu translations: $lang"
                 msgunfmt "$mo_file" -o /tmp/dtp_cm.po
 
-                for pair in "Appearance:${CM_APPEARANCE[$lang]}" "Terminal:${CM_TERMINAL[$lang]}" "Task manager:${CM_TASKMAN[$lang]}"; do
+                for pair in "Appearance:${CM_APPEARANCE[$lang]}" "Terminal:${CM_TERMINAL[$lang]}" "Task manager:${CM_TASKMAN[$lang]}" "Gnome Settings:${CM_GNOME_SETTINGS[$lang]}"; do
                     mid="${pair%%:*}"
                     mstr="${pair#*:}"
                     if grep -q "msgid \"$mid\"" /tmp/dtp_cm.po; then
