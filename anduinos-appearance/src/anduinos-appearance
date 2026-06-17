@@ -7,13 +7,16 @@ gi.require_version('Adw', '1')
 gi.require_version('Gio', '2.0')
 from gi.repository import Gtk, Gdk, GLib, Adw, Gio
 import subprocess
+import json
 import math
-import shlex
 import shutil
+import sys
 import warnings
 import gettext
 import os
 warnings.filterwarnings('ignore', category=DeprecationWarning, module='gi')
+# suppress Adwaita deprecation warnings for APIs whose replacements
+# (add_page, toast_overlay) do not yet exist in Ubuntu 24.04's Adwaita version
 warnings.filterwarnings('ignore', message=r'.*Adw\.PreferencesWindow\.add.*', category=DeprecationWarning)
 warnings.filterwarnings('ignore', message=r'.*Adw\.PreferencesWindow\.add_toast.*', category=DeprecationWarning)
 
@@ -63,33 +66,30 @@ POSITIONS = {
 def _make_pep(panel_pos: str, centered: bool) -> str:
     """Build the JSON for dash-to-panel panel-element-positions."""
     if centered:
-        return (
-            '{"0":['
-            '{"element":"activitiesButton","visible":false,"position":"stackedTL"},'
-            '{"element":"showAppsButton","visible":false,"position":"stackedTL"},'
-            '{"element":"leftBox","visible":true,"position":"stackedTL"},'
-            '{"element":"centerBox","visible":true,"position":"stackedBR"},'
-            f'{{"element":"taskbar","visible":true,"position":"centerMonitor"}},'
-            '{"element":"rightBox","visible":true,"position":"stackedBR"},'
-            '{"element":"systemMenu","visible":true,"position":"stackedBR"},'
-            '{"element":"dateMenu","visible":true,"position":"stackedBR"},'
-            '{"element":"desktopButton","visible":true,"position":"stackedBR"}'
-            ']}'
-        )
+        elements = [
+            {"element": "activitiesButton", "visible": False, "position": "stackedTL"},
+            {"element": "showAppsButton",   "visible": False, "position": "stackedTL"},
+            {"element": "leftBox",          "visible": True,  "position": "stackedTL"},
+            {"element": "centerBox",        "visible": True,  "position": "stackedBR"},
+            {"element": "taskbar",          "visible": True,  "position": "centerMonitor"},
+            {"element": "rightBox",         "visible": True,  "position": "stackedBR"},
+            {"element": "systemMenu",       "visible": True,  "position": "stackedBR"},
+            {"element": "dateMenu",         "visible": True,  "position": "stackedBR"},
+            {"element": "desktopButton",    "visible": True,  "position": "stackedBR"},
+        ]
     else:
-        return (
-            '{"0":['
-            '{"element":"centerBox","visible":true,"position":"stackedTL"},'
-            '{"element":"taskbar","visible":true,"position":"stackedTL"},'
-            '{"element":"showAppsButton","visible":false,"position":"stackedTL"},'
-            '{"element":"activitiesButton","visible":false,"position":"stackedBR"},'
-            '{"element":"leftBox","visible":true,"position":"stackedBR"},'
-            '{"element":"rightBox","visible":true,"position":"stackedBR"},'
-            '{"element":"systemMenu","visible":true,"position":"stackedBR"},'
-            '{"element":"dateMenu","visible":true,"position":"stackedBR"},'
-            '{"element":"desktopButton","visible":true,"position":"stackedBR"}'
-            ']}'
-        )
+        elements = [
+            {"element": "centerBox",        "visible": True,  "position": "stackedTL"},
+            {"element": "taskbar",          "visible": True,  "position": "stackedTL"},
+            {"element": "showAppsButton",   "visible": False, "position": "stackedTL"},
+            {"element": "activitiesButton", "visible": False, "position": "stackedBR"},
+            {"element": "leftBox",          "visible": True,  "position": "stackedBR"},
+            {"element": "rightBox",         "visible": True,  "position": "stackedBR"},
+            {"element": "systemMenu",       "visible": True,  "position": "stackedBR"},
+            {"element": "dateMenu",         "visible": True,  "position": "stackedBR"},
+            {"element": "desktopButton",    "visible": True,  "position": "stackedBR"},
+        ]
+    return json.dumps({"0": elements})
 
 
 def _dconf_read(key: str) -> str | None:
@@ -696,24 +696,30 @@ class GdmWallpaperPage(Adw.PreferencesPage):
                 self._wallpaper_path = f.get_path()
                 self.preview_img.set_filename(self._wallpaper_path)
                 self.preview_img.set_visible(True)
-        except GLib.Error:
-            pass
+        except GLib.Error as e:
+            if not e.matches(Gio.io_error_quark(), Gio.IOErrorEnum.CANCELLED):
+                print(f"File dialog error: {e.message}", file=sys.stderr)
 
     def _on_apply(self, btn):
         if not self._wallpaper_path:
             self.win._toast(_('✗ Please select an image first'))
             return
         btn.set_sensitive(False)
-        cmd = ' '.join(['pkexec', 'anduinos-gdm-set-wallpaper',
-                        '--wallpaper', shlex.quote(self._wallpaper_path),
-                        '--output', GDM_OUTPUT])
-        GLib.spawn_command_line_async(cmd)
-        GLib.timeout_add_seconds(2, self._reenable_apply, btn)
-        self.win._toast(_('✓ Processing… check login screen in a moment'))
+        proc = Gio.Subprocess.new(
+            ['pkexec', 'anduinos-gdm-set-wallpaper',
+             '--wallpaper', self._wallpaper_path,
+             '--output', GDM_OUTPUT],
+            Gio.SubprocessFlags.NONE,
+        )
+        proc.wait_async(None, self._on_apply_done, btn)
 
-    def _reenable_apply(self, btn):
+    def _on_apply_done(self, proc, result, btn):
+        ok = proc.wait_finish(result)
         btn.set_sensitive(True)
-        return False
+        if ok:
+            self.win._toast(_('✓ GDM wallpaper applied'))
+        else:
+            self.win._toast(_('✗ Failed to set GDM wallpaper'))
 
 
 # ── main window ──────────────────────────────────────────────────
