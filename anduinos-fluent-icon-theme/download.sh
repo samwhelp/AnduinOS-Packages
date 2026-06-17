@@ -8,9 +8,21 @@ rm -rf "$SCRIPT_DIR/deploy" /tmp/Fluent-icon-theme
 git clone https://gitlab.aiursoft.com/mirror/fluent-icon-theme/ /tmp/Fluent-icon-theme
 git -C /tmp/Fluent-icon-theme checkout "$FLUENT_ICON_COMMIT"
 
-echo "Packing full upstream repo to deploy/fluent-icon-theme.tar.gz..."
-mkdir -p "$SCRIPT_DIR/deploy"
-tar -czf "$SCRIPT_DIR/deploy/fluent-icon-theme.tar.gz" --exclude='.git' -C /tmp Fluent-icon-theme
+echo "Building Fluent icon theme (all colors)..."
+mkdir -p "$SCRIPT_DIR/deploy/icons"
+(
+    cd /tmp/Fluent-icon-theme
+    bash install.sh --all -d "$SCRIPT_DIR/deploy/icons"
+)
+
+echo "Building Fluent cursor theme..."
+(
+    cd /tmp/Fluent-icon-theme/cursors
+    DEST_DIR="$SCRIPT_DIR/deploy/icons" bash -c '
+        cp -r dist "$DEST_DIR/Fluent-cursors"
+        cp -r dist-dark "$DEST_DIR/Fluent-dark-cursors"
+    '
+)
 
 rm -rf /tmp/Fluent-icon-theme
-echo "Done."
+echo "Done. Pre-built icon themes are in deploy/icons/."
