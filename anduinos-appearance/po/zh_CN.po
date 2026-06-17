@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 06:03+0000\n"
+"POT-Creation-Date: 2026-06-17 06:17+0000\n"
 "Language-Team: Chinese (China Mainland)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgid "Wallpaper"
 msgstr "壁纸"
 
 #: src/anduinos-appearance:536 src/anduinos-appearance:546
-#: src/anduinos-appearance:568
+#: src/anduinos-appearance:569
 msgid "Open"
 msgstr "打开"
 
@@ -144,55 +144,112 @@ msgstr "扩展设置"
 msgid "Open the preference windows of the panel extensions."
 msgstr "打开面板扩展的偏好设置窗口。"
 
-#: src/anduinos-appearance:580
+#: src/anduinos-appearance:582
 msgid "Danger Zone"
 msgstr "危险区域"
 
-#: src/anduinos-appearance:583
+#: src/anduinos-appearance:585
 msgid "Reset desktop settings"
 msgstr "重置桌面设置"
 
-#: src/anduinos-appearance:584
+#: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr "将所有 GNOME Shell 设置恢复为出厂默认值"
 
-#: src/anduinos-appearance:585 src/anduinos-appearance:609
+#: src/anduinos-appearance:587 src/anduinos-appearance:615
 msgid "Reset"
 msgstr "重置"
 
-#: src/anduinos-appearance:598
+#: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr "✓ 桌面设置已重置。重启 Shell 后生效。"
 
-#: src/anduinos-appearance:600
+#: src/anduinos-appearance:606
 msgid "✗ Failed to reset"
 msgstr "✗ 重置失败"
 
-#: src/anduinos-appearance:604
+#: src/anduinos-appearance:610
 msgid "Reset desktop settings?"
 msgstr "重置桌面设置？"
 
-#: src/anduinos-appearance:605
+#: src/anduinos-appearance:611
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:608
+#: src/anduinos-appearance:614
 msgid "Cancel"
 msgstr "取消"
 
-#: src/anduinos-appearance:634 src/anduinos-appearance:692
+#: src/anduinos-appearance:645
+#, fuzzy
+msgid "GDM Wallpaper"
+msgstr "GDM 壁纸"
+
+#: src/anduinos-appearance:650
+msgid "Login Screen Wallpaper"
+msgstr "GDM 壁纸"
+
+#: src/anduinos-appearance:651
+msgid "Choose an image for the GDM login screen background."
+msgstr "Choose an image for the GDM login screen background."
+
+#: src/anduinos-appearance:660
+msgid "Select image"
+msgstr "选择图片"
+
+#: src/anduinos-appearance:661
+msgid "Choose…"
+msgstr "选择…"
+
+#: src/anduinos-appearance:670
+msgid "Apply to Login Screen"
+msgstr "应用到登录屏幕"
+
+#: src/anduinos-appearance:682
+msgid "Images"
+msgstr "图片"
+
+#: src/anduinos-appearance:701
+msgid "✗ Please select an image first"
+msgstr "✗ 请先选择一张图片"
+
+#: src/anduinos-appearance:708
+msgid "✓ GDM wallpaper applied"
+msgstr "✓ GDM 壁纸已应用"
+
+#: src/anduinos-appearance:710
+#, fuzzy
+msgid "✗ Failed to set GDM wallpaper"
+msgstr "✗ 设置 GDM 壁纸失败"
+
+#: src/anduinos-appearance:718 src/anduinos-appearance:778
 msgid "AnduinOS Appearance"
 msgstr "AnduinOS 外观"
 
-#: src/anduinos-appearance:655
+#: src/anduinos-appearance:741
 msgid "About AnduinOS Appearance"
 msgstr "关于 AnduinOS 外观"
 
-#: src/anduinos-appearance:694
+#: src/anduinos-appearance:780
 msgid "AnduinOS Team"
 msgstr "AnduinOS 团队"
+
+#~ msgid "Effects"
+#~ msgstr "效果"
+
+#~ msgid "Blur background"
+#~ msgstr "模糊背景"
+
+#~ msgid "Apply a subtle blur to the wallpaper"
+#~ msgstr "Apply a subtle blur to the wallpaper"
+
+#~ msgid "Darken background"
+#~ msgstr "暗化背景"
+
+#~ msgid "Add a dark overlay to the wallpaper"
+#~ msgstr "Add a dark overlay to the wallpaper"
 
 #~ msgid "ArcMenu"
 #~ msgstr "ArcMenu"

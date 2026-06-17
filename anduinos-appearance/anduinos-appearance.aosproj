@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-appearance</PackageName>
-    <PackageVersion>2.0.0~beta3-92+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta3-93+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS Appearance — toggle between Windows 11 and Classic taskbar layouts</PackageDescription>
     <Section>utils</Section>
@@ -25,6 +25,7 @@
     <Dependency Include="gir1.2-gtk-4.0" />
     <Dependency Include="dconf-cli" />
     <Dependency Include="gir1.2-adw-1" />
+    <Dependency Include="anduinos-gdm3-wallpaper" />
   </ItemGroup>
 
   <ItemGroup>

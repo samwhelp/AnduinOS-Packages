@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anduinos-appearance 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 06:03+0000\n"
+"POT-Creation-Date: 2026-06-17 06:17+0000\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgid "Wallpaper"
 msgstr "Fond d'écran"
 
 #: src/anduinos-appearance:536 src/anduinos-appearance:546
-#: src/anduinos-appearance:568
+#: src/anduinos-appearance:569
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -144,56 +144,113 @@ msgstr "Paramètres des extensions"
 msgid "Open the preference windows of the panel extensions."
 msgstr "Ouvrez les fenêtres de préférence des extensions du panneau."
 
-#: src/anduinos-appearance:580
+#: src/anduinos-appearance:582
 msgid "Danger Zone"
 msgstr "Zone de danger"
 
-#: src/anduinos-appearance:583
+#: src/anduinos-appearance:585
 msgid "Reset desktop settings"
 msgstr "Réinitialiser les paramètres du bureau"
 
-#: src/anduinos-appearance:584
+#: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr ""
 "Restaurer tous les paramètres de GNOME Shell aux valeurs par défaut d'usine"
 
-#: src/anduinos-appearance:585 src/anduinos-appearance:609
+#: src/anduinos-appearance:587 src/anduinos-appearance:615
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/anduinos-appearance:598
+#: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr "✓ Paramètres du bureau réinitialisés. Redémarrez Shell pour appliquer."
 
-#: src/anduinos-appearance:600
+#: src/anduinos-appearance:606
 msgid "✗ Failed to reset"
 msgstr "✗ Échec de la réinitialisation"
 
-#: src/anduinos-appearance:604
+#: src/anduinos-appearance:610
 msgid "Reset desktop settings?"
 msgstr "Réinitialiser les paramètres du bureau ?"
 
-#: src/anduinos-appearance:605
+#: src/anduinos-appearance:611
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:608
+#: src/anduinos-appearance:614
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/anduinos-appearance:634 src/anduinos-appearance:692
+#: src/anduinos-appearance:645
+#, fuzzy
+msgid "GDM Wallpaper"
+msgstr "GDM Wallpaper"
+
+#: src/anduinos-appearance:650
+msgid "Login Screen Wallpaper"
+msgstr "GDM Wallpaper"
+
+#: src/anduinos-appearance:651
+msgid "Choose an image for the GDM login screen background."
+msgstr "Choose an image for the GDM login screen background."
+
+#: src/anduinos-appearance:660
+msgid "Select image"
+msgstr "Select image"
+
+#: src/anduinos-appearance:661
+msgid "Choose…"
+msgstr ""
+
+#: src/anduinos-appearance:670
+msgid "Apply to Login Screen"
+msgstr "Apply to Login Screen"
+
+#: src/anduinos-appearance:682
+msgid "Images"
+msgstr "Images"
+
+#: src/anduinos-appearance:701
+msgid "✗ Please select an image first"
+msgstr "✗ Please select an image first"
+
+#: src/anduinos-appearance:708
+msgid "✓ GDM wallpaper applied"
+msgstr "✓ GDM wallpaper applied"
+
+#: src/anduinos-appearance:710
+#, fuzzy
+msgid "✗ Failed to set GDM wallpaper"
+msgstr "✗ Failed to set GDM wallpaper"
+
+#: src/anduinos-appearance:718 src/anduinos-appearance:778
 msgid "AnduinOS Appearance"
 msgstr "Apparence d'AnduinOS"
 
-#: src/anduinos-appearance:655
+#: src/anduinos-appearance:741
 msgid "About AnduinOS Appearance"
 msgstr "À propos de l'apparence d'AnduinOS"
 
-#: src/anduinos-appearance:694
+#: src/anduinos-appearance:780
 msgid "AnduinOS Team"
 msgstr "Équipe AnduinOS"
+
+#~ msgid "Effects"
+#~ msgstr "Effects"
+
+#~ msgid "Blur background"
+#~ msgstr "Blur background"
+
+#~ msgid "Apply a subtle blur to the wallpaper"
+#~ msgstr "Apply a subtle blur to the wallpaper"
+
+#~ msgid "Darken background"
+#~ msgstr "Darken background"
+
+#~ msgid "Add a dark overlay to the wallpaper"
+#~ msgstr "Add a dark overlay to the wallpaper"
 
 #~ msgid "Taskbar Position"
 #~ msgstr "Position de la barre des tâches"

@@ -8,6 +8,7 @@ gi.require_version('Gio', '2.0')
 from gi.repository import Gtk, Gdk, GLib, Adw, Gio
 import subprocess
 import math
+import shlex
 import shutil
 import warnings
 import gettext
@@ -632,6 +633,89 @@ def _find_headerbar(widget):
     return None
 
 
+# ── GDM wallpaper page ────────────────────────────────────────────
+
+GDM_OUTPUT = '/var/lib/anduinos-gdm3-wallpaper/anduinos-theme.gresource'
+
+
+class GdmWallpaperPage(Adw.PreferencesPage):
+    def __init__(self, win):
+        super().__init__()
+        self.win = win
+        self._wallpaper_path = ''
+        self.set_title(_('GDM Wallpaper'))
+        self.set_icon_name('preferences-desktop-wallpaper-symbolic')
+
+        # ── Choose wallpaper ──
+        choose = Adw.PreferencesGroup()
+        choose.set_title(_('Login Screen Wallpaper'))
+        choose.set_description(_('Choose an image for the GDM login screen background.'))
+
+        self.preview_img = Gtk.Picture()
+        self.preview_img.set_size_request(340, 190)
+        self.preview_img.set_content_fit(Gtk.ContentFit.COVER)
+        self.preview_img.add_css_class('card')
+        self.preview_img.set_visible(False)
+        choose.add(self.preview_img)
+
+        btn_row = Adw.ActionRow()
+        btn_row.set_title(_('Select image'))
+        btn = Gtk.Button(label=_('Choose…'))
+        btn.set_valign(Gtk.Align.CENTER)
+        btn.connect('clicked', self._on_choose)
+        btn_row.add_suffix(btn)
+        choose.add(btn_row)
+        self.add(choose)
+
+        # ── Apply ──
+        apply_grp = Adw.PreferencesGroup()
+        apply_btn = Gtk.Button(label=_('Apply to Login Screen'))
+        apply_btn.add_css_class('suggested-action')
+        apply_btn.set_halign(Gtk.Align.CENTER)
+        apply_btn.set_margin_top(12)
+        apply_btn.set_margin_bottom(12)
+        apply_btn.connect('clicked', self._on_apply)
+        apply_grp.add(apply_btn)
+        self.add(apply_grp)
+
+    def _on_choose(self, btn):
+        dialog = Gtk.FileDialog.new()
+        flt = Gtk.FileFilter()
+        flt.set_name(_('Images'))
+        for mime in ['image/png', 'image/jpeg']:
+            flt.add_mime_type(mime)
+        filters = Gio.ListStore.new(Gtk.FileFilter)
+        filters.append(flt)
+        dialog.set_filters(filters)
+        dialog.open(self.win, None, self._on_file_chosen)
+
+    def _on_file_chosen(self, dialog, result):
+        try:
+            f = dialog.open_finish(result)
+            if f:
+                self._wallpaper_path = f.get_path()
+                self.preview_img.set_filename(self._wallpaper_path)
+                self.preview_img.set_visible(True)
+        except GLib.Error:
+            pass
+
+    def _on_apply(self, btn):
+        if not self._wallpaper_path:
+            self.win._toast(_('✗ Please select an image first'))
+            return
+        btn.set_sensitive(False)
+        cmd = ' '.join(['pkexec', 'anduinos-gdm-set-wallpaper',
+                        '--wallpaper', shlex.quote(self._wallpaper_path),
+                        '--output', GDM_OUTPUT])
+        GLib.spawn_command_line_async(cmd)
+        GLib.timeout_add_seconds(2, self._reenable_apply, btn)
+        self.win._toast(_('✓ Processing… check login screen in a moment'))
+
+    def _reenable_apply(self, btn):
+        btn.set_sensitive(True)
+        return False
+
+
 # ── main window ──────────────────────────────────────────────────
 
 class AppearanceWindow(Adw.PreferencesWindow):
@@ -646,10 +730,12 @@ class AppearanceWindow(Adw.PreferencesWindow):
         # Pages — added in sidebar order
         self.style_page = StylePage(self)
         self.widgets_page = PanelWidgetsPage(self)
+        self.gdm_page = GdmWallpaperPage(self)
         self.advanced_page = AdvancedPage(self)
 
         self.add(self.style_page)
         self.add(self.widgets_page)
+        self.add(self.gdm_page)
         self.add(self.advanced_page)
 
         # Inject hamburger menu into internal headerbar on realize

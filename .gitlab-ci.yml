@@ -79,6 +79,8 @@ anduinos-apt-config-dev:
 
 anduinos-appearance:
   extends: .publish
+  needs:
+    - anduinos-gdm3-wallpaper
   variables:
     PACKAGE_DIR: anduinos-appearance
 

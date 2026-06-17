@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 06:03+0000\n"
+"POT-Creation-Date: 2026-06-17 06:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,7 +133,7 @@ msgid "Wallpaper"
 msgstr ""
 
 #: src/anduinos-appearance:536 src/anduinos-appearance:546
-#: src/anduinos-appearance:568
+#: src/anduinos-appearance:569
 msgid "Open"
 msgstr ""
 
@@ -149,52 +149,92 @@ msgstr ""
 msgid "Open the preference windows of the panel extensions."
 msgstr ""
 
-#: src/anduinos-appearance:580
+#: src/anduinos-appearance:582
 msgid "Danger Zone"
 msgstr ""
 
-#: src/anduinos-appearance:583
+#: src/anduinos-appearance:585
 msgid "Reset desktop settings"
 msgstr ""
 
-#: src/anduinos-appearance:584
+#: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
 msgstr ""
 
-#: src/anduinos-appearance:585 src/anduinos-appearance:609
+#: src/anduinos-appearance:587 src/anduinos-appearance:615
 msgid "Reset"
 msgstr ""
 
-#: src/anduinos-appearance:598
+#: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
 msgstr ""
 
-#: src/anduinos-appearance:600
+#: src/anduinos-appearance:606
 msgid "✗ Failed to reset"
 msgstr ""
 
-#: src/anduinos-appearance:604
+#: src/anduinos-appearance:610
 msgid "Reset desktop settings?"
 msgstr ""
 
-#: src/anduinos-appearance:605
+#: src/anduinos-appearance:611
 msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
 
-#: src/anduinos-appearance:608
+#: src/anduinos-appearance:614
 msgid "Cancel"
 msgstr ""
 
-#: src/anduinos-appearance:634 src/anduinos-appearance:692
+#: src/anduinos-appearance:645
+msgid "GDM Wallpaper"
+msgstr ""
+
+#: src/anduinos-appearance:650
+msgid "Login Screen Wallpaper"
+msgstr ""
+
+#: src/anduinos-appearance:651
+msgid "Choose an image for the GDM login screen background."
+msgstr ""
+
+#: src/anduinos-appearance:660
+msgid "Select image"
+msgstr ""
+
+#: src/anduinos-appearance:661
+msgid "Choose…"
+msgstr ""
+
+#: src/anduinos-appearance:670
+msgid "Apply to Login Screen"
+msgstr ""
+
+#: src/anduinos-appearance:682
+msgid "Images"
+msgstr ""
+
+#: src/anduinos-appearance:701
+msgid "✗ Please select an image first"
+msgstr ""
+
+#: src/anduinos-appearance:708
+msgid "✓ GDM wallpaper applied"
+msgstr ""
+
+#: src/anduinos-appearance:710
+msgid "✗ Failed to set GDM wallpaper"
+msgstr ""
+
+#: src/anduinos-appearance:718 src/anduinos-appearance:778
 msgid "AnduinOS Appearance"
 msgstr ""
 
-#: src/anduinos-appearance:655
+#: src/anduinos-appearance:741
 msgid "About AnduinOS Appearance"
 msgstr ""
 
-#: src/anduinos-appearance:694
+#: src/anduinos-appearance:780
 msgid "AnduinOS Team"
 msgstr ""
