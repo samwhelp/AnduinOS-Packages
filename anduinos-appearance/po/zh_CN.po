@@ -189,7 +189,7 @@ msgstr "GDM 壁纸"
 
 #: src/anduinos-appearance:650
 msgid "Login Screen Wallpaper"
-msgstr "GDM 壁纸"
+msgstr "登录界面壁纸"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."

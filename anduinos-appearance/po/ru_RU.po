@@ -187,11 +187,11 @@ msgstr "Отмена"
 #: src/anduinos-appearance:645
 #, fuzzy
 msgid "GDM Wallpaper"
-msgstr "GDM Wallpaper"
+msgstr "Фон GDM"
 
 #: src/anduinos-appearance:650
 msgid "Login Screen Wallpaper"
-msgstr "GDM Wallpaper"
+msgstr "Экран входа"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
@@ -199,15 +199,15 @@ msgstr "Choose an image for the GDM login screen background."
 
 #: src/anduinos-appearance:660
 msgid "Select image"
-msgstr "Select image"
+msgstr "Выбрать изображение"
 
 #: src/anduinos-appearance:661
 msgid "Choose…"
-msgstr ""
+msgstr "Выбрать…"
 
 #: src/anduinos-appearance:670
 msgid "Apply to Login Screen"
-msgstr "Apply to Login Screen"
+msgstr "Применить к экрану входа"
 
 #: src/anduinos-appearance:682
 msgid "Images"
@@ -215,16 +215,16 @@ msgstr "Images"
 
 #: src/anduinos-appearance:701
 msgid "✗ Please select an image first"
-msgstr "✗ Please select an image first"
+msgstr "✗ Сначала выберите изображение"
 
 #: src/anduinos-appearance:708
 msgid "✓ GDM wallpaper applied"
-msgstr "✓ GDM wallpaper applied"
+msgstr "✓ Фон GDM применён"
 
 #: src/anduinos-appearance:710
 #, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
-msgstr "✗ Failed to set GDM wallpaper"
+msgstr "✗ Не удалось установить фон GDM"
 
 #: src/anduinos-appearance:718 src/anduinos-appearance:778
 msgid "AnduinOS Appearance"
