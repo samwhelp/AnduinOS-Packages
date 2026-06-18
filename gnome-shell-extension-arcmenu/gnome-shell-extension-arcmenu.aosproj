@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>gnome-shell-extension-arcmenu</PackageName>
-    <PackageVersion>2.0.0~beta3-3+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta3-4+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <Section>gnome</Section>
     <PackageDescription>Application Menu Extension for GNOME — packaged for AnduinOS</PackageDescription>
@@ -44,6 +44,5 @@
     <IncludeFile Include="dconf/10-arcmenu.conf" Target="/etc/dconf/db/anduinos.d/10-arcmenu.conf" />
   </ItemGroup>
   <ItemGroup>
-    <PostInstallScript Include="scripts/postinst.sh" />
   </ItemGroup>
 </Project>
