@@ -339,7 +339,7 @@ class StylePage(Adw.PreferencesPage):
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         self.btn11 = Gtk.Button(label='  11  ')
         self.btn11.connect('clicked', self._on_click, 'eleven')
-        self.btn10 = Gtk.Button(label='  Classic  ')
+        self.btn10 = Gtk.Button(label='  ' + _('Classic') + '  ')
         self.btn10.connect('clicked', self._on_click, 'classic')
         box.append(self.btn10)
         box.append(self.btn11)

@@ -183,7 +183,6 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/anduinos-appearance:645
-#, fuzzy
 msgid "GDM Wallpaper"
 msgstr "GDM 壁纸"
 
@@ -193,7 +192,7 @@ msgstr "登录界面壁纸"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
-msgstr "Choose an image for the GDM login screen background."
+msgstr "选择一张图片作为 GDM 登录界面的背景。"
 
 #: src/anduinos-appearance:660
 msgid "Select image"
