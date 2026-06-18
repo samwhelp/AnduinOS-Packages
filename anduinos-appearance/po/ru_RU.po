@@ -194,7 +194,7 @@ msgstr "Экран входа"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
-msgstr "Choose an image for the GDM login screen background."
+msgstr "Выберите изображение для фона экрана входа GDM."
 
 #: src/anduinos-appearance:660
 msgid "Select image"
@@ -210,7 +210,7 @@ msgstr "Применить к экрану входа"
 
 #: src/anduinos-appearance:682
 msgid "Images"
-msgstr "Images"
+msgstr "Изображения"
 
 #: src/anduinos-appearance:701
 msgid "✗ Please select an image first"

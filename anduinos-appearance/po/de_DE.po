@@ -193,7 +193,7 @@ msgstr "Anmeldebildschirm-Hintergrund"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
-msgstr "Choose an image for the GDM login screen background."
+msgstr "Wählen Sie ein Bild für den GDM-Anmeldebildschirmhintergrund."
 
 #: src/anduinos-appearance:660
 msgid "Select image"
@@ -209,7 +209,7 @@ msgstr "Auf Anmeldebildschirm anwenden"
 
 #: src/anduinos-appearance:682
 msgid "Images"
-msgstr "Images"
+msgstr "Bilder"
 
 #: src/anduinos-appearance:701
 msgid "✗ Please select an image first"

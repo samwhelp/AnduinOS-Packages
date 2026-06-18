@@ -193,7 +193,7 @@ msgstr "Écran de connexion"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
-msgstr "Choose an image for the GDM login screen background."
+msgstr "Choisissez une image pour l arrière-plan de l écran de connexion GDM."
 
 #: src/anduinos-appearance:660
 msgid "Select image"

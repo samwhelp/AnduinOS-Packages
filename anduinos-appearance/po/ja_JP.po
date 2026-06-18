@@ -194,7 +194,7 @@ msgstr "ログイン画面の壁紙"
 
 #: src/anduinos-appearance:651
 msgid "Choose an image for the GDM login screen background."
-msgstr "Choose an image for the GDM login screen background."
+msgstr "GDMログイン画面の背景画像を選択してください。"
 
 #: src/anduinos-appearance:660
 msgid "Select image"
@@ -210,7 +210,7 @@ msgstr "ログイン画面に適用"
 
 #: src/anduinos-appearance:682
 msgid "Images"
-msgstr "Images"
+msgstr "画像"
 
 #: src/anduinos-appearance:701
 msgid "✗ Please select an image first"
