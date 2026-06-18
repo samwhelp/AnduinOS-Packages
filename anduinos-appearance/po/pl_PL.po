@@ -162,7 +162,7 @@ msgstr "Resetuj"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Ustawienia pulpitu zresetowane. Uruchom ponownie Shell, aby zastosować."
 "✓ Ustawienia pulpitu zresetowane. Uruchom ponownie Shell, aby zastosować "
 "zmiany."
 
@@ -179,6 +179,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Spowoduje to zresetowanie wszystkich ustawień GNOME Shell do wartości domyślnych.\n"
+"Twoje rozszerzenia, układ panelu i preferencje zostaną utracone."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

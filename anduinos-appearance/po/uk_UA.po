@@ -162,7 +162,7 @@ msgstr "Скинути"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Налаштування робочого столу скинуто. Перезапустіть Shell для застосування."
 "✓ Налаштування робочого столу скинуто. Перезавантажте Shell для застосування."
 
 #: src/anduinos-appearance:606
@@ -178,6 +178,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Це скине всі налаштування GNOME Shell до заводських значень за замовчуванням.\n"
+"Ваші розширення, макет панелі та налаштування буде втрачено."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

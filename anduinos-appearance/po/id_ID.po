@@ -162,7 +162,7 @@ msgstr "Atur Ulang"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Pengaturan desktop direset. Mulai ulang Shell untuk menerapkan."
 "✓ Pengaturan desktop telah direset. Mulai ulang Shell untuk menerapkan."
 
 #: src/anduinos-appearance:606
@@ -178,6 +178,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Ini akan mengatur ulang semua pengaturan GNOME Shell ke default pabrik.\n"
+"Ekstensi, tata letak panel, dan preferensi Anda akan hilang."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

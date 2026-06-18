@@ -79,7 +79,7 @@ msgstr "✗ 套用位置失敗"
 
 #: src/anduinos-appearance:472
 msgid "Windows 11"
-msgstr "Windows 11"
+msgstr ""
 
 #: src/anduinos-appearance:472
 msgid "Classic"
@@ -177,6 +177,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"這將重設所有 GNOME Shell 設定至出廠預設值。\n"
+"您的擴展、面板佈局和偏好設定將會遺失。"
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

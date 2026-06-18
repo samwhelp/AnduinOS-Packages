@@ -162,7 +162,7 @@ msgstr "Nollaa"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Työpöydän asetukset nollattu. Käynnistä Shell uudelleen ottaaksesi käyttöön."
 "✓ Työpöydän asetukset nollattu. Käynnistä Shell uudelleen ottaaksesi "
 "muutokset käyttöön."
 
@@ -179,6 +179,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Tämä palauttaa kaikki GNOME Shell -asetukset tehdasasetuksiin.\n"
+"Laajennuksesi, paneelin asettelu ja asetukset menetetään."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

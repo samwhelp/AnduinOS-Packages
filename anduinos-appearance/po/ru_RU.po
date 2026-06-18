@@ -154,7 +154,7 @@ msgstr "Сбросить настройки рабочего стола"
 
 #: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr ""
+msgstr "Восстановить все настройки GNOME Shell до заводских значений"
 "Восстановить все настройки GNOME Shell до заводских значений по умолчанию"
 
 #: src/anduinos-appearance:587 src/anduinos-appearance:615
@@ -163,7 +163,7 @@ msgstr "Сброс"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Настройки рабочего стола сброшены. Перезапустите Shell для применения."
 "✓ Настройки рабочего стола сброшены. Перезапустите Shell для применения."
 
 #: src/anduinos-appearance:606
@@ -179,6 +179,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Это сбросит все настройки GNOME Shell до заводских значений по умолчанию.\n"
+"Ваши расширения, макет панели и настройки будут потеряны."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

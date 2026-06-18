@@ -79,7 +79,7 @@ msgstr "✗ स्थिति लागू करने में विफल"
 
 #: src/anduinos-appearance:472
 msgid "Windows 11"
-msgstr "विंडोज 11"
+msgstr ""
 
 #: src/anduinos-appearance:472
 msgid "Classic"
@@ -177,6 +177,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"यह सभी GNOME Shell सेटिंग्स को फ़ैक्टरी डिफ़ॉल्ट पर रीसेट कर देगा।\n"
+"आपके एक्सटेंशन, पैनल लेआउट और प्राथमिकताएँ खो जाएँगी।"
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

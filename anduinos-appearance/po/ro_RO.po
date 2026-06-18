@@ -50,7 +50,7 @@ msgstr "Grupează aplicațiile"
 
 #: src/anduinos-appearance:368
 msgid "Combine multiple windows of one app into a single icon"
-msgstr ""
+msgstr "Combinați mai multe ferestre ale unei aplicații într-o singură pictogramă"
 "Combină mai multe ferestre ale unei aplicații într-o singură pictogramă"
 
 #: src/anduinos-appearance:370
@@ -155,7 +155,7 @@ msgstr "Resetează setările desktopului"
 
 #: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr ""
+msgstr "Restaurați toate setările GNOME Shell la valorile implicite"
 "Restabilește toate setările GNOME Shell la valorile implicite de fabrică"
 
 #: src/anduinos-appearance:587 src/anduinos-appearance:615
@@ -164,7 +164,7 @@ msgstr "Resetează"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Setările desktopului au fost resetate. Reporniți Shell pentru a aplica."
 "✓ Setările desktopului au fost resetate. Repornește Shell pentru a aplica."
 
 #: src/anduinos-appearance:606
@@ -180,6 +180,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Aceasta va reseta toate setările GNOME Shell la valorile implicite din fabrică.\n"
+"Extensiile, aspectul panoului și preferințele dvs. vor fi pierdute."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

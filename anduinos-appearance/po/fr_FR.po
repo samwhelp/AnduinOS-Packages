@@ -154,7 +154,7 @@ msgstr "Réinitialiser les paramètres du bureau"
 
 #: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr ""
+msgstr "Restaurer tous les paramètres de GNOME Shell aux valeurs d'usine"
 "Restaurer tous les paramètres de GNOME Shell aux valeurs par défaut d'usine"
 
 #: src/anduinos-appearance:587 src/anduinos-appearance:615
@@ -178,6 +178,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Cela réinitialisera tous les paramètres de GNOME Shell aux valeurs d'usine.\n"
+"Vos extensions, la disposition du panneau et vos préférences seront perdues."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

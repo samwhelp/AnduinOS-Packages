@@ -154,7 +154,7 @@ msgstr "Redefinir configurações da área de trabalho"
 
 #: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr ""
+msgstr "Restaurar todas as configurações do GNOME Shell para os padrões de fábrica"
 "Restaura todas as configurações do GNOME Shell para os padrões de fábrica"
 
 #: src/anduinos-appearance:587 src/anduinos-appearance:615
@@ -163,7 +163,7 @@ msgstr "Redefinir"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Configurações da área de trabalho redefinidas. Reinicie o Shell para aplicar."
 "✓ Configurações da área de trabalho redefinidas. Reinicie o Shell para "
 "aplicar."
 
@@ -180,6 +180,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Isso redefinirá todas as configurações do GNOME Shell para os padrões de fábrica.\n"
+"Suas extensões, layout do painel e preferências serão perdidos."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

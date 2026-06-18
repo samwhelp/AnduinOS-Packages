@@ -177,6 +177,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"การดำเนินการนี้จะรีเซ็ตการตั้งค่า GNOME Shell ทั้งหมดเป็นค่าเริ่มต้นจากโรงงาน\n"
+"ส่วนขยาย เค้าโครงแผง และการกำหนดค่าของคุณจะหายไป"
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

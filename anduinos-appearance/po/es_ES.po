@@ -154,7 +154,7 @@ msgstr "Restablecer configuraciones del escritorio"
 
 #: src/anduinos-appearance:586
 msgid "Restore all GNOME Shell settings to factory defaults"
-msgstr ""
+msgstr "Restaurar todas las configuraciones de GNOME Shell a valores de fábrica"
 "Restaurar todas las configuraciones de GNOME Shell a los valores "
 "predeterminados de fábrica"
 
@@ -164,7 +164,7 @@ msgstr "Restablecer"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Configuración del escritorio restablecida. Reinicie Shell para aplicar."
 "✓ Configuraciones del escritorio restablecidas. Reinicia Shell para aplicar "
 "los cambios."
 
@@ -181,6 +181,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Esto restablecerá todas las configuraciones de GNOME Shell a los valores de fábrica.\n"
+"Sus extensiones, diseño del panel y preferencias se perderán."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"

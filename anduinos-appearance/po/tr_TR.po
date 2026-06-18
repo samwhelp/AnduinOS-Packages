@@ -162,7 +162,7 @@ msgstr "Sıfırla"
 
 #: src/anduinos-appearance:604
 msgid "✓ Desktop settings reset. Restart Shell to apply."
-msgstr ""
+msgstr "✓ Masaüstü ayarları sıfırlandı. Uygulamak için Shell'i yeniden başlatın."
 "✓ Masaüstü ayarları sıfırlandı. Uygulamak için Shell'i yeniden başlatın."
 
 #: src/anduinos-appearance:606
@@ -178,6 +178,8 @@ msgid ""
 "This will reset all GNOME Shell settings to factory defaults.\n"
 "Your extensions, panel layout, and preferences will be lost."
 msgstr ""
+"Bu, tüm GNOME Shell ayarlarını fabrika varsayılanlarına sıfırlayacaktır.\n"
+"Uzantılarınız, panel düzeniniz ve tercihleriniz kaybolacak."
 
 #: src/anduinos-appearance:614
 msgid "Cancel"
