@@ -184,7 +184,6 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: src/anduinos-appearance:645
-#, fuzzy
 msgid "GDM Wallpaper"
 msgstr "GDM Wallpaper"
 
@@ -221,7 +220,6 @@ msgid "✓ GDM wallpaper applied"
 msgstr "✓ GDM wallpaper applied"
 
 #: src/anduinos-appearance:710
-#, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
 msgstr "✗ Failed to set GDM wallpaper"
 

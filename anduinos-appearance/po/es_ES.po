@@ -187,7 +187,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/anduinos-appearance:645
-#, fuzzy
 msgid "GDM Wallpaper"
 msgstr "Fondo de GDM"
 
@@ -224,7 +223,6 @@ msgid "✓ GDM wallpaper applied"
 msgstr "✓ Fondo de GDM aplicado"
 
 #: src/anduinos-appearance:710
-#, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
 msgstr "✗ Error al establecer el fondo de GDM"
 

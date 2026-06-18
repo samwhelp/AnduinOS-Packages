@@ -184,7 +184,6 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: src/anduinos-appearance:645
-#, fuzzy
 msgid "GDM Wallpaper"
 msgstr "GDM-Hintergrund"
 
@@ -221,7 +220,6 @@ msgid "✓ GDM wallpaper applied"
 msgstr "✓ GDM-Hintergrund angewendet"
 
 #: src/anduinos-appearance:710
-#, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
 msgstr "✗ GDM-Hintergrund konnte nicht gesetzt werden"
 

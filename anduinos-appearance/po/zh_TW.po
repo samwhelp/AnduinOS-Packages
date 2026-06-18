@@ -183,7 +183,6 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/anduinos-appearance:645
-#, fuzzy
 msgid "GDM Wallpaper"
 msgstr "GDM 桌布"
 
@@ -220,7 +219,6 @@ msgid "✓ GDM wallpaper applied"
 msgstr "✓ GDM 桌布已套用"
 
 #: src/anduinos-appearance:710
-#, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
 msgstr "✗ 設定 GDM 桌布失敗"
 

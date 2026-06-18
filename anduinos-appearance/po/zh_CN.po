@@ -219,7 +219,6 @@ msgid "✓ GDM wallpaper applied"
 msgstr "✓ GDM 壁纸已应用"
 
 #: src/anduinos-appearance:710
-#, fuzzy
 msgid "✗ Failed to set GDM wallpaper"
 msgstr "✗ 设置 GDM 壁纸失败"
 
