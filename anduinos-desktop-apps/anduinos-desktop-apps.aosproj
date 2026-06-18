@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-apps</PackageName>
-    <PackageVersion>2.0.0~beta3-1+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~beta3-2+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS default applications — pulls in recommended apps for AnduinOS</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -41,10 +41,10 @@
 
     <!-- Media & Graphics -->
     <Recommend Include="loupe" />
-    <!-- Video Player: totem (noble), showtime (questing+) -->
+    <!-- Video Player: totem (noble), showtime (questing), celluloid (resolute+) -->
     <Recommend Include="totem" Condition="'$(Suite)' == 'noble-addon'" />
     <Recommend Include="showtime" Condition="'$(Suite)' == 'questing-addon'" />
-    <Recommend Include="showtime" Condition="'$(Suite)' == 'resolute-addon'" />
+    <Recommend Include="celluloid" Condition="'$(Suite)' == 'resolute-addon'" />
     <Recommend Include="gnome-music" />
     <Recommend Include="gnome-snapshot" />
     <Recommend Include="gnome-sound-recorder" />
