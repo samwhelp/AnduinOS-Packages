@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-theme</PackageName>
-    <PackageVersion>2.0.0~rc1-1+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete visual theme — icons, GTK theme, wallpapers, and extensions</PackageDescription>
     <Section>metapackages</Section>
@@ -31,5 +31,9 @@
     <Recommend Include="anduinos-wallpapers" />
     <Recommend Include="anduinos-gdm3-wallpaper" />
     <Recommend Include="anduinos-fonts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PostInstallScript Include="scripts/postinst.sh" />
   </ItemGroup>
 </Project>
