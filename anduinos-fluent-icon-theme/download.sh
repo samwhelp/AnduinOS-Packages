@@ -2,7 +2,7 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-FLUENT_ICON_COMMIT="8a99a6d"
+FLUENT_ICON_COMMIT="a163afe83e9ef26a018875b8debadf3a72d121df"
 
 rm -rf "$SCRIPT_DIR/deploy" /tmp/Fluent-icon-theme
 git clone https://gitlab.aiursoft.com/mirror/fluent-icon-theme/ /tmp/Fluent-icon-theme
