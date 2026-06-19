@@ -121,6 +121,7 @@ These ship files or declare dependencies without replacing any Ubuntu package.
 | `anduinos-system-tweaks` | Config | System tuning (swappiness, I/O scheduler, sysctl) |
 | `anduinos-system-tweaks-server` | Service | Background service for system tweaks |
 | `anduinos-templates` | Data | Default file templates (`~/Templates`) |
+| `anduinos-dconf-runtime` | Core | dconf profile and dpkg trigger runtime for GNOME system defaults |
 | `anduinos-dconf-defaults` | Config | dconf / gsettings defaults for GNOME |
 | `anduinos-gnome-shell-locale` | Locale | GNOME Shell locale / text overrides |
 | `anduinos-live-settings` | Config | Live CD timezone hook (casper-bottom); removed after install |

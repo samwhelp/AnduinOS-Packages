@@ -116,8 +116,15 @@ anduinos-fluent-icon-theme:
 
 anduinos-dconf-defaults:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: anduinos-dconf-defaults
+
+anduinos-dconf-runtime:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-dconf-runtime
 
 anduinos-deskmon:
   extends: .publish
@@ -156,26 +163,36 @@ gnome-shell-extension-accent-icons-theme:
 
 gnome-shell-extension-appindicator-anduinos:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-appindicator-anduinos
 
 gnome-shell-extension-arcmenu:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-arcmenu
 
 gnome-shell-extension-blur-my-shell:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-blur-my-shell
 
 gnome-shell-extension-clipboard-indicator:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-clipboard-indicator
 
 gnome-shell-extension-customize-ibus:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-customize-ibus
 
@@ -183,6 +200,7 @@ gnome-shell-extension-dash-to-panel-anduinos:
   extends: .publish
   needs:
     - anduinos-appearance
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-dash-to-panel-anduinos
 
@@ -190,21 +208,28 @@ gnome-shell-extension-desktop-icons-ng-anduinos:
   extends: .publish
   needs:
     - anduinos-appearance
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-desktop-icons-ng-anduinos
 
 gnome-shell-extension-lockkeys:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-lockkeys
 
 gnome-shell-extension-mediacontrols:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-mediacontrols
 
 gnome-shell-extension-network-stats:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-network-stats
 
@@ -215,16 +240,22 @@ gnome-shell-extension-proxy-switcher:
 
 gnome-shell-extension-simple-weather:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-simple-weather
 
 gnome-shell-extension-tiling-assistant:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: gnome-shell-extension-tiling-assistant
 
 anduinos-wallpapers:
   extends: .publish
+  needs:
+    - anduinos-dconf-runtime
   variables:
     PACKAGE_DIR: anduinos-wallpapers
 

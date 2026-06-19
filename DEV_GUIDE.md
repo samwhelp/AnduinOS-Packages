@@ -159,7 +159,7 @@ These are handled automatically by Debian's **dpkg triggers**.
 
 Two core system packages declare interest in file-system changes:
 
-- **`dconf-cli`** declares `interest-noawait /etc/dconf/db`
+- **`anduinos-dconf-runtime`** declares `interest-noawait /etc/dconf/db`
 - **`libglib2.0-0`** declares interest for `/usr/share/glib-2.0/schemas/`
 
 When any package drops a file under these monitored directories, dpkg records
@@ -170,7 +170,7 @@ script runs **once** — no matter how many packages were installed or upgraded.
 
 | Instead of putting this in postinst… | …the system does it for you: |
 |---|---|
-| `dconf update` | Triggered once by `dconf-cli` when files land in `/etc/dconf/db/` |
+| `dconf update` | Triggered once by `anduinos-dconf-runtime` when files land in `/etc/dconf/db/` |
 | `glib-compile-schemas /usr/share/glib-2.0/schemas/` | Triggered once by `libglib2.0-0` when files land in schemas dir |
 | `glib-compile-schemas <extension>/schemas/` | **Pre-compile at build time** in `download.sh` — ship `gschemas.compiled` in the `.deb` |
 
