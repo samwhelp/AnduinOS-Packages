@@ -2,7 +2,7 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-SOF_VERSION="2025.12"
+SOF_VERSION="2025.12.2"
 SOF_URL="https://github.com/thesofproject/sof-bin/releases/download/v${SOF_VERSION}/sof-bin-${SOF_VERSION}.tar.gz"
 CACHE_DIR="$SCRIPT_DIR/deploy/cache"
 ARCHIVE_PATH="$CACHE_DIR/sof-bin-${SOF_VERSION}.tar.gz"

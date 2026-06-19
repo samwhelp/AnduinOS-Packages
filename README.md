@@ -132,6 +132,19 @@ Each package is built via the GitLab CI pipeline (`.gitlab-ci.yml`). Packages us
 apkg publish
 ```
 
+### TL;DR: What needs manual effort vs what auto-builds
+
+| Category | Packages | Monthly action |
+|---|---|---|
+| 🔧 **Manual — update commit/version** | Fluent GTK theme, Fluent icon theme, ALSA UCM Conf, Firmware SOF | Edit `download.sh` + bump `.aosproj` |
+| 🤖 **Auto — CI resolves at build time** | 19 GNOME Shell extensions | Trigger CI; resolver pulls latest from extensions.gnome.org |
+| 🤖 **Auto — pulls latest upstream .deb** | base-files, plymouth, software-properties-common, software-properties-gtk, firefox | Trigger CI; pulls latest from Ubuntu/Mozilla mirrors |
+| 🤖 **Auto — metapackages** | anduinos-desktop, theme, desktop-core, etc. | Trigger CI only if dependency list changed |
+
+**Bottom line:** 4 packages need manual edits each month. Everything else = run CI.
+
+---
+
 ## Monthly Update Manual
 
 All external sources must be checked **at least once per month** to keep packages from falling behind upstream. This section is the step-by-step checklist.
@@ -210,7 +223,9 @@ apkg publish
 
 ### C. Firmware SOF (Version-Pinned Tarball)
 
-`firmware-sof-anduinos` now derives from Ubuntu's `firmware-sof-signed` package at build time, then replaces the unpacked SOF payload with a newer Intel `sof-bin` release tarball. This keeps file ownership, upgrades, and removals under dpkg instead of a post-install `rsync`.
+`firmware-sof-anduinos` replaces Ubuntu's SOF firmware with a newer Intel `sof-bin` release tarball.
+
+> **⚠️ Version sync trap:** The SOF version now appears in **two places** — `download.sh` (`SOF_VERSION`) **and** `.aosproj` (`PackageVersion`). When upgrading SOF, update **both** together or the package version won't reflect reality.
 
 #### C.1 Check for updates
 
@@ -218,16 +233,16 @@ Visit [sof-bin releases](https://github.com/thesofproject/sof-bin/releases) and 
 
 #### C.2 Apply the update
 
-Update **two files**:
+Update **both files**:
 
 ```diff
 # download.sh
--SOF_VERSION="2025.12"
+-SOF_VERSION="2025.12.2"
 +SOF_VERSION="2026.03"   # update to new release tag
 
 # firmware-sof-anduinos.aosproj
--<PackageVersion>2.0.0~rc1+$(UpstreamVersion)-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~rc1+$(UpstreamVersion)-2+$(SuiteShortName)</PackageVersion>   # bump the Debian revision
+-<PackageVersion>2.0.0~rc1-2025.12.2+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc1-2026.03+$(SuiteShortName)</PackageVersion>   # sync SOF version
 ```
 
 The downloaded Intel tarball and extracted cache under `deploy/` are **not** committed — the CI regenerates them at build time via `download.sh`.
