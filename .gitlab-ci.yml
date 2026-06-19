@@ -411,7 +411,6 @@ anduinos-desktop:
     - base-files
     - anduinos-theme
     - anduinos-templates
-    - plymouth-anduinos
     - anduinos-software-properties-common
     - anduinos-software-properties-gtk
     - anduinos-no-snapd

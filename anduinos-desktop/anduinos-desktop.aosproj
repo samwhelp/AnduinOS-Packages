@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop</PackageName>
-    <PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~rc1-3+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS complete desktop — metapackage that pulls in all AnduinOS components</PackageDescription>
     <Section>metapackages</Section>
@@ -47,10 +47,7 @@
     <!-- App Store -->
     <Recommend Include="anduinos-appstore" />
 
-    <!-- Theme -->
+    <!-- Theme (plymouth comes transitively via-anduinos-theme) -->
     <Recommend Include="anduinos-theme" />
-
-    <!-- Boot splash -->
-    <Recommend Include="plymouth-anduinos" />
   </ItemGroup>
 </Project>
