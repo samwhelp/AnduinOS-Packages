@@ -195,8 +195,8 @@ Example diff for Fluent GTK theme:
 +FLUENT_GTK_COMMIT="a1b2c3d"
 
 # anduinos-fluent-gtk-theme.aosproj
--<PackageVersion>2.0.0~beta1-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~beta1-2+$(SuiteShortName)</PackageVersion>
+-<PackageVersion>2.0.0~rc1-1+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
 ```
 
 #### B.3 Rebuild and verify
@@ -226,8 +226,8 @@ Update **two files**:
 +SOF_VERSION="2026.03"   # update to new release tag
 
 # firmware-sof-anduinos.aosproj
--<PackageVersion>2.0.0~beta1+$(UpstreamVersion)-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~beta1+$(UpstreamVersion)-2+$(SuiteShortName)</PackageVersion>   # bump the Debian revision
+-<PackageVersion>2.0.0~rc1+$(UpstreamVersion)-1+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc1+$(UpstreamVersion)-2+$(SuiteShortName)</PackageVersion>   # bump the Debian revision
 ```
 
 The downloaded Intel tarball and extracted cache under `deploy/` are **not** committed — the CI regenerates them at build time via `download.sh`.
