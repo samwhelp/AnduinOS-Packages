@@ -106,6 +106,7 @@ These ship files or declare dependencies without replacing any Ubuntu package.
 
 | Package | Type | Description |
 |---|---|---|
+| `anduinos-container` | Metapackage | Minimal container base (shell, networking, sudo, editor) |
 | `anduinos-core-system` | Metapackage | Core system foundation (kernel, networking, boot, firmware, APT, security) |
 | `anduinos-desktop-apps` | Metapackage | Default application selection (browser, office, media, utilities) |
 | `anduinos-archive-keyring` | Core | GPG keys for AnduinOS APT repositories |
