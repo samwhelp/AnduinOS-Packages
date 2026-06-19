@@ -796,9 +796,17 @@ class AppearanceApp(Adw.Application):
         dialog.set_version('2.0.0 rc 1')
         dialog.present(self.get_active_window())
 
+    def _on_win_destroyed(self, win):
+        if hasattr(self, '_win'):
+            del self._win
+
     def do_activate(self):
-        win = AppearanceWindow(self)
-        win.present()
+        if hasattr(self, '_win'):
+            self._win.present()
+            return
+        self._win = AppearanceWindow(self)
+        self._win.connect('destroy', self._on_win_destroyed)
+        self._win.present()
 
 
 def main():
