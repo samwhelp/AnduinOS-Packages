@@ -26,6 +26,7 @@ BUILD_TMP="$(mktemp -d)"
 # install.sh lays out <theme-name>/gnome-shell/gnome-shell.css and assets/
 THEME_DIR="$BUILD_TMP/Fluent-round-Dark/gnome-shell"
 if [[ -d "$THEME_DIR" ]]; then
+    mkdir -p "$(dirname "$OUT_DIR")"
     mv "$THEME_DIR" "$OUT_DIR"
 else
     echo "ERROR: install.sh did not produce gnome-shell CSS" >&2
