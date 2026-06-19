@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# ── Build-time dependency guards ──
+source "$SCRIPT_DIR/../lib/build-guards.sh"
+need_cmd git
 
 FLUENT_ICON_COMMIT="a163afe83e9ef26a018875b8debadf3a72d121df"
 

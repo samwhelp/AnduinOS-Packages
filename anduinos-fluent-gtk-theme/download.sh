@@ -2,10 +2,10 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if ! command -v sassc >/dev/null 2>&1; then
-    echo "ERROR: sassc is required to build Fluent GTK theme. Install it first." >&2
-    exit 1
-fi
+# ── Build-time dependency guards ──
+source "$SCRIPT_DIR/../lib/build-guards.sh"
+need_cmd git
+need_cmd sassc
 
 FLUENT_GTK_COMMIT="9fc5291"
 

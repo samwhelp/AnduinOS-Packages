@@ -6,6 +6,11 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../lib/gnome-versions.sh"
 
+# ── Build-time dependency guards ──
+source "$SCRIPT_DIR/../lib/build-guards.sh"
+need_cmd msgunfmt gettext
+need_cmd msgfmt gettext
+
 UUID="arcmenu@arcmenu.com"
 
 # ── Localization tables ────────────────────────────────────────────────
