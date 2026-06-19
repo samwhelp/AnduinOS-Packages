@@ -69,6 +69,7 @@ declare -A UBUNTU_MIRROR=(
     ["noble"]="https://mirror.aiursoft.com/ubuntu"
     ["questing"]="https://mirror.aiursoft.com/ubuntu"
     ["resolute"]="https://mirror.aiursoft.com/ubuntu"
+    ["stonking"]="https://mirror.aiursoft.com/ubuntu"
 )
 
 for SUITE in "${!GNOME_TARGETS[@]}"; do
