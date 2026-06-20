@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-desktop-apps</PackageName>
-    <PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~rc1-3+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS default applications — pulls in recommended apps for AnduinOS</PackageDescription>
     <PackageHomepage>https://www.anduinos.com</PackageHomepage>
@@ -24,6 +24,9 @@
     <Recommend Include="remmina" />
     <Recommend Include="remmina-plugin-rdp" />
     <Recommend Include="transmission-gtk" />
+
+    <!-- Mail -->
+    <Recommend Include="geary" />
 
     <!-- Productivity & Utilities -->
     <Recommend Include="gnome-calendar" />
@@ -79,6 +82,12 @@
          understood and provided by upstream. -->
     <IncludeFile Include="assets/io.github.celluloid_player.Celluloid.desktop"
                  Target="/usr/share/applications/io.github.celluloid_player.Celluloid.desktop" />
+
+    <!-- Replace Geary desktop Name with local "Email"/"Mail" — "Geary"
+         is meaningless branding; the local word for "Mail" is what users
+         look for in their launcher. -->
+    <IncludeFile Include="assets/org.gnome.Geary.desktop"
+                 Target="/usr/share/applications/org.gnome.Geary.desktop" />
   </ItemGroup>
 
   <ItemGroup>

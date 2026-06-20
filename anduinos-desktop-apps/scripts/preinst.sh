@@ -13,3 +13,13 @@ if [ install = "$1" ] || [ upgrade = "$1" ]; then
         --divert "$DIVERTED" \
         "$ORIGINAL"
 fi
+
+# Replace Geary desktop Name with localized "Email"/"Mail"
+GEARY_ORIGINAL="/usr/share/applications/org.gnome.Geary.desktop"
+GEARY_DIVERTED="/usr/share/applications/org.gnome.Geary.desktop.ubuntu-original"
+
+if [ install = "$1" ] || [ upgrade = "$1" ]; then
+    dpkg-divert --add --package anduinos-desktop-apps --rename \
+        --divert "$GEARY_DIVERTED" \
+        "$GEARY_ORIGINAL"
+fi
