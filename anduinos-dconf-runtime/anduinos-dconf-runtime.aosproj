@@ -13,8 +13,8 @@
     <TargetArchitectures>all</TargetArchitectures>
     <!-- Old anduinos-dconf-defaults (<< rc1-3) shipped /etc/dconf/profile/user;
          that file now lives here, so we must take it over cleanly. -->
-    <Conflicts>anduinos-dconf-defaults (<< 2.0.0~rc1-3)</Conflicts>
-    <Replaces>anduinos-dconf-defaults (<< 2.0.0~rc1-3)</Replaces>
+    <Conflicts>anduinos-dconf-defaults (&lt;&lt; 2.0.0~rc1-3)</Conflicts>
+    <Replaces>anduinos-dconf-defaults (&lt;&lt; 2.0.0~rc1-3)</Replaces>
     <Component>main</Component>
     <SuiteShortNameMap>noble-addon=noble questing-addon=questing resolute-addon=resolute</SuiteShortNameMap>
   </PropertyGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <DpkgTrigger Include="/etc/dconf/db" Type="interest-noawait" />
+    <DpkgTrigger Include="/etc/dconf/db/anduinos.d" Type="interest-noawait" />
   </ItemGroup>
 
   <ItemGroup>
