@@ -2,6 +2,9 @@
 # File manager
 inode/directory=org.gnome.Nautilus.desktop;
 
+# Mail
+x-scheme-handler/mailto=org.gnome.Geary.desktop;
+
 # Calendar
 text/calendar=org.gnome.Calendar.desktop;
 
