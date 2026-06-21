@@ -444,6 +444,9 @@ sudo apt install -y \
     ubuntu-wallpapers- \
     --install-recommends
 
+sudo apt reinstall -y base-files
+
+# Update dconf settings to apply AnduinOS defaults
 dconf update
 dconf reset -f /org/gnome/
 ```
