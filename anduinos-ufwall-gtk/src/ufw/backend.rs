@@ -24,27 +24,109 @@ const UFW_APPS_DIR: &str = "/etc/ufw/applications.d";
 
 // ─── Reading state (no root needed) ──────────────────────────────────────────
 
-/// Read the complete firewall status by parsing config files directly.
-/// This does NOT require root privileges.
+/// Read the complete firewall status via `pkexec ufw status verbose`.
+/// Authenticates once at startup; polkit caches the authorization for subsequent calls.
 pub fn read_status() -> Result<UfwStatus, UfwError> {
-    let active = read_enabled()?;
-    let logging = read_logging()?;
-    let (default_incoming, default_outgoing) = read_defaults()?;
+    let output = Command::new("pkexec")
+        .env("LC_ALL", "C")
+        .args(["ufw", "status", "verbose"])
+        .output()
+        .map_err(|e| UfwError {
+            message: format!("Failed to run pkexec ufw status: {e}"),
+        })?;
+
+    if !output.status.success() {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        if output.status.code() == Some(126) {
+            return Err(UfwError {
+                message: "Authentication cancelled".to_string(),
+            });
+        }
+        return Err(UfwError {
+            message: format!("pkexec failed: {}", stderr.trim()),
+        });
+    }
+
+    let text = String::from_utf8_lossy(&output.stdout);
+    let status = parse_ufw_status_verbose(&text)?;
+    if status.rules.is_empty() && status.active {
+        eprintln!(
+            "Warning: firewall is active but parsed 0 rules. Raw output:\n{}",
+            text
+        );
+    }
+    Ok(status)
+}
+
+/// Parse the output of `ufw status verbose`.
+fn parse_ufw_status_verbose(output: &str) -> Result<UfwStatus, UfwError> {
+    let mut active = false;
+    let mut default_incoming = Policy::Deny;
+    let mut default_outgoing = Policy::Allow;
+    let mut logging = String::from("off");
     let mut rules = Vec::new();
+    let mut in_rules = false;
 
-    // Parse IPv4 rules
-    if let Ok(v4_rules) = parse_rules_file(UFW_USER_RULES, false) {
-        rules.extend(v4_rules);
-    }
+    for line in output.lines() {
+        let line = line.trim();
+        if line.is_empty() {
+            continue;
+        }
 
-    // Parse IPv6 rules
-    if let Ok(v6_rules) = parse_rules_file(UFW_USER6_RULES, true) {
-        rules.extend(v6_rules);
-    }
+        if line.starts_with("Status:") {
+            active = line.to_lowercase().contains("active");
+        } else if line.starts_with("Logging:") {
+            // "Logging: on (low)" → extract "low" from parens, or use "on"/"off"
+            let rest = line.strip_prefix("Logging:").unwrap_or("off").trim();
+            if let Some(paren) = rest.find('(') {
+                let inner = &rest[paren + 1..];
+                if let Some(end) = inner.find(')') {
+                    logging = inner[..end].to_string();
+                }
+            } else {
+                logging = rest.to_string();
+            }
+        } else if line.starts_with("Default:") {
+            let policy_str = line.split_whitespace().nth(1).unwrap_or("deny").to_lowercase();
+            let dir_str = line.split_whitespace().last().unwrap_or("incoming").to_lowercase();
+            if let Some(p) = Policy::from_str(&policy_str) {
+                if dir_str == "incoming" {
+                    default_incoming = p;
+                } else if dir_str == "outgoing" {
+                    default_outgoing = p;
+                }
+            }
+        } else if line.starts_with("--") || (line.contains("---") && line.contains("Action")) {
+            // Separator line (e.g. "--  ------  ----") or old-style header
+            in_rules = true;
+            continue;
+        } else if !in_rules {
+            continue;
+        } else {
+            // Rule line format (action-anchored to handle ports with spaces):
+            //   22                         ALLOW IN    Anywhere
+            //   Nginx Full                ALLOW IN    Anywhere
+            //   22 (v6)                    ALLOW IN    Anywhere (v6)
+            let (port, rest) = split_at_action(line);
+            if let Some((action_str, remainder)) = rest.split_once(' ') {
+                let (direction_str, from_str) = remainder.split_once(' ').unwrap_or((remainder, "Anywhere"));
+                let is_v6 = line.contains("(v6)");
 
-    // Renumber rules sequentially (combined v4 + v6)
-    for (i, rule) in rules.iter_mut().enumerate() {
-        rule.number = (i + 1) as u32;
+                let action = Action::from_str(action_str).unwrap_or(Action::Allow);
+                let direction = Direction::from_str(direction_str).unwrap_or(Direction::In);
+
+                let rule_num = (rules.len() + 1) as u32;
+                rules.push(UfwRule {
+                    number: rule_num,
+                    port,
+                    action,
+                    direction,
+                    from: from_str.to_string(),
+                    to: "Anywhere".to_string(),
+                    v6: is_v6,
+                });
+            }
+        }
     }
 
     Ok(UfwStatus {
@@ -54,6 +136,22 @@ pub fn read_status() -> Result<UfwStatus, UfwError> {
         rules,
         logging,
     })
+}
+
+/// Split a rule line at the action keyword to handle ports with spaces.
+/// e.g. "Nginx Full                ALLOW IN    Anywhere"
+///   -> ("Nginx Full", "ALLOW IN    Anywhere")
+fn split_at_action(line: &str) -> (String, String) {
+    for keyword in &[" ALLOW ", " DENY ", " REJECT ", " LIMIT "] {
+        if let Some(idx) = line.find(keyword) {
+            let port = line[..idx].trim().to_string();
+            let rest = line[idx..].trim().to_string();
+            return (port, rest);
+        }
+    }
+    // Fallback: split by whitespace
+    let (port, rest) = line.split_once(' ').unwrap_or((line, ""));
+    (port.to_string(), rest.to_string())
 }
 
 /// Check if UFW is enabled by reading /etc/ufw/ufw.conf.
@@ -226,31 +324,40 @@ fn parse_tuple(tuple: &str, v6: bool) -> Option<UfwRule> {
 
 // ─── Reading app profiles (no root needed) ───────────────────────────────────
 
-/// Read all application profiles from /etc/ufw/applications.d/.
+/// Read all application profiles from system and bundled directories.
 pub fn read_profiles() -> Result<Vec<AppProfile>, UfwError> {
-    let dir = Path::new(UFW_APPS_DIR);
-    if !dir.exists() {
-        return Ok(Vec::new());
-    }
-
     let mut profiles = Vec::new();
 
-    let entries = fs::read_dir(dir).map_err(|e| UfwError {
-        message: format!("Cannot read {UFW_APPS_DIR}: {e}"),
-    })?;
+    // Read from system profiles (/etc/ufw/applications.d/)
+    read_profiles_from_dir(UFW_APPS_DIR, &mut profiles);
 
-    for entry in entries.flatten() {
-        let path = entry.path();
-        if path.is_file() {
-            if let Ok(content) = fs::read_to_string(&path) {
-                let mut file_profiles = parse_app_profiles(&content);
-                profiles.append(&mut file_profiles);
+    // Read from bundled profiles (/usr/share/ufwall-gtk/app_profiles/)
+    read_profiles_from_dir(crate::config::APP_PROFILES_DIR, &mut profiles);
+
+    // Deduplicate by name: system-installed profiles take priority (already added first)
+    profiles.sort_by(|a, b| a.name.cmp(&b.name));
+    profiles.dedup_by(|a, b| a.name.eq_ignore_ascii_case(&b.name));
+
+    Ok(profiles)
+}
+
+/// Read profiles from a directory into the given vector.
+fn read_profiles_from_dir(dir_path: &str, profiles: &mut Vec<AppProfile>) {
+    let dir = Path::new(dir_path);
+    if !dir.exists() {
+        return;
+    }
+    if let Ok(entries) = fs::read_dir(dir) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.is_file() {
+                if let Ok(content) = fs::read_to_string(&path) {
+                    let mut file_profiles = parse_app_profiles(&content);
+                    profiles.append(&mut file_profiles);
+                }
             }
         }
     }
-
-    profiles.sort_by(|a, b| a.name.cmp(&b.name));
-    Ok(profiles)
 }
 
 /// Parse an INI-style application profile file.
@@ -332,13 +439,17 @@ pub fn set_default_policy(direction: Direction, policy: Policy) -> Result<String
 pub fn add_rule(params: &RuleParams) -> Result<String, UfwError> {
     let mut args: Vec<String> = Vec::new();
 
+    // Insert position: "insert N" must come first
+    if let Some(pos) = params.insert_position {
+        args.push("insert".to_string());
+        args.push(pos.to_string());
+    }
+
     // Action
     args.push(params.action.as_ufw_arg().to_string());
 
-    // Direction (optional)
-    if let Some(dir) = &params.direction {
-        args.push(dir.as_ufw_arg().to_string());
-    }
+    // Direction (optional) — used for on-interface binding
+    let has_dir = params.direction.is_some();
 
     // From clause
     if let Some(from) = &params.from {
@@ -358,12 +469,10 @@ pub fn add_rule(params: &RuleParams) -> Result<String, UfwError> {
 
     // Port with optional protocol
     if !params.port.is_empty() {
-        // If we have from/to clauses, use "port" keyword
         if params.from.is_some() || params.to.is_some() {
             args.push("port".to_string());
             args.push(params.port.clone());
         } else {
-            // Build port/proto string
             let port_str = match &params.protocol {
                 Some(Protocol::Tcp) => format!("{}/tcp", params.port),
                 Some(Protocol::Udp) => format!("{}/udp", params.port),
@@ -381,6 +490,29 @@ pub fn add_rule(params: &RuleParams) -> Result<String, UfwError> {
         }
     }
 
+    // Interface binding: direction on <iface>
+    if let Some(iface) = &params.interface {
+        if !iface.is_empty() {
+            if has_dir {
+                // Direction already specified; add "on <iface>" after it
+                args.push("on".to_string());
+                args.push(iface.clone());
+            } else {
+                // No explicit direction — UFW defaults apply
+                args.push("on".to_string());
+                args.push(iface.clone());
+            }
+        }
+    }
+
+    // Comment
+    if let Some(comment) = &params.comment {
+        if !comment.is_empty() {
+            args.push("comment".to_string());
+            args.push(comment.clone());
+        }
+    }
+
     let args_refs: Vec<&str> = args.iter().map(|s| s.as_str()).collect();
     run_pkexec_ufw(&args_refs)
 }
@@ -390,27 +522,123 @@ pub fn delete_rule(number: u32) -> Result<String, UfwError> {
     run_pkexec_ufw(&["--force", "delete", &number.to_string()])
 }
 
-/// Allow an application profile.
-pub fn allow_app(name: &str) -> Result<String, UfwError> {
-    run_pkexec_ufw(&["allow", name])
+/// Allow an application profile by its ports.
+/// Calls `pkexec ufw allow` per port spec; polkit caches auth after first call.
+pub fn allow_app(ports: &str) -> Result<String, UfwError> {
+    let port_list: Vec<&str> = ports.split('|').map(|s| s.trim()).filter(|s| !s.is_empty()).collect();
+    if port_list.is_empty() {
+        return Err(UfwError {
+            message: "No ports defined for this profile".to_string(),
+        });
+    }
+    let mut last_result = Ok(String::new());
+    for port_spec in &port_list {
+        last_result = run_pkexec_ufw(&["allow", port_spec]);
+        if last_result.is_err() {
+            return last_result;
+        }
+    }
+    last_result
 }
 
-/// Delete an application profile allow rule.
-pub fn delete_app(name: &str) -> Result<String, UfwError> {
-    run_pkexec_ufw(&["--force", "delete", "allow", name])
+/// Delete an application profile allow rule by its ports.
+pub fn delete_app(ports: &str) -> Result<String, UfwError> {
+    let port_list: Vec<&str> = ports.split('|').map(|s| s.trim()).filter(|s| !s.is_empty()).collect();
+    if port_list.is_empty() {
+        return Err(UfwError {
+            message: "No ports defined for this profile".to_string(),
+        });
+    }
+    let mut last_result = Ok(String::new());
+    for port_spec in &port_list {
+        last_result = run_pkexec_ufw(&["--force", "delete", "allow", port_spec]);
+    }
+    last_result
 }
 
 /// Check if an app profile is currently allowed by checking the rules.
+/// Uses port-based matching: compares rule ports against profile port specs.
 pub fn is_app_allowed(rules: &[UfwRule], profile: &AppProfile) -> bool {
-    // Check if any rule matches this app's ports
-    let profile_name_lower = profile.name.to_lowercase();
+    // Parse profile ports into individual specs
+    let profile_ports = parse_profile_ports(&profile.ports);
+    if profile_ports.is_empty() {
+        // Fallback: no ports field — use name matching
+        let name_lower = profile.name.to_lowercase();
+        return rules.iter().any(|r| {
+            r.port.to_lowercase() == name_lower && r.action == Action::Allow
+        });
+    }
+    // Port-based matching
     rules.iter().any(|r| {
-        let port_lower = r.port.to_lowercase();
-        port_lower == profile_name_lower && r.action == Action::Allow
+        r.action == Action::Allow
+            && profile_ports.iter().any(|pp| ports_match(&r.port, pp))
     })
 }
 
+/// Split profile ports string by `|` or `,` into individual port specs.
+fn parse_profile_ports(ports: &str) -> Vec<String> {
+    ports
+        .split(&['|', ','][..])
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect()
+}
+
+/// Compare a rule port (e.g. "22/tcp") with a profile port spec (e.g. "22/tcp" or "22").
+fn ports_match(rule_port: &str, profile_port: &str) -> bool {
+    let rp = rule_port.to_lowercase();
+    let pp = profile_port.to_lowercase();
+    if rp == pp {
+        return true;
+    }
+    // If profile port has no protocol suffix, match on port number only
+    if !pp.contains('/') {
+        let rule_port_num = rp.split('/').next().unwrap_or(&rp);
+        return rule_port_num == pp;
+    }
+    // If rule port has no protocol suffix but profile port does
+    if !rp.contains('/') {
+        let profile_port_num = pp.split('/').next().unwrap_or(&pp);
+        return rp == profile_port_num;
+    }
+    false
+}
+
 // ─── Internal helpers ────────────────────────────────────────────────────────
+
+/// Run `pkexec sh -c <script>` and return stdout.
+fn run_pkexec_sh(script: &str) -> Result<String, UfwError> {
+    let output = Command::new("pkexec")
+        .env("LC_ALL", "C")
+        .args(["sh", "-c", script])
+        .output()
+        .map_err(|e| UfwError {
+            message: format!("Failed to execute pkexec: {e}"),
+        })?;
+
+    if output.status.success() {
+        Ok(String::from_utf8_lossy(&output.stdout).to_string())
+    } else {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        if output.status.code() == Some(126) {
+            Err(UfwError {
+                message: "Authentication cancelled".to_string(),
+            })
+        } else {
+            Err(UfwError {
+                message: format!(
+                    "UFW command failed: {}",
+                    if stderr.trim().is_empty() {
+                        stdout.trim().to_string()
+                    } else {
+                        stderr.trim().to_string()
+                    }
+                ),
+            })
+        }
+    }
+}
 
 /// Run `pkexec ufw <args>` and return stdout.
 fn run_pkexec_ufw(args: &[&str]) -> Result<String, UfwError> {
@@ -418,6 +646,7 @@ fn run_pkexec_ufw(args: &[&str]) -> Result<String, UfwError> {
     cmd_args.extend_from_slice(args);
 
     let output = Command::new("pkexec")
+        .env("LC_ALL", "C")
         .args(&cmd_args)
         .output()
         .map_err(|e| UfwError {
@@ -511,5 +740,32 @@ ports=22/tcp
         assert_eq!(Policy::from_str("DROP"), Some(Policy::Deny));
         assert_eq!(Policy::from_str("REJECT"), Some(Policy::Reject));
         assert_eq!(Policy::from_str("invalid"), None);
+    }
+    #[test]
+    fn test_parse_ufw_status_verbose() {
+        let output = r"Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW IN    Anywhere
+80/tcp                     ALLOW IN    Anywhere
+Nginx Full                 ALLOW IN    Anywhere
+53/udp                     ALLOW IN    Anywhere
+53/tcp                     ALLOW IN    Anywhere
+22 (v6)                    ALLOW IN    Anywhere (v6)
+53/udp (v6)                ALLOW IN    Anywhere (v6)
+";
+        let result = parse_ufw_status_verbose(output).unwrap();
+        assert!(result.active);
+        assert_eq!(result.logging, "low");
+        assert_eq!(result.rules.len(), 7);
+        assert_eq!(result.rules[0].port, "22");
+        assert_eq!(result.rules[1].port, "80/tcp");
+        assert_eq!(result.rules[2].port, "Nginx Full");
+        assert_eq!(result.rules[3].port, "53/udp");
+        assert_eq!(result.rules[5].v6, true);
     }
 }

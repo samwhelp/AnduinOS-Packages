@@ -4,6 +4,7 @@ use gtk::glib;
 use std::cell::RefCell;
 
 use crate::i18n::i18n;
+use crate::ufw::show_error;
 use crate::ufw::types::{Action, Direction, Protocol, RuleParams};
 use crate::ufw::backend;
 
@@ -19,6 +20,11 @@ mod imp {
         pub proto_combo: RefCell<Option<adw::ComboRow>>,
         pub source_entry: RefCell<Option<adw::EntryRow>>,
         pub dest_entry: RefCell<Option<adw::EntryRow>>,
+        pub interface_entry: RefCell<Option<adw::EntryRow>>,
+        pub comment_entry: RefCell<Option<adw::EntryRow>>,
+        pub position_spin: RefCell<Option<adw::SpinRow>>,
+        pub add_btn: RefCell<Option<gtk::Button>>,
+        pub edit_rule_number: RefCell<Option<u32>>,
     }
 
     #[glib::object_subclass]
@@ -86,8 +92,8 @@ impl AddRuleDialog {
         let action_combo = adw::ComboRow::builder()
             .title(i18n("Action"))
             .model(&gtk::StringList::new(&[
-                &i18n("Allow"),
                 &i18n("Deny"),
+                &i18n("Allow"),
                 &i18n("Reject"),
                 &i18n("Limit"),
             ]))
@@ -96,6 +102,7 @@ impl AddRuleDialog {
         basic_group.add(&preset_combo);
         basic_group.add(&port_entry);
         basic_group.add(&action_combo);
+        action_combo.set_selected(1); // Default: Allow
         page.add(&basic_group);
 
         let adv_group = adw::PreferencesGroup::builder().build();
@@ -132,6 +139,24 @@ impl AddRuleDialog {
         expander.add_row(&proto_combo);
         expander.add_row(&source_entry);
         expander.add_row(&dest_entry);
+
+        let interface_entry = adw::EntryRow::builder()
+            .title(i18n("Interface"))
+            .build();
+        expander.add_row(&interface_entry);
+
+        let comment_entry = adw::EntryRow::builder()
+            .title(i18n("Comment"))
+            .build();
+        expander.add_row(&comment_entry);
+
+        let position_spin = adw::SpinRow::builder()
+            .title(i18n("Insert Before Rule"))
+            .subtitle(i18n("0 = append at end"))
+            .adjustment(&gtk::Adjustment::new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0))
+            .build();
+        expander.add_row(&position_spin);
+
         adv_group.add(&expander);
         page.add(&adv_group);
 
@@ -163,6 +188,10 @@ impl AddRuleDialog {
         *imp.proto_combo.borrow_mut() = Some(proto_combo.clone());
         *imp.source_entry.borrow_mut() = Some(source_entry.clone());
         *imp.dest_entry.borrow_mut() = Some(dest_entry.clone());
+        *imp.interface_entry.borrow_mut() = Some(interface_entry.clone());
+        *imp.comment_entry.borrow_mut() = Some(comment_entry.clone());
+        *imp.position_spin.borrow_mut() = Some(position_spin.clone());
+        *imp.add_btn.borrow_mut() = Some(add_btn.clone());
 
         preset_combo.connect_selected_notify(glib::clone!(
             #[weak] port_entry,
@@ -207,8 +236,28 @@ impl AddRuleDialog {
         });
     }
 
+    /// Pre-populate the dialog for editing an existing rule.
+    pub fn set_edit_data(&self, rule: &crate::ufw::types::UfwRule) {
+        let imp = self.imp();
+        *imp.edit_rule_number.borrow_mut() = Some(rule.number);
+
+        if let Some(entry) = imp.port_entry.borrow().as_ref() {
+            entry.set_text(&rule.port);
+        }
+        if let Some(combo) = imp.action_combo.borrow().as_ref() {
+            combo.set_selected(rule.action.index());
+        }
+        if let Some(combo) = imp.dir_combo.borrow().as_ref() {
+            combo.set_selected(rule.direction.index());
+        }
+        if let Some(btn) = imp.add_btn.borrow().as_ref() {
+            btn.set_label(&i18n("Save"));
+        }
+    }
+
     fn on_add_clicked(&self, btn: &gtk::Button) {
         let imp = self.imp();
+        let edit_num = *imp.edit_rule_number.borrow();
         
         let port = imp.port_entry.borrow().as_ref().unwrap().text().to_string();
         if port.trim().is_empty() {
@@ -232,6 +281,15 @@ impl AddRuleDialog {
         let to_text = imp.dest_entry.borrow().as_ref().unwrap().text().to_string();
         let to = if to_text.trim().is_empty() { None } else { Some(to_text) };
 
+        let iface_text = imp.interface_entry.borrow().as_ref().unwrap().text().to_string();
+        let interface = if iface_text.trim().is_empty() { None } else { Some(iface_text) };
+
+        let comment_text = imp.comment_entry.borrow().as_ref().unwrap().text().to_string();
+        let comment = if comment_text.trim().is_empty() { None } else { Some(comment_text) };
+
+        let pos = imp.position_spin.borrow().as_ref().unwrap().value() as u32;
+        let insert_position = if pos == 0 { None } else { Some(pos) };
+
         let params = RuleParams {
             port,
             action,
@@ -239,22 +297,32 @@ impl AddRuleDialog {
             protocol,
             from,
             to,
+            interface,
+            comment,
+            insert_position,
         };
 
         btn.set_sensitive(false);
         let weak_self = self.downgrade();
-        
+
         glib::spawn_future_local(async move {
             let result = tokio::task::spawn_blocking(move || {
-                backend::add_rule(&params)
+                if let Some(num) = edit_num {
+                    // Edit mode: delete old rule, then add new at same position
+                    backend::delete_rule(num)?;
+                    let mut edit_params = params.clone();
+                    edit_params.insert_position = Some(num);
+                    backend::add_rule(&edit_params)
+                } else {
+                    backend::add_rule(&params)
+                }
             }).await.unwrap();
-            
+
             if let Some(dialog) = weak_self.upgrade() {
                 match result {
                     Ok(_) => { dialog.close(); }
                     Err(e) => {
-                        eprintln!("Failed to add rule: {}", e);
-                        dialog.close(); 
+                        show_error(&dialog, &i18n("Error"), &e.to_string());
                     }
                 }
             }

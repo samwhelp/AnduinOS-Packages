@@ -29,9 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <IncludeScript Include="deploy/usr/bin/ufwall-gtk" Target="/usr/bin/ufwall-gtk" />
-    <IncludeFile Include="deploy/usr/share/applications/com.anduinos.ufwall.desktop" Target="/usr/share/applications/com.anduinos.ufwall.desktop" />
-    <IncludeFile Include="deploy/usr/share/polkit-1/actions/com.anduinos.ufwall.policy" Target="/usr/share/polkit-1/actions/com.anduinos.ufwall.policy" />
-    <IncludeFile Include="deploy/usr/share/icons/hicolor/scalable/apps/com.anduinos.ufwall.svg" Target="/usr/share/icons/hicolor/scalable/apps/com.anduinos.ufwall.svg" />
+    <IncludeScript Include="target/release/ufwall-gtk" Target="/usr/bin/ufwall-gtk" />
+    <IncludeFile Include="data/com.anduinos.ufwall.desktop" Target="/usr/share/applications/com.anduinos.ufwall.desktop" />
+    <IncludeFile Include="data/com.anduinos.ufwall.policy" Target="/usr/share/polkit-1/actions/com.anduinos.ufwall.policy" />
+    <IncludeFile Include="data/com.anduinos.ufwall.svg" Target="/usr/share/icons/hicolor/scalable/apps/com.anduinos.ufwall.svg" />
+    <IncludeFolder Include="data/app_profiles" Target="/usr/share/ufwall-gtk/app_profiles" />
   </ItemGroup>
+
 </Project>

@@ -7,8 +7,9 @@ use std::cell::RefCell;
 
 use crate::application::UfwallApplication;
 use crate::i18n::i18n;
-use crate::views::{status_view::StatusView, rules_view::RulesView, profiles_view::ProfilesView};
+use crate::views::{dashboard_view::DashboardView, profiles_view::ProfilesView, rules_view::RulesView, status_view::StatusView};
 use crate::ufw::monitor;
+use crate::ufw::show_error;
 use crate::ufw::backend;
 
 mod imp {
@@ -18,6 +19,7 @@ mod imp {
     pub struct UfwallWindow {
         pub split_view: RefCell<Option<adw::OverlaySplitView>>,
         pub stack: RefCell<Option<gtk::Stack>>,
+        pub dashboard_view: RefCell<Option<DashboardView>>,
         pub status_view: RefCell<Option<StatusView>>,
         pub rules_view: RefCell<Option<RulesView>>,
         pub profiles_view: RefCell<Option<ProfilesView>>,
@@ -82,14 +84,16 @@ impl UfwallWindow {
             .selection_mode(gtk::SelectionMode::Single)
             .build();
         
+        let dashboard_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Dashboard")))).build();
         let status_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Status")))).build();
         let rules_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Rules")))).build();
         let profiles_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Profiles")))).build();
 
+        sidebar_list.append(&dashboard_row);
         sidebar_list.append(&status_row);
         sidebar_list.append(&rules_row);
         sidebar_list.append(&profiles_row);
-        sidebar_list.select_row(Some(&status_row));
+        sidebar_list.select_row(Some(&dashboard_row));
 
         let sidebar_header = adw::HeaderBar::builder()
             .show_end_title_buttons(false)
@@ -106,10 +110,12 @@ impl UfwallWindow {
             .transition_type(gtk::StackTransitionType::Crossfade)
             .build();
         
+        let dashboard_view = DashboardView::new();
         let status_view = StatusView::new();
         let rules_view = RulesView::new();
         let profiles_view = ProfilesView::new();
 
+        stack.add_named(&dashboard_view, Some("dashboard"));
         stack.add_named(&status_view, Some("status"));
         stack.add_named(&rules_view, Some("rules"));
         stack.add_named(&profiles_view, Some("profiles"));
@@ -161,9 +167,10 @@ impl UfwallWindow {
             if let Some(row) = row {
                 let index = row.index();
                 let name = match index {
-                    0 => "status",
-                    1 => "rules",
-                    2 => "profiles",
+                    0 => "dashboard",
+                    1 => "status",
+                    2 => "rules",
+                    3 => "profiles",
                     _ => return,
                 };
                 stack_clone.set_visible_child_name(name);
@@ -175,16 +182,22 @@ impl UfwallWindow {
 
         *imp.split_view.borrow_mut() = Some(split_view);
         *imp.stack.borrow_mut() = Some(stack);
+        *imp.dashboard_view.borrow_mut() = Some(dashboard_view);
         *imp.status_view.borrow_mut() = Some(status_view);
         *imp.rules_view.borrow_mut() = Some(rules_view);
         *imp.profiles_view.borrow_mut() = Some(profiles_view);
-        
+
         self.refresh_views();
     }
 
     fn refresh_views(&self) {
         let imp = self.imp();
-        
+
+        // Refresh dashboard data
+        if let Some(view) = imp.dashboard_view.borrow().as_ref() {
+            view.refresh_data();
+        }
+
         // Read status using backend
         match backend::read_status() {
             Ok(status) => {
@@ -200,7 +213,7 @@ impl UfwallWindow {
                 }
             }
             Err(e) => {
-                eprintln!("Failed to read ufw status: {}", e);
+                show_error(self, &i18n("Error"), &format!("Failed to read firewall status: {}", e));
             }
         }
         
@@ -212,7 +225,7 @@ impl UfwallWindow {
                 }
             }
             Err(e) => {
-                eprintln!("Failed to read ufw profiles: {}", e);
+                show_error(self, &i18n("Error"), &format!("Failed to read profiles: {}", e));
             }
         }
     }

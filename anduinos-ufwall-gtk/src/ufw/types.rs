@@ -85,8 +85,8 @@ impl Action {
 
     pub fn index(&self) -> u32 {
         match self {
-            Self::Allow => 0,
-            Self::Deny => 1,
+            Self::Deny => 0,
+            Self::Allow => 1,
             Self::Reject => 2,
             Self::Limit => 3,
         }
@@ -94,11 +94,11 @@ impl Action {
 
     pub fn from_index(idx: u32) -> Self {
         match idx {
-            0 => Self::Allow,
-            1 => Self::Deny,
+            0 => Self::Deny,
+            1 => Self::Allow,
             2 => Self::Reject,
             3 => Self::Limit,
-            _ => Self::Allow,
+            _ => Self::Deny,
         }
     }
 }
@@ -134,6 +134,13 @@ impl Direction {
         match self {
             Self::In => "in",
             Self::Out => "out",
+        }
+    }
+
+    pub fn index(&self) -> u32 {
+        match self {
+            Self::In => 0,
+            Self::Out => 1,
         }
     }
 }
@@ -287,6 +294,12 @@ pub struct RuleParams {
     pub from: Option<String>,
     /// Destination IP/subnet (None = any).
     pub to: Option<String>,
+    /// Network interface to bind to (e.g. "eth0").
+    pub interface: Option<String>,
+    /// Rule comment for documentation.
+    pub comment: Option<String>,
+    /// Insert before rule number (None = append).
+    pub insert_position: Option<u32>,
 }
 
 /// Error type for UFW operations.

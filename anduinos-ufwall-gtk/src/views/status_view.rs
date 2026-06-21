@@ -5,6 +5,7 @@ use std::cell::Cell;
 use std::rc::Rc;
 
 use crate::i18n::i18n;
+use crate::ufw::show_error;
 use crate::ufw::types::{UfwStatus, Policy, Direction};
 use crate::ufw::backend;
 
@@ -134,17 +135,20 @@ impl StatusView {
                 let active = active_switch.is_active();
                 
                 let switch_clone = active_switch.clone();
-                glib::spawn_future_local(async move {
-                    switch_clone.set_sensitive(false);
-                    let result = tokio::task::spawn_blocking(move || {
-                        backend::set_enabled(active)
-                    }).await.unwrap();
-                    
-                    if let Err(e) = result {
-                        eprintln!("Error toggling firewall: {}", e);
+                glib::spawn_future_local(glib::clone!(
+                    #[weak] switch_clone,
+                    async move {
+                        switch_clone.set_sensitive(false);
+                        let result = tokio::task::spawn_blocking(move || {
+                            backend::set_enabled(active)
+                        }).await.unwrap();
+
+                        if let Err(e) = result {
+                            show_error(&switch_clone, &i18n("Error"), &e.to_string());
+                        }
+                        switch_clone.set_sensitive(true);
                     }
-                    switch_clone.set_sensitive(true);
-                });
+                ));
             }
         ));
 
@@ -155,13 +159,19 @@ impl StatusView {
                 let policy = Policy::from_index(combo.selected());
 
                 let combo_clone = combo.clone();
-                glib::spawn_future_local(async move {
-                    combo_clone.set_sensitive(false);
-                    let _ = tokio::task::spawn_blocking(move || {
-                        backend::set_default_policy(Direction::In, policy)
-                    }).await.unwrap();
-                    combo_clone.set_sensitive(true);
-                });
+                glib::spawn_future_local(glib::clone!(
+                    #[weak] combo_clone,
+                    async move {
+                        combo_clone.set_sensitive(false);
+                        let result = tokio::task::spawn_blocking(move || {
+                            backend::set_default_policy(Direction::In, policy)
+                        }).await.unwrap();
+                        if let Err(e) = result {
+                            show_error(&combo_clone, &i18n("Error"), &e.to_string());
+                        }
+                        combo_clone.set_sensitive(true);
+                    }
+                ));
             }
         ));
 
@@ -172,13 +182,19 @@ impl StatusView {
                 let policy = Policy::from_index(combo.selected());
 
                 let combo_clone = combo.clone();
-                glib::spawn_future_local(async move {
-                    combo_clone.set_sensitive(false);
-                    let _ = tokio::task::spawn_blocking(move || {
-                        backend::set_default_policy(Direction::Out, policy)
-                    }).await.unwrap();
-                    combo_clone.set_sensitive(true);
-                });
+                glib::spawn_future_local(glib::clone!(
+                    #[weak] combo_clone,
+                    async move {
+                        combo_clone.set_sensitive(false);
+                        let result = tokio::task::spawn_blocking(move || {
+                            backend::set_default_policy(Direction::Out, policy)
+                        }).await.unwrap();
+                        if let Err(e) = result {
+                            show_error(&combo_clone, &i18n("Error"), &e.to_string());
+                        }
+                        combo_clone.set_sensitive(true);
+                    }
+                ));
             }
         ));
 
@@ -193,15 +209,21 @@ impl StatusView {
                     3 => "high",
                     _ => "full",
                 };
-                
+
                 let combo_clone = combo.clone();
-                glib::spawn_future_local(async move {
-                    combo_clone.set_sensitive(false);
-                    let _ = tokio::task::spawn_blocking(move || {
-                        backend::set_logging(level)
-                    }).await.unwrap();
-                    combo_clone.set_sensitive(true);
-                });
+                glib::spawn_future_local(glib::clone!(
+                    #[weak] combo_clone,
+                    async move {
+                        combo_clone.set_sensitive(false);
+                        let result = tokio::task::spawn_blocking(move || {
+                            backend::set_logging(level)
+                        }).await.unwrap();
+                        if let Err(e) = result {
+                            show_error(&combo_clone, &i18n("Error"), &e.to_string());
+                        }
+                        combo_clone.set_sensitive(true);
+                    }
+                ));
             }
         ));
 
