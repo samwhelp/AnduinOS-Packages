@@ -410,7 +410,6 @@ sudo apt install -y \
     anduinos-software-properties-common \
     anduinos-software-properties-gtk \
     anduinos-system-tweaks \
-    anduinos-installer-config \
     firefox-anduinos \
     gnome-shell-extension-appindicator-anduinos \
     gnome-shell-extension-dash-to-panel-anduinos \
@@ -442,11 +441,13 @@ sudo apt install -y \
     gnome-shell-extension-dash-to-panel- \
     gnome-shell-extension-desktop-icons-ng- \
     ubuntu-wallpapers- \
+    ubuntu-advantage-desktop-daemon- \
+    ubuntu-wallpapers-resolute- \
     --install-recommends
 
 sudo apt reinstall -y base-files
 
 # Update dconf settings to apply AnduinOS defaults
-dconf update
+sudo dconf update
 dconf reset -f /org/gnome/
 ```
