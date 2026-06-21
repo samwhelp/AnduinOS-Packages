@@ -364,8 +364,8 @@ sudo -v
 
 # Variables for APT repository and GPG key
 APKG_SERVER="https://packages.anduinos.com"
-CERT_NAME="anduinos-archive-keyring.gpg"
-KEYRING_PATH="/usr/share/keyrings/${CERT_NAME}"
+CERT_NAME="anduinos"
+KEYRING_PATH="/usr/share/keyrings/anduinos-archive-keyring.gpg"
 SUITE="$(lsb_release -sc)-addon"
 
 # Make sure is Ubuntu 26.04 Resolute:
@@ -443,4 +443,7 @@ sudo apt install -y \
     gnome-shell-extension-desktop-icons-ng- \
     ubuntu-wallpapers- \
     --install-recommends
+
+dconf update
+dconf reset -f /org/gnome/
 ```
