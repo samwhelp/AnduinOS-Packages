@@ -313,6 +313,11 @@ anduinos-templates:
   variables:
     PACKAGE_DIR: anduinos-templates
 
+anduinos-ufwall-gtk:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-ufwall-gtk
+
 anduinos-gnome-shell-locale:
   extends: .publish
   variables:
@@ -423,6 +428,7 @@ anduinos-desktop-apps:
   needs:
     - anduinos-mimeapps
     - firefox-anduinos
+    - anduinos-ufwall-gtk
   variables:
     PACKAGE_DIR: anduinos-desktop-apps
 

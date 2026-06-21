@@ -55,6 +55,7 @@
     <Recommend Include="libgdk-pixbuf2.0-bin" />
 
     <!-- System & Maintenance -->
+    <Recommend Include="anduinos-ufwall-gtk" />
     <Recommend Include="baobab" />
     <Recommend Include="file-roller" />
     <Recommend Include="gnome-sushi" />
