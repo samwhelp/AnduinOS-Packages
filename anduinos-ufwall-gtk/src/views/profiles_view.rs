@@ -117,7 +117,7 @@ impl ProfilesView {
 
         let empty_state = adw::StatusPage::builder()
             .title(i18n("No Profiles"))
-            .description(i18n("No application profiles found in /etc/ufw/applications.d/"))
+            .description(i18n("No application profiles found"))
             .icon_name("applications-system-symbolic")
             .build();
 

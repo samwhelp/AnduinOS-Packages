@@ -11,8 +11,8 @@ mod imp {
 
     #[derive(Default)]
     pub struct DashboardView {
-        pub status_label: RefCell<Option<gtk::Label>>,
-        pub blocked_count_label: RefCell<Option<gtk::Label>>,
+        pub total_events_label: RefCell<Option<gtk::Label>>,
+        pub blocked_events_label: RefCell<Option<gtk::Label>>,
         pub top_ips_group: RefCell<Option<adw::PreferencesGroup>>,
         pub top_ports_group: RefCell<Option<adw::PreferencesGroup>>,
         pub listening_group: RefCell<Option<adw::PreferencesGroup>>,
@@ -61,40 +61,66 @@ impl DashboardView {
     fn setup_ui(&self) {
         let imp = self.imp();
 
-        // Status banner
-        let status_group = adw::PreferencesGroup::builder().build();
-        let status_label = gtk::Label::builder()
-            .label(i18n("Loading..."))
-            .halign(gtk::Align::Start)
+        // Summary Cards
+        let cards_box = gtk::Box::builder()
+            .orientation(gtk::Orientation::Horizontal)
+            .spacing(12)
+            .homogeneous(true)
+            .margin_bottom(12)
             .build();
-        status_label.add_css_class("title-4");
-        status_group.add(&status_label);
-        self.add(&status_group);
 
-        // Summary group
-        let summary_group = adw::PreferencesGroup::builder()
-            .title(i18n("Summary"))
+        // Card 1: Total Events
+        let total_card = gtk::Box::builder()
+            .orientation(gtk::Orientation::Vertical)
+            .css_classes(["card"])
             .build();
-        let blocked_count_label = gtk::Label::builder()
-            .label(i18n("Loading blocked events..."))
+        let total_title = gtk::Label::builder()
+            .label(i18n("Recent Events Parsed"))
+            .css_classes(["dim-label", "caption"])
             .halign(gtk::Align::Start)
-            .margin_start(12)
-            .margin_end(12)
-            .margin_top(6)
-            .margin_bottom(6)
+            .margin_start(16).margin_top(16).build();
+        let total_events_label = gtk::Label::builder()
+            .label("0")
+            .css_classes(["title-1"])
+            .halign(gtk::Align::Start)
+            .margin_start(16).margin_bottom(16).build();
+        total_card.append(&total_title);
+        total_card.append(&total_events_label);
+
+        // Card 2: Blocked Events
+        let blocked_card = gtk::Box::builder()
+            .orientation(gtk::Orientation::Vertical)
+            .css_classes(["card"])
             .build();
-        summary_group.add(&blocked_count_label);
+        let blocked_title = gtk::Label::builder()
+            .label(i18n("Blocked Events"))
+            .css_classes(["dim-label", "caption", "error"])
+            .halign(gtk::Align::Start)
+            .margin_start(16).margin_top(16).build();
+        let blocked_events_label = gtk::Label::builder()
+            .label("0")
+            .css_classes(["title-1", "error"])
+            .halign(gtk::Align::Start)
+            .margin_start(16).margin_bottom(16).build();
+        blocked_card.append(&blocked_title);
+        blocked_card.append(&blocked_events_label);
+
+        cards_box.append(&total_card);
+        cards_box.append(&blocked_card);
+        
+        let summary_group = adw::PreferencesGroup::builder().build();
+        summary_group.add(&cards_box);
         self.add(&summary_group);
 
-        // Top blocked IPs
+        // Top blocked connections
         let top_ips_group = adw::PreferencesGroup::builder()
-            .title(i18n("Top Blocked Source IPs"))
+            .title(i18n("Top Blocked Connections"))
             .build();
         self.add(&top_ips_group);
 
-        // Top targeted ports
+        // Top blocked ports
         let top_ports_group = adw::PreferencesGroup::builder()
-            .title(i18n("Top Targeted Ports"))
+            .title(i18n("Top Blocked Ports"))
             .build();
         self.add(&top_ports_group);
 
@@ -149,8 +175,8 @@ impl DashboardView {
             }
         });
 
-        *imp.status_label.borrow_mut() = Some(status_label);
-        *imp.blocked_count_label.borrow_mut() = Some(blocked_count_label);
+        *imp.total_events_label.borrow_mut() = Some(total_events_label);
+        *imp.blocked_events_label.borrow_mut() = Some(blocked_events_label);
         *imp.top_ips_group.borrow_mut() = Some(top_ips_group);
         *imp.top_ports_group.borrow_mut() = Some(top_ports_group);
         *imp.listening_group.borrow_mut() = Some(listening_group);
@@ -201,29 +227,11 @@ impl DashboardView {
         let listening = listening.unwrap_or_default();
         let blocked_count = events.iter().filter(|e| e.action == "BLOCK").count();
 
-        // Status label
-        if let Some(label) = imp.status_label.borrow().as_ref() {
-            if blocked_count > 0 {
-                label.set_text(&format!(
-                    "{} ({} {})",
-                    i18n("Firewall Active"),
-                    blocked_count,
-                    i18n("recent blocked events")
-                ));
-            } else {
-                label.set_text(&i18n("Firewall Active"));
-            }
+        if let Some(label) = imp.total_events_label.borrow().as_ref() {
+            label.set_text(&events.len().to_string());
         }
-
-        // Blocked count
-        if let Some(label) = imp.blocked_count_label.borrow().as_ref() {
-            label.set_text(&format!(
-                "{}: {}  |  {}: {}",
-                i18n("Recent events shown"),
-                events.len(),
-                i18n("Blocked"),
-                blocked_count
-            ));
+        if let Some(label) = imp.blocked_events_label.borrow().as_ref() {
+            label.set_text(&blocked_count.to_string());
         }
 
         // Top blocked IPs
@@ -233,19 +241,42 @@ impl DashboardView {
             }
             imp.top_ips_rows.borrow_mut().clear();
 
-            let top = stats::top_blocked_ips(&events, 5);
+            let top = stats::top_blocked_connections(&events, 7);
             if top.is_empty() {
                 let row = adw::ActionRow::builder()
-                    .title(i18n("No blocked IPs in recent events"))
+                    .title(i18n("No blocked connections in recent events"))
                     .build();
                 group.add(&row);
                 imp.top_ips_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
             } else {
+                let max_count = top.first().map(|(_, c)| *c).unwrap_or(1);
                 for (ip, count) in &top {
-                    let row = adw::ActionRow::builder()
-                        .title(ip)
-                        .subtitle(&format!("{}: {}", i18n("Blocked times"), count))
+                    let box_widget = gtk::Box::builder()
+                        .orientation(gtk::Orientation::Vertical)
+                        .spacing(4)
+                        .margin_top(8)
+                        .margin_bottom(8)
+                        .margin_start(12)
+                        .margin_end(12)
                         .build();
+
+                    let label_box = gtk::Box::builder()
+                        .orientation(gtk::Orientation::Horizontal)
+                        .build();
+                    let title = gtk::Label::builder().label(ip).halign(gtk::Align::Start).hexpand(true).build();
+                    let count_label = gtk::Label::builder().label(&count.to_string()).css_classes(["dim-label"]).build();
+                    label_box.append(&title);
+                    label_box.append(&count_label);
+
+                    let progress = gtk::ProgressBar::builder()
+                        .fraction(*count as f64 / max_count as f64)
+                        .build();
+                    progress.add_css_class("error");
+
+                    box_widget.append(&label_box);
+                    box_widget.append(&progress);
+
+                    let row = adw::ActionRow::builder().child(&box_widget).build();
                     group.add(&row);
                     imp.top_ips_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
                 }
@@ -259,19 +290,42 @@ impl DashboardView {
             }
             imp.top_ports_rows.borrow_mut().clear();
 
-            let top = stats::top_blocked_ports(&events, 5);
+            let top = stats::top_blocked_ports(&events, 7);
             if top.is_empty() {
                 let row = adw::ActionRow::builder()
-                    .title(i18n("No targeted ports in recent events"))
+                    .title(i18n("No blocked ports in recent events"))
                     .build();
                 group.add(&row);
                 imp.top_ports_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
             } else {
+                let max_count = top.first().map(|(_, c)| *c).unwrap_or(1);
                 for (port, count) in &top {
-                    let row = adw::ActionRow::builder()
-                        .title(port)
-                        .subtitle(&format!("{}: {}", i18n("Blocked times"), count))
+                    let box_widget = gtk::Box::builder()
+                        .orientation(gtk::Orientation::Vertical)
+                        .spacing(4)
+                        .margin_top(8)
+                        .margin_bottom(8)
+                        .margin_start(12)
+                        .margin_end(12)
                         .build();
+
+                    let label_box = gtk::Box::builder()
+                        .orientation(gtk::Orientation::Horizontal)
+                        .build();
+                    let title = gtk::Label::builder().label(port).halign(gtk::Align::Start).hexpand(true).build();
+                    let count_label = gtk::Label::builder().label(&count.to_string()).css_classes(["dim-label"]).build();
+                    label_box.append(&title);
+                    label_box.append(&count_label);
+
+                    let progress = gtk::ProgressBar::builder()
+                        .fraction(*count as f64 / max_count as f64)
+                        .build();
+                    progress.add_css_class("warning");
+
+                    box_widget.append(&label_box);
+                    box_widget.append(&progress);
+
+                    let row = adw::ActionRow::builder().child(&box_widget).build();
                     group.add(&row);
                     imp.top_ports_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
                 }
@@ -298,9 +352,14 @@ impl DashboardView {
                     } else {
                         format!(" ({})", lp.process)
                     };
+                    
+                    let icon = gtk::Image::from_icon_name("network-server-symbolic");
+                    
                     let row = adw::ActionRow::builder()
                         .title(&format!("{}/{} {}{}", lp.port, lp.protocol, lp.local_address, proc_display))
                         .build();
+                    row.add_prefix(&icon);
+                    
                     group.add(&row);
                     imp.listening_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
                 }
@@ -315,18 +374,26 @@ impl DashboardView {
             imp.log_rows.borrow_mut().clear();
 
             for event in &events {
+                let is_block = event.action == "BLOCK";
+                let icon_name = if is_block { "security-high-symbolic" } else { "security-low-symbolic" };
+                let icon = gtk::Image::from_icon_name(icon_name);
+                if is_block {
+                    icon.add_css_class("error");
+                } else {
+                    icon.add_css_class("success");
+                }
+                
                 let row = adw::ActionRow::builder()
                     .title(&format!(
-                        "[{}] {}:{} → {}:{} ({})",
-                        event.action,
+                        "{} → {} ({})",
                         event.src_ip,
-                        event.src_port,
-                        event.dst_ip,
                         event.dst_port,
                         event.protocol
                     ))
                     .subtitle(&event.timestamp)
                     .build();
+                row.add_prefix(&icon);
+                
                 list.append(&row);
                 imp.log_rows.borrow_mut().push(row.upcast::<gtk::Widget>());
             }

@@ -23,6 +23,8 @@ mod imp {
         pub status_view: RefCell<Option<StatusView>>,
         pub rules_view: RefCell<Option<RulesView>>,
         pub profiles_view: RefCell<Option<ProfilesView>>,
+        pub rules_row: RefCell<Option<gtk::ListBoxRow>>,
+        pub profiles_row: RefCell<Option<gtk::ListBoxRow>>,
     }
 
     #[glib::object_subclass]
@@ -84,10 +86,36 @@ impl UfwallWindow {
             .selection_mode(gtk::SelectionMode::Single)
             .build();
         
-        let dashboard_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Dashboard")))).build();
-        let status_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Status")))).build();
-        let rules_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Rules")))).build();
-        let profiles_row = gtk::ListBoxRow::builder().child(&gtk::Label::new(Some(&i18n("Profiles")))).build();
+        let create_sidebar_row = |icon_name: &str, title: &str| -> gtk::ListBoxRow {
+            let box_ = gtk::Box::builder()
+                .orientation(gtk::Orientation::Horizontal)
+                .spacing(12)
+                .margin_start(12)
+                .margin_end(12)
+                .margin_top(10)
+                .margin_bottom(10)
+                .build();
+            
+            let icon = gtk::Image::builder()
+                .icon_name(icon_name)
+                .build();
+            
+            let label = gtk::Label::builder()
+                .label(title)
+                .halign(gtk::Align::Start)
+                .hexpand(true)
+                .build();
+            
+            box_.append(&icon);
+            box_.append(&label);
+            
+            gtk::ListBoxRow::builder().child(&box_).build()
+        };
+
+        let dashboard_row = create_sidebar_row("utilities-system-monitor-symbolic", &i18n("Dashboard"));
+        let status_row = create_sidebar_row("security-high-symbolic", &i18n("Status"));
+        let rules_row = create_sidebar_row("view-list-symbolic", &i18n("Rules"));
+        let profiles_row = create_sidebar_row("emblem-system-symbolic", &i18n("Profiles"));
 
         sidebar_list.append(&dashboard_row);
         sidebar_list.append(&status_row);
@@ -186,8 +214,16 @@ impl UfwallWindow {
         *imp.status_view.borrow_mut() = Some(status_view);
         *imp.rules_view.borrow_mut() = Some(rules_view);
         *imp.profiles_view.borrow_mut() = Some(profiles_view);
+        *imp.rules_row.borrow_mut() = Some(rules_row);
+        *imp.profiles_row.borrow_mut() = Some(profiles_row);
 
-        self.refresh_views();
+        // Defer initial refresh until main loop is running (needed for polkit auth dialog)
+        let weak = self.downgrade();
+        glib::idle_add_local_once(move || {
+            if let Some(win) = weak.upgrade() {
+                win.refresh_views();
+            }
+        });
     }
 
     fn refresh_views(&self) {
@@ -201,6 +237,19 @@ impl UfwallWindow {
         // Read status using backend
         match backend::read_status() {
             Ok(status) => {
+                // Show/hide Rules & Profiles sidebar rows based on firewall state
+                let active = status.active;
+                if let Some(row) = imp.rules_row.borrow().as_ref() { row.set_visible(active); }
+                if let Some(row) = imp.profiles_row.borrow().as_ref() { row.set_visible(active); }
+                if !active {
+                    if let Some(stack) = imp.stack.borrow().as_ref() {
+                        if let Some(current) = stack.visible_child_name() {
+                            if current == "rules" || current == "profiles" {
+                                stack.set_visible_child_name("dashboard");
+                            }
+                        }
+                    }
+                }
                 if let Some(view) = imp.status_view.borrow().as_ref() {
                     view.update(&status);
                 }

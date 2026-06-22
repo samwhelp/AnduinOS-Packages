@@ -40,6 +40,7 @@ pub fn read_blocked_events(limit: usize) -> Result<Vec<BlockedEvent>, UfwError> 
     // Try journalctl first for kernel UFW messages
     let output = Command::new("journalctl")
         .env("LC_ALL", "C")
+        .env("LANGUAGE", "C")
         .args(["-q", "-k", "-n", &limit.to_string(), "-o", "short-iso"])
         .output()
         .map_err(|e| UfwError {
@@ -120,12 +121,13 @@ fn extract_field(line: &str, key: &str) -> String {
         .to_string()
 }
 
-/// Get the top N blocked source IPs from a list of events.
-pub fn top_blocked_ips(events: &[BlockedEvent], limit: usize) -> Vec<(String, u64)> {
+/// Get the top N blocked connections from a list of events.
+pub fn top_blocked_connections(events: &[BlockedEvent], limit: usize) -> Vec<(String, u64)> {
     let mut counts: std::collections::HashMap<String, u64> = std::collections::HashMap::new();
     for event in events {
         if event.action == "BLOCK" && !event.src_ip.is_empty() {
-            *counts.entry(event.src_ip.clone()).or_default() += 1;
+            let conn = format!("{} → {}:{} ({})", event.src_ip, event.dst_ip, event.dst_port, event.protocol);
+            *counts.entry(conn).or_default() += 1;
         }
     }
     let mut sorted: Vec<_> = counts.into_iter().collect();
@@ -154,6 +156,7 @@ pub fn top_blocked_ports(events: &[BlockedEvent], limit: usize) -> Vec<(String, 
 pub fn read_listening_ports() -> Result<Vec<ListeningPort>, UfwError> {
     let output = Command::new("ss")
         .env("LC_ALL", "C")
+        .env("LANGUAGE", "C")
         .args(["-tulnp"])
         .output()
         .map_err(|e| UfwError {
@@ -230,6 +233,7 @@ fn extract_process_name(proc_str: &str) -> String {
 pub fn read_rule_counters() -> Result<Vec<RuleCounter>, UfwError> {
     let output = Command::new("iptables")
         .env("LC_ALL", "C")
+        .env("LANGUAGE", "C")
         .args(["-L", "ufw-user-input", "-v", "-x", "-n"])
         .output()
         .map_err(|e| UfwError {

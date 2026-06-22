@@ -19,7 +19,7 @@ impl UfwMonitor {
             let _ = watcher.watch(Path::new("/etc/ufw"), RecursiveMode::Recursive);
 
             let mut last_event = std::time::Instant::now();
-            let debounce = Duration::from_millis(500);
+            let debounce = Duration::from_millis(250);
 
             for res in notify_rx {
                 match res {

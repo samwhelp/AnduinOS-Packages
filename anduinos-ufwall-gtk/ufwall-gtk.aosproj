@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>anduinos-ufwall-gtk</PackageName>
-    <PackageVersion>2.0.0~rc1-1+$(SuiteShortName)</PackageVersion>
+    <PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
     <Maintainer>AnduinOS Team &lt;anduin@aiursoft.com&gt;</Maintainer>
     <PackageDescription>AnduinOS Firewall Configuration — modern GTK4/Libadwaita frontend for UFW</PackageDescription>
     <Section>admin</Section>
@@ -34,6 +34,7 @@
     <IncludeFile Include="data/com.anduinos.ufwall.policy" Target="/usr/share/polkit-1/actions/com.anduinos.ufwall.policy" />
     <IncludeFile Include="data/com.anduinos.ufwall.svg" Target="/usr/share/icons/hicolor/scalable/apps/com.anduinos.ufwall.svg" />
     <IncludeFolder Include="data/app_profiles" Target="/usr/share/ufwall-gtk/app_profiles" />
+    <IncludeFolder Include="locale" Target="/usr/share/locale" />
   </ItemGroup>
 
 </Project>

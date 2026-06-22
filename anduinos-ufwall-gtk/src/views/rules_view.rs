@@ -6,6 +6,8 @@ use crate::i18n::i18n;
 use crate::ufw::types::{UfwRule, UfwStatus};
 use crate::widgets::rule_row::RuleRow;
 use crate::widgets::add_rule_dialog::AddRuleDialog;
+use crate::ufw::backend;
+use crate::ufw::show_error;
 
 mod imp {
     use super::*;
@@ -90,8 +92,7 @@ impl RulesView {
         let add_btn = gtk::Button::builder()
             .label(i18n("Add Rule"))
             .css_classes(["suggested-action", "pill"])
-            .halign(gtk::Align::Center)
-            .margin_top(12)
+            .valign(gtk::Align::Center)
             .build();
 
         let weak_self = self.downgrade();
@@ -104,7 +105,61 @@ impl RulesView {
             }
         });
 
-        rules_group.set_header_suffix(Some(&add_btn));
+        let reset_btn = gtk::Button::builder()
+            .label(i18n("Delete All"))
+            .css_classes(["destructive-action", "pill"])
+            .valign(gtk::Align::Center)
+            .build();
+
+        let weak_self2 = self.downgrade();
+        reset_btn.connect_clicked(move |_| {
+            if let Some(view) = weak_self2.upgrade() {
+                if let Some(root) = view.root() {
+                    let dialog = adw::MessageDialog::builder()
+                        .heading(i18n("Delete All Rules?"))
+                        .body(i18n("This will delete all custom rules. This action cannot be undone."))
+                        .modal(true)
+                        .build();
+                    dialog.add_response("cancel", &i18n("Cancel"));
+                    dialog.add_response("delete_all", &i18n("Delete All"));
+                    dialog.set_response_appearance("delete_all", adw::ResponseAppearance::Destructive);
+                    dialog.set_default_response(Some("cancel"));
+                    dialog.set_close_response("cancel");
+
+                    let v = view.downgrade();
+                    dialog.connect_response(None, move |_, response| {
+                        if response == "delete_all" {
+                            if let Some(view) = v.upgrade() {
+                                glib::spawn_future_local(async move {
+                                    let result = tokio::task::spawn_blocking(move || {
+                                        backend::delete_all_rules()
+                                    }).await.unwrap();
+                                    if let Err(e) = &result {
+                                        show_error(&view, &i18n("Error"), &e.to_string());
+                                    }
+                                });
+                            }
+                        }
+                    });
+                    
+                    if let Ok(window) = root.downcast::<gtk::Window>() {
+                        dialog.set_transient_for(Some(&window));
+                        dialog.present();
+                    }
+                }
+            }
+        });
+
+        let header_box = gtk::Box::builder()
+            .orientation(gtk::Orientation::Horizontal)
+            .spacing(12)
+            .margin_top(12)
+            .homogeneous(true)
+            .build();
+        header_box.append(&reset_btn);
+        header_box.append(&add_btn);
+
+        rules_group.set_header_suffix(Some(&header_box));
 
         self.set_child(Some(&page));
 

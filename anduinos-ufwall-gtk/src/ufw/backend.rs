@@ -29,7 +29,8 @@ const UFW_APPS_DIR: &str = "/etc/ufw/applications.d";
 pub fn read_status() -> Result<UfwStatus, UfwError> {
     let output = Command::new("pkexec")
         .env("LC_ALL", "C")
-        .args(["ufw", "status", "verbose"])
+        .env("LANGUAGE", "C")
+        .args(["/usr/sbin/ufw", "status", "verbose"])
         .output()
         .map_err(|e| UfwError {
             message: format!("Failed to run pkexec ufw status: {e}"),
@@ -74,7 +75,8 @@ fn parse_ufw_status_verbose(output: &str) -> Result<UfwStatus, UfwError> {
         }
 
         if line.starts_with("Status:") {
-            active = line.to_lowercase().contains("active");
+            let val = line.split_whitespace().nth(1).unwrap_or("").to_lowercase();
+            active = val == "active";
         } else if line.starts_with("Logging:") {
             // "Logging: on (low)" → extract "low" from parens, or use "on"/"off"
             let rest = line.strip_prefix("Logging:").unwrap_or("off").trim();
@@ -425,6 +427,18 @@ pub fn set_enabled(enabled: bool) -> Result<String, UfwError> {
     run_pkexec_ufw(&["--force", arg])
 }
 
+/// Delete all custom rules without disabling the firewall.
+pub fn delete_all_rules() -> Result<(), UfwError> {
+    let status = read_status()?;
+    let mut numbers: Vec<u32> = status.rules.iter().map(|r| r.number).collect();
+    numbers.sort_by(|a, b| b.cmp(a)); // Sort descending
+
+    for num in numbers {
+        run_pkexec_ufw(&["--force", "delete", &num.to_string()])?;
+    }
+    Ok(())
+}
+
 /// Set the UFW logging level.
 pub fn set_logging(level: &str) -> Result<String, UfwError> {
     run_pkexec_ufw(&["logging", level])
@@ -606,47 +620,16 @@ fn ports_match(rule_port: &str, profile_port: &str) -> bool {
 
 // ─── Internal helpers ────────────────────────────────────────────────────────
 
-/// Run `pkexec sh -c <script>` and return stdout.
-fn run_pkexec_sh(script: &str) -> Result<String, UfwError> {
-    let output = Command::new("pkexec")
-        .env("LC_ALL", "C")
-        .args(["sh", "-c", script])
-        .output()
-        .map_err(|e| UfwError {
-            message: format!("Failed to execute pkexec: {e}"),
-        })?;
 
-    if output.status.success() {
-        Ok(String::from_utf8_lossy(&output.stdout).to_string())
-    } else {
-        let stderr = String::from_utf8_lossy(&output.stderr);
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        if output.status.code() == Some(126) {
-            Err(UfwError {
-                message: "Authentication cancelled".to_string(),
-            })
-        } else {
-            Err(UfwError {
-                message: format!(
-                    "UFW command failed: {}",
-                    if stderr.trim().is_empty() {
-                        stdout.trim().to_string()
-                    } else {
-                        stderr.trim().to_string()
-                    }
-                ),
-            })
-        }
-    }
-}
 
 /// Run `pkexec ufw <args>` and return stdout.
 fn run_pkexec_ufw(args: &[&str]) -> Result<String, UfwError> {
-    let mut cmd_args = vec!["ufw"];
+    let mut cmd_args = vec!["/usr/sbin/ufw"];
     cmd_args.extend_from_slice(args);
 
     let output = Command::new("pkexec")
         .env("LC_ALL", "C")
+        .env("LANGUAGE", "C")
         .args(&cmd_args)
         .output()
         .map_err(|e| UfwError {
