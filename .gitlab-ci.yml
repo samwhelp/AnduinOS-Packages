@@ -397,7 +397,6 @@ anduinos-gnome-extensions:
     - gnome-shell-extension-dash-to-panel-anduinos
     - gnome-shell-extension-desktop-icons-ng-anduinos
     - gnome-shell-extension-lockkeys
-    - gnome-shell-extension-mediacontrols
     - gnome-shell-extension-network-stats
     - gnome-shell-extension-proxy-switcher
     - gnome-shell-extension-simple-weather
