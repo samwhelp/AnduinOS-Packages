@@ -38,6 +38,7 @@ for SUITE in "${!GNOME_TARGETS[@]}"; do
     cp -a "$DEPLOY_DIR/resources/icons" "$DEPLOY_DIR/"
     cp -a "$DEPLOY_DIR/resources/ui" "$DEPLOY_DIR/"
     rm -rf "$DEPLOY_DIR/resources"
+    rm -rf "$DEPLOY_DIR/.git" "$DEPLOY_DIR/.github"
     rm -f "$DEPLOY_DIR/Makefile" "$DEPLOY_DIR/README.md" "$DEPLOY_DIR/.gitignore"
 
     # Patch metadata.json to claim support for the target GNOME version
