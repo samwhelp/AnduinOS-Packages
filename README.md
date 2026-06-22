@@ -210,8 +210,8 @@ Example diff for Fluent GTK theme:
 +FLUENT_GTK_COMMIT="a1b2c3d"
 
 # anduinos-fluent-gtk-theme.aosproj
--<PackageVersion>2.0.0~rc1-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
+-<PackageVersion>2.0.0~rc2-1+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc2-2+$(SuiteShortName)</PackageVersion>
 ```
 
 #### B.3 Rebuild and verify
@@ -243,8 +243,8 @@ Update **both files**:
 +SOF_VERSION="2026.03"   # update to new release tag
 
 # firmware-sof-anduinos.aosproj
--<PackageVersion>2.0.0~rc1-2025.12.2+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~rc1-2026.03+$(SuiteShortName)</PackageVersion>   # sync SOF version
+-<PackageVersion>2.0.0~rc2-2025.12.2+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc2-2026.03+$(SuiteShortName)</PackageVersion>   # sync SOF version
 ```
 
 The downloaded Intel tarball and extracted cache under `deploy/` are **not** committed — the CI regenerates them at build time via `download.sh`.
@@ -293,11 +293,11 @@ Then **CI rebuilds all 19 extension packages automatically** — the new GNOME v
 
 #### D.2 Extension `.aosproj` version numbers
 
-Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~rc1-1+$(SuiteShortName)`. Bump the Debian revision suffix (e.g. `-1` → `-2`) when packaging changes. The resolver fetches the latest extension code at build time, so the extension code itself is always up-to-date regardless of the package version.
+Each extension's `.aosproj` uses a unified `<PackageVersion>` of `2.0.0~rc2-1+$(SuiteShortName)`. Bump the Debian revision suffix (e.g. `-1` → `-2`) when packaging changes. The resolver fetches the latest extension code at build time, so the extension code itself is always up-to-date regardless of the package version.
 
 ```diff
--<PackageVersion>2.0.0~rc1-1+$(SuiteShortName)</PackageVersion>
-+<PackageVersion>2.0.0~rc1-2+$(SuiteShortName)</PackageVersion>
+-<PackageVersion>2.0.0~rc2-1+$(SuiteShortName)</PackageVersion>
++<PackageVersion>2.0.0~rc2-2+$(SuiteShortName)</PackageVersion>
 ```
 
 #### D.3 Special-cased extension: desktop-icons-ng-anduinos
