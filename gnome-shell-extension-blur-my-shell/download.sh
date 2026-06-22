@@ -26,6 +26,20 @@ for SUITE in "${!GNOME_TARGETS[@]}"; do
     cp -a /tmp/blur-my-shell/. "$DEPLOY_DIR/"
     rm -rf /tmp/blur-my-shell
 
+    # Flatten the src/ directory: GNOME Shell expects extension.js at the root,
+    # not buried in a src/ subdirectory. The gnome-extensions pack command
+    # normally does this, but we deploy directly without building a zip.
+    shopt -s dotglob
+    cp -a "$DEPLOY_DIR/src/"* "$DEPLOY_DIR/"
+    shopt -u dotglob
+    rm -rf "$DEPLOY_DIR/src"
+
+    # Flatten resources/ — icons and ui must be at the extension root
+    cp -a "$DEPLOY_DIR/resources/icons" "$DEPLOY_DIR/"
+    cp -a "$DEPLOY_DIR/resources/ui" "$DEPLOY_DIR/"
+    rm -rf "$DEPLOY_DIR/resources"
+    rm -f "$DEPLOY_DIR/Makefile" "$DEPLOY_DIR/README.md" "$DEPLOY_DIR/.gitignore"
+
     # Patch metadata.json to claim support for the target GNOME version
     echo "[$SUITE] Patching metadata.json for GNOME $TARGET..."
     python3 -c "
