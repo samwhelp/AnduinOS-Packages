@@ -10,7 +10,7 @@
     <LicenseType>GPL-3.0</LicenseType>
     <TargetDistro>anduinos</TargetDistro>
     <TargetSuites>noble-addon questing-addon resolute-addon</TargetSuites>
-    <TargetArchitectures>amd64</TargetArchitectures>
+    <TargetArchitectures>amd64 arm64</TargetArchitectures>
     <Component>main</Component>
     <SuiteShortNameMap>noble-addon=noble questing-addon=questing resolute-addon=resolute</SuiteShortNameMap>
   </PropertyGroup>
@@ -25,11 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PrebuildCommand Run="bash build.sh" />
+    <PrebuildCommand Run="bash build.sh amd64" Condition="'$(Arch)' == 'amd64'" />
+    <PrebuildCommand Run="bash build.sh arm64" Condition="'$(Arch)' == 'arm64'" />
   </ItemGroup>
 
   <ItemGroup>
-    <IncludeScript Include="target/release/ufwall-gtk" Target="/usr/bin/ufwall-gtk" />
+    <IncludeScript Include="obj/ufwall-gtk" Target="/usr/bin/ufwall-gtk" />
     <IncludeFile Include="data/com.anduinos.ufwall.desktop" Target="/usr/share/applications/com.anduinos.ufwall.desktop" />
     <IncludeFile Include="data/com.anduinos.ufwall.policy" Target="/usr/share/polkit-1/actions/com.anduinos.ufwall.policy" />
     <IncludeFile Include="data/com.anduinos.ufwall.svg" Target="/usr/share/icons/hicolor/scalable/apps/com.anduinos.ufwall.svg" />
