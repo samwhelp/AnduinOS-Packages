@@ -26,17 +26,17 @@ pub fn read_zswap_config() -> Result<ZswapConfig, String> {
 pub fn get_available_compressors() -> Vec<String> {
     let content = match fs::read_to_string(config::PROC_CRYPTO) {
         Ok(c) => c,
-        Err(_) => return vec!["lzo".to_string()], // fallback: lzo is always available
+        Err(_) => return vec!["lz4".to_string()], // fallback: lz4 is the modern default
     };
 
     let mut compressors = Vec::new();
 
     // zswap-supported algorithms and their /proc/crypto names
     let candidates = [
-        ("lzo", "lzo"),
         ("lz4", "lz4"),
-        ("lz4hc", "lz4hc"),
         ("zstd", "zstd"),
+        ("lz4hc", "lz4hc"),
+        ("lzo", "lzo"),
         ("deflate", "deflate"),
         ("842", "842"),
     ];
@@ -52,7 +52,7 @@ pub fn get_available_compressors() -> Vec<String> {
     }
 
     if compressors.is_empty() {
-        compressors.push("lzo".to_string());
+        compressors.push("lz4".to_string()); // safe fallback: lz4 is the modern default
     }
 
     compressors.sort();

@@ -228,11 +228,11 @@ impl ZramView {
 
         fn algo_info_for(name: &str) -> &'static str {
             match name {
-                "lzo-rle" => "⚡ Fast · ⭐⭐ Good  —  Best for desktops",
-                "lz4"     => "⚡⚡ Fastest · ⭐⭐ Good  —  Desktop alternative",
+                "lz4"     => "⚡⚡ Fastest · ⭐⭐ Good  —  Recommended",
+                "lzo-rle" => "⚡ Fast · ⭐⭐ Good  —  Desktop alternative",
                 "zstd"    => "⚡ Moderate · ⭐⭐⭐ Best  —  Best for small RAM",
                 "lz4hc"   => "⚡ Slow · ⭐⭐⭐ High  —  Server workloads",
-                "lzo"     => "⚡ Fast · ⭐ Moderate  —  Legacy",
+                "lzo"     => "⚡ Fast · ⭐ Moderate  —  Legacy (avoid)",
                 "deflate" => "🐢 Slowest · ⭐⭐⭐ High  —  Avoid on desktops",
                 "842"     => "— · —  —  IBM POWER only",
                 _ => "",
