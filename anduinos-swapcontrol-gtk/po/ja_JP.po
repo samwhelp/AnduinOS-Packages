@@ -1,249 +1,379 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: ja_JP <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: ja_JP\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>推奨スワップネス: {0}（{1} GiB RAM 用）</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>推奨: {0} GiB の仮想メモリ、スワップネス {1}（{2} GiB RAM 用）</i>"
+
+#, fuzzy
+msgid ""
+"<i>Recommended: {0}–{1} MiB, lzo-rle, priority 100 (for {2} GiB RAM)</i>"
+msgstr "<i>推奨: {0} GiB の仮想メモリ、スワップネス {1}（{2} GiB RAM 用）</i>"
+
 msgid "About"
 msgstr "概要"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "許容しきい値（％）"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "有効"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "有効 — {0} GiB使用中 / {1} GiB合計"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "高度なオプション"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "詳細設定"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "アルゴリズム"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "設定を適用"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "設定を適用"
+
 msgid "Auth needed"
 msgstr "認証が必要です"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "Buf"
+
+msgid "Buffers"
+msgstr "バッファ"
+
+msgid "Cache"
+msgstr "キャッシュ"
+
+msgid "Cached"
+msgstr "キャッシュ済み"
+
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "キャンセル"
+
+msgid "Cancelled by user."
+msgstr "ユーザーによってキャンセルされました。"
+
+msgid "Channels"
+msgstr "チャネル"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "正常に完了しました—メモリープレッシャーテストに合格しました。"
+
+msgid ""
+"Compress swap pages in a RAM pool — faster than disk swap. Use Zram or "
+"Zswap, not both."
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
 msgstr "圧縮 RAM ブロックデバイス — インメモリで高速なスワップ"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "スワップ用コンプレストライトバックキャッシュ"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "コンプレストライトバックキャッシュ - ディスクスワップ前のページをインターセプト"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "圧縮アルゴリズム"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "作成"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Zramデバイスの作成"
 
-#: src/views/zram_view.rs:311
+#, fuzzy
+msgid ""
+"Create a compressed RAM swap device for faster memory pressure handling."
+msgstr "圧縮 RAM ブロックデバイス — インメモリで高速なスワップ"
+
 msgid "Creating Zram device…"
 msgstr "Zramデバイスを作成しています..."
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Zramデバイスの破棄"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Zramデバイスを破棄しています..."
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "デバイスが作成されました"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "無効"
 
-#: src/views/swap_view.rs:250
-msgid "Disabling swap will break hibernation. Continue?"
-msgstr "スワップを無効にすると、ハイバーネーション機能に影響します。続行しますか？"
+msgid "Disabling Zswap..."
+msgstr "スワップを無効にしています..."
 
-#: src/views/swap_view.rs:220
+msgid "Disabling swap will break hibernation. Continue?"
+msgstr "スワップ（仮想メモリ）を無効にすると、ハイバネーション機能が使用できなくなります。続行しますか？"
+
 msgid "Disabling swap…"
 msgstr "スワップを無効にしています..."
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "ディスク仮想メモリ"
+
 msgid "Disk Swap Configuration"
-msgstr "ディスクスワップ設定"
+msgstr "仮想メモリのディスク構成"
 
-#: src/views/swap_view.rs:65
+msgid ""
+"Disk swap is active with memory compression — your system is well-protected "
+"against memory pressure."
+msgstr ""
+"ディスク仮想メモリとメモリ圧縮が有効です。システムはメモリ不足からしっかりと"
+"保護されています。"
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "ディスクベースのスワップファイル - RAMが満杯になった最後の防御策"
+msgstr "ディスクベースの仮想メモリファイル — RAMが一杯になった際の最後の砦"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "期間："
+
+msgid ""
+"Enable Zram for snappy compressed swap in RAM — it's 10× faster than disk "
+"swap and dramatically reduces I/O under memory pressure."
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "スワップを有効にしています..."
+
 msgid "Enabling swap…"
 msgstr "スワップを有効にしています..."
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "このテストを実行する前に、重要な作業の保存を確認してください。"
+
 msgid "Error"
 msgstr "エラー"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "フリー"
+
+msgid "Growth speed"
+msgstr "増加速度"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "こんにちは {0}、{1} メッセージあります"
+
+msgid "Hibernation"
+msgstr "ハイバーネーションの警告"
+
 msgid "Hibernation Warning"
 msgstr "ハイバーネーションの警告"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "zswapが圧縮ページのために使用できるRAM量"
+#, fuzzy
+msgid ""
+"Hibernation active — minimum {0} GiB (RAM + 1 GiB). Recommended: {1} GiB"
+msgstr "ハイバネーションが検出されませんでした — 推奨: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "ハイバネーションが検出されませんでした — 推奨: {0} GiB"
+
+msgid ""
+"How aggressively the kernel swaps — lower = stay in RAM longer (recommended: "
+"{0})"
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "アイドル中（{0} GiB 使用可能）"
+
 msgid "Inactive"
 msgstr "非アクティブ"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "読み込み中…"
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "最大プール（RAM 使用率）"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "圧縮プールが占有できるRAMの最大%。推奨値: 20%"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "最大保持時間"
+
+msgid "Maximum pool percent"
+msgstr "最大プール%"
+
 msgid "Memory Overview"
 msgstr "メモリ概要"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "メモリ縮小"
+msgid "No Zram Devices"
+msgstr "Zram デバイス"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "デバイスなし"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "zram デバイスがありません。圧縮 RAM スワップを有効にするには、1 つ作成してください。"
+msgid "No disk swap detected"
+msgstr "スワップの検出はありません"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "メモリアクセラレーションが有効ではありません。"
+
 msgid "None"
 msgstr "なし"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "オフ"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
 msgstr "オン"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "これより圧縮効率の低いページは拒否されます。値が低いほど積極的"
+msgid ""
+"Only store pages that compress to ≤ this % of original. Higher = more pages "
+"cached. Recommended: 90%"
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "最適なメモリ構成"
+
+msgid "Peak allocated:"
+msgstr "割り当てのピーク:"
+
 msgid "Priority"
 msgstr "優先度"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "リアルタイムの RAM、スワップ、および圧縮サブシステムのステータス"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "システムに負担がかかった場合にプールメモリを回収する"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "メモリプレッシャー下でプールのページを回収する。推奨: ON"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "削除"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "スワップファイルのサイズ変更中..."
+msgid "Run Again"
+msgstr "もう一度実行"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "ストレステストを実行"
+
+msgid "Shrinker"
+msgstr "メモリ縮小"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "スワップと OOM の動作をテストするためにメモリ圧力をシミュレートします"
+
 msgid "Size (MiB)"
 msgstr "サイズ (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "速度"
+
+msgid "Stress Test"
+msgstr "ストレステスト"
+
 msgid "Swap"
 msgstr "スワップ"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "仮想メモリ管理"
+msgstr "仮想メモリ制御"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "スワップファイルサイズ"
+msgstr "仮想メモリファイルサイズ"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "スワップ領域の使用状況"
+
 msgid "Swappiness"
-msgstr "スワップネス"
+msgstr "スワッピング度"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "ターゲットプレッシャー"
+
+msgid "Test Complete"
+msgstr "テスト完了"
+
+msgid "Total RAM"
+msgstr "合計 RAM"
+
+msgid "Type"
+msgstr "タイプ"
+
+msgid "Used"
+msgstr "使用中"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "警告: システムメモリを消費し、システムが不安定になる可能性があります"
+
+msgid ""
+"When RAM is full the kernel may kill applications. Enable disk swap for a "
+"reliable safety net."
+msgstr ""
+
 msgid "Zram"
 msgstr "Zram"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Zram デバイス"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "ZramとZswapが両方とも有効です"
+
+msgid ""
+"Zram and Zswap are mutually exclusive — each creates its own compressed RAM "
+"pool. Running both wastes CPU and can cause severe memory thrashing. Disable "
+"one of them."
+msgstr ""
+"ZramとZswapは同時に有効にすることはできません。それぞれが独自の圧縮RAMプール"
+"を作成するため、両方を有効にするとCPUリソースが浪費され、メモリスラッシングに"
+"よる深刻なパフォーマンス低下を引き起こす可能性があります。どちらか一方は無効"
+"にしてください。"
+
 msgid "Zswap"
 msgstr "Zswap"
 
-#: src/views/zswap_view.rs:65
-msgid "Zswap Configuration"
-msgstr "Zswap の設定"
+msgid "default"
+msgstr "デフォルト"
 
-#: src/views/zswap_view.rs:116
-msgid "lzo-rle is fastest, zstd saves more space"
-msgstr "lzo-rle が最も高速で、zstd の方がスペース節約効果が高い"
+msgid ""
+"lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires "
+"zswap restart."
+msgstr ""
 
+msgid "range"
+msgstr "範囲"
+
+msgid "seconds"
+msgstr "秒"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · プール {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · 節約 {1}%"
+
+#~ msgid "Active"
+#~ msgstr "有効"
+
+#~ msgid "Compressed write-back cache for swap"
+#~ msgstr "スワップ用コンプレストライトバックキャッシュ"
+
+#~ msgid "Compressed write-back cache — intercepts pages before disk swap"
+#~ msgstr "圧縮ライトバックキャッシュ — ディスク仮想メモリのページをブロック"
+
+#~ msgid "How much RAM zswap can use for compressed pages"
+#~ msgstr "zswapが圧縮ページのために使用できるRAM量"
+
+#~ msgid "Max pool (% of RAM)"
+#~ msgstr "最大プール（RAM 使用率）"
+
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr "Zramデバイスがありません。圧縮RAMを使用する仮想メモリを有効にするには、新しいZramデバイスを作成してください。"
+
+#~ msgid "Reclaim pool memory when system is under pressure"
+#~ msgstr "システムに負担がかかった場合にプールメモリを回収する"
+
+#~ msgid "Resizing swap file…"
+#~ msgstr "スワップ ファイルのリサイズ中…"
+
+#~ msgid "Zswap Configuration"
+#~ msgstr "Zswap の設定"
+
+#~ msgid "lzo-rle is fastest, zstd saves more space"
+#~ msgstr "lzo-rle が最も高速で、zstd の方がスペース節約効果が高い"

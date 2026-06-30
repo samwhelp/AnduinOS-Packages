@@ -82,20 +82,25 @@ impl UsageBar {
             cr.fill().ok();
         }
 
-        // Label text (left side, over the bar)
+        // Label text (left side, over the bar) — use PangoCairo for Unicode support
+        let label_layout = pangocairo::functions::create_layout(cr);
+        label_layout.set_text(&label);
+        let mut font_desc = pango::FontDescription::from_string("Sans Bold 11");
+        label_layout.set_font_description(Some(&font_desc));
         cr.set_source_rgba(1.0, 1.0, 1.0, 0.9);
-        cr.select_font_face("Sans", cairo::FontSlant::Normal, cairo::FontWeight::Bold);
-        cr.set_font_size(11.0);
-        cr.move_to(8.0, h / 2.0 + 4.0);
-        cr.show_text(&label).ok();
+        cr.move_to(8.0, (h - 11.0) / 2.0);
+        pangocairo::functions::show_layout(cr, &label_layout);
 
-        // Sub text (right side)
+        // Sub text (right side) — use PangoCairo for Unicode support
+        let sub_layout = pangocairo::functions::create_layout(cr);
+        sub_layout.set_text(&sub);
+        font_desc = pango::FontDescription::from_string("Sans 11");
+        sub_layout.set_font_description(Some(&font_desc));
+        let (_, logical) = sub_layout.extents();
+        let sub_w = logical.width() as f64 / pango::SCALE as f64;
         cr.set_source_rgba(1.0, 1.0, 1.0, 0.7);
-        cr.select_font_face("Sans", cairo::FontSlant::Normal, cairo::FontWeight::Normal);
-        cr.set_font_size(11.0);
-        let ext = cr.text_extents(&sub).unwrap();
-        cr.move_to(w - ext.width() - 10.0, h / 2.0 + 4.0);
-        cr.show_text(&sub).ok();
+        cr.move_to(w - sub_w - 10.0, (h - 11.0) / 2.0);
+        pangocairo::functions::show_layout(cr, &sub_layout);
     }
 }
 

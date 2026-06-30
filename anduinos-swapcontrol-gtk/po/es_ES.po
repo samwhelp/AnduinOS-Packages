@@ -1,249 +1,344 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: es_ES <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: es_ES\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>Swappiness recomendada: {0} (para {1} GiB de RAM)</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>Recomendado: {0} GiB de memoria virtual, valor de swappiness {1} (para {2} GiB de RAM)</i>"
+
+msgid ""
+msgstr "<i>Swappiness recomendada: {0} (para {1} GiB de RAM)</i>"
+
 msgid "About"
 msgstr "Acerca de"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "Umbral de aceptación (%)"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "Activo"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "Activo — {0} GiB usados / {1} GiB totales"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "Opciones avanzadas"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "Configuración avanzada"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "Algoritmo"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "Aplicar configuración"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "Aplicar configuración"
+
 msgid "Auth needed"
 msgstr "Se requiere autenticación"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "Buf"
+
+msgid "Buffers"
+msgstr "Buffers"
+
+msgid "Cache"
+msgstr "Caché"
+
+msgid "Cached"
+msgstr "Caché"
+
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "Cancelar"
+
+msgid "Cancelled by user."
+msgstr "Cancelado por el usuario."
+
+msgid "Channels"
+msgstr "Canales"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "Completado con éxito: la prueba de presión de memoria aprobada."
+
+msgid ""
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr "Dispositivo de bloque de RAM comprimida — intercambio en memoria rápida"
+msgstr "Dispositivo de bloques de RAM comprimida: memoria virtual en memoria rápida"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "Caché de escritura comprimida para swap"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "Caché de escritura comprimida: intercepta páginas antes del intercambio en disco"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "Algoritmo de compresión"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "Crear"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Crear dispositivo Zram"
 
-#: src/views/zram_view.rs:311
+msgid ""
+msgstr ""
+
 msgid "Creating Zram device…"
 msgstr "Creando dispositivo Zram…"
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "Panel"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Destruir dispositivo Zram"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Destruyendo dispositivo Zram…"
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "Dispositivo creado"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: src/views/swap_view.rs:250
-msgid "Disabling swap will break hibernation. Continue?"
-msgstr "Desactivar la memoria de intercambio romperá la hibernación. ¿Continuar?"
+msgid "Disabling Zswap..."
+msgstr "Desactivando memoria de intercambio…"
 
-#: src/views/swap_view.rs:220
+msgid "Disabling swap will break hibernation. Continue?"
+msgstr "Deshabilitar el intercambio romperá la hibernación. ¿Continuar?"
+
 msgid "Disabling swap…"
 msgstr "Desactivando memoria de intercambio…"
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "Memoria virtual"
+
 msgid "Disk Swap Configuration"
-msgstr "Configuración de memoria de intercambio en disco"
+msgstr "Configuración de memoria virtual"
 
-#: src/views/swap_view.rs:65
+msgid ""
+msgstr ""
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "Archivo de memoria de intercambio basado en disco, la última línea de defensa cuando la memoria RAM está llena"
+msgstr "Archivo de memoria virtual basado en disco: última línea de defensa cuando la RAM está llena"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "Duración:"
+
+msgid ""
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "Activando memoria de intercambio…"
+
 msgid "Enabling swap…"
 msgstr "Activando memoria de intercambio…"
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "Asegúrese de guardar el trabajo importante antes de ejecutar esta prueba."
+
 msgid "Error"
 msgstr "Error"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "Libre"
+
+msgid "Growth speed"
+msgstr "Velocidad de crecimiento"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "Hola {0}, tienes {1} mensajes"
+
+msgid "Hibernation"
+msgstr "Advertencia de hibernación"
+
 msgid "Hibernation Warning"
 msgstr "Advertencia de hibernación"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "Cantidad de memoria RAM que puede usar zswap para páginas comprimidas"
+msgid ""
+msgstr "Hibernación no detectada — recomendado: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "Hibernación no detectada — recomendado: {0} GiB"
+
+msgid ""
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "Inactivo ({0} GiB disponibles)"
+
 msgid "Inactive"
 msgstr "Inactivo"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "Pozo máximo (% de RAM)"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "% máx. de RAM que puede ocupar el pool comprimido. Recomendado: 20%"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "Tiempo máximo de retención"
+
+msgid "Maximum pool percent"
+msgstr "Porcentaje máximo del grupo"
+
 msgid "Memory Overview"
 msgstr "Vista general de memoria"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "Recolector de memoria"
+msgid "No Zram Devices"
+msgstr "Dispositivos Zram"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "Sin dispositivo"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "No hay dispositivos zram. Cree uno para habilitar el intercambio de memoria comprimida."
+msgid "No disk swap detected"
+msgstr "No se detectó memoria virtual"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "No hay aceleración de memoria habilitada"
+
 msgid "None"
 msgstr "Ninguno"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "Desactivado"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
 msgstr "Activado"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "Se rechazan las páginas que se comprimen peor que este valor: cuanto menor sea, más agresivo será el comportamiento"
+msgid ""
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "Configuración óptima de memoria"
+
+msgid "Peak allocated:"
+msgstr "Asignación máxima:"
+
 msgid "Priority"
 msgstr "Prioridad"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "Estado del subsistema de RAM, swap y compresión en tiempo real"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "Recuperar memoria del pool cuando el sistema está bajo presión"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "Recuperar páginas del grupo bajo presión de memoria. Recomendado: activado"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "Redimensionando archivo de intercambio…"
+msgid "Run Again"
+msgstr "Ejecutar de nuevo"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "Ejecutar prueba de estrés"
+
+msgid "Shrinker"
+msgstr "Recolector de memoria"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "Simular presión de memoria para probar el comportamiento de swap y OOM"
+
 msgid "Size (MiB)"
 msgstr "Tamaño (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "Velocidad"
+
+msgid "Stress Test"
+msgstr "Prueba de estrés"
+
 msgid "Swap"
 msgstr "Intercambio"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "Control de intercambio"
+msgstr "Control de memoria virtual"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "Tamaño del archivo de intercambio"
+msgstr "Tamaño de memoria virtual"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "Uso de la memoria virtual"
+
 msgid "Swappiness"
-msgstr "Tendencia al intercambio"
+msgstr "Intercambio"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "Presión objetivo"
+
+msgid "Test Complete"
+msgstr "Prueba completada"
+
+msgid "Total RAM"
+msgstr "RAM total"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Used"
+msgstr "Usado"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "Advertencia: esto consumirá la memoria del sistema y puede causar inestabilidad"
+
+msgid ""
+msgstr ""
+
 msgid "Zram"
 msgstr "Zram"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Dispositivos Zram"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "Zram y Zswap están ambos activos"
+
+msgid ""
+msgstr ""
+
 msgid "Zswap"
 msgstr "Zswap"
 
-#: src/views/zswap_view.rs:65
+msgid "default"
+msgstr "predeterminado"
+
+msgid ""
+msgstr ""
+
+msgid "range"
+msgstr "rango"
+
+msgid "seconds"
+msgstr "segundos"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · grupo {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · ahorrado {1}%"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Compressed write-back cache for swap"
+msgstr "Caché de escritura comprimida para swap"
+
+msgid "How much RAM zswap can use for compressed pages"
+msgstr "Cuánta RAM puede usar zswap para páginas comprimidas"
+
+msgid "Max pool (% of RAM)"
+msgstr "Pozo máximo (% de RAM)"
+
+msgid "Reclaim pool memory when system is under pressure"
+msgstr "Recuperar memoria del pool cuando el sistema está bajo presión"
+
+msgid "Resizing swap file…"
+msgstr "Redimensionando memoria virtual…"
+
 msgid "Zswap Configuration"
 msgstr "Configuración de Zswap"
 
-#: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
 msgstr "lzo-rle es el más rápido, zstd ahorra más espacio"
-

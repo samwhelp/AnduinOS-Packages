@@ -1,249 +1,379 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: vi_VN <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: vi_VN\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>Swappiness khuyến nghị: {0} (cho {1} GiB RAM)</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>Đề xuất: {0} GiB bộ nhớ ảo, độ ưu tiên phân chia bộ nhớ {1} (với {2} GiB RAM)</i>"
+
+#, fuzzy
+msgid ""
+"<i>Recommended: {0}–{1} MiB, lzo-rle, priority 100 (for {2} GiB RAM)</i>"
+msgstr ""
+"<i>Khuyến nghị: {0} GiB bộ nhớ ảo, swappiness {1} (cho {2} GiB RAM)</i>"
+
 msgid "About"
 msgstr "Giới thiệu"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "Ngưỡng chấp nhận (%)"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "Hoạt động"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "Đang hoạt động — Đã sử dụng {0} GiB / Tổng {1} GiB"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "Tùy chọn nâng cao"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "Cài đặt nâng cao"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "Thuật toán"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "Áp dụng cài đặt"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "Áp dụng cài đặt"
+
 msgid "Auth needed"
 msgstr "Yêu cầu xác thực"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "Buf"
+
+msgid "Buffers"
+msgstr "Buffers"
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Cached"
+msgstr "Cached"
+
 msgid "Cancel"
 msgstr "Hủy"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "Hủy"
+
+msgid "Cancelled by user."
+msgstr "Đã hủy bởi người dùng."
+
+msgid "Channels"
+msgstr "Channels"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "Hoàn tất thành công — kiểm tra áp lực bộ nhớ đã vượt qua."
+
+msgid ""
+"Compress swap pages in a RAM pool — faster than disk swap. Use Zram or "
+"Zswap, not both."
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
 msgstr "Thiết bị bộ nhớ RAM đã nén — trao đổi trong bộ nhớ tốc độ cao"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "Bộ đệm ghi lại đã nén cho vùng nhớ ảo"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "Bộ đệm ghi lại đã nén — chặn các trang trước khi ghi ra đĩa"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "Thuật toán nén"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "Tạo"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Tạo thiết bị Zram"
 
-#: src/views/zram_view.rs:311
+#, fuzzy
+msgid ""
+"Create a compressed RAM swap device for faster memory pressure handling."
+msgstr "Thiết bị bộ nhớ RAM đã nén — trao đổi trong bộ nhớ tốc độ cao"
+
 msgid "Creating Zram device…"
 msgstr "Đang tạo thiết bị Zram…"
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "Bảng điều khiển"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Hủy thiết bị Zram"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Đang hủy thiết bị Zram…"
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "Thiết bị đã được tạo"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "Đã tắt"
 
-#: src/views/swap_view.rs:250
+msgid "Disabling Zswap..."
+msgstr "Đang tắt swap…"
+
 msgid "Disabling swap will break hibernation. Continue?"
 msgstr "Tắt swap sẽ làm hỏng chế độ ngủ đông. Tiếp tục?"
 
-#: src/views/swap_view.rs:220
 msgid "Disabling swap…"
 msgstr "Đang tắt swap…"
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "Bộ nhớ ảo ổ đĩa"
+
 msgid "Disk Swap Configuration"
-msgstr "Cấu hình Swap đĩa"
+msgstr "Cấu hình bộ nhớ ảo"
 
-#: src/views/swap_view.rs:65
+msgid ""
+"Disk swap is active with memory compression — your system is well-protected "
+"against memory pressure."
+msgstr ""
+"Bộ nhớ ảo trên ổ đĩa đang hoạt động cùng với tính năng nén bộ nhớ — hệ thống "
+"của bạn được bảo vệ tốt trước tình trạng quá tải bộ nhớ."
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "Tập tin swap trên đĩa — tuyến phòng thủ cuối cùng khi RAM đầy"
+msgstr "Tệp đổi chỗ dựa trên đĩa — đường phòng thủ cuối cùng khi RAM đã đầy"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "Thời gian:"
+
+msgid ""
+"Enable Zram for snappy compressed swap in RAM — it's 10× faster than disk "
+"swap and dramatically reduces I/O under memory pressure."
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "Đang bật swap…"
+
 msgid "Enabling swap…"
 msgstr "Đang bật swap…"
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "Hãy đảm bảo lưu công việc quan trọng trước khi chạy thử nghiệm này."
+
 msgid "Error"
 msgstr "Lỗi"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "Free"
+
+msgid "Growth speed"
+msgstr "Tốc độ tăng trưởng"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "Xin chào {0}, bạn có {1} tin nhắn"
+
+msgid "Hibernation"
+msgstr "Cảnh báo ngủ đông"
+
 msgid "Hibernation Warning"
 msgstr "Cảnh báo ngủ đông"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "Số lượng RAM mà zswap có thể sử dụng cho các trang đã nén"
+#, fuzzy
+msgid ""
+"Hibernation active — minimum {0} GiB (RAM + 1 GiB). Recommended: {1} GiB"
+msgstr "Không phát hiện được hibernation — khuyến nghị: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "Không phát hiện được hibernation — khuyến nghị: {0} GiB"
+
+msgid ""
+"How aggressively the kernel swaps — lower = stay in RAM longer (recommended: "
+"{0})"
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "Đang chờ ({0} GiB khả dụng)"
+
 msgid "Inactive"
 msgstr "Không hoạt động"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "Đang tải..."
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "Bể tối đa (% RAM)"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "Phần trăm tối đa của RAM mà khối nén có thể chiếm. Khuyến nghị: 20%"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "Thời gian giữ tối đa"
+
+msgid "Maximum pool percent"
+msgstr "Phần trăm khối tối đa"
+
 msgid "Memory Overview"
 msgstr "Tổng quan bộ nhớ"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "Thu gọn bộ nhớ"
+msgid "No Zram Devices"
+msgstr "Thiết bị Zram"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "Không có thiết bị"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "Không có thiết bị zram. Hãy tạo một thiết bị để kích hoạt bộ nhớ ảo swap đã nén."
+msgid "No disk swap detected"
+msgstr "Không phát hiện bộ nhớ ảo"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "Không kích hoạt tăng tốc bộ nhớ nào"
+
 msgid "None"
 msgstr "Không có"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "Tắt"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
 msgstr "Bật"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "Các trang bị nén tệ hơn mức này sẽ bị từ chối — thấp hơn = chủ động hơn"
+msgid ""
+"Only store pages that compress to ≤ this % of original. Higher = more pages "
+"cached. Recommended: 90%"
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "Cấu hình bộ nhớ tối ưu"
+
+msgid "Peak allocated:"
+msgstr "Phân bổ đỉnh:"
+
 msgid "Priority"
 msgstr "Ưu tiên"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "Trạng thái thời gian thực của RAM, bộ nhớ ảo swap và hệ thống con nén"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "Thu hồi bộ nhớ bể khi hệ thống bị quá tải"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "Thu hồi trang của khối khi có áp lực bộ nhớ. Khuyến nghị: BẬT"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "Xóa"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "Đang điều chỉnh kích thước tệp bộ nhớ ảo swap…"
+msgid "Run Again"
+msgstr "Chạy lại"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "Chạy bài kiểm tra căng thẳng"
+
+msgid "Shrinker"
+msgstr "Thu gọn bộ nhớ"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "Giả lập áp lực bộ nhớ để kiểm tra bộ nhớ ảo và hành vi OOM"
+
 msgid "Size (MiB)"
 msgstr "Kích thước (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "Tốc độ"
+
+msgid "Stress Test"
+msgstr "Kiểm tra căng thẳng"
+
 msgid "Swap"
 msgstr "Bộ nhớ ảo Swap"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "Điều khiển bộ nhớ ảo Swap"
+msgstr "Kiểm soát bộ nhớ ảo"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "Kích thước tệp bộ nhớ ảo Swap"
+msgstr "Kích thước bộ nhớ ảo"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "Sử dụng bộ nhớ ảo"
+
 msgid "Swappiness"
-msgstr "Độ ưu tiên sử dụng bộ nhớ ảo Swap"
+msgstr "Độ ưu tiên bộ nhớ ảo"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "Áp lực mục tiêu"
+
+msgid "Test Complete"
+msgstr "Kiểm tra hoàn tất"
+
+msgid "Total RAM"
+msgstr "Tổng RAM"
+
+msgid "Type"
+msgstr "Loại"
+
+msgid "Used"
+msgstr "Đã sử dụng"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "Cảnh báo: Thao tác này sẽ sử dụng bộ nhớ hệ thống và có thể gây mất ổn định"
+
+msgid ""
+"When RAM is full the kernel may kill applications. Enable disk swap for a "
+"reliable safety net."
+msgstr ""
+
 msgid "Zram"
 msgstr "Zram"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Thiết bị Zram"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "Zram và Zswap đều đang hoạt động"
+
+msgid ""
+"Zram and Zswap are mutually exclusive — each creates its own compressed RAM "
+"pool. Running both wastes CPU and can cause severe memory thrashing. Disable "
+"one of them."
+msgstr ""
+"Zram và Zswap loại trừ lẫn nhau — mỗi cái tạo ra một bộ nhớ RAM nén riêng. "
+"Chạy cả hai sẽ lãng phí CPU và có thể gây ra tình trạng thiếu bộ nhớ nghiêm "
+"trọng. Hãy tắt một trong hai."
+
 msgid "Zswap"
 msgstr "Zswap"
 
-#: src/views/zswap_view.rs:65
-msgid "Zswap Configuration"
-msgstr "Cấu hình Zswap"
+msgid "default"
+msgstr "mặc định"
 
-#: src/views/zswap_view.rs:116
-msgid "lzo-rle is fastest, zstd saves more space"
-msgstr "lzo-rle là nhanh nhất, zstd tiết kiệm nhiều dung lượng hơn"
+msgid ""
+"lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires "
+"zswap restart."
+msgstr ""
 
+msgid "range"
+msgstr "phạm vi"
+
+msgid "seconds"
+msgstr "giây"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · bộ nhớ {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · đã tiết kiệm {1}%"
+
+#~ msgid "Active"
+#~ msgstr "Hoạt động"
+
+#~ msgid "Compressed write-back cache for swap"
+#~ msgstr "Bộ đệm ghi lại đã nén cho vùng nhớ ảo"
+
+msgid "Compressed write-back cache — intercepts pages before disk swap"
+msgstr "Bộ nhớ đệm ghi lại bị nén — can thiệp các trang trước khi hoán đổi sang ổ đĩa"
+
+#~ msgid "How much RAM zswap can use for compressed pages"
+#~ msgstr "Số lượng RAM mà zswap có thể sử dụng cho các trang đã nén"
+
+#~ msgid "Max pool (% of RAM)"
+#~ msgstr "Bể tối đa (% RAM)"
+
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr "Không tìm thấy thiết bị ZRAM. Hãy tạo một thiết bị để bật đổi chỗ RAM được nén."
+
+#~ msgid "Reclaim pool memory when system is under pressure"
+#~ msgstr "Thu hồi bộ nhớ bể khi hệ thống bị quá tải"
+
+#~ msgid "Resizing swap file…"
+#~ msgstr "Đang điều chỉnh kích thước bộ nhớ ảo…"
+
+#~ msgid "Zswap Configuration"
+#~ msgstr "Cấu hình Zswap"
+
+#~ msgid "lzo-rle is fastest, zstd saves more space"
+#~ msgstr "lzo-rle là nhanh nhất, zstd tiết kiệm nhiều dung lượng hơn"

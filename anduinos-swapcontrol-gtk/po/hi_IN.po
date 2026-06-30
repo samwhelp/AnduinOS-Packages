@@ -1,249 +1,378 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: hi_IN <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: hi_IN\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>अनुशंसित स्विपनेस: {0} ({1} GiB RAM के लिए)</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>अनुशंसित: {0} GiB वर्चुअल मेमोरी, स्विपनेस {1} ({2} GiB RAM के लिए)</i>"
+
+#, fuzzy
+msgid ""
+"<i>Recommended: {0}–{1} MiB, lzo-rle, priority 100 (for {2} GiB RAM)</i>"
+msgstr "<i>अनुशंसित: {0} GiB वर्चुअल मेमोरी, स्विपनेस {1} ({2} GiB RAM के लिए)</i>"
+
 msgid "About"
 msgstr "के बारे में"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "स्वीकृति सीमा (%)"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "सक्रिय"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "सक्रिय — {0} GiB प्रयुक्त / {1} GiB कुल"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "उन्नत विकल्प"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "उन्नत सेटिंग्स"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "एल्गोरिदम"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "सेटिंग्स लागू करें"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "सेटिंग्स लागू करें"
+
 msgid "Auth needed"
 msgstr "प्रमाणीकरण आवश्यक है"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "बफ़र"
+
+msgid "Buffers"
+msgstr "बफ़र्स"
+
+msgid "Cache"
+msgstr "कैश"
+
+msgid "Cached"
+msgstr "कैश किए गए"
+
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "रद्द करें"
+
+msgid "Cancelled by user."
+msgstr "उपयोगकर्ता द्वारा रद्द किया गया।"
+
+msgid "Channels"
+msgstr "चैनल"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "सफलतापूर्वक पूर्ण — मेमोरी दबाव परीक्षण उत्तर्ण हुआ।"
+
+msgid ""
+"Compress swap pages in a RAM pool — faster than disk swap. Use Zram or "
+"Zswap, not both."
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
 msgstr "संपीड़ित RAM ब्लॉक डिवाइस — मेमोरी में तेज स्वैप"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "स्वैप के लिए संकुचित राइट-बैक कैश"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "संकुचित राइट-बैक कैश — डिस्क स्वैप से पहले पेज को रोकता है"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "संपीड़न एल्गोरिदम"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "बनाएँ"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Zram डिवाइस बनाएँ"
 
-#: src/views/zram_view.rs:311
+#, fuzzy
+msgid ""
+"Create a compressed RAM swap device for faster memory pressure handling."
+msgstr "संपीड़ित RAM ब्लॉक डिवाइस — मेमोरी में तेज स्वैप"
+
 msgid "Creating Zram device…"
 msgstr "Zram डिवाइस बनाया जा रहा है…"
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Zram डिवाइस नष्ट करें"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Zram डिवाइस नष्ट किया जा रहा है…"
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "डिवाइस बनाया गया"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "अक्षम"
 
-#: src/views/swap_view.rs:250
+msgid "Disabling Zswap..."
+msgstr "स्वाप को अक्षम कर रहे हैं..."
+
 msgid "Disabling swap will break hibernation. Continue?"
 msgstr "स्वाप को अक्षम करने से हाइबरनेशन खराब हो जाएगा। जारी रखें?"
 
-#: src/views/swap_view.rs:220
 msgid "Disabling swap…"
 msgstr "स्वाप को अक्षम कर रहे हैं..."
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "डिस्क वर्चुअल मेमोरी"
+
 msgid "Disk Swap Configuration"
-msgstr "डिस्क स्वाप कॉन्फ़िगरेशन"
+msgstr "डिस्क वर्चुअल मेमोरी विन्यास"
 
-#: src/views/swap_view.rs:65
+msgid ""
+"Disk swap is active with memory compression — your system is well-protected "
+"against memory pressure."
+msgstr ""
+"डिस्क वर्चुअल मेमोरी मेमोरी संपीड़न के साथ सक्रिय है—आपका प्रणाली मेमोरी दबाव के विरुद्ध "
+"अच्छी तरह से सुरक्षित है।"
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "डिस्क-आधारित स्वाप फ़ाइल — जब RAM पूरी तरह से भरी हो, तो यह अंतिम रक्षा की पंक्ति है"
+msgstr "डिस्क-आधारित स्विप फ़ाइल — जब RAM भरी हो तो रक्षा की अंतिम कड़ी"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "अवधि:"
+
+msgid ""
+"Enable Zram for snappy compressed swap in RAM — it's 10× faster than disk "
+"swap and dramatically reduces I/O under memory pressure."
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "स्वाप को सक्षम कर रहे हैं..."
+
 msgid "Enabling swap…"
 msgstr "स्वाप को सक्षम कर रहे हैं..."
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "इस परीक्षण को चलाने से पहले महत्वपूर्ण कार्य को सहेजना सुनिश्चित करें।"
+
 msgid "Error"
 msgstr "त्रुटि"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "निःशुल्क"
+
+msgid "Growth speed"
+msgstr "वृद्धि की गति"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "हैलो {0}, आपके पास {1} संदेश हैं"
+
+msgid "Hibernation"
+msgstr "हाइबरनेशन चेतावनी"
+
 msgid "Hibernation Warning"
 msgstr "हाइबरनेशन चेतावनी"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "संपीड़ित पन्नों के लिए zswap कितना RAM उपयोग कर सकता है"
+#, fuzzy
+msgid ""
+"Hibernation active — minimum {0} GiB (RAM + 1 GiB). Recommended: {1} GiB"
+msgstr "हाइबरनेशन का पता नहीं चला — अनुशंसित: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "हाइबरनेशन का पता नहीं चला — अनुशंसित: {0} GiB"
+
+msgid ""
+"How aggressively the kernel swaps — lower = stay in RAM longer (recommended: "
+"{0})"
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "निष्क्रिय ({0} GiB उपलब्ध)"
+
 msgid "Inactive"
 msgstr "निष्क्रिय"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "लोड हो रहा है..."
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "अधिकतम पूल (RAM का %)"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "संपीड़ित पूल द्वारा व्याप्त RAM के अधिकतम %। अनुशंसित: 20%"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "अधिकतम धारण समय"
+
+msgid "Maximum pool percent"
+msgstr "अधिकतम पूल प्रतिशत"
+
 msgid "Memory Overview"
 msgstr "मेमोरी अवलोकन"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "मेमोरी श्रिंकर"
+msgid "No Zram Devices"
+msgstr "Zram डिवाइस"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "कोई उपकरण नहीं"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "कोई zram उपकरण नहीं है। संपीड़ित RAM स्विप सक्षम करने के लिए एक बनाएं।"
+msgid "No disk swap detected"
+msgstr "कोई डिस्क वर्चुअल मेमोरी नहीं मिली"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "कोई मेमोरी एक्सीलरेशन सक्षम नहीं है"
+
 msgid "None"
 msgstr "कोई नहीं"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "बंद"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
 msgstr "चालू"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "इससे खराब तरीके से संपीड़ित पृष्ठों को अस्वीकार कर दिया जाता है — कम = अधिक आक्रामक"
+msgid ""
+"Only store pages that compress to ≤ this % of original. Higher = more pages "
+"cached. Recommended: 90%"
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "आदर्श मेमोरी कॉन्फ़िगरेशन"
+
+msgid "Peak allocated:"
+msgstr "शीर्ष आवंटित:"
+
 msgid "Priority"
 msgstr "प्राथमिकता"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "रियल-टाइम RAM, स्विप और संपीड़न सबसिस्टम स्थिति"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "सिस्टम दबाव में होने पर पूल मेमोरी रिकलेम करें"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "मेमोरी दबाव के तहत पूल पृष्ठों को पुनः प्राप्त करें। अनुशंसित: चालू"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "हटाएं"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "स्विप फाइल रिसाइज हो रही है…"
+msgid "Run Again"
+msgstr "फिर चलाएँ"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "स्ट्रेस टेस्ट चलाएँ"
+
+msgid "Shrinker"
+msgstr "मेमोरी श्रिंकर"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "स्वैप और ओम व्यवहार परीक्षण करने हेतु मेमोरी दबाव का अनुकरण करें"
+
 msgid "Size (MiB)"
 msgstr "आकार (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "गति"
+
+msgid "Stress Test"
+msgstr "स्ट्रेस टेस्ट"
+
 msgid "Swap"
 msgstr "स्विप"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "स्विप नियंत्रण"
+msgstr "वर्चुअल मेमोरी नियंत्रण"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "स्विप फाइल आकार"
+msgstr "वर्चुअल मेमोरी फ़ाइल का आकार"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "वर्चुअल मेमोरी का उपयोग"
+
 msgid "Swappiness"
-msgstr "स्विपनेस"
+msgstr "स्वापिंग"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "लक्षित दबाव"
+
+msgid "Test Complete"
+msgstr "परीक्षण पूर्ण"
+
+msgid "Total RAM"
+msgstr "कुल RAM"
+
+msgid "Type"
+msgstr "प्रकार"
+
+msgid "Used"
+msgstr "उपयोग किया गया"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "चेतावनी: इससे सिस्टम मेमोरी का उपयोग होगा और अस्थिरता पैदा हो सकती है"
+
+msgid ""
+"When RAM is full the kernel may kill applications. Enable disk swap for a "
+"reliable safety net."
+msgstr ""
+
 msgid "Zram"
-msgstr "Zram"
+msgstr "ज़्रैम"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Zram डिवाइस"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "ज़्राम और ज़स्वैप दोनों सक्रिय हैं"
+
+msgid ""
+"Zram and Zswap are mutually exclusive — each creates its own compressed RAM "
+"pool. Running both wastes CPU and can cause severe memory thrashing. Disable "
+"one of them."
+msgstr ""
+"Zram और Zswap परस्पर विरोधी हैं—प्रत्येक अपने स्वयं के संपीड़ित RAM पूल बनाता है। दोनों को "
+"एक साथ चलाना CPU की बर्बादी करता है और गंभीर मेमोरी थ्रेशिंग का कारण बन सकता है। उनमें "
+"से एक को अक्षम करें।"
+
 msgid "Zswap"
-msgstr "Zswap"
+msgstr "ज़्सवाप"
 
-#: src/views/zswap_view.rs:65
-msgid "Zswap Configuration"
-msgstr "Zwap कॉन्फ़िगरेशन"
+msgid "default"
+msgstr "डिफ़ॉल्ट"
 
-#: src/views/zswap_view.rs:116
-msgid "lzo-rle is fastest, zstd saves more space"
-msgstr "lzo-rle सबसे तेज़ है, zstd अधिक जगह बचाता है"
+msgid ""
+"lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires "
+"zswap restart."
+msgstr ""
 
+msgid "range"
+msgstr "रेंज"
+
+msgid "seconds"
+msgstr "सेकेंड"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · पूल {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · सहेजा गया {1}%"
+
+#~ msgid "Active"
+#~ msgstr "सक्रिय"
+
+#~ msgid "Compressed write-back cache for swap"
+#~ msgstr "स्वैप के लिए संकुचित राइट-बैक कैश"
+
+#~ msgid "Compressed write-back cache — intercepts pages before disk swap"
+#~ msgstr "संपीड़ित राइट-बैक कैश — डिस्क वर्चुअल मेमोरी से पहले पृष्ठों को इंटरसेप्ट करता है"
+
+#~ msgid "How much RAM zswap can use for compressed pages"
+#~ msgstr "संपीड़ित पन्नों के लिए zswap कितना RAM उपयोग कर सकता है"
+
+#~ msgid "Max pool (% of RAM)"
+#~ msgstr "अधिकतम पूल (RAM का %)"
+
+#~ msgid "No zram devices. Create one to enable compressed RAM swap."
+#~ msgstr "कोई zram उपकरण नहीं है। संपीड़ित RAM स्विप सक्षम करने के लिए एक बनाएं।"
+
+#~ msgid "Reclaim pool memory when system is under pressure"
+#~ msgstr "सिस्टम दबाव में होने पर पूल मेमोरी रिकलेम करें"
+
+#~ msgid "Resizing swap file…"
+#~ msgstr "वर्चुअल मेमोरी फ़ाइल का आकार बदला जा रहा है…"
+
+#~ msgid "Zswap Configuration"
+#~ msgstr "Zwap कॉन्फ़िगरेशन"
+
+#~ msgid "lzo-rle is fastest, zstd saves more space"
+#~ msgstr "lzo-rle सबसे तेज़ है, zstd अधिक जगह बचाता है"

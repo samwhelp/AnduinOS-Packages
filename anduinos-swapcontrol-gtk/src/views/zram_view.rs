@@ -2,7 +2,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
 
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_fmt};
 use crate::swap::{zram, persist};
 use crate::utils;
 use crate::widgets::usage_bar::UsageBar;
@@ -75,8 +75,7 @@ impl ZramView {
             let rec_mb = (total_ram / 4 / (1024 * 1024)) as u64; // 25%
             self.append(&gtk::Label::builder()
                 .use_markup(true)
-                .label(&format!("<i>Recommended: {}–{} MiB, lzo-rle, priority 100 (for {:.0} GiB RAM)</i>",
-                    rec_mb, rec_mb * 2, ram_gb))
+                .label(&i18n_fmt("<i>Recommended: {0}–{1} MiB, lzo-rle, priority 100 (for {2} GiB RAM)</i>", &[&rec_mb.to_string(), &(rec_mb * 2).to_string(), &format!("{:.0}", ram_gb)]))
                 .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
         }
 

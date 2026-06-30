@@ -3,7 +3,7 @@ use gtk::glib;
 use gtk::prelude::*;
 use std::cell::RefCell;
 
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_fmt};
 use crate::swap::{swapfile, zswap, zram, hibernation, ram_info, sysctl};
 use crate::widgets::memory_ring::{MemoryRing, Segment};
 use crate::widgets::usage_bar::UsageBar;
@@ -115,7 +115,7 @@ impl DashboardView {
             let ram_gb = total_ram as f64 / (1024.0 * 1024.0 * 1024.0);
             let sw = if ram_gb >= 16.0 { 10 } else if ram_gb >= 8.0 { 30 } else { 60 };
             self.append(&gtk::Label::builder().use_markup(true)
-                .label(&format!("<i>Recommended swappiness: {} (for {:.0} GiB RAM)</i>", sw, ram_gb))
+                .label(&i18n_fmt("<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>", &[&sw.to_string(), &format!("{:.0}", ram_gb)]))
                 .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
         }
 
@@ -127,10 +127,10 @@ impl DashboardView {
 
         // ─── RAM spec bar ────────────────────────────────────────────
         let spec = gtk::Grid::builder().row_spacing(8).column_spacing(8).column_homogeneous(true).build();
-        let (c0, l0) = mini_stat("Total RAM", "...");
-        let (c1, l1) = mini_stat("Type", "...");
-        let (c2, l2) = mini_stat("Speed", "...");
-        let (c3, l3) = mini_stat("Channels", "...");
+        let (c0, l0) = mini_stat(&i18n("Total RAM"), "...");
+        let (c1, l1) = mini_stat(&i18n("Type"), "...");
+        let (c2, l2) = mini_stat(&i18n("Speed"), "...");
+        let (c3, l3) = mini_stat(&i18n("Channels"), "...");
         spec.attach(&c0,0,0,1,1); spec.attach(&c1,1,0,1,1);
         spec.attach(&c2,2,0,1,1); spec.attach(&c3,3,0,1,1);
         self.append(&spec);
@@ -164,15 +164,15 @@ impl DashboardView {
             .spacing(16).vexpand(true).valign(gtk::Align::Start).hexpand(true)
             .margin_top(10).build();
 
-        let zram_bar = UsageBar::new("Zram", (1.0, 0.47, 0.0));
+        let zram_bar = UsageBar::new(&i18n("Zram"), (1.0, 0.47, 0.0));
         bars.append(&zram_bar);
         *imp.zram_bar.borrow_mut() = Some(zram_bar);
 
-        let zswap_bar = UsageBar::new("Zswap", (0.20, 0.82, 0.48));
+        let zswap_bar = UsageBar::new(&i18n("Zswap"), (0.20, 0.82, 0.48));
         bars.append(&zswap_bar);
         *imp.zswap_bar.borrow_mut() = Some(zswap_bar);
 
-        let swap_bar = UsageBar::new("Swap", (0.21, 0.52, 0.89));
+        let swap_bar = UsageBar::new(&i18n("Swap"), (0.21, 0.52, 0.89));
         bars.append(&swap_bar);
         *imp.swap_bar.borrow_mut() = Some(swap_bar);
 
@@ -182,11 +182,11 @@ impl DashboardView {
         // ─── Bottom status cards ────────────────────────────────────
         let grid = gtk::Grid::builder().row_spacing(8).column_spacing(8).column_homogeneous(true).build();
 
-        let (c1, s1) = info_card("drive-harddisk-symbolic", "Swap", "");
-        let (c2, s2) = info_card("emblem-synchronizing-symbolic", "Zswap", "");
-        let (c3, s3) = info_card("media-flash-symbolic", "Zram", "");
-        let (c4, s4) = info_card("weather-clear-night-symbolic", "Hibernation", "");
-        let (c5, s5) = info_card("preferences-system-symbolic", "Swappiness", "");
+        let (c1, s1) = info_card("drive-harddisk-symbolic", &i18n("Swap"), "");
+        let (c2, s2) = info_card("emblem-synchronizing-symbolic", &i18n("Zswap"), "");
+        let (c3, s3) = info_card("media-flash-symbolic", &i18n("Zram"), "");
+        let (c4, s4) = info_card("weather-clear-night-symbolic", &i18n("Hibernation"), "");
+        let (c5, s5) = info_card("preferences-system-symbolic", &i18n("Swappiness"), "");
 
         grid.attach(&c1,0,0,1,1); grid.attach(&c2,1,0,1,1);
         grid.attach(&c3,2,0,1,1); grid.attach(&c4,3,0,1,1);
@@ -275,20 +275,20 @@ impl DashboardView {
         let mem = read_meminfo();
         if let Some(ring) = imp.ring.borrow().as_ref() {
             ring.set_segments(vec![
-                Segment { label: "Used".into(), value: mem.used as f64, color: (0.89,0.20,0.20) },
-                Segment { label: "Buffers".into(), value: mem.buffers as f64, color: (0.20,0.55,0.91) },
-                Segment { label: "Cached".into(), value: mem.cached as f64, color: (0.20,0.82,0.48) },
-                Segment { label: "Free".into(), value: mem.free as f64, color: (0.60,0.60,0.60) },
+                Segment { label: i18n("Used"), value: mem.used as f64, color: (0.89,0.20,0.20) },
+                Segment { label: i18n("Buffers"), value: mem.buffers as f64, color: (0.20,0.55,0.91) },
+                Segment { label: i18n("Cached"), value: mem.cached as f64, color: (0.20,0.82,0.48) },
+                Segment { label: i18n("Free"), value: mem.free as f64, color: (0.60,0.60,0.60) },
             ]);
         }
         // Legend
         if let Some(legend) = imp.legend.borrow().as_ref() {
             while let Some(c) = legend.first_child() { legend.remove(&c); }
             let items: [(&str, (f64,f64,f64), u64); 4] = [
-                ("Used", (0.89,0.20,0.20), mem.used),
-                ("Buf", (0.20,0.55,0.91), mem.buffers),
-                ("Cache", (0.20,0.82,0.48), mem.cached),
-                ("Free", (0.60,0.60,0.60), mem.free),
+                (&i18n("Used"), (0.89,0.20,0.20), mem.used),
+                (&i18n("Buf"), (0.20,0.55,0.91), mem.buffers),
+                (&i18n("Cache"), (0.20,0.82,0.48), mem.cached),
+                (&i18n("Free"), (0.60,0.60,0.60), mem.free),
             ];
             for (name, (r,g,b), val) in &items {
                 let item = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(3).build();
@@ -323,12 +323,12 @@ impl DashboardView {
                     } else { 0.0 };
                     let bar_str = format!("{:.2} / {:.1} GiB", used_gb, total_gb);
                     if saved > 0.0 {
-                        bar.set_fraction(frac, &format!("{} · saved {:.0}%", bar_str, saved));
+                        bar.set_fraction(frac, &i18n_fmt("{0} · saved {1}%", &[&bar_str, &format!("{:.0}", saved)]));
                     } else {
                         bar.set_fraction(frac, &bar_str);
                     }
                 } else {
-                    let bar_str = format!("Idle ({:.1} GiB available)", total_gb);
+                    let bar_str = i18n_fmt("Idle ({0} GiB available)", &[&format!("{:.1}", total_gb)]);
                     bar.set_fraction(0.0, &bar_str);
                 }
             }
@@ -339,7 +339,7 @@ impl DashboardView {
             if let Some(bar) = imp.zswap_bar.borrow().as_ref() {
                 if cfg.enabled {
                     bar.set_fraction(cfg.max_pool_percent as f64 / 100.0,
-                        &format!("{} · pool {}%", cfg.compressor, cfg.max_pool_percent));
+                        &i18n_fmt("{0} · pool {1}%", &[&cfg.compressor, &cfg.max_pool_percent.to_string()]));
                 } else {
                     bar.set_fraction(0.0, &i18n("Disabled"));
                 }

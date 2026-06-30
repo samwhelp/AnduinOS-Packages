@@ -3,7 +3,7 @@ use adw::subclass::prelude::*;
 use gtk::glib;
 use std::cell::RefCell;
 
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_fmt};
 use crate::swap::{swapfile, sysctl, hibernation, zswap};
 use crate::utils;
 use crate::widgets::usage_bar::UsageBar;
@@ -91,7 +91,7 @@ impl SwapView {
             let rec_size = (total_ram / (1024*1024*1024)).max(1);
             let sw = if ram_gb >= 16.0 { 10 } else if ram_gb >= 8.0 { 30 } else { 60 };
             inner.append(&gtk::Label::builder().use_markup(true)
-                .label(&{let s=format!("<i>Recommended: {} GiB swap, swappiness {} (for {:.0} GiB RAM)</i>", rec_size, sw, ram_gb); s})
+                .label(&i18n_fmt("<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>", &[&rec_size.to_string(), &sw.to_string(), &format!("{:.0}", ram_gb)]))
                 .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
         }
 
@@ -101,7 +101,7 @@ impl SwapView {
         *imp.spinner.borrow_mut() = Some(spinner);
 
         // Usage bar — always visible at the top
-        let usage_bar = UsageBar::new("Swap usage", (0.21, 0.52, 0.89));
+        let usage_bar = UsageBar::new(&i18n("Swap usage"), (0.21, 0.52, 0.89));
         inner.append(&usage_bar);
         *imp.usage_bar.borrow_mut() = Some(usage_bar);
 
@@ -137,9 +137,9 @@ impl SwapView {
         let min_size = if hiber_active { (total_ram / (1024*1024*1024)).max(1) + 1 } else { 1 };
         let rec_size = (total_ram / (1024*1024*1024)).max(1);
         let hint_str = if hiber_active {
-            format!("Hibernation active — minimum {} GiB (RAM + 1 GiB). Recommended: {} GiB", min_size, rec_size.max(min_size))
+            i18n_fmt("Hibernation active — minimum {0} GiB (RAM + 1 GiB). Recommended: {1} GiB", &[&min_size.to_string(), &rec_size.max(min_size).to_string()])
         } else {
-            format!("Hibernation not detected — recommended: {} GiB", rec_size)
+            i18n_fmt("Hibernation not detected — recommended: {0} GiB", &[&rec_size.to_string()])
         };
         let size_row = adw::ActionRow::builder()
             .title(&i18n("Swap file size"))
@@ -172,7 +172,7 @@ impl SwapView {
             .valign(gtk::Align::Center).build();
         let sw_row = adw::ActionRow::builder()
             .title(&i18n("Swappiness"))
-            .subtitle(&format!("How aggressively the kernel swaps — lower = stay in RAM longer (recommended: {})", rec_sw))
+            .subtitle(&i18n_fmt("How aggressively the kernel swaps — lower = stay in RAM longer (recommended: {0})", &[&rec_sw.to_string()]))
             .build();
         sw_row.add_suffix(&swappiness_scale);
         expander.add_row(&sw_row);
@@ -428,7 +428,7 @@ impl SwapView {
                 if status.active {
                     let total_gb = status.size_bytes as f64 / (1024.0*1024.0*1024.0);
                     let used_gb = status.used_bytes as f64 / (1024.0*1024.0*1024.0);
-                    row.set_subtitle(&format!("Active — {:.1} GiB used / {:.1} GiB total", used_gb, total_gb));
+                    row.set_subtitle(&i18n_fmt("Active — {0} GiB used / {1} GiB total", &[&format!("{:.1}", used_gb), &format!("{:.1}", total_gb)]));
                 } else {
                     row.set_subtitle(&i18n("Inactive"));
                 }

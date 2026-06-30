@@ -1,249 +1,350 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: da_DK <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: da_DK\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>Anbefalet swappiness: {0} (for {1} GiB RAM)</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>Anbefales: {0} GiB virtual hukommelse, swappiness {1} (for {2} GiB RAM)</i>"
+
+msgid ""
+msgstr ""
+
 msgid "About"
 msgstr "Om"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "Grænseværdi for accept (%)"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "Aktiv"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "Aktiv — {0} GiB brugt / {1} GiB i alt"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "Avancerede indstillinger"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "Avancerede indstillinger"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "Algorithmus"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "Anvend indstillinger"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "Anvend indstillinger"
+
 msgid "Auth needed"
 msgstr "Godkendelse kræves"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "Buf"
+
+msgid "Buffers"
+msgstr "Buffer"
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Cached"
+msgstr "Cachelagret"
+
 msgid "Cancel"
 msgstr "Annullér"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "Annullér"
+
+msgid "Cancelled by user."
+msgstr "Aflyst af bruger."
+
+msgid "Channels"
+msgstr "Kanaler"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "Udført uden fejl — hukommelsestryk-test bestået."
+
+msgid ""
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
 msgstr "Komprimeret RAM-blok enhed — hurtig swap i hukommelsen"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "Komprimeret write-back-cachelagring til swap"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "Komprimeret write-back-cachelagring — fanger sider, før de skiftes til disk"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "Komprimeringsalgoritme"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "Opret"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Opret Zram-enhed"
 
-#: src/views/zram_view.rs:311
+msgid ""
+msgstr "Komprimeret RAM-blok enhed — hurtig swap i hukommelsen"
+
 msgid "Creating Zram device…"
 msgstr "Opretter Zram-enhed…"
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Destruer Zram-enhed"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Destruerer Zram-enhed…"
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "Enhed oprettet"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "Deaktiveret"
 
-#: src/views/swap_view.rs:250
+msgid "Disabling Zswap..."
+msgstr "Deaktiverer swap…"
+
 msgid "Disabling swap will break hibernation. Continue?"
 msgstr "Deaktivering af swap vil ødelægge dvaletilstanden. Vil du fortsætte?"
 
-#: src/views/swap_view.rs:220
 msgid "Disabling swap…"
 msgstr "Deaktiverer swap…"
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "Disk virtuel hukommelse"
+
 msgid "Disk Swap Configuration"
-msgstr "Konfiguration af diskswap"
+msgstr "Konfiguration af virtuel hukommelse"
 
-#: src/views/swap_view.rs:65
+msgid ""
+msgstr ""
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "Diskbaseret swap-fil — den sidste forsvarslinje, når RAM er fuld"
+msgstr "Diskbaseret virtuel hukommelsesfil — det sidste forsvar, når RAM er fyldt"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "Varighed:"
+
+msgid ""
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "Aktiverer swap…"
+
 msgid "Enabling swap…"
 msgstr "Aktiverer swap…"
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "Sørg for, at vigtigt arbejde er gemt, før du kører denne test."
+
 msgid "Error"
 msgstr "Fejl"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "Fri"
+
+msgid "Growth speed"
+msgstr "Vækstfart"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "Hej {0}, du har {1} beskeder"
+
+msgid "Hibernation"
+msgstr "Vintersøvn"
+
 msgid "Hibernation Warning"
-msgstr "Advarsel vedrørende dvaletilstand"
+msgstr "Advarsel om dvale"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "Hvor meget RAM zswap kan bruge til komprimerede sider"
+msgid ""
+msgstr "Hivernering ikke registreret — anbefalet: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "Hivernering ikke registreret — anbefalet: {0} GiB"
+
+msgid ""
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "Inaktiv ({0} GiB tilgængelig)"
+
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "Indlæser..."
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "Maks. pool (% af RAM)"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "Maks. % af RAM, den komprimerede pool må optage. Anbefalet: 20%"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "Maksimal ventetid"
+
+msgid "Maximum pool percent"
+msgstr "Maksimal poolprocent"
+
 msgid "Memory Overview"
 msgstr "Hukommelsesoversigt"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "Hukommelseskrympning"
+msgid "No Zram Devices"
+msgstr "Zram-enheder"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "Ingen enhed"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "Ingen zram-enheder. Opret en for at aktivere komprimeret RAM-swap."
+msgid "No disk swap detected"
+msgstr "Ingen udveksling af virtuel hukommelse opdaget"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "Ingen hukommelsesacceleration aktiveret"
+
 msgid "None"
 msgstr "Ingen"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "Fra"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr "Til"
+msgstr "Tændt"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "Sider der komprimeres dårligere end dette, afvises — lavere = mere aggressiv"
+msgid ""
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "Optimal hukommelseskonfiguration"
+
+msgid "Peak allocated:"
+msgstr "Topallokering:"
+
 msgid "Priority"
 msgstr "Prioritet"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "Status for RAM-, swap- og komprimeringsundersystemer i realtid"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "Genvind pool hukommelse, når systemet er under pres"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "Frigør pulesider under hukommelsestryk. Anbefalet: PÅ"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "Ændrer størrelse på swap-fil..."
+msgid "Run Again"
+msgstr "Kør igen"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "Kør stresstest"
+
+msgid "Shrinker"
+msgstr "Hukommelseskrympning"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "Simuler hukommelsespres for at teste swap og OOM-adfærd"
+
 msgid "Size (MiB)"
 msgstr "Størrelse (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "Hastighed"
+
+msgid "Stress Test"
+msgstr "Stresstest"
+
 msgid "Swap"
 msgstr "Swap"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "Swap-kontrol"
+msgstr "Kontrol af virtuel hukommelse"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "Swap-filstørrelse"
+msgstr "Størrelse på swap-fil"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "Forbrug af virtual hukommelse"
+
 msgid "Swappiness"
 msgstr "Swappiness"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "Målrettet pres"
+
+msgid "Test Complete"
+msgstr "Test fuldført"
+
+msgid "Total RAM"
+msgstr "Samlet RAM"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Used"
+msgstr "Brugt"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "Advarsel: Dette forbruger systemhukommelse og kan medføre ustabilitet"
+
+msgid ""
+msgstr ""
+
 msgid "Zram"
 msgstr "Zram"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Zram-enheder"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "Zram og Zswap er begge aktive"
+
+msgid ""
+msgstr ""
+
 msgid "Zswap"
 msgstr "Zswap"
 
-#: src/views/zswap_view.rs:65
+msgid "default"
+msgstr "standard"
+
+msgid ""
+msgstr ""
+
+msgid "range"
+msgstr "område"
+
+msgid "seconds"
+msgstr "sekunder"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · pool {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · gemt {1}%"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Compressed write-back cache for swap"
+msgstr "Komprimeret write-back-cachelagring til swap"
+
+msgid "Compressed write-back cache — intercepts pages before disk swap"
+msgstr "Komprimeret write-back-cache — fanger sider, før der skiftes til disk"
+
+msgid "How much RAM zswap can use for compressed pages"
+msgstr "Hvor meget RAM zswap kan bruge til komprimerede sider"
+
+msgid "Max pool (% of RAM)"
+msgstr "Maks. pool (% af RAM)"
+
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr "Ingen zram-enheder. Opret en for at aktivere komprimeret RAM-swap."
+
+msgid "Reclaim pool memory when system is under pressure"
+msgstr "Genvind pool hukommelse, når systemet er under pres"
+
+msgid "Resizing swap file…"
+msgstr "Ændrer størrelse på virtual memory-fil…"
+
 msgid "Zswap Configuration"
 msgstr "Zswap-konfiguration"
 
-#: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
 msgstr "lzo-rle er hurtigst, zstd sparer mest plads"
-

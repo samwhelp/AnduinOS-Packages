@@ -1,249 +1,350 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
-"POT-Creation-Date: 2026-06-30 14:00+0800\n"
-"PO-Revision-Date: 2026-06-30 14:00+0800\n"
-"Language-Team: fi_FI <anduin@aiursoft.com>\n"
-"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
-"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
-"Language: fi_FI\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: src/window.rs:76
+msgid "<i>Recommended swappiness: {0} (for {1} GiB RAM)</i>"
+msgstr "<i>Suositeltu swappiness-arvo: {0} ({1} GiB RAM-muistille)</i>"
+
+msgid "<i>Recommended: {0} GiB swap, swappiness {1} (for {2} GiB RAM)</i>"
+msgstr "<i>Suositus: {0} GiB virtuaali muistia, swappiness {1} (järjestelmässä on {2} GiB RAM-muistia)</i>"
+
+msgid ""
+msgstr ""
+
 msgid "About"
 msgstr "Tietoja"
 
-#: src/views/zswap_view.rs:133
-msgid "Accept threshold (%)"
+msgid "Accept threshold percent"
 msgstr "Kynnysarvo (%)"
 
-#: src/views/zswap_view.rs:324
-#: src/views/swap_view.rs:323
-msgid "Active"
-msgstr "Aktiivinen"
+msgid "Active — {0} GiB used / {1} GiB total"
+msgstr "Aktiivinen — {0} GiB käytetty / {1} GiB yhteensä"
 
-#: src/views/zram_view.rs:203
 msgid "Advanced options"
 msgstr "Lisäasetukset"
 
-#: src/views/zswap_view.rs:107
-#: src/views/swap_view.rs:140
 msgid "Advanced settings"
 msgstr "Edistyneet asetukset"
 
-#: src/views/zram_view.rs:257
 msgid "Algorithm"
 msgstr "Algoritmi"
 
-#: src/views/zswap_view.rs:155
-#: src/views/swap_view.rs:160
 msgid "Apply Settings"
 msgstr "Käytä asetuksia"
 
-#: src/views/dashboard_view.rs:251
+msgid "Applying settings…"
+msgstr "Käytä asetuksia"
+
 msgid "Auth needed"
 msgstr "Todennus vaaditaan"
 
-#: src/views/zram_view.rs:274
+msgid "Buf"
+msgstr "Buf"
+
+msgid "Buffers"
+msgstr "Välimuistit"
+
+msgid "Cache"
+msgstr "Välimuisti"
+
+msgid "Cached"
+msgstr "Välimuistissa"
+
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/views/zram_view.rs:68
+msgid "Cancel Test"
+msgstr "Peruuta"
+
+msgid "Cancelled by user."
+msgstr "Käyttäjän peruuttama."
+
+msgid "Channels"
+msgstr "Kanavat"
+
+msgid "Completed successfully — memory pressure test passed."
+msgstr "Suoritus onnistui — muistipaineen testi läpäisty."
+
+msgid ""
+msgstr ""
+
 msgid "Compressed RAM block device — fast in-memory swap"
 msgstr "Puristettu RAM-tilalohkolaitteisto — nopea muistivaihdon käyttö"
 
-#: src/views/zswap_view.rs:95
-msgid "Compressed write-back cache for swap"
-msgstr "Puristettu kirjoitusvälimuisti vaihtotiedostoa varten"
-
-#: src/views/zswap_view.rs:68
-msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr "Puristettu kirjoitusvälimuisti — sieppaa sivut ennen levyn vaihtotiedostoon tallennusta"
-
-#: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
 msgstr "Pakkausalgorithmi"
 
-#: src/views/zram_view.rs:275
 msgid "Create"
 msgstr "Luo"
 
-#: src/views/zram_view.rs:93
-#: src/views/zram_view.rs:160
 msgid "Create Zram Device"
 msgstr "Luo Zram-laitteen"
 
-#: src/views/zram_view.rs:311
+msgid ""
+msgstr "Puristettu RAM-tilalohkolaitteisto — nopea muistivaihdon käyttö"
+
 msgid "Creating Zram device…"
 msgstr "Luodaan Zram-laitetta…"
 
-#: src/window.rs:111
 msgid "Dashboard"
 msgstr "Työkalupaneeli"
 
-#: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
 msgstr "Tuhoa Zram-laite"
 
-#: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
 msgstr "Tuhoetaan Zram-laitetta…"
 
-#: src/views/zram_view.rs:331
 msgid "Device Created"
 msgstr "Laite luotu"
 
-#: src/views/dashboard_view.rs:327
 msgid "Disabled"
 msgstr "Poistettu käytöstä"
 
-#: src/views/swap_view.rs:250
+msgid "Disabling Zswap..."
+msgstr "Vaihtotiedostoa käytöstä poistetaan…"
+
 msgid "Disabling swap will break hibernation. Continue?"
 msgstr "Vaihtotiedoston poistaminen käytöstä rikoo lepotilan. Haluatko jatkaa?"
 
-#: src/views/swap_view.rs:220
 msgid "Disabling swap…"
 msgstr "Vaihtotiedostoa käytöstä poistetaan…"
 
-#: src/views/swap_view.rs:62
+msgid "Disk Swap"
+msgstr "Välimuistitalous"
+
 msgid "Disk Swap Configuration"
-msgstr "Vaihtotiedoston asetukset"
+msgstr "Virtuaali muistin vaihtotiedoston asetus"
 
-#: src/views/swap_view.rs:65
+msgid ""
+msgstr ""
+
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr "Vaihtotiedosto levystä – viimeinen turva, kun muisti on täynnä"
+msgstr "Levypohjainen virtuaali muistitiedosto — viimeinen turva, kun RAM-muisti on täynnä"
 
-#: src/views/swap_view.rs:220
+msgid "Duration:"
+msgstr "Kesto:"
+
+msgid ""
+msgstr ""
+
+msgid "Enabling Zswap..."
+msgstr "Vaihtotiedostoa otetaan käyttöön…"
+
 msgid "Enabling swap…"
 msgstr "Vaihtotiedostoa otetaan käyttöön…"
 
-#: src/views/zswap_view.rs:235
-#: src/views/swap_view.rs:238
-#: src/views/swap_view.rs:290
-#: src/views/zram_view.rs:152
+msgid "Ensure important work is saved before running this test."
+msgstr "Varmista, että tärkeä työ on tallennettu ennen tämän testin suorittamista."
+
 msgid "Error"
 msgstr "Virhe"
 
-#: src/views/swap_view.rs:249
-#: src/views/swap_view.rs:303
+msgid "Free"
+msgstr "Vapaa"
+
+msgid "Growth speed"
+msgstr "Kasvunopeus"
+
+msgid "Hello {0}, you have {1} messages"
+msgstr "Moi {0}, sinulla on {1} viestiä"
+
+msgid "Hibernation"
+msgstr "Lepotila-varoitus"
+
 msgid "Hibernation Warning"
 msgstr "Lepotila-varoitus"
 
-#: src/views/zswap_view.rs:125
-msgid "How much RAM zswap can use for compressed pages"
-msgstr "Kuinka paljon RAM-muistia zswap voi käyttää pakattuja sivuja varten"
+msgid ""
+msgstr "Lepotila ei havaittu — suositus: {0} GiB"
 
-#: src/views/zswap_view.rs:325
-#: src/views/dashboard_view.rs:341
-#: src/views/swap_view.rs:323
-#: src/views/swap_view.rs:346
+msgid "Hibernation not detected — recommended: {0} GiB"
+msgstr "Lepotila ei havaittu — suositus: {0} GiB"
+
+msgid ""
+msgstr ""
+
+msgid "Idle ({0} GiB available)"
+msgstr "Tyhjäkäynti ({0} GiB käytettävissä)"
+
 msgid "Inactive"
 msgstr "Epäaktiivinen"
 
-#: src/views/zswap_view.rs:93
-#: src/views/swap_view.rs:95
 msgid "Loading..."
 msgstr "Ladataan..."
 
-#: src/views/zswap_view.rs:124
-msgid "Max pool (% of RAM)"
-msgstr "Enimmäismäärä (% muistista)"
+msgid "Max % of RAM the compressed pool may occupy. Recommended: 20%"
+msgstr "Puristuskokoelman maksimikoko RAMiin verrattuna. Suositus: 20 %"
 
-#: src/views/dashboard_view.rs:105
+msgid "Maximum hold time"
+msgstr "Maksimipysäytysaika"
+
+msgid "Maximum pool percent"
+msgstr "Maksimikokoelmaprosentti"
+
 msgid "Memory Overview"
 msgstr "Muistiseuranta"
 
-#: src/views/zswap_view.rs:142
-msgid "Memory shrinker"
-msgstr "Muistinpuristaja"
+msgid "No Zram Devices"
+msgstr "Zram-laitteet"
 
-#: src/views/dashboard_view.rs:296
 msgid "No device"
 msgstr "Ei laitetta"
 
-#: src/views/zram_view.rs:115
-msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr "Ei zram-laitteita. Luo yksi käyttääksesi pakattua RAM-vaihtomuistia."
+msgid "No disk swap detected"
+msgstr "Levynväliaistetta ei havaittu"
 
-#: src/views/dashboard_view.rs:360
+msgid "No memory acceleration enabled"
+msgstr "Muistin kiihdytys ei ole käytössä"
+
 msgid "None"
 msgstr "Ei mitään"
 
-#: src/views/dashboard_view.rs:350
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "Off"
 msgstr "Pois päältä"
 
-#: src/views/dashboard_view.rs:354
-#: src/views/dashboard_view.rs:364
 msgid "On"
 msgstr "Päällä"
 
-#: src/views/zswap_view.rs:134
-msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr "Tätä heikommin pakkauvat sivut hylätään — mitä alhaisempi, sitä aggressiivisempi"
+msgid ""
+msgstr ""
 
-#: src/views/zram_view.rs:266
+msgid "Optimal memory configuration"
+msgstr "Optimaalinen muistikonfiguraatio"
+
+msgid "Peak allocated:"
+msgstr "Maksimiallokointi:"
+
 msgid "Priority"
 msgstr "Ensisijainen"
 
-#: src/views/dashboard_view.rs:108
+msgid "RAM"
+msgstr "RAM"
+
 msgid "Real-time RAM, swap, and compression subsystem status"
 msgstr "Reaaliaikainen RAM-, swappaamis- ja puristusalijärjestelmien tila"
 
-#: src/views/zswap_view.rs:143
-msgid "Reclaim pool memory when system is under pressure"
-msgstr "Vapauta poolimuistia järjestelmän ollessa paineen alla"
+msgid "Reclaim pool pages under memory pressure. Recommended: ON"
+msgstr "Palauta kokoelman sivut muistipaineen yhteydessä. Suositus: PÄÄLLÄ"
 
-#: src/views/zram_view.rs:462
 msgid "Remove"
 msgstr "Poista"
 
-#: src/views/swap_view.rs:275
-msgid "Resizing swap file…"
-msgstr "Swappaustiedoston kokoa muutetaan…"
+msgid "Run Again"
+msgstr "Suorita uudelleen"
 
-#: src/views/zram_view.rs:213
+msgid "Run Stress Test"
+msgstr "Suorita rasitustesti"
+
+msgid "Shrinker"
+msgstr "Muistinpuristaja"
+
+msgid "Simulate memory pressure to test swap and OOM behavior"
+msgstr "Jäljitä muistipainetta testataksesi välimuistin ja OOM-käytöksen"
+
 msgid "Size (MiB)"
 msgstr "Koko (MiB)"
 
-#: src/window.rs:114
+msgid "Speed"
+msgstr "Nopeus"
+
+msgid "Stress Test"
+msgstr "Rasitustesti"
+
 msgid "Swap"
 msgstr "Swappaus"
 
-#: src/window.rs:59
 msgid "Swap Control"
-msgstr "Swappaushallinta"
+msgstr "Virtuaali-muistion"
 
-#: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr "Swappaustiedoston koko"
+msgstr "Virtuaalimuistin koko"
 
-#: src/views/swap_view.rs:150
+msgid "Swap usage"
+msgstr "Virtuaali muistin käyttö"
+
 msgid "Swappiness"
-msgstr "Swappaavuus"
+msgstr "Vaihtuvuus"
 
-#: src/window.rs:112
+msgid "Target Pressure"
+msgstr "Kohdepainetta"
+
+msgid "Test Complete"
+msgstr "Testi valmis"
+
+msgid "Total RAM"
+msgstr "Kokonaismuisti"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "Used"
+msgstr "Käytetty"
+
+msgid "Warning: This will consume system memory and may cause instability"
+msgstr "Varoitus: Tämä käyttää järjestelmämuistia ja voi aiheuttaa epävakaata tilaa"
+
+msgid ""
+msgstr ""
+
 msgid "Zram"
 msgstr "Zram"
 
-#: src/views/zram_view.rs:65
 msgid "Zram Devices"
 msgstr "Zram-laitteet"
 
-#: src/window.rs:113
+msgid "Zram and Zswap are both active"
+msgstr "Zram ja Zswap ovat molemmat käytössä"
+
+msgid ""
+msgstr ""
+
 msgid "Zswap"
 msgstr "Zswap"
 
-#: src/views/zswap_view.rs:65
+msgid "default"
+msgstr "oletus"
+
+msgid ""
+msgstr ""
+
+msgid "range"
+msgstr "väli"
+
+msgid "seconds"
+msgstr "sekuntia"
+
+msgid "{0} · pool {1}%"
+msgstr "{0} · pooli {1}%"
+
+msgid "{0} · saved {1}%"
+msgstr "{0} · säästetty {1}%"
+
+msgid "Active"
+msgstr "Aktiivinen"
+
+msgid "Compressed write-back cache for swap"
+msgstr "Puristettu kirjoitusvälimuisti vaihtotiedostoa varten"
+
+msgid "Compressed write-back cache — intercepts pages before disk swap"
+msgstr "Tiivistetty kirjoitusvälimuisti — sieppaa sivut ennen levyn virtuaali muistin käyttöä"
+
+msgid "How much RAM zswap can use for compressed pages"
+msgstr "Kuinka paljon RAM-muistia zswap voi käyttää pakattuja sivuja varten"
+
+msgid "Max pool (% of RAM)"
+msgstr "Enimmäismäärä (% muistista)"
+
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr "Zram-laitteita ei ole. Luo yksi tiivistetyn RAM-virtuaali muistin käyttöönottoa varten."
+
+msgid "Reclaim pool memory when system is under pressure"
+msgstr "Vapauta poolimuistia järjestelmän ollessa paineen alla"
+
+msgid "Resizing swap file…"
+msgstr "Väliaikaismuistin tiedoston kokoa muutetaan…"
+
 msgid "Zswap Configuration"
 msgstr "Zswap-asetukset"
 
-#: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
 msgstr "lzo-rle on nopein, zstd säästää enemmän tilaa"
-
