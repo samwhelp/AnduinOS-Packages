@@ -8,8 +8,8 @@ use std::cell::RefCell;
 use crate::application::SwapcontrolApplication;
 use crate::i18n::i18n;
 use crate::views::{
-    dashboard_view::DashboardView, swap_view::SwapView,
-    zram_view::ZramView,
+    dashboard_view::DashboardView, stress_test_view::StressTestView,
+    swap_view::SwapView, zram_view::ZramView,
 };
 
 mod imp {
@@ -21,6 +21,7 @@ mod imp {
         pub dashboard_view: RefCell<Option<DashboardView>>,
         pub swap_view: RefCell<Option<SwapView>>,
         pub zram_view: RefCell<Option<ZramView>>,
+        pub stress_test_view: RefCell<Option<StressTestView>>,
     }
 
     #[glib::object_subclass]
@@ -110,10 +111,12 @@ impl SwapcontrolWindow {
         let dashboard_row = create_sidebar_row("utilities-system-monitor-symbolic", &i18n("Dashboard"));
         let zram_row = create_sidebar_row("media-flash-symbolic", &i18n("Zram"));
         let swap_row = create_sidebar_row("drive-harddisk-symbolic", &i18n("Swap"));
+        let stress_row = create_sidebar_row("applications-engineering-symbolic", &i18n("Stress Test"));
 
         sidebar_list.append(&dashboard_row);
         sidebar_list.append(&zram_row);
         sidebar_list.append(&swap_row);
+        sidebar_list.append(&stress_row);
         sidebar_list.select_row(Some(&dashboard_row));
 
         let sidebar_header = adw::HeaderBar::builder()
@@ -134,10 +137,12 @@ impl SwapcontrolWindow {
         let dashboard_view = DashboardView::new();
         let swap_view = SwapView::new();
         let zram_view = ZramView::new();
+        let stress_test_view = StressTestView::new();
 
         stack.add_named(&dashboard_view, Some("dashboard"));
         stack.add_named(&swap_view, Some("swap"));
         stack.add_named(&zram_view, Some("zram"));
+        stack.add_named(&stress_test_view, Some("stress"));
 
         let content_header = adw::HeaderBar::builder()
             .show_start_title_buttons(false)
@@ -188,6 +193,7 @@ impl SwapcontrolWindow {
                     0 => "dashboard",
                     1 => "zram",
                     2 => "swap",
+                    3 => "stress",
                     _ => return,
                 };
                 stack_clone.set_visible_child_name(name);
@@ -205,6 +211,7 @@ impl SwapcontrolWindow {
         *imp.dashboard_view.borrow_mut() = Some(dashboard_view);
         *imp.swap_view.borrow_mut() = Some(swap_view);
         *imp.zram_view.borrow_mut() = Some(zram_view);
+        *imp.stress_test_view.borrow_mut() = Some(stress_test_view);
 
         // Defer initial refresh until main loop is running (needed for polkit auth dialog)
         let weak = self.downgrade();
@@ -225,6 +232,7 @@ impl SwapcontrolWindow {
             "dashboard" => { if let Some(v) = imp.dashboard_view.borrow().as_ref() { v.refresh_data(); } }
             "zram" => { if let Some(v) = imp.zram_view.borrow().as_ref() { v.refresh_data(); } }
             "swap" => { if let Some(v) = imp.swap_view.borrow().as_ref() { v.refresh_data(); } }
+            "stress" => { if let Some(v) = imp.stress_test_view.borrow().as_ref() { v.refresh_data(); } }
             _ => {}
         }
     }

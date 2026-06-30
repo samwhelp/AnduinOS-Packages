@@ -78,7 +78,7 @@ impl DashboardView {
 
     fn start_auto_refresh(&self) {
         let weak = self.downgrade();
-        let id = glib::timeout_add_local(std::time::Duration::from_secs(5), move || {
+        let id = glib::timeout_add_local(std::time::Duration::from_millis(500), move || {
             if let Some(view) = weak.upgrade() {
                 view.refresh_data();
                 glib::ControlFlow::Continue
