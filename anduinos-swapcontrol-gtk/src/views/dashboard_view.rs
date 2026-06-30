@@ -18,7 +18,7 @@ mod imp {
         pub zram_bar: RefCell<Option<UsageBar>>,
         pub zswap_bar: RefCell<Option<UsageBar>>,
         pub swap_bar: RefCell<Option<UsageBar>>,
-        pub ram_loaded: RefCell<bool>,
+        pub last_dmidecode: RefCell<Option<std::time::Instant>>,
         pub ram_total: RefCell<Option<gtk::Label>>,
         pub ram_type: RefCell<Option<gtk::Label>>,
         pub ram_speed: RefCell<Option<gtk::Label>>,
@@ -28,6 +28,7 @@ mod imp {
         pub zram_sub: RefCell<Option<gtk::Label>>,
         pub hiber_sub: RefCell<Option<gtk::Label>>,
         pub swappiness_sub: RefCell<Option<gtk::Label>>,
+        pub recommendation_box: RefCell<Option<gtk::Box>>,
         pub refresh_timer: RefCell<Option<glib::SourceId>>,
     }
 
@@ -117,6 +118,12 @@ impl DashboardView {
                 .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
         }
 
+        // ─── Recommendations (context-aware tips) ─────────────────────
+        let rec_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(8)
+            .margin_top(8).build();
+        self.append(&rec_box);
+        *imp.recommendation_box.borrow_mut() = Some(rec_box);
+
         // ─── RAM spec bar ────────────────────────────────────────────
         let spec = gtk::Grid::builder().row_spacing(8).column_spacing(8).column_homogeneous(true).build();
         let (c0, l0) = mini_stat("Total RAM", "...");
@@ -198,11 +205,13 @@ impl DashboardView {
         // ─── RAM hardware ────────────────────────────────────────────
         let ram = ram_info::read_ram_basic(); // non-blocking, no pkexec
 
-        // Try full dmidecode if we don't have DIMM data yet (retries until success)
-        let has_dimm = imp.ram_dimm.borrow().as_ref()
-            .map(|l| l.label().as_str() != "Auth needed" && !l.label().as_str().is_empty()).unwrap_or(false);
-        if !has_dimm || !*imp.ram_loaded.borrow() {
-            *imp.ram_loaded.borrow_mut() = true;
+        // Try dmidecode with 30s cooldown between retries (prevents auth-spam but recovers)
+        let now = std::time::Instant::now();
+        let should_try = imp.last_dmidecode.borrow()
+            .map(|t| now.duration_since(t) > std::time::Duration::from_secs(30))
+            .unwrap_or(true);
+        if should_try {
+            *imp.last_dmidecode.borrow_mut() = Some(now);
             let (tx, rx) = async_channel::bounded(1);
             tokio::spawn(async move {
                 let full = ram_info::read_ram_info_full();
@@ -367,7 +376,57 @@ impl DashboardView {
             let sw_str = format!("{}", sw);
             if let Some(l) = imp.swappiness_sub.borrow().as_ref() { l.set_text(&sw_str); }
         }
+
+        // ─── Recommendations (at most one, highest priority first) ─────
+        if let Some(rec_box) = imp.recommendation_box.borrow().as_ref() {
+            while let Some(c) = rec_box.first_child() { rec_box.remove(&c); }
+
+            let swap_active = swapfile::is_swap_active();
+            let has_zram = !zram::read_zram_devices().is_empty();
+            let zswap_on = zswap::read_zswap_config().map(|c| c.enabled).unwrap_or(false);
+
+            if !swap_active {
+                let card = build_rec_card((0.93, 0.55, 0.0),
+                    &i18n("No disk swap detected"),
+                    &i18n("When RAM is full the kernel may kill applications. Enable disk swap for a reliable safety net."));
+                rec_box.append(&card);
+            } else if !has_zram {
+                let card = build_rec_card((0.93, 0.55, 0.0),
+                    &i18n("No Zram device detected"),
+                    &i18n("Zram compresses swap pages in RAM — it's 10× faster than disk swap and dramatically reduces I/O. Create a Zram device for snappier performance under memory pressure."));
+                rec_box.append(&card);
+            } else if !zswap_on {
+                let card = build_rec_card((0.93, 0.55, 0.0),
+                    &i18n("Zswap is not enabled"),
+                    &i18n("Zswap adds a compressed RAM write-back cache between Zram and disk swap, preventing the system from freezing when swap is finally needed. Enable it for a smoother experience."));
+                rec_box.append(&card);
+            } else {
+                let card = build_rec_card((0.15, 0.72, 0.25),
+                    &i18n("Optimal memory configuration"),
+                    &i18n("Zram → Zswap → Disk Swap — your three-tier memory defense is fully armed. Maximum performance and safety."));
+                rec_box.append(&card);
+            }
+        }
     }
+}
+
+fn build_rec_card(accent: (f64, f64, f64), title: &str, subtitle: &str) -> gtk::Box {
+    let card = gtk::Box::builder().orientation(gtk::Orientation::Horizontal)
+        .css_classes(["card"]).spacing(12).build();
+    let bar = gtk::DrawingArea::builder().content_width(4).vexpand(true).halign(gtk::Align::Fill).valign(gtk::Align::Fill).build();
+    let (r, g, b) = accent;
+    bar.set_draw_func(move |_, ctx, w, h| {
+        ctx.set_source_rgb(r, g, b);
+        ctx.rectangle(0.0, 0.0, w as f64, h as f64);
+        ctx.fill().ok();
+    });
+    card.append(&bar);
+    let inner = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(4)
+        .hexpand(true).margin_start(8).margin_end(16).margin_top(12).margin_bottom(12).build();
+    inner.append(&gtk::Label::builder().label(title).css_classes(["heading"]).halign(gtk::Align::Start).build());
+    inner.append(&gtk::Label::builder().label(subtitle).css_classes(["caption"]).wrap(true).halign(gtk::Align::Start).build());
+    card.append(&inner);
+    card
 }
 
 fn info_card(icon: &str, title: &str, subtitle: &str) -> (gtk::Box, gtk::Label) {

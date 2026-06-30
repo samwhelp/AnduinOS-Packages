@@ -8,7 +8,7 @@ use crate::swap::{swapfile, sysctl, hibernation, zswap};
 use crate::utils;
 use crate::widgets::usage_bar::UsageBar;
 
-const COMPRESSORS: &[&str] = &["lzo", "lz4", "lz4hc", "zstd", "deflate", "842"];
+const COMPRESSORS: &[&str] = &["lz4", "zstd", "lz4hc", "lzo", "deflate", "842"];
 
 mod imp {
     use super::*;
@@ -23,6 +23,8 @@ mod imp {
         pub enable_switch: RefCell<Option<gtk::Switch>>,
         pub swappiness_scale: RefCell<Option<gtk::Scale>>,
         pub size_scale: RefCell<Option<gtk::Scale>>,
+        pub size_card: RefCell<Option<gtk::Box>>,
+        pub expander: RefCell<Option<gtk::Expander>>,
         pub apply_revealer: RefCell<Option<gtk::Revealer>>,
         pub apply_btn: RefCell<Option<gtk::Button>>,
         pub spinner: RefCell<Option<gtk::Spinner>>,
@@ -138,7 +140,13 @@ impl SwapView {
         zswap_inner.append(&zswap_icon);
         let zswap_text = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
         zswap_text.append(&gtk::Label::builder().label(&i18n("Zswap")).css_classes(["heading"]).halign(gtk::Align::Start).build());
-        zswap_text.append(&gtk::Label::builder().label(&i18n("Compress swap pages in a RAM pool — faster than disk swap"))
+        let ram_for_zswap = sysctl::read_total_ram().unwrap_or(0);
+        let zswap_subtitle = if ram_for_zswap > 12 * 1024 * 1024 * 1024 {
+            format!("{}  ·  {}", i18n("Compress swap pages in a RAM pool — faster than disk swap"), i18n("Recommended"))
+        } else {
+            i18n("Compress swap pages in a RAM pool — faster than disk swap")
+        };
+        zswap_text.append(&gtk::Label::builder().label(&zswap_subtitle)
             .css_classes(["caption"]).halign(gtk::Align::Start).build());
         zswap_inner.append(&zswap_text);
         let zswap_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
@@ -172,6 +180,7 @@ impl SwapView {
         size_box.append(&size_inner);
         inner.append(&size_box);
         *imp.size_scale.borrow_mut() = Some(size_scale);
+        *imp.size_card.borrow_mut() = Some(size_box);
 
         // ─── Advanced expander ──────────────────────────────────────
         let expander = gtk::Expander::builder().label(&i18n("Advanced settings")).margin_top(6).build();
@@ -196,7 +205,7 @@ impl SwapView {
         let compressor_dropdown = gtk::DropDown::from_strings(COMPRESSORS);
         zswap_adv_box.append(&labeled_widget(
             &i18n("Compression algorithm"),
-            &i18n("lz4 = fast, zstd = best compression, lzo = safest fallback. Changing requires zswap restart."),
+            &i18n("lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires zswap restart."),
             &compressor_dropdown));
 
         let pool_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
@@ -235,6 +244,7 @@ impl SwapView {
 
         expander.set_child(Some(&adv_box));
         inner.append(&expander);
+        *imp.expander.borrow_mut() = Some(expander);
 
         // ─── Apply button (revealed on change) ─────────────────────
         let revealer = gtk::Revealer::builder().transition_type(gtk::RevealerTransitionType::SlideDown).build();
@@ -298,7 +308,7 @@ impl SwapView {
         let comp = imp.compressor_dropdown.borrow().as_ref().and_then(|d| {
             let idx = d.selected() as usize;
             COMPRESSORS.get(idx).map(|s| s.to_string())
-        }).unwrap_or_else(|| "lzo".to_string());
+        }).unwrap_or_else(|| "lz4".to_string());
         let pool = imp.pool_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(20);
         let thresh = imp.threshold_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(90);
         let shrinker = imp.shrinker_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(true);
@@ -369,7 +379,7 @@ impl SwapView {
         let comp = imp.compressor_dropdown.borrow().as_ref().and_then(|d| {
             let idx = d.selected() as usize;
             COMPRESSORS.get(idx).map(|s| s.to_string())
-        }).unwrap_or_else(|| "lzo".to_string());
+        }).unwrap_or_else(|| "lz4".to_string());
         let pool = imp.pool_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(20);
         let thresh = imp.threshold_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(90);
         let shrinker = imp.shrinker_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(true);
@@ -469,8 +479,13 @@ impl SwapView {
             *imp.orig_swap.borrow_mut() = val;
         }
 
-        // Zswap state
+        // Hide swap-dependent controls when swap is off — nothing to configure
         let swap_active = imp.enable_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(false);
+        if let Some(bar) = imp.usage_bar.borrow().as_ref() { bar.set_visible(swap_active); }
+        if let Some(card) = imp.size_card.borrow().as_ref() { card.set_visible(swap_active); }
+        if let Some(exp) = imp.expander.borrow().as_ref() { exp.set_visible(swap_active); }
+
+        // Zswap state
         if let Some(card) = imp.zswap_card.borrow().as_ref() { card.set_visible(swap_active); }
         if swap_active {
             if let Ok(zc) = zswap::read_zswap_config() {
