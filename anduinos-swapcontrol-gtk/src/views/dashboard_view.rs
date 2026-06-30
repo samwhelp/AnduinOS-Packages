@@ -19,6 +19,7 @@ mod imp {
         pub zswap_bar: RefCell<Option<UsageBar>>,
         pub swap_bar: RefCell<Option<UsageBar>>,
         pub last_dmidecode: RefCell<Option<std::time::Instant>>,
+        pub dmidecode_pending: RefCell<bool>,
         pub ram_total: RefCell<Option<gtk::Label>>,
         pub ram_type: RefCell<Option<gtk::Label>>,
         pub ram_speed: RefCell<Option<gtk::Label>>,
@@ -205,49 +206,56 @@ impl DashboardView {
         // ─── RAM hardware ────────────────────────────────────────────
         let ram = ram_info::read_ram_basic(); // non-blocking, no pkexec
 
-        // Try dmidecode with 30s cooldown between retries (prevents auth-spam but recovers)
-        let now = std::time::Instant::now();
-        let should_try = imp.last_dmidecode.borrow()
-            .map(|t| now.duration_since(t) > std::time::Duration::from_secs(30))
-            .unwrap_or(true);
-        if should_try {
-            *imp.last_dmidecode.borrow_mut() = Some(now);
-            let (tx, rx) = async_channel::bounded(1);
-            tokio::spawn(async move {
-                let full = ram_info::read_ram_info_full();
-                let _ = tx.send(full).await;
-            });
-            let weak = self.downgrade();
-            glib::spawn_future_local(async move {
-                if let Ok(full) = rx.recv().await {
-                    if let Some(view) = weak.upgrade() {
-                        let imp = view.imp();
-                        if !full.ram_type.is_empty() {
-                            if let Some(l) = imp.ram_type.borrow().as_ref() { l.set_text(&full.ram_type); }
-                        }
-                        if full.speed_mts > 0 {
-                            let s = format!("{} MT/s", full.speed_mts);
-                            if let Some(l) = imp.ram_speed.borrow().as_ref() { l.set_text(&s); }
-                        }
-                        let pop: Vec<_> = full.dimms.iter().filter(|d| d.size_gb > 0).collect();
-                        if !pop.is_empty() {
-                            let d = format!("{}×{}GB", pop.len(), pop[0].size_gb);
-                            if let Some(l) = imp.ram_dimm.borrow().as_ref() { l.set_text(&d); }
-                        }
-                    }
-                }
-            });
-        }
-        // Only update RAM labels if dmidecode hasn't already loaded real data
-        let ram_gb_str = format!("{:.0} GiB", ram.total_gb);
-        if let Some(l) = imp.ram_total.borrow().as_ref() {
-            l.set_text(&ram_gb_str); // total RAM always updates
-        }
-        // Type/Speed/Dimm: immutable hardware — set once, never touch again
-        let has_real_data = imp.ram_type.borrow().as_ref()
+        let has_dmidecode_data = imp.ram_type.borrow().as_ref()
             .map(|l| l.label().as_str() != "-" && l.label().as_str() != "..." && !l.label().as_str().contains("Auth"))
             .unwrap_or(false);
-        if !has_real_data {
+
+        // Try dmidecode: only if we don't have data yet, no call is in flight,
+        // and cooldown has elapsed since the last attempt finished.
+        if !has_dmidecode_data && !*imp.dmidecode_pending.borrow() {
+            let now = std::time::Instant::now();
+            let cooldown_ok = imp.last_dmidecode.borrow()
+                .map(|t| now.duration_since(t) > std::time::Duration::from_secs(30))
+                .unwrap_or(true);
+            if cooldown_ok {
+                *imp.dmidecode_pending.borrow_mut() = true;
+                let (tx, rx) = async_channel::bounded(1);
+                tokio::spawn(async move {
+                    let full = ram_info::read_ram_info_full();
+                    let _ = tx.send(full).await;
+                });
+                let weak = self.downgrade();
+                glib::spawn_future_local(async move {
+                    let result = rx.recv().await;
+                    if let Some(view) = weak.upgrade() {
+                        let imp = view.imp();
+                        *imp.dmidecode_pending.borrow_mut() = false;
+                        *imp.last_dmidecode.borrow_mut() = Some(std::time::Instant::now());
+                        if let Ok(full) = result {
+                            if !full.ram_type.is_empty() {
+                                if let Some(l) = imp.ram_type.borrow().as_ref() { l.set_text(&full.ram_type); }
+                            }
+                            if full.speed_mts > 0 {
+                                let s = format!("{} MT/s", full.speed_mts);
+                                if let Some(l) = imp.ram_speed.borrow().as_ref() { l.set_text(&s); }
+                            }
+                            let pop: Vec<_> = full.dimms.iter().filter(|d| d.size_gb > 0).collect();
+                            if !pop.is_empty() {
+                                let d = format!("{}×{}GB", pop.len(), pop[0].size_gb);
+                                if let Some(l) = imp.ram_dimm.borrow().as_ref() { l.set_text(&d); }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        // Total RAM always updates from /proc/meminfo
+        let ram_gb_str = format!("{:.0} GiB", ram.total_gb);
+        if let Some(l) = imp.ram_total.borrow().as_ref() {
+            l.set_text(&ram_gb_str);
+        }
+        // Type/Speed/Dimm: show fallback until dmidecode delivers real data
+        if !has_dmidecode_data {
             if let Some(l) = imp.ram_type.borrow().as_ref() {
                 l.set_text(if ram.ram_type.is_empty() { "-" } else { &ram.ram_type });
             }
@@ -378,6 +386,7 @@ impl DashboardView {
         }
 
         // ─── Recommendations (at most one, highest priority first) ─────
+        // Zram and Zswap are mutually exclusive — enabling both is an anti-pattern.
         if let Some(rec_box) = imp.recommendation_box.borrow().as_ref() {
             while let Some(c) = rec_box.first_child() { rec_box.remove(&c); }
 
@@ -390,20 +399,20 @@ impl DashboardView {
                     &i18n("No disk swap detected"),
                     &i18n("When RAM is full the kernel may kill applications. Enable disk swap for a reliable safety net."));
                 rec_box.append(&card);
-            } else if !has_zram {
-                let card = build_rec_card((0.93, 0.55, 0.0),
-                    &i18n("No Zram device detected"),
-                    &i18n("Zram compresses swap pages in RAM — it's 10× faster than disk swap and dramatically reduces I/O. Create a Zram device for snappier performance under memory pressure."));
+            } else if has_zram && zswap_on {
+                let card = build_rec_card((0.93, 0.20, 0.20),
+                    &i18n("Zram and Zswap are both active"),
+                    &i18n("Zram and Zswap are mutually exclusive — each creates its own compressed RAM pool. Running both wastes CPU and can cause severe memory thrashing. Disable one of them."));
                 rec_box.append(&card);
-            } else if !zswap_on {
+            } else if !has_zram && !zswap_on {
                 let card = build_rec_card((0.93, 0.55, 0.0),
-                    &i18n("Zswap is not enabled"),
-                    &i18n("Zswap adds a compressed RAM write-back cache between Zram and disk swap, preventing the system from freezing when swap is finally needed. Enable it for a smoother experience."));
+                    &i18n("No memory acceleration enabled"),
+                    &i18n("Enable Zram for snappy compressed swap in RAM — it's 10× faster than disk swap and dramatically reduces I/O under memory pressure."));
                 rec_box.append(&card);
             } else {
                 let card = build_rec_card((0.15, 0.72, 0.25),
                     &i18n("Optimal memory configuration"),
-                    &i18n("Zram → Zswap → Disk Swap — your three-tier memory defense is fully armed. Maximum performance and safety."));
+                    &i18n("Disk swap is active with memory compression — your system is well-protected against memory pressure."));
                 rec_box.append(&card);
             }
         }

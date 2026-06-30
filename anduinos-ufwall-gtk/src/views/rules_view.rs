@@ -74,7 +74,7 @@ impl RulesView {
         let empty_state = adw::StatusPage::builder()
             .title(i18n("No Rules"))
             .description(i18n("There are no rules configured yet."))
-            .icon_name("network-firewall-symbolic")
+            .icon_name("network-firewall")
             .build();
         rules_group.add(&empty_state);
 

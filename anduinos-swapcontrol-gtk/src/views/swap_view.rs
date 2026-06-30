@@ -21,7 +21,9 @@ mod imp {
         pub enable_row: RefCell<Option<adw::SwitchRow>>,
         pub swappiness_scale: RefCell<Option<gtk::Scale>>,
         pub size_scale: RefCell<Option<gtk::Scale>>,
-        pub size_group: RefCell<Option<adw::PreferencesGroup>>,
+        pub settings_group: RefCell<Option<adw::PreferencesGroup>>,
+        pub size_row: RefCell<Option<adw::ActionRow>>,
+        pub adv_group: RefCell<Option<adw::PreferencesGroup>>,
         pub expander: RefCell<Option<adw::ExpanderRow>>,
         pub apply_revealer: RefCell<Option<gtk::Revealer>>,
         pub apply_btn: RefCell<Option<gtk::Button>>,
@@ -30,9 +32,8 @@ mod imp {
         pub orig_swap: RefCell<u8>,
         pub orig_size: RefCell<u64>,
         // Zswap widgets
-        pub zswap_group: RefCell<Option<adw::PreferencesGroup>>,
         pub zswap_switch: RefCell<Option<adw::SwitchRow>>,
-        pub compressor_dropdown: RefCell<Option<gtk::DropDown>>,
+        pub compressor_dropdown: RefCell<Option<adw::ComboRow>>,
         pub pool_scale: RefCell<Option<gtk::Scale>>,
         pub threshold_scale: RefCell<Option<gtk::Scale>>,
         pub shrinker_switch: RefCell<Option<adw::SwitchRow>>,
@@ -99,50 +100,42 @@ impl SwapView {
         inner.append(&spinner);
         *imp.spinner.borrow_mut() = Some(spinner);
 
-        // ─── Status: AdwSwitchRow in PreferencesGroup ─────────────────
-        let status_group = adw::PreferencesGroup::builder().build();
+        // Usage bar — always visible at the top
+        let usage_bar = UsageBar::new("Swap usage", (0.21, 0.52, 0.89));
+        inner.append(&usage_bar);
+        *imp.usage_bar.borrow_mut() = Some(usage_bar);
+
+        // ─── Main settings: Disk Swap + Zswap + Size ──────────────────
+        let settings_group = adw::PreferencesGroup::builder().build();
+
+        // Disk Swap
         let enable_row = adw::SwitchRow::builder()
             .title(&i18n("Disk Swap"))
             .subtitle(&i18n("Loading..."))
             .build();
         let status_icon = gtk::Image::builder().pixel_size(24).build();
         enable_row.add_prefix(&status_icon);
-        status_group.add(&enable_row);
-        inner.append(&status_group);
+        settings_group.add(&enable_row);
         *imp.status_icon.borrow_mut() = Some(status_icon);
         *imp.enable_row.borrow_mut() = Some(enable_row);
 
-        // Usage bar
-        let usage_bar = UsageBar::new("Swap usage", (0.21, 0.52, 0.89));
-        inner.append(&usage_bar);
-        *imp.usage_bar.borrow_mut() = Some(usage_bar);
-
-        // ─── Zswap: AdwSwitchRow in PreferencesGroup ──────────────────
-        let zswap_group = adw::PreferencesGroup::builder().visible(false).build();
+        // Zswap — mutually exclusive with Zram; no "Recommended" label
         let zswap_icon = gtk::Image::builder().icon_name("document-save-symbolic").pixel_size(24).build();
-        let ram_for_zswap = sysctl::read_total_ram().unwrap_or(0);
-        let zswap_sub = if ram_for_zswap > 12 * 1024 * 1024 * 1024 {
-            format!("{}  ·  {}", i18n("Compress swap pages in a RAM pool — faster than disk swap"), i18n("Recommended"))
-        } else {
-            i18n("Compress swap pages in a RAM pool — faster than disk swap")
-        };
+        let zswap_sub = i18n("Compress swap pages in a RAM pool — faster than disk swap. Use Zram or Zswap, not both.");
         let zswap_switch_row = adw::SwitchRow::builder()
             .title(&i18n("Zswap"))
             .subtitle(&zswap_sub)
             .build();
         zswap_switch_row.add_prefix(&zswap_icon);
-        zswap_group.add(&zswap_switch_row);
-        inner.append(&zswap_group);
-        *imp.zswap_group.borrow_mut() = Some(zswap_group);
+        settings_group.add(&zswap_switch_row);
         *imp.zswap_switch.borrow_mut() = Some(zswap_switch_row);
 
-        // ─── Size: AdwActionRow in PreferencesGroup ──────────────────
+        // Swap file size
         let total_ram = sysctl::read_total_ram().unwrap_or(32 * 1024 * 1024 * 1024);
         let max_size = (total_ram / (1024*1024*1024) * 2).max(64);
         let hiber_active = hibernation::is_hibernation_configured();
         let min_size = if hiber_active { (total_ram / (1024*1024*1024)).max(1) + 1 } else { 1 };
         let rec_size = (total_ram / (1024*1024*1024)).max(1);
-        let size_group = adw::PreferencesGroup::builder().build();
         let hint_str = if hiber_active {
             format!("Hibernation active — minimum {} GiB (RAM + 1 GiB). Recommended: {} GiB", min_size, rec_size.max(min_size))
         } else {
@@ -156,12 +149,15 @@ impl SwapView {
             .adjustment(&gtk::Adjustment::new(rec_size.max(min_size) as f64, min_size as f64, max_size as f64, 1.0, 4.0, 0.0))
             .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
         size_row.add_suffix(&size_scale);
-        size_group.add(&size_row);
-        inner.append(&size_group);
+        settings_group.add(&size_row);
         *imp.size_scale.borrow_mut() = Some(size_scale);
-        *imp.size_group.borrow_mut() = Some(size_group);
+        *imp.size_row.borrow_mut() = Some(size_row);
 
-        // ─── Advanced: AdwExpanderRow ────────────────────────────────
+        inner.append(&settings_group);
+        *imp.settings_group.borrow_mut() = Some(settings_group);
+
+        // ─── Advanced: AdwExpanderRow inside PreferencesGroup ──────────
+        let adv_group = adw::PreferencesGroup::builder().build();
         let expander = adw::ExpanderRow::builder()
             .title(&i18n("Advanced settings"))
             .build();
@@ -172,7 +168,8 @@ impl SwapView {
         // Swappiness
         let swappiness_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(rec_sw as f64, 0.0, 100.0, 1.0, 10.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200)
+            .valign(gtk::Align::Center).build();
         let sw_row = adw::ActionRow::builder()
             .title(&i18n("Swappiness"))
             .subtitle(&format!("How aggressively the kernel swaps — lower = stay in RAM longer (recommended: {})", rec_sw))
@@ -182,17 +179,17 @@ impl SwapView {
         *imp.swappiness_scale.borrow_mut() = Some(swappiness_scale);
 
         // Zswap advanced rows (visibility follows zswap state)
-        let compressor_dropdown = gtk::DropDown::from_strings(COMPRESSORS);
-        let comp_row = adw::ActionRow::builder()
+        let comp_row = adw::ComboRow::builder()
             .title(&i18n("Compression algorithm"))
             .subtitle(&i18n("lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires zswap restart."))
+            .model(&gtk::StringList::new(COMPRESSORS))
             .build();
-        comp_row.add_suffix(&compressor_dropdown);
         expander.add_row(&comp_row);
 
         let pool_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(20.0, 1.0, 50.0, 1.0, 5.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200)
+            .valign(gtk::Align::Center).build();
         let pool_row = adw::ActionRow::builder()
             .title(&i18n("Maximum pool percent"))
             .subtitle(&i18n("Max % of RAM the compressed pool may occupy. Recommended: 20%"))
@@ -202,7 +199,8 @@ impl SwapView {
 
         let threshold_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(90.0, 0.0, 100.0, 1.0, 10.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200)
+            .valign(gtk::Align::Center).build();
         let thresh_row = adw::ActionRow::builder()
             .title(&i18n("Accept threshold percent"))
             .subtitle(&i18n("Only store pages that compress to ≤ this % of original. Higher = more pages cached. Recommended: 90%"))
@@ -216,15 +214,17 @@ impl SwapView {
             .build();
         expander.add_row(&shrinker_row);
 
-        inner.append(&expander);
+        adv_group.add(&expander);
+        inner.append(&adv_group);
+        *imp.adv_group.borrow_mut() = Some(adv_group);
         *imp.expander.borrow_mut() = Some(expander);
         *imp.zswap_rows.borrow_mut() = vec![
-            comp_row.upcast::<gtk::Widget>(),
+            comp_row.clone().upcast::<gtk::Widget>(),
             pool_row.upcast::<gtk::Widget>(),
             thresh_row.upcast::<gtk::Widget>(),
             shrinker_row.clone().upcast::<gtk::Widget>(),
         ];
-        *imp.compressor_dropdown.borrow_mut() = Some(compressor_dropdown);
+        *imp.compressor_dropdown.borrow_mut() = Some(comp_row);
         *imp.pool_scale.borrow_mut() = Some(pool_scale);
         *imp.threshold_scale.borrow_mut() = Some(threshold_scale);
         *imp.shrinker_switch.borrow_mut() = Some(shrinker_row);
@@ -459,11 +459,9 @@ impl SwapView {
         // Hide swap-dependent controls when swap is off — nothing to configure
         let swap_active = imp.enable_row.borrow().as_ref().map(|s| s.is_active()).unwrap_or(false);
         if let Some(bar) = imp.usage_bar.borrow().as_ref() { bar.set_visible(swap_active); }
-        if let Some(g) = imp.size_group.borrow().as_ref() { g.set_visible(swap_active); }
-        if let Some(exp) = imp.expander.borrow().as_ref() { exp.set_visible(swap_active); }
-
-        // Zswap group
-        if let Some(g) = imp.zswap_group.borrow().as_ref() { g.set_visible(swap_active); }
+        if let Some(row) = imp.size_row.borrow().as_ref() { row.set_visible(swap_active); }
+        if let Some(row) = imp.zswap_switch.borrow().as_ref() { row.set_visible(swap_active); }
+        if let Some(g) = imp.adv_group.borrow().as_ref() { g.set_visible(swap_active); }
         if swap_active {
             if let Ok(zc) = zswap::read_zswap_config() {
                 if let Some(zsw) = imp.zswap_switch.borrow().as_ref() { zsw.set_active(zc.enabled); }

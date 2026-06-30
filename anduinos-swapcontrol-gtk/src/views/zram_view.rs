@@ -14,7 +14,7 @@ mod imp {
     #[derive(Default)]
     pub struct ZramView {
         pub device_list: RefCell<Option<gtk::ListBox>>,
-        pub status_page: RefCell<Option<adw::StatusPage>>,
+        pub stack: RefCell<Option<gtk::Stack>>,
         pub create_btn: RefCell<Option<gtk::Button>>,
         pub spinner: RefCell<Option<gtk::Spinner>>,
     }
@@ -88,34 +88,44 @@ impl ZramView {
         self.append(&spinner);
         *imp.spinner.borrow_mut() = Some(spinner);
 
-        // Create button (shared, moved between empty state and list bottom)
+        // Create button (always visible at the bottom)
         let create_btn = gtk::Button::builder()
             .label(&i18n("Create Zram Device"))
             .halign(gtk::Align::Center)
             .css_classes(["suggested-action", "pill"])
-            .margin_top(12).margin_bottom(12)
+            .margin_top(12).margin_bottom(6)
             .build();
 
-        // Empty state: AdwStatusPage with icon + description + button
-        let status_page = adw::StatusPage::builder()
-            .icon_name("drive-harddisk-solid-state-symbolic")
+        // Stack: empty state ↔ device list (ufwall Profiles pattern)
+        let empty_page = adw::StatusPage::builder()
             .title(&i18n("No Zram Devices"))
             .description(&i18n("Create a compressed RAM swap device for faster memory pressure handling."))
-            .child(&create_btn.clone())
+            .icon_name("media-flash")
+            .hexpand(true).vexpand(true)
             .build();
-        self.append(&status_page);
-        *imp.status_page.borrow_mut() = Some(status_page);
-        *imp.create_btn.borrow_mut() = Some(create_btn);
 
-        // Device list (hidden when empty)
-        let scroll = gtk::ScrolledWindow::builder().vexpand(true).visible(false).build();
+        let scroll = gtk::ScrolledWindow::builder().vexpand(true).build();
         let device_list = gtk::ListBox::builder()
             .css_classes(["boxed-list"])
             .selection_mode(gtk::SelectionMode::None)
             .build();
         scroll.set_child(Some(&device_list));
-        self.append(&scroll);
+
+        let stack = gtk::Stack::builder()
+            .transition_type(gtk::StackTransitionType::Crossfade)
+            .hexpand(true).vexpand(true)
+            .build();
+        stack.add_named(&empty_page, Some("empty"));
+        stack.add_named(&scroll, Some("devices"));
+        stack.set_visible_child_name("empty");
+
+        self.append(&stack);
         *imp.device_list.borrow_mut() = Some(device_list);
+        *imp.stack.borrow_mut() = Some(stack);
+
+        // Bottom Create button (shown when devices exist)
+        self.append(&create_btn);
+        *imp.create_btn.borrow_mut() = Some(create_btn);
 
         // Connect signals
         self.connect_signals();
@@ -382,11 +392,14 @@ impl ZramView {
         let devices = zram::read_zram_devices();
 
         let empty = devices.is_empty();
-        if let Some(sp) = imp.status_page.borrow().as_ref() { sp.set_visible(empty); }
-        // Find the scroll and show/hide
-        if let Some(list) = imp.device_list.borrow().as_ref() {
-            list.parent().map(|p| p.set_visible(!empty));
 
+        // Toggle empty state vs device list
+        if let Some(stack) = imp.stack.borrow().as_ref() {
+            stack.set_visible_child_name(if empty { "empty" } else { "devices" });
+        }
+
+        // Refresh the device list
+        if let Some(list) = imp.device_list.borrow().as_ref() {
             // Remove all existing rows
             while let Some(row) = list.first_child() {
                 list.remove(&row);
