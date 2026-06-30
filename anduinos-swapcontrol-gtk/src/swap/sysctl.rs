@@ -42,13 +42,6 @@ pub fn read_swappiness() -> Result<u8, String> {
         .map_err(|e| format!("Cannot parse swappiness: {e}"))
 }
 
-/// Get the current vfs_cache_pressure value.
-pub fn read_vfs_cache_pressure() -> Result<u8, String> {
-    let val = read_sysctl_live("vm.vfs_cache_pressure")?;
-    val.parse::<u8>()
-        .map_err(|e| format!("Cannot parse vfs_cache_pressure: {e}"))
-}
-
 /// Get total RAM from /proc/meminfo (in bytes).
 pub fn read_total_ram() -> Result<u64, String> {
     let content = fs::read_to_string(config::PROC_MEMINFO)
@@ -98,11 +91,6 @@ pub fn apply_live(key: &str, value: &str) -> Result<String, String> {
     exec::run_helper("sysctl", &["-w", &format!("{key}={value}")])
 }
 
-/// Reload all sysctl configs.
-pub fn apply_all() -> Result<String, String> {
-    exec::run_helper("sysctl", &["--system"])
-}
-
 /// Set vm.swappiness both immediately and in our config file.
 pub fn set_swappiness(value: u8) -> Result<String, String> {
     let val_str = value.to_string();
@@ -130,7 +118,7 @@ mod tests {
 
     #[test]
     fn test_read_sysctl_conf() {
-        let params = read_sysctl_conf();
+        let _params = read_sysctl_conf();
         // May be empty if never written, but should not panic
         // Our app might not have written it yet
     }

@@ -66,27 +66,6 @@ pub fn disable_swapfile() -> Result<String, String> {
     exec::run_helper("swapoff", &[crate::config::SWAPFILE_PATH])
 }
 
-/// Create a new swapfile of the given size in GiB.
-pub fn create_swapfile(size_gb: u64) -> Result<String, String> {
-    let path = crate::config::SWAPFILE_PATH;
-    let count = (size_gb * 1024).to_string();
-
-    exec::run_helper("dd", &[
-        "if=/dev/zero", &format!("of={path}"), "bs=1M",
-        &format!("count={count}"), "status=none"
-    ])?;
-    exec::run_helper("chmod", &["600", path])?;
-    exec::run_helper("mkswap", &[path])?;
-    exec::run_helper("swapon", &[path])
-}
-
-/// Delete the swapfile.
-pub fn delete_swapfile() -> Result<String, String> {
-    let path = crate::config::SWAPFILE_PATH;
-    let _ = exec::run_helper("swapoff", &[path]);
-    exec::run_helper("rm", &["-f", path])
-}
-
 /// Resize the swapfile to the given size in GiB.
 pub fn resize_swapfile(new_size_gb: u64) -> Result<String, String> {
     let path = crate::config::SWAPFILE_PATH;

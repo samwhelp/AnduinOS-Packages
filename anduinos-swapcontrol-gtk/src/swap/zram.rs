@@ -102,15 +102,6 @@ pub fn get_available_algorithms() -> Vec<String> {
     ]
 }
 
-/// Get detailed stats for a specific zram device.
-pub fn get_zram_stats(dev_name: &str) -> ZramDevice {
-    let devices = read_zram_devices();
-    devices
-        .into_iter()
-        .find(|d| d.name == dev_name)
-        .unwrap_or_default()
-}
-
 // ─── Internal helpers ────────────────────────────────────────────────────────
 
 fn read_sysfs_u64(path: &Path) -> Result<u64, ()> {
