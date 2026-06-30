@@ -1,6 +1,6 @@
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
-use gtk::prelude::*;
 
 use crate::i18n::i18n;
 use crate::swap::{zram, persist};
@@ -14,7 +14,7 @@ mod imp {
     #[derive(Default)]
     pub struct ZramView {
         pub device_list: RefCell<Option<gtk::ListBox>>,
-        pub empty_label: RefCell<Option<gtk::Label>>,
+        pub status_page: RefCell<Option<adw::StatusPage>>,
         pub create_btn: RefCell<Option<gtk::Button>>,
         pub spinner: RefCell<Option<gtk::Spinner>>,
     }
@@ -88,20 +88,27 @@ impl ZramView {
         self.append(&spinner);
         *imp.spinner.borrow_mut() = Some(spinner);
 
-        // Create button
+        // Create button (shared, moved between empty state and list bottom)
         let create_btn = gtk::Button::builder()
             .label(&i18n("Create Zram Device"))
             .halign(gtk::Align::Center)
             .css_classes(["suggested-action", "pill"])
-            .margin_bottom(12)
+            .margin_top(12).margin_bottom(12)
             .build();
-        self.append(&create_btn);
+
+        // Empty state: AdwStatusPage with icon + description + button
+        let status_page = adw::StatusPage::builder()
+            .icon_name("drive-harddisk-solid-state-symbolic")
+            .title(&i18n("No Zram Devices"))
+            .description(&i18n("Create a compressed RAM swap device for faster memory pressure handling."))
+            .child(&create_btn.clone())
+            .build();
+        self.append(&status_page);
+        *imp.status_page.borrow_mut() = Some(status_page);
         *imp.create_btn.borrow_mut() = Some(create_btn);
 
-        // Device list
-        let scroll = gtk::ScrolledWindow::builder()
-            .vexpand(true)
-            .build();
+        // Device list (hidden when empty)
+        let scroll = gtk::ScrolledWindow::builder().vexpand(true).visible(false).build();
         let device_list = gtk::ListBox::builder()
             .css_classes(["boxed-list"])
             .selection_mode(gtk::SelectionMode::None)
@@ -109,15 +116,6 @@ impl ZramView {
         scroll.set_child(Some(&device_list));
         self.append(&scroll);
         *imp.device_list.borrow_mut() = Some(device_list);
-
-        // Empty state label
-        let empty_label = gtk::Label::builder()
-            .label(&i18n("No zram devices. Create one to enable compressed RAM swap."))
-            .halign(gtk::Align::Center)
-            .margin_top(24)
-            .build();
-        self.append(&empty_label);
-        *imp.empty_label.borrow_mut() = Some(empty_label);
 
         // Connect signals
         self.connect_signals();
@@ -383,51 +381,23 @@ impl ZramView {
         let imp = self.imp();
         let devices = zram::read_zram_devices();
 
+        let empty = devices.is_empty();
+        if let Some(sp) = imp.status_page.borrow().as_ref() { sp.set_visible(empty); }
+        // Find the scroll and show/hide
         if let Some(list) = imp.device_list.borrow().as_ref() {
+            list.parent().map(|p| p.set_visible(!empty));
+
             // Remove all existing rows
             while let Some(row) = list.first_child() {
                 list.remove(&row);
             }
 
-            if devices.is_empty() {
-                if let Some(label) = imp.empty_label.borrow().as_ref() {
-                    label.set_visible(true);
-                }
-            } else {
-                if let Some(label) = imp.empty_label.borrow().as_ref() {
-                    label.set_visible(false);
-                }
-
+            if !empty {
                 for dev in &devices {
-                    let row = gtk::ListBoxRow::builder().build();
-                    let hbox = gtk::Box::builder()
-                        .orientation(gtk::Orientation::Horizontal)
-                        .spacing(12)
-                        .margin_start(12)
-                        .margin_end(12)
-                        .margin_top(10)
-                        .margin_bottom(10)
-                        .build();
-
-                    let vbox = gtk::Box::builder()
-                        .orientation(gtk::Orientation::Vertical)
-                        .spacing(4)
-                        .hexpand(true)
-                        .build();
-
-                    let name = gtk::Label::builder()
-                        .label(&format!("{} — {}", dev.name, dev.comp_algorithm))
-                        .halign(gtk::Align::Start)
-                        .css_classes(["heading"])
-                        .build();
-                    vbox.append(&name);
-
                     let size_mb = dev.size_bytes as f64 / (1024.0 * 1024.0);
                     let used_mb = dev.used_bytes as f64 / (1024.0 * 1024.0);
                     let orig_mb = dev.orig_data_size as f64 / (1024.0 * 1024.0);
                     let compr_mb = dev.compr_data_size as f64 / (1024.0 * 1024.0);
-
-                    // Use /proc/swaps usage (survives zram reset), mm_stat for compression ratio
                     let stats_text = if used_mb > 1.0 {
                         if orig_mb > 1.0 {
                             let saved = (1.0 - compr_mb / orig_mb) * 100.0;
@@ -439,30 +409,25 @@ impl ZramView {
                         format!("Idle — {:.0} MiB available", size_mb)
                     };
 
-                    let stats = gtk::Label::builder()
-                        .label(&stats_text)
-                        .halign(gtk::Align::Start)
-                        .css_classes(["monospace", "caption"])
-                        .build();
-                    vbox.append(&stats);
-
-                    // Usage bar
                     let frac = if dev.size_bytes > 0 { dev.used_bytes as f64 / dev.size_bytes as f64 } else { 0.0 };
                     let used_gb = dev.used_bytes as f64 / (1024.0*1024.0*1024.0);
                     let total_gb = dev.size_bytes as f64 / (1024.0*1024.0*1024.0);
                     let bar = UsageBar::new("", (1.0, 0.47, 0.0));
                     bar.set_fraction(frac, &format!("{:.2} / {:.1} GiB", used_gb, total_gb));
-                    vbox.append(&bar);
 
-                    hbox.append(&vbox);
+                    let row = adw::ActionRow::builder()
+                        .title(&format!("{} — {}", dev.name, dev.comp_algorithm))
+                        .subtitle(&stats_text)
+                        .build();
+                    row.add_suffix(&bar);
 
-                    // Destroy button per device
                     let dev_path = format!("/dev/{}", dev.name);
                     let destroy_btn = gtk::Button::builder()
                         .label(&i18n("Remove"))
                         .css_classes(["destructive-action"])
                         .valign(gtk::Align::Center)
                         .build();
+                    row.add_suffix(&destroy_btn);
 
                     let path_clone = dev_path.clone();
                     let path_clone2 = dev_path.clone();
@@ -490,8 +455,6 @@ impl ZramView {
                         }
                     });
 
-                    hbox.append(&destroy_btn);
-                    row.set_child(Some(&hbox));
                     list.append(&row);
                 }
             }

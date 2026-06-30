@@ -1,6 +1,6 @@
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gtk::glib;
-use gtk::prelude::*;
 use std::cell::RefCell;
 
 use crate::i18n::i18n;
@@ -18,13 +18,11 @@ mod imp {
         pub operation_running: RefCell<bool>,
         pub usage_bar: RefCell<Option<UsageBar>>,
         pub status_icon: RefCell<Option<gtk::Image>>,
-        pub status_label: RefCell<Option<gtk::Label>>,
-        pub usage_label: RefCell<Option<gtk::Label>>,
-        pub enable_switch: RefCell<Option<gtk::Switch>>,
+        pub enable_row: RefCell<Option<adw::SwitchRow>>,
         pub swappiness_scale: RefCell<Option<gtk::Scale>>,
         pub size_scale: RefCell<Option<gtk::Scale>>,
-        pub size_card: RefCell<Option<gtk::Box>>,
-        pub expander: RefCell<Option<gtk::Expander>>,
+        pub size_group: RefCell<Option<adw::PreferencesGroup>>,
+        pub expander: RefCell<Option<adw::ExpanderRow>>,
         pub apply_revealer: RefCell<Option<gtk::Revealer>>,
         pub apply_btn: RefCell<Option<gtk::Button>>,
         pub spinner: RefCell<Option<gtk::Spinner>>,
@@ -32,13 +30,13 @@ mod imp {
         pub orig_swap: RefCell<u8>,
         pub orig_size: RefCell<u64>,
         // Zswap widgets
-        pub zswap_card: RefCell<Option<gtk::Box>>,
-        pub zswap_switch: RefCell<Option<gtk::Switch>>,
+        pub zswap_group: RefCell<Option<adw::PreferencesGroup>>,
+        pub zswap_switch: RefCell<Option<adw::SwitchRow>>,
         pub compressor_dropdown: RefCell<Option<gtk::DropDown>>,
         pub pool_scale: RefCell<Option<gtk::Scale>>,
         pub threshold_scale: RefCell<Option<gtk::Scale>>,
-        pub shrinker_switch: RefCell<Option<gtk::Switch>>,
-        pub zswap_adv_box: RefCell<Option<gtk::Box>>,
+        pub shrinker_switch: RefCell<Option<adw::SwitchRow>>,
+        pub zswap_rows: RefCell<Vec<gtk::Widget>>,
         pub orig_compressor: RefCell<String>,
         pub orig_pool: RefCell<u8>,
         pub orig_threshold: RefCell<u8>,
@@ -101,150 +99,135 @@ impl SwapView {
         inner.append(&spinner);
         *imp.spinner.borrow_mut() = Some(spinner);
 
-        // ─── Status card ────────────────────────────────────────────
-        let status_card = gtk::Box::builder().orientation(gtk::Orientation::Vertical)
-            .css_classes(["card"]).spacing(8).build();
-        let status_inner = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(12)
-            .margin_start(16).margin_end(16).margin_top(14).margin_bottom(14).build();
-
-        let status_icon = gtk::Image::builder().pixel_size(32).build();
-        status_inner.append(&status_icon);
+        // ─── Status: AdwSwitchRow in PreferencesGroup ─────────────────
+        let status_group = adw::PreferencesGroup::builder().build();
+        let enable_row = adw::SwitchRow::builder()
+            .title(&i18n("Disk Swap"))
+            .subtitle(&i18n("Loading..."))
+            .build();
+        let status_icon = gtk::Image::builder().pixel_size(24).build();
+        enable_row.add_prefix(&status_icon);
+        status_group.add(&enable_row);
+        inner.append(&status_group);
         *imp.status_icon.borrow_mut() = Some(status_icon);
-
-        let status_text = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
-        let status_label = gtk::Label::builder().label(&i18n("Loading...")).css_classes(["heading"]).halign(gtk::Align::Start).build();
-        status_text.append(&status_label);
-        let usage_label = gtk::Label::builder().label("").css_classes(["caption"]).halign(gtk::Align::Start).build();
-        status_text.append(&usage_label);
-        status_inner.append(&status_text);
-        *imp.status_label.borrow_mut() = Some(status_label);
-        *imp.usage_label.borrow_mut() = Some(usage_label);
-
-        let enable_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
-        status_inner.append(&enable_switch);
-        status_card.append(&status_inner);
-        inner.append(&status_card);
-        *imp.enable_switch.borrow_mut() = Some(enable_switch);
+        *imp.enable_row.borrow_mut() = Some(enable_row);
 
         // Usage bar
         let usage_bar = UsageBar::new("Swap usage", (0.21, 0.52, 0.89));
         inner.append(&usage_bar);
         *imp.usage_bar.borrow_mut() = Some(usage_bar);
 
-        // ─── Zswap sub-card (visible only when swap is active) ──────
-        let zswap_card = gtk::Box::builder().orientation(gtk::Orientation::Vertical)
-            .css_classes(["card"]).spacing(8).visible(false).build();
-        let zswap_inner = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(12)
-            .margin_start(16).margin_end(16).margin_top(14).margin_bottom(14).build();
+        // ─── Zswap: AdwSwitchRow in PreferencesGroup ──────────────────
+        let zswap_group = adw::PreferencesGroup::builder().visible(false).build();
         let zswap_icon = gtk::Image::builder().icon_name("document-save-symbolic").pixel_size(24).build();
-        zswap_inner.append(&zswap_icon);
-        let zswap_text = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
-        zswap_text.append(&gtk::Label::builder().label(&i18n("Zswap")).css_classes(["heading"]).halign(gtk::Align::Start).build());
         let ram_for_zswap = sysctl::read_total_ram().unwrap_or(0);
-        let zswap_subtitle = if ram_for_zswap > 12 * 1024 * 1024 * 1024 {
+        let zswap_sub = if ram_for_zswap > 12 * 1024 * 1024 * 1024 {
             format!("{}  ·  {}", i18n("Compress swap pages in a RAM pool — faster than disk swap"), i18n("Recommended"))
         } else {
             i18n("Compress swap pages in a RAM pool — faster than disk swap")
         };
-        zswap_text.append(&gtk::Label::builder().label(&zswap_subtitle)
-            .css_classes(["caption"]).halign(gtk::Align::Start).build());
-        zswap_inner.append(&zswap_text);
-        let zswap_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
-        zswap_inner.append(&zswap_switch);
-        zswap_card.append(&zswap_inner);
-        inner.append(&zswap_card);
-        *imp.zswap_card.borrow_mut() = Some(zswap_card);
-        *imp.zswap_switch.borrow_mut() = Some(zswap_switch);
+        let zswap_switch_row = adw::SwitchRow::builder()
+            .title(&i18n("Zswap"))
+            .subtitle(&zswap_sub)
+            .build();
+        zswap_switch_row.add_prefix(&zswap_icon);
+        zswap_group.add(&zswap_switch_row);
+        inner.append(&zswap_group);
+        *imp.zswap_group.borrow_mut() = Some(zswap_group);
+        *imp.zswap_switch.borrow_mut() = Some(zswap_switch_row);
 
-        // ─── Size slider (always visible) ───────────────────────────
+        // ─── Size: AdwActionRow in PreferencesGroup ──────────────────
         let total_ram = sysctl::read_total_ram().unwrap_or(32 * 1024 * 1024 * 1024);
         let max_size = (total_ram / (1024*1024*1024) * 2).max(64);
         let hiber_active = hibernation::is_hibernation_configured();
         let min_size = if hiber_active { (total_ram / (1024*1024*1024)).max(1) + 1 } else { 1 };
         let rec_size = (total_ram / (1024*1024*1024)).max(1);
-        let size_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(12)
-            .css_classes(["card"]).margin_top(6).build();
-        let size_inner = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(6)
-            .margin_start(16).margin_end(16).margin_top(14).margin_bottom(14).build();
-        let size_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
-            .adjustment(&gtk::Adjustment::new(rec_size.max(min_size) as f64, min_size as f64, max_size as f64, 1.0, 4.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
-        size_inner.append(&gtk::Label::builder().label(&i18n("Swap file size")).css_classes(["heading"]).halign(gtk::Align::Start).build());
+        let size_group = adw::PreferencesGroup::builder().build();
         let hint_str = if hiber_active {
             format!("Hibernation active — minimum {} GiB (RAM + 1 GiB). Recommended: {} GiB", min_size, rec_size.max(min_size))
         } else {
             format!("Hibernation not detected — recommended: {} GiB", rec_size)
         };
-        size_inner.append(&gtk::Label::builder().label(&hint_str).css_classes(["caption"]).halign(gtk::Align::Start).build());
-        size_inner.append(&size_scale);
-        size_box.append(&size_inner);
-        inner.append(&size_box);
+        let size_row = adw::ActionRow::builder()
+            .title(&i18n("Swap file size"))
+            .subtitle(&hint_str)
+            .build();
+        let size_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
+            .adjustment(&gtk::Adjustment::new(rec_size.max(min_size) as f64, min_size as f64, max_size as f64, 1.0, 4.0, 0.0))
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+        size_row.add_suffix(&size_scale);
+        size_group.add(&size_row);
+        inner.append(&size_group);
         *imp.size_scale.borrow_mut() = Some(size_scale);
-        *imp.size_card.borrow_mut() = Some(size_box);
+        *imp.size_group.borrow_mut() = Some(size_group);
 
-        // ─── Advanced expander ──────────────────────────────────────
-        let expander = gtk::Expander::builder().label(&i18n("Advanced settings")).margin_top(6).build();
-        let adv_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(16)
-            .margin_start(12).margin_top(12).build();
+        // ─── Advanced: AdwExpanderRow ────────────────────────────────
+        let expander = adw::ExpanderRow::builder()
+            .title(&i18n("Advanced settings"))
+            .build();
 
         let ram_gb = total_ram as f64 / (1024.0 * 1024.0 * 1024.0);
         let rec_sw = if ram_gb >= 16.0 { 10 } else if ram_gb >= 8.0 { 30 } else { 60 };
+
+        // Swappiness
         let swappiness_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(rec_sw as f64, 0.0, 100.0, 1.0, 10.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
-        adv_box.append(&labeled_widget(
-            &i18n("Swappiness"),
-            &format!("How aggressively the kernel swaps — lower = stay in RAM longer (recommended: {})", rec_sw),
-            &swappiness_scale));
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+        let sw_row = adw::ActionRow::builder()
+            .title(&i18n("Swappiness"))
+            .subtitle(&format!("How aggressively the kernel swaps — lower = stay in RAM longer (recommended: {})", rec_sw))
+            .build();
+        sw_row.add_suffix(&swappiness_scale);
+        expander.add_row(&sw_row);
         *imp.swappiness_scale.borrow_mut() = Some(swappiness_scale);
 
-        // ── Zswap advanced rows ────────────────────────────────────
-        let zswap_adv_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(16)
-            .visible(false).build();
-
+        // Zswap advanced rows (visibility follows zswap state)
         let compressor_dropdown = gtk::DropDown::from_strings(COMPRESSORS);
-        zswap_adv_box.append(&labeled_widget(
-            &i18n("Compression algorithm"),
-            &i18n("lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires zswap restart."),
-            &compressor_dropdown));
+        let comp_row = adw::ActionRow::builder()
+            .title(&i18n("Compression algorithm"))
+            .subtitle(&i18n("lz4 = fast (recommended), zstd = best ratio, lzo = legacy. Changing requires zswap restart."))
+            .build();
+        comp_row.add_suffix(&compressor_dropdown);
+        expander.add_row(&comp_row);
 
         let pool_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(20.0, 1.0, 50.0, 1.0, 5.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
-        zswap_adv_box.append(&labeled_widget(
-            &i18n("Maximum pool percent"),
-            &i18n("Max % of RAM the compressed pool may occupy. Recommended: 20%"),
-            &pool_scale));
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+        let pool_row = adw::ActionRow::builder()
+            .title(&i18n("Maximum pool percent"))
+            .subtitle(&i18n("Max % of RAM the compressed pool may occupy. Recommended: 20%"))
+            .build();
+        pool_row.add_suffix(&pool_scale);
+        expander.add_row(&pool_row);
 
         let threshold_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
             .adjustment(&gtk::Adjustment::new(90.0, 0.0, 100.0, 1.0, 10.0, 0.0))
-            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
-        zswap_adv_box.append(&labeled_widget(
-            &i18n("Accept threshold percent"),
-            &i18n("Only store pages that compress to ≤ this % of original. Higher = more pages cached. Recommended: 90%"),
-            &threshold_scale));
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).width_request(200).build();
+        let thresh_row = adw::ActionRow::builder()
+            .title(&i18n("Accept threshold percent"))
+            .subtitle(&i18n("Only store pages that compress to ≤ this % of original. Higher = more pages cached. Recommended: 90%"))
+            .build();
+        thresh_row.add_suffix(&threshold_scale);
+        expander.add_row(&thresh_row);
 
-        let shrinker_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
-        let shrinker_row = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(12).build();
-        let shrinker_label = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
-        shrinker_label.append(&gtk::Label::builder().label(&i18n("Shrinker")).halign(gtk::Align::Start).build());
-        shrinker_label.append(&gtk::Label::builder()
-            .label(&i18n("Reclaim pool pages under memory pressure. Recommended: ON"))
-            .css_classes(["caption"]).halign(gtk::Align::Start).build());
-        shrinker_row.append(&shrinker_label);
-        shrinker_row.append(&shrinker_switch);
-        zswap_adv_box.append(&shrinker_row);
+        let shrinker_row = adw::SwitchRow::builder()
+            .title(&i18n("Shrinker"))
+            .subtitle(&i18n("Reclaim pool pages under memory pressure. Recommended: ON"))
+            .build();
+        expander.add_row(&shrinker_row);
 
-        adv_box.append(&zswap_adv_box);
-        *imp.zswap_adv_box.borrow_mut() = Some(zswap_adv_box);
+        inner.append(&expander);
+        *imp.expander.borrow_mut() = Some(expander);
+        *imp.zswap_rows.borrow_mut() = vec![
+            comp_row.upcast::<gtk::Widget>(),
+            pool_row.upcast::<gtk::Widget>(),
+            thresh_row.upcast::<gtk::Widget>(),
+            shrinker_row.clone().upcast::<gtk::Widget>(),
+        ];
         *imp.compressor_dropdown.borrow_mut() = Some(compressor_dropdown);
         *imp.pool_scale.borrow_mut() = Some(pool_scale);
         *imp.threshold_scale.borrow_mut() = Some(threshold_scale);
-        *imp.shrinker_switch.borrow_mut() = Some(shrinker_switch);
-
-        expander.set_child(Some(&adv_box));
-        inner.append(&expander);
-        *imp.expander.borrow_mut() = Some(expander);
+        *imp.shrinker_switch.borrow_mut() = Some(shrinker_row);
 
         // ─── Apply button (revealed on change) ─────────────────────
         let revealer = gtk::Revealer::builder().transition_type(gtk::RevealerTransitionType::SlideDown).build();
@@ -263,7 +246,7 @@ impl SwapView {
         let imp = self.imp();
 
         // Enable/Disable switch — use notify::active (fires AFTER visual change)
-        if let Some(sw) = imp.enable_switch.borrow().as_ref() {
+        if let Some(sw) = imp.enable_row.borrow().as_ref() {
             let weak_self = self.downgrade();
             sw.connect_notify_local(Some("active"), move |sw, _| {
                 if let Some(v) = weak_self.upgrade() {
@@ -437,20 +420,17 @@ impl SwapView {
         *imp.refreshing.borrow_mut() = true;
 
         if let Ok(status) = swapfile::read_swap_status() {
-            let a_str = i18n("Active"); let i_str = i18n("Inactive");
-            if let Some(l) = imp.status_label.borrow().as_ref() {
-                l.set_text(if status.active { &a_str } else { &i_str });
-            }
             if let Some(icon) = imp.status_icon.borrow().as_ref() {
                 icon.set_icon_name(if status.active { Some("emblem-ok-symbolic") } else { Some("emblem-important-symbolic") });
             }
-            if let Some(l) = imp.usage_label.borrow().as_ref() {
+            if let Some(row) = imp.enable_row.borrow().as_ref() {
+                row.set_active(status.active);
                 if status.active {
                     let total_gb = status.size_bytes as f64 / (1024.0*1024.0*1024.0);
                     let used_gb = status.used_bytes as f64 / (1024.0*1024.0*1024.0);
-                    l.set_text(&format!("{:.1} GiB used / {:.1} GiB total", used_gb, total_gb));
+                    row.set_subtitle(&format!("Active — {:.1} GiB used / {:.1} GiB total", used_gb, total_gb));
                 } else {
-                    l.set_text("");
+                    row.set_subtitle(&i18n("Inactive"));
                 }
             }
             if let Some(bar) = imp.usage_bar.borrow().as_ref() {
@@ -462,9 +442,6 @@ impl SwapView {
                 } else {
                     bar.set_fraction(0.0, &i18n("Inactive"));
                 }
-            }
-            if let Some(sw) = imp.enable_switch.borrow().as_ref() {
-                sw.set_active(status.active);
             }
             // Update size slider to match actual swapfile
             if status.active {
@@ -480,13 +457,13 @@ impl SwapView {
         }
 
         // Hide swap-dependent controls when swap is off — nothing to configure
-        let swap_active = imp.enable_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(false);
+        let swap_active = imp.enable_row.borrow().as_ref().map(|s| s.is_active()).unwrap_or(false);
         if let Some(bar) = imp.usage_bar.borrow().as_ref() { bar.set_visible(swap_active); }
-        if let Some(card) = imp.size_card.borrow().as_ref() { card.set_visible(swap_active); }
+        if let Some(g) = imp.size_group.borrow().as_ref() { g.set_visible(swap_active); }
         if let Some(exp) = imp.expander.borrow().as_ref() { exp.set_visible(swap_active); }
 
-        // Zswap state
-        if let Some(card) = imp.zswap_card.borrow().as_ref() { card.set_visible(swap_active); }
+        // Zswap group
+        if let Some(g) = imp.zswap_group.borrow().as_ref() { g.set_visible(swap_active); }
         if swap_active {
             if let Ok(zc) = zswap::read_zswap_config() {
                 if let Some(zsw) = imp.zswap_switch.borrow().as_ref() { zsw.set_active(zc.enabled); }
@@ -497,25 +474,17 @@ impl SwapView {
                 if let Some(s) = imp.pool_scale.borrow().as_ref() { s.set_value(zc.max_pool_percent as f64); }
                 if let Some(s) = imp.threshold_scale.borrow().as_ref() { s.set_value(zc.accept_threshold_percent as f64); }
                 if let Some(s) = imp.shrinker_switch.borrow().as_ref() { s.set_active(zc.shrinker_enabled); }
-                if let Some(b) = imp.zswap_adv_box.borrow().as_ref() { b.set_visible(zc.enabled); }
+                for row in imp.zswap_rows.borrow().iter() { row.set_visible(zc.enabled); }
                 *imp.orig_compressor.borrow_mut() = zc.compressor;
                 *imp.orig_pool.borrow_mut() = zc.max_pool_percent;
                 *imp.orig_threshold.borrow_mut() = zc.accept_threshold_percent;
                 *imp.orig_shrinker.borrow_mut() = zc.shrinker_enabled;
             }
         } else {
-            if let Some(b) = imp.zswap_adv_box.borrow().as_ref() { b.set_visible(false); }
+            for row in imp.zswap_rows.borrow().iter() { row.set_visible(false); }
         }
 
         if let Some(r) = imp.apply_revealer.borrow().as_ref() { r.set_reveal_child(false); }
         *imp.refreshing.borrow_mut() = false;
     }
-}
-
-fn labeled_widget(title: &str, hint: &str, widget: &impl gtk::prelude::IsA<gtk::Widget>) -> gtk::Box {
-    let b = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).build();
-    b.append(&gtk::Label::builder().label(title).halign(gtk::Align::Start).build());
-    b.append(&gtk::Label::builder().label(hint).css_classes(["caption"]).halign(gtk::Align::Start).build());
-    b.append(widget);
-    b
 }

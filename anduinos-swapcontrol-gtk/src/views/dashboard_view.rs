@@ -119,8 +119,8 @@ impl DashboardView {
         }
 
         // ─── Recommendations (context-aware tips) ─────────────────────
-        let rec_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(8)
-            .margin_top(8).build();
+        let rec_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(6)
+            .build();
         self.append(&rec_box);
         *imp.recommendation_box.borrow_mut() = Some(rec_box);
 
@@ -421,8 +421,8 @@ fn build_rec_card(accent: (f64, f64, f64), title: &str, subtitle: &str) -> gtk::
         ctx.fill().ok();
     });
     card.append(&bar);
-    let inner = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(4)
-        .hexpand(true).margin_start(8).margin_end(16).margin_top(12).margin_bottom(12).build();
+    let inner = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2)
+        .hexpand(true).margin_start(10).margin_end(14).margin_top(8).margin_bottom(8).build();
     inner.append(&gtk::Label::builder().label(title).css_classes(["heading"]).halign(gtk::Align::Start).build());
     inner.append(&gtk::Label::builder().label(subtitle).css_classes(["caption"]).wrap(true).halign(gtk::Align::Start).build());
     card.append(&inner);
@@ -436,7 +436,7 @@ fn info_card(icon: &str, title: &str, subtitle: &str) -> (gtk::Box, gtk::Label) 
     inner.append(&gtk::Image::builder().icon_name(icon).pixel_size(20).build());
     let tb = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(1).hexpand(true).build();
     tb.append(&gtk::Label::builder().label(title).css_classes(["caption"]).halign(gtk::Align::Start).build());
-    let sub = gtk::Label::builder().label(subtitle).css_classes(["heading"]).halign(gtk::Align::Start).build();
+    let sub = gtk::Label::builder().label(subtitle).css_classes(["title-4"]).halign(gtk::Align::Start).build();
     tb.append(&sub);
     inner.append(&tb);
     card.append(&inner);
