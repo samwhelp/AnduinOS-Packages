@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Swap Control
+GenericName=Swap Control
+Comment=Manage swap, zswap, and zram memory settings
+Exec=swapcontrol-gtk
+Icon=com.anduinos.swapcontrol
+Terminal=false
+Type=Application
+Categories=System;Settings;
+Keywords=swap;memory;zswap;zram;swappiness;virtual memory;

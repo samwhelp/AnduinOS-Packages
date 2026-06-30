@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
+"POT-Creation-Date: 2026-06-30 14:00+0800\n"
+"PO-Revision-Date: 2026-06-30 14:00+0800\n"
+"Language-Team: zh_CN <anduin@aiursoft.com>\n"
+"Last-Translator: AnduinOS Team <anduin@aiursoft.com>\n"
+"Language-Team: AnduinOS <anduin@aiursoft.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/window.rs:76
+msgid "About"
+msgstr ""
+
+#: src/views/zswap_view.rs:133
+msgid "Accept threshold (%)"
+msgstr ""
+
+#: src/views/zswap_view.rs:324
+#: src/views/swap_view.rs:323
+msgid "Active"
+msgstr ""
+
+#: src/views/zram_view.rs:203
+msgid "Advanced options"
+msgstr ""
+
+#: src/views/zswap_view.rs:107
+#: src/views/swap_view.rs:140
+msgid "Advanced settings"
+msgstr ""
+
+#: src/views/zram_view.rs:257
+msgid "Algorithm"
+msgstr ""
+
+#: src/views/zswap_view.rs:155
+#: src/views/swap_view.rs:160
+msgid "Apply Settings"
+msgstr ""
+
+#: src/views/dashboard_view.rs:251
+msgid "Auth needed"
+msgstr ""
+
+#: src/views/zram_view.rs:274
+msgid "Cancel"
+msgstr ""
+
+#: src/views/zram_view.rs:68
+msgid "Compressed RAM block device — fast in-memory swap"
+msgstr ""
+
+#: src/views/zswap_view.rs:95
+msgid "Compressed write-back cache for swap"
+msgstr ""
+
+#: src/views/zswap_view.rs:68
+msgid "Compressed write-back cache — intercepts pages before disk swap"
+msgstr ""
+
+#: src/views/zswap_view.rs:115
+msgid "Compression algorithm"
+msgstr ""
+
+#: src/views/zram_view.rs:275
+msgid "Create"
+msgstr ""
+
+#: src/views/zram_view.rs:93
+#: src/views/zram_view.rs:160
+msgid "Create Zram Device"
+msgstr ""
+
+#: src/views/zram_view.rs:311
+msgid "Creating Zram device…"
+msgstr ""
+
+#: src/window.rs:111
+msgid "Dashboard"
+msgstr ""
+
+#: src/views/zram_view.rs:478
+msgid "Destroy Zram Device"
+msgstr ""
+
+#: src/views/zram_view.rs:352
+msgid "Destroying Zram device…"
+msgstr ""
+
+#: src/views/zram_view.rs:331
+msgid "Device Created"
+msgstr ""
+
+#: src/views/dashboard_view.rs:327
+msgid "Disabled"
+msgstr ""
+
+#: src/views/swap_view.rs:250
+msgid "Disabling swap will break hibernation. Continue?"
+msgstr ""
+
+#: src/views/swap_view.rs:220
+msgid "Disabling swap…"
+msgstr ""
+
+#: src/views/swap_view.rs:62
+msgid "Disk Swap Configuration"
+msgstr ""
+
+#: src/views/swap_view.rs:65
+msgid "Disk-based swap file — the last line of defense when RAM is full"
+msgstr ""
+
+#: src/views/swap_view.rs:220
+msgid "Enabling swap…"
+msgstr ""
+
+#: src/views/zswap_view.rs:235
+#: src/views/swap_view.rs:238
+#: src/views/swap_view.rs:290
+#: src/views/zram_view.rs:152
+msgid "Error"
+msgstr ""
+
+#: src/views/swap_view.rs:249
+#: src/views/swap_view.rs:303
+msgid "Hibernation Warning"
+msgstr ""
+
+#: src/views/zswap_view.rs:125
+msgid "How much RAM zswap can use for compressed pages"
+msgstr ""
+
+#: src/views/zswap_view.rs:325
+#: src/views/dashboard_view.rs:341
+#: src/views/swap_view.rs:323
+#: src/views/swap_view.rs:346
+msgid "Inactive"
+msgstr ""
+
+#: src/views/zswap_view.rs:93
+#: src/views/swap_view.rs:95
+msgid "Loading..."
+msgstr ""
+
+#: src/views/zswap_view.rs:124
+msgid "Max pool (% of RAM)"
+msgstr ""
+
+#: src/views/dashboard_view.rs:105
+msgid "Memory Overview"
+msgstr ""
+
+#: src/views/zswap_view.rs:142
+msgid "Memory shrinker"
+msgstr ""
+
+#: src/views/dashboard_view.rs:296
+msgid "No device"
+msgstr ""
+
+#: src/views/zram_view.rs:115
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr ""
+
+#: src/views/dashboard_view.rs:360
+msgid "None"
+msgstr ""
+
+#: src/views/dashboard_view.rs:350
+#: src/views/dashboard_view.rs:354
+#: src/views/dashboard_view.rs:364
+msgid "Off"
+msgstr ""
+
+#: src/views/dashboard_view.rs:354
+#: src/views/dashboard_view.rs:364
+msgid "On"
+msgstr ""
+
+#: src/views/zswap_view.rs:134
+msgid "Pages compressing worse than this are rejected — lower = more aggressive"
+msgstr ""
+
+#: src/views/zram_view.rs:266
+msgid "Priority"
+msgstr ""
+
+#: src/views/dashboard_view.rs:108
+msgid "Real-time RAM, swap, and compression subsystem status"
+msgstr ""
+
+#: src/views/zswap_view.rs:143
+msgid "Reclaim pool memory when system is under pressure"
+msgstr ""
+
+#: src/views/zram_view.rs:462
+msgid "Remove"
+msgstr ""
+
+#: src/views/swap_view.rs:275
+msgid "Resizing swap file…"
+msgstr ""
+
+#: src/views/zram_view.rs:213
+msgid "Size (MiB)"
+msgstr ""
+
+#: src/window.rs:114
+msgid "Swap"
+msgstr ""
+
+#: src/window.rs:59
+msgid "Swap Control"
+msgstr ""
+
+#: src/views/swap_view.rs:127
+msgid "Swap file size"
+msgstr ""
+
+#: src/views/swap_view.rs:150
+msgid "Swappiness"
+msgstr ""
+
+#: src/window.rs:112
+msgid "Zram"
+msgstr ""
+
+#: src/views/zram_view.rs:65
+msgid "Zram Devices"
+msgstr ""
+
+#: src/window.rs:113
+msgid "Zswap"
+msgstr ""
+
+#: src/views/zswap_view.rs:65
+msgid "Zswap Configuration"
+msgstr ""
+
+#: src/views/zswap_view.rs:116
+msgid "lzo-rle is fastest, zstd saves more space"
+msgstr ""
+

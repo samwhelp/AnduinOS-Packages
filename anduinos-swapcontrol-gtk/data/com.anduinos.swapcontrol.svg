@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="24" fill="#3584e4"/>
+  <!-- Chip/RAM-style icon: horizontal bars -->
+  <rect x="24" y="24" width="80" height="12" rx="3" fill="#ffffff" opacity="0.9"/>
+  <rect x="24" y="42" width="80" height="12" rx="3" fill="#ffffff" opacity="0.7"/>
+  <rect x="24" y="60" width="60" height="12" rx="3" fill="#ffffff" opacity="0.5"/>
+  <rect x="24" y="78" width="40" height="12" rx="3" fill="#62ffbc" opacity="0.8"/>
+  <!-- Arrow swap indicator -->
+  <path d="M98 64 L110 64 L104 56 M110 64 L104 72" stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.8"/>
+</svg>

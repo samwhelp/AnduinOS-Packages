@@ -318,6 +318,11 @@ anduinos-ufwall-gtk:
   variables:
     PACKAGE_DIR: anduinos-ufwall-gtk
 
+anduinos-swapcontrol-gtk:
+  extends: .publish
+  variables:
+    PACKAGE_DIR: anduinos-swapcontrol-gtk
+
 anduinos-gnome-shell-locale:
   extends: .publish
   variables:
@@ -428,6 +433,7 @@ anduinos-desktop-apps:
     - anduinos-mimeapps
     - firefox-anduinos
     - anduinos-ufwall-gtk
+    - anduinos-swapcontrol-gtk
   variables:
     PACKAGE_DIR: anduinos-desktop-apps
 

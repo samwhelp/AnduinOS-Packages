@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>SwapControl</vendor>
+  <vendor_url>https://github.com/AiursoftWeb/AnduinOS-Packages</vendor_url>
+
+  <action id="com.anduinos.swapcontrol.manage-memory">
+    <description>Manage virtual memory settings</description>
+    <description xml:lang="zh_CN">管理虚拟内存设置</description>
+    <message>Authentication is required to modify swap, zswap, and zram settings</message>
+    <message xml:lang="zh_CN">修改虚拟内存设置需要管理员权限</message>
+    <icon_name>com.anduinos.swapcontrol</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/anduinos-swapcontrol/helper</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+</policyconfig>

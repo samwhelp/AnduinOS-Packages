@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR AnduinOS Team
+# This file is distributed under the GPL-3.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: swapcontrol-gtk 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/AiursoftWeb/AnduinOS-Packages/issues\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/views/dashboard_view.rs
+msgid "Memory Overview"
+msgstr "Memory Overview"
+
+#: src/views/dashboard_view.rs
+msgid "Loading..."
+msgstr "Loading..."
+
+#: src/views/dashboard_view.rs
+msgid "Physical RAM"
+msgstr "Physical RAM"
+
+#: src/views/dashboard_view.rs
+msgid "Disk Swap"
+msgstr "Disk Swap"
+
+#: src/views/dashboard_view.rs
+msgid "Zswap"
+msgstr "Zswap"
+
+#: src/views/dashboard_view.rs
+msgid "Zram"
+msgstr "Zram"
+
+#: src/views/dashboard_view.rs
+msgid "Checking..."
+msgstr "Checking..."
+
+#: src/views/dashboard_view.rs
+msgid "Not active"
+msgstr "Not active"
+
+#: src/views/dashboard_view.rs
+msgid "Enabled"
+msgstr "Enabled"
+
+#: src/views/dashboard_view.rs
+msgid "Disabled"
+msgstr "Disabled"
+
+#: src/views/dashboard_view.rs
+msgid "No devices"
+msgstr "No devices"
+
+#: src/views/dashboard_view.rs
+msgid "Enabled — changing swap may affect hibernation"
+msgstr "Enabled — changing swap may affect hibernation"
+
+#: src/views/swap_view.rs
+msgid "Disk Swap Configuration"
+msgstr "Disk Swap Configuration"
+
+#: src/views/swap_view.rs
+msgid "Swapfile Status"
+msgstr "Swapfile Status"
+
+#: src/views/swap_view.rs
+msgid "Swappiness"
+msgstr "Swappiness"
+
+#: src/views/swap_view.rs
+msgid "Swap Size (GiB)"
+msgstr "Swap Size (GiB)"
+
+#: src/views/swap_view.rs
+msgid "Resize Swapfile"
+msgstr "Resize Swapfile"
+
+#: src/views/swap_view.rs
+msgid "Actions"
+msgstr "Actions"
+
+#: src/views/swap_view.rs
+msgid "Toggle Swap"
+msgstr "Toggle Swap"
+
+#: src/views/swap_view.rs
+msgid "Inactive — no swapfile is enabled"
+msgstr "Inactive — no swapfile is enabled"
+
+#: src/views/zswap_view.rs
+msgid "Zswap Configuration"
+msgstr "Zswap Configuration"
+
+#: src/views/zswap_view.rs
+msgid "Status"
+msgstr "Status"
+
+#: src/views/zswap_view.rs
+msgid "Compressor"
+msgstr "Compressor"
+
+#: src/views/zswap_view.rs
+msgid "Max Pool Percent"
+msgstr "Max Pool Percent"
+
+#: src/views/zswap_view.rs
+msgid "Accept Threshold"
+msgstr "Accept Threshold"
+
+#: src/views/zswap_view.rs
+msgid "Shrinker"
+msgstr "Shrinker"
+
+#: src/views/zram_view.rs
+msgid "Zram Devices"
+msgstr "Zram Devices"
+
+#: src/views/zram_view.rs
+msgid "No zram devices. Create one to enable compressed RAM swap."
+msgstr "No zram devices. Create one to enable compressed RAM swap."
+
+#: src/window.rs
+msgid "Swap Control"
+msgstr "Swap Control"
+
+#: src/window.rs src/application.rs
+msgid "About"
+msgstr "About"
+
+#: src/window.rs
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/window.rs
+msgid "Swap"
+msgstr "Swap"
+
+#: src/views/zswap_view.rs
+msgid "Hibernation"
+msgstr "Hibernation"
