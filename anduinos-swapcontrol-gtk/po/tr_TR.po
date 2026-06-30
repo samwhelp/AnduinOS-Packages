@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "Kabul eşiği (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "Aktif"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "Gelişmiş seçenekler"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "Gelişmiş ayarlar"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritma"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "Ayarları Uygula"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "Yetkilendirme gerekli"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "Sıkıştırılmış RAM blok aygıtı — hızlı bellek içi takas"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "Takas için sıkıştırılmış yazma geriye önbelleği"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "Sıkıştırılmış yazma geriye önbelleği — disk takasından önce sayfaları engeller"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "Sıkıştırma algoritması"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "Oluştur"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "Zram Aygıtı Oluştur"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "Zram cihazı oluşturuluyor…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "Gösterge Paneli"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "Zram Cihazını Yık"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "Zram cihazı yok ediliyor…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "Cihaz Oluşturuldu"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "Devre Dışı"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "Swap'ı devre dışı bırakmak dinlenme modunu bozacaktır. Devam etmek istiyor musunuz?"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "Swap devre dışı bırakılıyor…"
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "Disk Tabanlı Swap Yapılandırması"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "Disk tabanlı swap dosyası — RAM dolduğunda son savunma hattı"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "Swap etkinleştiriliyor…"
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "Dinlenme Uyarısı"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "Zswap, sıkıştırılmış sayfalar için ne kadar RAM kullanabilir"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "Etkin Değil"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "Yükleniyor..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "Maksimum havuz (RAM'in %'si)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "Bellek Genel Bakış"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "Bellek küçültme"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "Cihaz yok"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "Zram cihazı yok. Sıkıştırılmış RAM takası etkinleştirmek için bir tane oluşturun."
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "Hiçbiri"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "Kapalı"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "Açık"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "Bundan daha kötü sıkıştırılan sayfalar reddedilir — daha düşük = daha agresif"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "Öncelik"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "Gerçek zamanlı RAM, takas ve sıkıştırma alt sistem durumu"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "Sistem baskı altındaysa havuz belleğini geri al"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "Takas dosyasının boyutu değiştiriliyor…"
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "Boyut (MiB)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "Takas"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "Takas Denetimi"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "Takas dosyası boyutu"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "Takas eğilimi"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "Zram"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "Zram Cihazları"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "Zswap"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "Zswap Yapılandırması"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "lzo-rle en hızlısıdır, zstd daha fazla alan tasarrufu sağlar"
 

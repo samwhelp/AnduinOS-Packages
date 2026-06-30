@@ -4,15 +4,18 @@ use gtk::prelude::*;
 use std::cell::RefCell;
 
 use crate::i18n::i18n;
-use crate::swap::{swapfile, sysctl, hibernation};
+use crate::swap::{swapfile, sysctl, hibernation, zswap};
 use crate::utils;
 use crate::widgets::usage_bar::UsageBar;
+
+const COMPRESSORS: &[&str] = &["lzo", "lz4", "lz4hc", "zstd", "deflate", "842"];
 
 mod imp {
     use super::*;
 
     #[derive(Default)]
     pub struct SwapView {
+        pub operation_running: RefCell<bool>,
         pub usage_bar: RefCell<Option<UsageBar>>,
         pub status_icon: RefCell<Option<gtk::Image>>,
         pub status_label: RefCell<Option<gtk::Label>>,
@@ -26,6 +29,18 @@ mod imp {
         pub refreshing: RefCell<bool>,
         pub orig_swap: RefCell<u8>,
         pub orig_size: RefCell<u64>,
+        // Zswap widgets
+        pub zswap_card: RefCell<Option<gtk::Box>>,
+        pub zswap_switch: RefCell<Option<gtk::Switch>>,
+        pub compressor_dropdown: RefCell<Option<gtk::DropDown>>,
+        pub pool_scale: RefCell<Option<gtk::Scale>>,
+        pub threshold_scale: RefCell<Option<gtk::Scale>>,
+        pub shrinker_switch: RefCell<Option<gtk::Switch>>,
+        pub zswap_adv_box: RefCell<Option<gtk::Box>>,
+        pub orig_compressor: RefCell<String>,
+        pub orig_pool: RefCell<u8>,
+        pub orig_threshold: RefCell<u8>,
+        pub orig_shrinker: RefCell<bool>,
     }
 
     #[glib::object_subclass]
@@ -53,15 +68,18 @@ impl SwapView {
     fn setup_ui(&self) {
         let imp = self.imp();
         self.set_orientation(gtk::Orientation::Vertical);
-        self.set_spacing(18);
-        self.set_margin_start(24); self.set_margin_end(24);
-        self.set_margin_top(24); self.set_margin_bottom(24);
+        self.set_spacing(0);
         self.set_vexpand(true);
+        let scroll = gtk::ScrolledWindow::builder().vexpand(true).build();
+        let inner = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(18)
+            .margin_start(24).margin_end(24).margin_top(24).margin_bottom(24).build();
+        scroll.set_child(Some(&inner));
+
 
         // Title + subtitle
-        self.append(&gtk::Label::builder().label(&i18n("Disk Swap Configuration"))
+        inner.append(&gtk::Label::builder().label(&i18n("Disk Swap Configuration"))
             .css_classes(["title-1"]).halign(gtk::Align::Start).build());
-        self.append(&gtk::Label::builder()
+        inner.append(&gtk::Label::builder()
             .label(&i18n("Disk-based swap file — the last line of defense when RAM is full"))
             .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
 
@@ -71,14 +89,14 @@ impl SwapView {
             let ram_gb = total_ram as f64 / (1024.0 * 1024.0 * 1024.0);
             let rec_size = (total_ram / (1024*1024*1024)).max(1);
             let sw = if ram_gb >= 16.0 { 10 } else if ram_gb >= 8.0 { 30 } else { 60 };
-            self.append(&gtk::Label::builder().use_markup(true)
+            inner.append(&gtk::Label::builder().use_markup(true)
                 .label(&{let s=format!("<i>Recommended: {} GiB swap, swappiness {} (for {:.0} GiB RAM)</i>", rec_size, sw, ram_gb); s})
                 .css_classes(["caption"]).halign(gtk::Align::Start).margin_start(2).build());
         }
 
         // Spinner
         let spinner = gtk::Spinner::builder().halign(gtk::Align::Center).visible(false).build();
-        self.append(&spinner);
+        inner.append(&spinner);
         *imp.spinner.borrow_mut() = Some(spinner);
 
         // ─── Status card ────────────────────────────────────────────
@@ -103,13 +121,32 @@ impl SwapView {
         let enable_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
         status_inner.append(&enable_switch);
         status_card.append(&status_inner);
-        self.append(&status_card);
+        inner.append(&status_card);
         *imp.enable_switch.borrow_mut() = Some(enable_switch);
 
         // Usage bar
         let usage_bar = UsageBar::new("Swap usage", (0.21, 0.52, 0.89));
-        self.append(&usage_bar);
+        inner.append(&usage_bar);
         *imp.usage_bar.borrow_mut() = Some(usage_bar);
+
+        // ─── Zswap sub-card (visible only when swap is active) ──────
+        let zswap_card = gtk::Box::builder().orientation(gtk::Orientation::Vertical)
+            .css_classes(["card"]).spacing(8).visible(false).build();
+        let zswap_inner = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(12)
+            .margin_start(16).margin_end(16).margin_top(14).margin_bottom(14).build();
+        let zswap_icon = gtk::Image::builder().icon_name("document-save-symbolic").pixel_size(24).build();
+        zswap_inner.append(&zswap_icon);
+        let zswap_text = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
+        zswap_text.append(&gtk::Label::builder().label(&i18n("Zswap")).css_classes(["heading"]).halign(gtk::Align::Start).build());
+        zswap_text.append(&gtk::Label::builder().label(&i18n("Compress swap pages in a RAM pool — faster than disk swap"))
+            .css_classes(["caption"]).halign(gtk::Align::Start).build());
+        zswap_inner.append(&zswap_text);
+        let zswap_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
+        zswap_inner.append(&zswap_switch);
+        zswap_card.append(&zswap_inner);
+        inner.append(&zswap_card);
+        *imp.zswap_card.borrow_mut() = Some(zswap_card);
+        *imp.zswap_switch.borrow_mut() = Some(zswap_switch);
 
         // ─── Size slider (always visible) ───────────────────────────
         let total_ram = sysctl::read_total_ram().unwrap_or(32 * 1024 * 1024 * 1024);
@@ -133,7 +170,7 @@ impl SwapView {
         size_inner.append(&gtk::Label::builder().label(&hint_str).css_classes(["caption"]).halign(gtk::Align::Start).build());
         size_inner.append(&size_scale);
         size_box.append(&size_inner);
-        self.append(&size_box);
+        inner.append(&size_box);
         *imp.size_scale.borrow_mut() = Some(size_scale);
 
         // ─── Advanced expander ──────────────────────────────────────
@@ -152,18 +189,63 @@ impl SwapView {
             &swappiness_scale));
         *imp.swappiness_scale.borrow_mut() = Some(swappiness_scale);
 
+        // ── Zswap advanced rows ────────────────────────────────────
+        let zswap_adv_box = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(16)
+            .visible(false).build();
+
+        let compressor_dropdown = gtk::DropDown::from_strings(COMPRESSORS);
+        zswap_adv_box.append(&labeled_widget(
+            &i18n("Compression algorithm"),
+            &i18n("lz4 = fast, zstd = best compression, lzo = safest fallback. Changing requires zswap restart."),
+            &compressor_dropdown));
+
+        let pool_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
+            .adjustment(&gtk::Adjustment::new(20.0, 1.0, 50.0, 1.0, 5.0, 0.0))
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
+        zswap_adv_box.append(&labeled_widget(
+            &i18n("Maximum pool percent"),
+            &i18n("Max % of RAM the compressed pool may occupy. Recommended: 20%"),
+            &pool_scale));
+
+        let threshold_scale = gtk::Scale::builder().orientation(gtk::Orientation::Horizontal)
+            .adjustment(&gtk::Adjustment::new(90.0, 0.0, 100.0, 1.0, 10.0, 0.0))
+            .draw_value(true).value_pos(gtk::PositionType::Right).hexpand(true).build();
+        zswap_adv_box.append(&labeled_widget(
+            &i18n("Accept threshold percent"),
+            &i18n("Only store pages that compress to ≤ this % of original. Higher = more pages cached. Recommended: 90%"),
+            &threshold_scale));
+
+        let shrinker_switch = gtk::Switch::builder().valign(gtk::Align::Center).build();
+        let shrinker_row = gtk::Box::builder().orientation(gtk::Orientation::Horizontal).spacing(12).build();
+        let shrinker_label = gtk::Box::builder().orientation(gtk::Orientation::Vertical).spacing(2).hexpand(true).build();
+        shrinker_label.append(&gtk::Label::builder().label(&i18n("Shrinker")).halign(gtk::Align::Start).build());
+        shrinker_label.append(&gtk::Label::builder()
+            .label(&i18n("Reclaim pool pages under memory pressure. Recommended: ON"))
+            .css_classes(["caption"]).halign(gtk::Align::Start).build());
+        shrinker_row.append(&shrinker_label);
+        shrinker_row.append(&shrinker_switch);
+        zswap_adv_box.append(&shrinker_row);
+
+        adv_box.append(&zswap_adv_box);
+        *imp.zswap_adv_box.borrow_mut() = Some(zswap_adv_box);
+        *imp.compressor_dropdown.borrow_mut() = Some(compressor_dropdown);
+        *imp.pool_scale.borrow_mut() = Some(pool_scale);
+        *imp.threshold_scale.borrow_mut() = Some(threshold_scale);
+        *imp.shrinker_switch.borrow_mut() = Some(shrinker_switch);
+
         expander.set_child(Some(&adv_box));
-        self.append(&expander);
+        inner.append(&expander);
 
         // ─── Apply button (revealed on change) ─────────────────────
         let revealer = gtk::Revealer::builder().transition_type(gtk::RevealerTransitionType::SlideDown).build();
         let apply_btn = gtk::Button::builder().label(&i18n("Apply Settings"))
             .halign(gtk::Align::Center).css_classes(["suggested-action", "pill"]).build();
         revealer.set_child(Some(&apply_btn));
-        self.append(&revealer);
+        inner.append(&revealer);
         *imp.apply_btn.borrow_mut() = Some(apply_btn);
         *imp.apply_revealer.borrow_mut() = Some(revealer);
 
+        self.append(&scroll);
         self.connect_signals();
     }
 
@@ -187,68 +269,95 @@ impl SwapView {
             btn.connect_clicked(move |_| { if let Some(v) = weak_self.upgrade() { v.apply_all(); } });
         }
 
+        // Zswap enable/disable switch
+        if let Some(zsw) = imp.zswap_switch.borrow().as_ref() {
+            let weak_self = self.downgrade();
+            zsw.connect_notify_local(Some("active"), move |zsw, _| {
+                if let Some(v) = weak_self.upgrade() {
+                    if *v.imp().refreshing.borrow() { return; }
+                    v.toggle_zswap(zsw.is_active());
+                }
+            });
+        }
+
         // Track changes on advanced controls
         let weak_self = self.downgrade();
         let check = move || { if let Some(v) = weak_self.upgrade() { if !*v.imp().refreshing.borrow() { v.check_changes(); } } };
         if let Some(s) = imp.swappiness_scale.borrow().as_ref() { let c = check.clone(); s.connect_value_changed(move |_| c()); }
-        if let Some(s) = imp.size_scale.borrow().as_ref() { let c = check; s.connect_value_changed(move |_| c()); }
+        if let Some(s) = imp.size_scale.borrow().as_ref() { let c = check.clone(); s.connect_value_changed(move |_| c()); }
+        if let Some(d) = imp.compressor_dropdown.borrow().as_ref() { let c = check.clone(); d.connect_notify_local(Some("selected"), move |_, _| c()); }
+        if let Some(s) = imp.pool_scale.borrow().as_ref() { let c = check.clone(); s.connect_value_changed(move |_| c()); }
+        if let Some(s) = imp.threshold_scale.borrow().as_ref() { let c = check.clone(); s.connect_value_changed(move |_| c()); }
+        if let Some(s) = imp.shrinker_switch.borrow().as_ref() { let c = check; s.connect_notify_local(Some("active"), move |_, _| c()); }
     }
 
     fn check_changes(&self) {
         let imp = self.imp();
         let sw = imp.swappiness_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(10);
         let sz = imp.size_scale.borrow().as_ref().map(|s| s.value() as u64).unwrap_or(2);
-        let changed = sw != *imp.orig_swap.borrow() || sz != *imp.orig_size.borrow();
+        let comp = imp.compressor_dropdown.borrow().as_ref().and_then(|d| {
+            let idx = d.selected() as usize;
+            COMPRESSORS.get(idx).map(|s| s.to_string())
+        }).unwrap_or_else(|| "lzo".to_string());
+        let pool = imp.pool_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(20);
+        let thresh = imp.threshold_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(90);
+        let shrinker = imp.shrinker_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(true);
+        let changed = sw != *imp.orig_swap.borrow()
+            || sz != *imp.orig_size.borrow()
+            || comp != *imp.orig_compressor.borrow()
+            || pool != *imp.orig_pool.borrow()
+            || thresh != *imp.orig_threshold.borrow()
+            || shrinker != *imp.orig_shrinker.borrow();
         if let Some(r) = imp.apply_revealer.borrow().as_ref() { r.set_reveal_child(changed); }
     }
 
-    fn set_busy(&self, busy: bool) {
-        let imp = self.imp();
-        if let Some(s) = imp.spinner.borrow().as_ref() { s.set_visible(busy); }
-        if let Some(b) = imp.apply_btn.borrow().as_ref() { b.set_sensitive(!busy); }
+    fn run_op(&self, msg: String, task: impl FnOnce() -> Result<(), String> + Send + 'static) {
+        if self.imp().operation_running.borrow().clone() { return; }
+        *self.imp().operation_running.borrow_mut() = true;
+        let w = self.downgrade();
+        glib::spawn_future_local(async move {
+            let win = w.upgrade().and_then(|v| v.root().and_then(|r| r.downcast::<gtk::Window>().ok()));
+            let result: Result<(), String> = if let Some(p) = win {
+                crate::progress_dialog::run_with_progress(&p, &msg, task).await
+            } else { task() };
+            if let Some(v) = w.upgrade() {
+                *v.imp().operation_running.borrow_mut() = false;
+                v.refresh_data();
+                if let Err(e) = result {
+                    let win = v.root().and_then(|r| r.downcast::<gtk::Window>().ok());
+                    if let Some(p) = win { utils::show_error(&p, &i18n("Error"), &e); }
+                }
+                if let Some(r) = v.imp().apply_revealer.borrow().as_ref() { r.set_reveal_child(false); }
+            }
+        });
     }
 
+    fn toggle_zswap(&self, enable: bool) {
+        let weak = self.downgrade();
+        let msg = if enable { i18n("Enabling Zswap...") } else { i18n("Disabling Zswap...") };
+        let do_it = move || { if let Some(v) = weak.upgrade() { v.run_op(msg, move || { if enable { zswap::enable_zswap().map(|_| ()) } else { zswap::disable_zswap().map(|_| ()) } }); } };
+        do_it();
+    }
     fn toggle_swap(&self, enable: bool) {
         let is_active = swapfile::is_swap_active();
         if enable == is_active { return; }
-        let weak_self = self.downgrade();
         let needs_confirm = is_active && hibernation::is_hibernation_configured();
+        let weak_self = self.downgrade();
 
-        let do_toggle = {
-            let weak_self = weak_self.clone();
-            move || {
-                let msg = if is_active { i18n("Disabling swap…") } else { i18n("Enabling swap…") };
-                glib::spawn_future_local(async move {
-                    let result = {
-                        let weak = weak_self.clone();
-                        let msg = msg.clone();
-                        let win = weak.upgrade().and_then(|v| v.root().and_then(|r| r.downcast::<gtk::Window>().ok()));
-                        if let Some(p) = win {
-                            crate::progress_dialog::run_with_progress(&p, &msg, move || {
-                                if is_active { swapfile::disable_swapfile() } else { swapfile::enable_swapfile() }
-                            }).await
-                        } else {
-                            if is_active { swapfile::disable_swapfile() } else { swapfile::enable_swapfile() }
-                        }
-                    };
-                    if let Some(view) = weak_self.upgrade() {
-                        view.refresh_all();
-                        if let Err(e) = result {
-                            let win = view.root().and_then(|r| r.downcast::<gtk::Window>().ok());
-                            if let Some(p) = win { utils::show_error(&p, &i18n("Error"), &e); }
-                        }
-                    }
+        let do_toggle = move || {
+            let msg = if is_active { i18n("Disabling swap…") } else { i18n("Enabling swap…") };
+            if let Some(v) = weak_self.upgrade() {
+                v.run_op(msg, move || {
+                    if is_active { swapfile::disable_swapfile().map(|_| ()) } else { swapfile::enable_swapfile().map(|_| ()) }
                 });
             }
         };
 
         if needs_confirm {
-            if let Some(view) = weak_self.upgrade() {
-                let win = view.root().and_then(|r| r.downcast::<gtk::Window>().ok());
-                if let Some(p) = win {
-                    utils::show_confirm(&p, &i18n("Hibernation Warning"),
-                        &i18n("Disabling swap will break hibernation. Continue?"), do_toggle);
-                }
+            let win = self.root().and_then(|r| r.downcast::<gtk::Window>().ok());
+            if let Some(p) = win {
+                utils::show_confirm(&p, &i18n("Hibernation Warning"),
+                    &i18n("Disabling swap will break hibernation. Continue?"), do_toggle);
             }
         } else { do_toggle(); }
     }
@@ -257,39 +366,44 @@ impl SwapView {
         let imp = self.imp();
         let sw = imp.swappiness_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(10);
         let sz = imp.size_scale.borrow().as_ref().map(|s| s.value() as u64).unwrap_or(2);
+        let comp = imp.compressor_dropdown.borrow().as_ref().and_then(|d| {
+            let idx = d.selected() as usize;
+            COMPRESSORS.get(idx).map(|s| s.to_string())
+        }).unwrap_or_else(|| "lzo".to_string());
+        let pool = imp.pool_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(20);
+        let thresh = imp.threshold_scale.borrow().as_ref().map(|s| s.value() as u8).unwrap_or(90);
+        let shrinker = imp.shrinker_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(true);
+        let orig_comp = imp.orig_compressor.borrow().clone();
+        let orig_pool = *imp.orig_pool.borrow();
+        let orig_thresh = *imp.orig_threshold.borrow();
+        let orig_shrinker = *imp.orig_shrinker.borrow();
         let weak_self = self.downgrade();
+        let weak_self2 = weak_self.clone();
 
         let needs_warn = hibernation::is_hibernation_configured() && {
             let total_ram = sysctl::read_total_ram().unwrap_or(0);
             (sz * 1024 * 1024 * 1024) < total_ram
         };
 
-        let do_apply = {
-            let weak_self = weak_self.clone();
-            move || {
-                glib::spawn_future_local(async move {
-                    let result = {
-                        let weak = weak_self.clone();
-                        let win = weak.upgrade().and_then(|v| v.root().and_then(|r| r.downcast::<gtk::Window>().ok()));
-                        if let Some(p) = win {
-                            crate::progress_dialog::run_with_progress(&p, &i18n("Resizing swap file…"), move || {
-                                let mut errs = Vec::new();
-                                if let Err(e) = sysctl::set_swappiness(sw) { errs.push(format!("Swappiness: {}", e)); }
-                                if let Err(e) = swapfile::resize_swapfile(sz) { errs.push(format!("Resize: {}", e)); }
-                                if errs.is_empty() { Ok(()) } else { Err(errs.join("\n")) }
-                            }).await
-                        } else {
-                            let mut errs = Vec::new();
-                            if let Err(e) = sysctl::set_swappiness(sw) { errs.push(format!("Swappiness: {}", e)); }
-                            if let Err(e) = swapfile::resize_swapfile(sz) { errs.push(format!("Resize: {}", e)); }
-                            if errs.is_empty() { Ok(()) } else { Err(errs.join("\n")) }
-                        }
-                    };
-                    if let Some(view) = weak_self.upgrade() {
-                        view.refresh_all();
-                        if let Err(e) = result { let win = view.root().and_then(|r| r.downcast::<gtk::Window>().ok()); if let Some(p) = win { utils::show_error(&p, &i18n("Error"), &e); } }
-                        if let Some(r) = view.imp().apply_revealer.borrow().as_ref() { r.set_reveal_child(false); }
+        let do_apply = move || {
+            if let Some(v) = weak_self2.upgrade() {
+                v.run_op(i18n("Applying settings…"), move || {
+                    let mut errs = Vec::new();
+                    if let Err(e) = sysctl::set_swappiness(sw) { errs.push(format!("Swappiness: {}", e)); }
+                    if let Err(e) = swapfile::resize_swapfile(sz) { errs.push(format!("Resize: {}", e)); }
+                    if comp != orig_comp {
+                        if let Err(e) = zswap::set_compressor(&comp) { errs.push(format!("Compressor: {}", e)); }
                     }
+                    if pool != orig_pool {
+                        if let Err(e) = zswap::set_max_pool_percent(pool) { errs.push(format!("Pool: {}", e)); }
+                    }
+                    if thresh != orig_thresh {
+                        if let Err(e) = zswap::set_accept_threshold(thresh) { errs.push(format!("Threshold: {}", e)); }
+                    }
+                    if shrinker != orig_shrinker {
+                        if let Err(e) = zswap::set_shrinker(shrinker) { errs.push(format!("Shrinker: {}", e)); }
+                    }
+                    if errs.is_empty() { Ok(()) } else { Err(errs.join("\n")) }
                 });
             }
         };
@@ -306,13 +420,6 @@ impl SwapView {
                 }
             }
         } else { do_apply(); }
-    }
-
-    fn refresh_all(&self) {
-        self.refresh_data();
-        if let Some(root) = self.root() {
-            if let Ok(win) = root.downcast::<crate::window::SwapcontrolWindow>() { win.refresh_views(); }
-        }
     }
 
     pub fn refresh_data(&self) {
@@ -360,6 +467,29 @@ impl SwapView {
         if let Ok(val) = sysctl::read_swappiness() {
             if let Some(s) = imp.swappiness_scale.borrow().as_ref() { s.set_value(val as f64); }
             *imp.orig_swap.borrow_mut() = val;
+        }
+
+        // Zswap state
+        let swap_active = imp.enable_switch.borrow().as_ref().map(|s| s.is_active()).unwrap_or(false);
+        if let Some(card) = imp.zswap_card.borrow().as_ref() { card.set_visible(swap_active); }
+        if swap_active {
+            if let Ok(zc) = zswap::read_zswap_config() {
+                if let Some(zsw) = imp.zswap_switch.borrow().as_ref() { zsw.set_active(zc.enabled); }
+                if let Some(d) = imp.compressor_dropdown.borrow().as_ref() {
+                    let idx = COMPRESSORS.iter().position(|c| *c == zc.compressor).unwrap_or(0);
+                    d.set_selected(idx as u32);
+                }
+                if let Some(s) = imp.pool_scale.borrow().as_ref() { s.set_value(zc.max_pool_percent as f64); }
+                if let Some(s) = imp.threshold_scale.borrow().as_ref() { s.set_value(zc.accept_threshold_percent as f64); }
+                if let Some(s) = imp.shrinker_switch.borrow().as_ref() { s.set_active(zc.shrinker_enabled); }
+                if let Some(b) = imp.zswap_adv_box.borrow().as_ref() { b.set_visible(zc.enabled); }
+                *imp.orig_compressor.borrow_mut() = zc.compressor;
+                *imp.orig_pool.borrow_mut() = zc.max_pool_percent;
+                *imp.orig_threshold.borrow_mut() = zc.accept_threshold_percent;
+                *imp.orig_shrinker.borrow_mut() = zc.shrinker_enabled;
+            }
+        } else {
+            if let Some(b) = imp.zswap_adv_box.borrow().as_ref() { b.set_visible(false); }
         }
 
         if let Some(r) = imp.apply_revealer.borrow().as_ref() { r.set_reveal_child(false); }

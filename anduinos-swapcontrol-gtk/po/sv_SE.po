@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "Acceptgräns (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "Avancerade alternativ"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "Avancerade inställningar"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritm"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "Tillämpa inställningar"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "Autentisering krävs"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "Komprimerad RAM-blockenhet – snabb in-memory-swap"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "Komprimerat write-back-cache för swap"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "Komprimerat write-back-cache – avfångar sidor före diskswap"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "Komprimeringsalgoritm"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "Skapa Zram-enhet"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "Skapar Zram-enhet…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "Instrumentpanel"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "Ta bort Zram-enhet"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "Tar bort Zram-enhet…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "Enhet skapad"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "Inaktiverad"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "Inaktivering av swap kommer att bryta viloläge. Vill du fortsätta?"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "Inaktiverar swap…"
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "Konfiguration av swapspace på disk"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "Swapplats baserad på diskfil – den sista försvarslinjen när RAM-minnet är fullt"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "Aktiverar swap…"
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "Varning för viloläge"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "Hur mycket RAM-minne zswap kan använda för komprimerade sidor"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "Laddar..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "Max pool (% av RAM)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "Minnesöversikt"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "Minneskomprimerare"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "Ingen enhet"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "Inga zram-enheter. Skapa en för att aktivera komprimerat RAM-swap."
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "Av"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "På"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "Sidor som komprimeras sämre än detta avvisas — lägre = mer aggressivt"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "Status för minne, swap och komprimering i realtid"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "Återanvänd poolminne när systemet är under press"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "Ändrar storlek på swap-fil…"
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "Storlek (MiB)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "Swap"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "Swap-kontroll"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "Swap-filstorlek"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "Swappiness"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "Zram"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "Zram-enheter"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "Zswap"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "Zswap-konfiguration"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "lzo-rle är snabbast, zstd sparar mest utrymme"
 

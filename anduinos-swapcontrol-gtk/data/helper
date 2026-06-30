@@ -15,5 +15,6 @@ case "$cmd" in
     tee)       /usr/bin/tee "$@" ;;
     systemctl) /usr/bin/systemctl "$@" ;;
     bash)      /bin/bash "$@" ;;
+    dmidecode) /usr/sbin/dmidecode "$@" ;;
     *)         echo "Unknown command: $cmd" >&2; exit 1 ;;
 esac

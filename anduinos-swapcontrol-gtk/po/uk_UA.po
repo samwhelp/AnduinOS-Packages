@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "Про додаток"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "Поріг прийняття (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "Активний"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "Додаткові параметри"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "Розширені налаштування"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "Алгоритм"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "Застосувати налаштування"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "Потрібна автентифікація"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "Стиснене блок-пристрої оперативної пам'яті — швидкий обмін у пам'яті"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "Стиснений кеш запису назад для обміну"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "Стиснений кеш запису назад — перехоплює сторінки перед обміном на диску"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "Алгоритм стиснення"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "Створити"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "Створити пристрій Zram"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "Створення пристрою Zram…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "Панель керування"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "Знищити пристрій Zram"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "Знищення пристрою Zram…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "Пристрій створено"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "Вимкнено"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "Вимкнення підкачки порушить режим гібернації. Продовжити?"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "Вимкнення підкачки…"
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "Конфігурація підкачки на диску"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "Файл підкачки на диску — останній засіб захисту, коли оперативна пам'ять заповнена"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "Увімкнення підкачки…"
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "Попередження про гібернацію"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "Скільки оперативної пам'яті zswap може використовувати для стиснутих сторінок"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "Неактивний"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "Завантаження..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "Макс. пул (% оперативної пам’яті)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "Огляд пам’яті"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "Зменшення пам’яті"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "Немає пристрою"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "Немає пристроїв zram. Створіть один, щоб увімкнути стислий файл підкачки оперативної пам’яті."
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "Немає"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "Вимкнено"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "Увімкнено"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "Сторінки, що стискаються гірше цього значення, відхиляються — нижче = агресивніше"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "Пріоритет"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "Статус підсистем оперативної пам’яті, файлу підкачки та стиснення в режимі реального часу"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "Повертати пам’ять пулу, коли система перевантажена"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "Видалити"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "Зміна розміру файлу підкачки…"
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "Розмір (МіБ)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "Обмінна пам'ять"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "Керування обмінною пам'яттю"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "Розмір обмінного файлу"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "Тенденція до використання обмінної пам'яті"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "Zram"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "Пристрої Zram"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "Zswap"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "Налаштування Zswap"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "lzo-rle — найшвидший, zstd заощаджує більше місця"
 

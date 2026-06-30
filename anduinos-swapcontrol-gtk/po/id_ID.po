@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "Tentang"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "Ambang batas penerimaan (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "Aktif"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "Opsi lanjutan"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "Pengaturan lanjutan"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritma"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "Terapkan Pengaturan"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "Otentikasi diperlukan"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "Perangkat blok RAM terkompresi — swap di memori yang cepat"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "Cache penulisan balik terkompresi untuk swap"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "Cache penulisan balik terkompresi — mencegat halaman sebelum pertukaran ke disk"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "Algoritma kompresi"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "Buat Perangkat Zram"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "Membuat perangkat Zram…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "Dasbor"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "Hancurkan Perangkat Zram"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "Menghancurkan perangkat Zram…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "Perangkat Dibuat"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "Nonaktif"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "Menonaktifkan swap akan mengganggu hibernasi. Lanjutkan?"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "Menonaktifkan swap…"
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "Konfigurasi Swap Disk"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "File swap berbasis disk — pertahanan terakhir saat RAM penuh"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "Mengaktifkan swap…"
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "Kesalahan"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "Peringatan Hibernasi"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "Berapa banyak RAM yang dapat digunakan zswap untuk halaman yang dikompresi"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "Tidak Aktif"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "Memuat..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "Kolam maksimum (% dari RAM)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "Ikhtisar Memori"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "Pengurang memori"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "Tidak ada perangkat"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "Tidak ada perangkat zram. Buat satu untuk mengaktifkan pertukaran RAM terkompresi."
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "Mati"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "Hidup"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "Halaman yang dikompresi lebih buruk dari ini akan ditolak — lebih rendah = lebih agresif"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "Prioritas"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "Status subsistem RAM, swap, dan kompresi secara real-time"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "Mengambil kembali memori pool ketika sistem berada di bawah tekanan"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "Hapus"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "Mengubah ukuran file swap…"
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "Ukuran (MiB)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "Swap"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "Kontrol Swap"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "Ukuran file swap"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "Tingkat Swap (Swappiness)"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "Zram"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "Perangkat Zram"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "Zswap"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "Konfigurasi Zswap"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "lzo-rle adalah yang tercepat, zstd menghemat lebih banyak ruang"
 

@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "के बारे में"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "स्वीकृति सीमा (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "सक्रिय"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "उन्नत विकल्प"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "उन्नत सेटिंग्स"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "एल्गोरिदम"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "सेटिंग्स लागू करें"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "प्रमाणीकरण आवश्यक है"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द करें"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "संपीड़ित RAM ब्लॉक डिवाइस — मेमोरी में तेज स्वैप"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "स्वैप के लिए संकुचित राइट-बैक कैश"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "संकुचित राइट-बैक कैश — डिस्क स्वैप से पहले पेज को रोकता है"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "संपीड़न एल्गोरिदम"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "बनाएँ"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "Zram डिवाइस बनाएँ"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "Zram डिवाइस बनाया जा रहा है…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "डैशबोर्ड"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "Zram डिवाइस नष्ट करें"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "Zram डिवाइस नष्ट किया जा रहा है…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "डिवाइस बनाया गया"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "अक्षम"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "स्वाप को अक्षम करने से हाइबरनेशन खराब हो जाएगा। जारी रखें?"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "स्वाप को अक्षम कर रहे हैं..."
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "डिस्क स्वाप कॉन्फ़िगरेशन"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "डिस्क-आधारित स्वाप फ़ाइल — जब RAM पूरी तरह से भरी हो, तो यह अंतिम रक्षा की पंक्ति है"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "स्वाप को सक्षम कर रहे हैं..."
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "त्रुटि"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "हाइबरनेशन चेतावनी"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "संपीड़ित पन्नों के लिए zswap कितना RAM उपयोग कर सकता है"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "निष्क्रिय"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "लोड हो रहा है..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "अधिकतम पूल (RAM का %)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "मेमोरी अवलोकन"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "मेमोरी श्रिंकर"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "कोई उपकरण नहीं"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "कोई zram उपकरण नहीं है। संपीड़ित RAM स्विप सक्षम करने के लिए एक बनाएं।"
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "कोई नहीं"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "बंद"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "चालू"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "इससे खराब तरीके से संपीड़ित पृष्ठों को अस्वीकार कर दिया जाता है — कम = अधिक आक्रामक"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "प्राथमिकता"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "रियल-टाइम RAM, स्विप और संपीड़न सबसिस्टम स्थिति"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "सिस्टम दबाव में होने पर पूल मेमोरी रिकलेम करें"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "हटाएं"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "स्विप फाइल रिसाइज हो रही है…"
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "आकार (MiB)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "स्विप"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "स्विप नियंत्रण"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "स्विप फाइल आकार"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "स्विपनेस"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "Zram"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "Zram डिवाइस"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "Zswap"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "Zwap कॉन्फ़िगरेशन"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "lzo-rle सबसे तेज़ है, zstd अधिक जगह बचाता है"
 

@@ -9,7 +9,7 @@ use crate::application::SwapcontrolApplication;
 use crate::i18n::i18n;
 use crate::views::{
     dashboard_view::DashboardView, swap_view::SwapView,
-    zswap_view::ZswapView, zram_view::ZramView,
+    zram_view::ZramView,
 };
 
 mod imp {
@@ -20,7 +20,6 @@ mod imp {
         pub stack: RefCell<Option<gtk::Stack>>,
         pub dashboard_view: RefCell<Option<DashboardView>>,
         pub swap_view: RefCell<Option<SwapView>>,
-        pub zswap_view: RefCell<Option<ZswapView>>,
         pub zram_view: RefCell<Option<ZramView>>,
     }
 
@@ -110,12 +109,10 @@ impl SwapcontrolWindow {
 
         let dashboard_row = create_sidebar_row("utilities-system-monitor-symbolic", &i18n("Dashboard"));
         let zram_row = create_sidebar_row("media-flash-symbolic", &i18n("Zram"));
-        let zswap_row = create_sidebar_row("emblem-synchronizing-symbolic", &i18n("Zswap"));
         let swap_row = create_sidebar_row("drive-harddisk-symbolic", &i18n("Swap"));
 
         sidebar_list.append(&dashboard_row);
         sidebar_list.append(&zram_row);
-        sidebar_list.append(&zswap_row);
         sidebar_list.append(&swap_row);
         sidebar_list.select_row(Some(&dashboard_row));
 
@@ -136,12 +133,10 @@ impl SwapcontrolWindow {
 
         let dashboard_view = DashboardView::new();
         let swap_view = SwapView::new();
-        let zswap_view = ZswapView::new();
         let zram_view = ZramView::new();
 
         stack.add_named(&dashboard_view, Some("dashboard"));
         stack.add_named(&swap_view, Some("swap"));
-        stack.add_named(&zswap_view, Some("zswap"));
         stack.add_named(&zram_view, Some("zram"));
 
         let content_header = adw::HeaderBar::builder()
@@ -192,8 +187,7 @@ impl SwapcontrolWindow {
                 let name = match index {
                     0 => "dashboard",
                     1 => "zram",
-                    2 => "zswap",
-                    3 => "swap",
+                    2 => "swap",
                     _ => return,
                 };
                 stack_clone.set_visible_child_name(name);
@@ -210,7 +204,6 @@ impl SwapcontrolWindow {
         *imp.stack.borrow_mut() = Some(stack);
         *imp.dashboard_view.borrow_mut() = Some(dashboard_view);
         *imp.swap_view.borrow_mut() = Some(swap_view);
-        *imp.zswap_view.borrow_mut() = Some(zswap_view);
         *imp.zram_view.borrow_mut() = Some(zram_view);
 
         // Defer initial refresh until main loop is running (needed for polkit auth dialog)
@@ -225,20 +218,14 @@ impl SwapcontrolWindow {
     pub fn refresh_views(&self) {
         let imp = self.imp();
 
-        if let Some(view) = imp.dashboard_view.borrow().as_ref() {
-            view.refresh_data();
-        }
-
-        if let Some(view) = imp.swap_view.borrow().as_ref() {
-            view.refresh_data();
-        }
-
-        if let Some(view) = imp.zswap_view.borrow().as_ref() {
-            view.refresh_data();
-        }
-
-        if let Some(view) = imp.zram_view.borrow().as_ref() {
-            view.refresh_data();
+        let visible = imp.stack.borrow().as_ref()
+            .and_then(|s| s.visible_child_name())
+            .map(|n| n.as_str().to_string()).unwrap_or_default();
+        match visible.as_str() {
+            "dashboard" => { if let Some(v) = imp.dashboard_view.borrow().as_ref() { v.refresh_data(); } }
+            "zram" => { if let Some(v) = imp.zram_view.borrow().as_ref() { v.refresh_data(); } }
+            "swap" => { if let Some(v) = imp.swap_view.borrow().as_ref() { v.refresh_data(); } }
+            _ => {}
         }
     }
 }

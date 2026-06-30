@@ -14,236 +14,236 @@ msgstr ""
 
 #: src/window.rs:76
 msgid "About"
-msgstr ""
+msgstr "حول"
 
 #: src/views/zswap_view.rs:133
 msgid "Accept threshold (%)"
-msgstr ""
+msgstr "نسبة العتبة المقبولة (%)"
 
 #: src/views/zswap_view.rs:324
 #: src/views/swap_view.rs:323
 msgid "Active"
-msgstr ""
+msgstr "نشط"
 
 #: src/views/zram_view.rs:203
 msgid "Advanced options"
-msgstr ""
+msgstr "خيارات متقدمة"
 
 #: src/views/zswap_view.rs:107
 #: src/views/swap_view.rs:140
 msgid "Advanced settings"
-msgstr ""
+msgstr "إعدادات متقدمة"
 
 #: src/views/zram_view.rs:257
 msgid "Algorithm"
-msgstr ""
+msgstr "خوارزمية"
 
 #: src/views/zswap_view.rs:155
 #: src/views/swap_view.rs:160
 msgid "Apply Settings"
-msgstr ""
+msgstr "تطبيق الإعدادات"
 
 #: src/views/dashboard_view.rs:251
 msgid "Auth needed"
-msgstr ""
+msgstr "المصادقة مطلوبة"
 
 #: src/views/zram_view.rs:274
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: src/views/zram_view.rs:68
 msgid "Compressed RAM block device — fast in-memory swap"
-msgstr ""
+msgstr "جهاز كتلة ذاكرة وصول عشوائي مضغوط — تبديل سريع في الذاكرة"
 
 #: src/views/zswap_view.rs:95
 msgid "Compressed write-back cache for swap"
-msgstr ""
+msgstr "ذاكرة التخزين المؤقت للكتابة الخلفية المضغوطة لتبديل الملفات"
 
 #: src/views/zswap_view.rs:68
 msgid "Compressed write-back cache — intercepts pages before disk swap"
-msgstr ""
+msgstr "ذاكرة التخزين المؤقت للكتابة الخلفية المضغوطة — اعتراض الصفحات قبل تبديل القرص"
 
 #: src/views/zswap_view.rs:115
 msgid "Compression algorithm"
-msgstr ""
+msgstr "خوارزمية الضغط"
 
 #: src/views/zram_view.rs:275
 msgid "Create"
-msgstr ""
+msgstr "إنشاء"
 
 #: src/views/zram_view.rs:93
 #: src/views/zram_view.rs:160
 msgid "Create Zram Device"
-msgstr ""
+msgstr "إنشاء جهاز Zram"
 
 #: src/views/zram_view.rs:311
 msgid "Creating Zram device…"
-msgstr ""
+msgstr "جاري إنشاء جهاز Zram…"
 
 #: src/window.rs:111
 msgid "Dashboard"
-msgstr ""
+msgstr "لوحة التحكم"
 
 #: src/views/zram_view.rs:478
 msgid "Destroy Zram Device"
-msgstr ""
+msgstr "تدمير جهاز Zram"
 
 #: src/views/zram_view.rs:352
 msgid "Destroying Zram device…"
-msgstr ""
+msgstr "جاري تدمير جهاز Zram…"
 
 #: src/views/zram_view.rs:331
 msgid "Device Created"
-msgstr ""
+msgstr "تم إنشاء الجهاز"
 
 #: src/views/dashboard_view.rs:327
 msgid "Disabled"
-msgstr ""
+msgstr "معطل"
 
 #: src/views/swap_view.rs:250
 msgid "Disabling swap will break hibernation. Continue?"
-msgstr ""
+msgstr "سيؤدي تعطيل مساحة التبادل إلى تعطيل وضع السكون. هل تريد المتابعة؟"
 
 #: src/views/swap_view.rs:220
 msgid "Disabling swap…"
-msgstr ""
+msgstr "جارٍ تعطيل مساحة التبادل..."
 
 #: src/views/swap_view.rs:62
 msgid "Disk Swap Configuration"
-msgstr ""
+msgstr "إعداد مساحة التبادل القرصية"
 
 #: src/views/swap_view.rs:65
 msgid "Disk-based swap file — the last line of defense when RAM is full"
-msgstr ""
+msgstr "ملف التبادل المستند إلى القرص - خط الدفاع الأخير عند امتلاء ذاكرة الوصول العشوائي"
 
 #: src/views/swap_view.rs:220
 msgid "Enabling swap…"
-msgstr ""
+msgstr "جارٍ تمكين مساحة التبادل..."
 
 #: src/views/zswap_view.rs:235
 #: src/views/swap_view.rs:238
 #: src/views/swap_view.rs:290
 #: src/views/zram_view.rs:152
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: src/views/swap_view.rs:249
 #: src/views/swap_view.rs:303
 msgid "Hibernation Warning"
-msgstr ""
+msgstr "تحذير وضع السكون"
 
 #: src/views/zswap_view.rs:125
 msgid "How much RAM zswap can use for compressed pages"
-msgstr ""
+msgstr "كمية ذاكرة الوصول العشوائي التي يمكن لـ zswap استخدامها للصفحات المضغوطة"
 
 #: src/views/zswap_view.rs:325
 #: src/views/dashboard_view.rs:341
 #: src/views/swap_view.rs:323
 #: src/views/swap_view.rs:346
 msgid "Inactive"
-msgstr ""
+msgstr "غير نشط"
 
 #: src/views/zswap_view.rs:93
 #: src/views/swap_view.rs:95
 msgid "Loading..."
-msgstr ""
+msgstr "جارٍ التحميل..."
 
 #: src/views/zswap_view.rs:124
 msgid "Max pool (% of RAM)"
-msgstr ""
+msgstr "الحد الأقصى للخزانة (نسبة مئوية من ذاكرة الوصول العشوائي)"
 
 #: src/views/dashboard_view.rs:105
 msgid "Memory Overview"
-msgstr ""
+msgstr "نظرة عامة على الذاكرة"
 
 #: src/views/zswap_view.rs:142
 msgid "Memory shrinker"
-msgstr ""
+msgstr "ضاغط الذاكرة"
 
 #: src/views/dashboard_view.rs:296
 msgid "No device"
-msgstr ""
+msgstr "لا يوجد جهاز"
 
 #: src/views/zram_view.rs:115
 msgid "No zram devices. Create one to enable compressed RAM swap."
-msgstr ""
+msgstr "لا توجد أجهزة zram. قم بإنشاء جهاز واحد لتمكين تبديل ذاكرة الوصول العشوائي المضغوطة."
 
 #: src/views/dashboard_view.rs:360
 msgid "None"
-msgstr ""
+msgstr "لا شيء"
 
 #: src/views/dashboard_view.rs:350
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "Off"
-msgstr ""
+msgstr "مُعطَّل"
 
 #: src/views/dashboard_view.rs:354
 #: src/views/dashboard_view.rs:364
 msgid "On"
-msgstr ""
+msgstr "مُفعَّل"
 
 #: src/views/zswap_view.rs:134
 msgid "Pages compressing worse than this are rejected — lower = more aggressive"
-msgstr ""
+msgstr "الصفحات التي تُضغَط بشكل أسوأ من ذلك تُرفَض — أقل = أكثر عدوانية"
 
 #: src/views/zram_view.rs:266
 msgid "Priority"
-msgstr ""
+msgstr "الأولوية"
 
 #: src/views/dashboard_view.rs:108
 msgid "Real-time RAM, swap, and compression subsystem status"
-msgstr ""
+msgstr "حالة ذاكرة الوصول العشوائي RAM والذاكرة الافتراضية swap وأنظمة الضغط في الوقت الحقيقي"
 
 #: src/views/zswap_view.rs:143
 msgid "Reclaim pool memory when system is under pressure"
-msgstr ""
+msgstr "استعادة ذاكرة المجموعة عندما يكون النظام تحت الضغط"
 
 #: src/views/zram_view.rs:462
 msgid "Remove"
-msgstr ""
+msgstr "إزالة"
 
 #: src/views/swap_view.rs:275
 msgid "Resizing swap file…"
-msgstr ""
+msgstr "جارٍ تغيير حجم ملف الذاكرة الافتراضية..."
 
 #: src/views/zram_view.rs:213
 msgid "Size (MiB)"
-msgstr ""
+msgstr "الحجم (ميغابايت MiB)"
 
 #: src/window.rs:114
 msgid "Swap"
-msgstr ""
+msgstr "الذاكرة الافتراضية Swap"
 
 #: src/window.rs:59
 msgid "Swap Control"
-msgstr ""
+msgstr "التحكم في الذاكرة الافتراضية Swap"
 
 #: src/views/swap_view.rs:127
 msgid "Swap file size"
-msgstr ""
+msgstr "حجم ملف الذاكرة الافتراضية Swap"
 
 #: src/views/swap_view.rs:150
 msgid "Swappiness"
-msgstr ""
+msgstr "قيمة التبديل Swappiness"
 
 #: src/window.rs:112
 msgid "Zram"
-msgstr ""
+msgstr "زرام"
 
 #: src/views/zram_view.rs:65
 msgid "Zram Devices"
-msgstr ""
+msgstr "أجهزة زرام"
 
 #: src/window.rs:113
 msgid "Zswap"
-msgstr ""
+msgstr "زسواب"
 
 #: src/views/zswap_view.rs:65
 msgid "Zswap Configuration"
-msgstr ""
+msgstr "تكوين زسواب"
 
 #: src/views/zswap_view.rs:116
 msgid "lzo-rle is fastest, zstd saves more space"
-msgstr ""
+msgstr "لزو-آر إل إي هو الأسرع، بينما زستد يوفر مساحة أكبر"
 
